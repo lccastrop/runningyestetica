@@ -1,0 +1,94 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  display: flex;
+  justify-content: center;  /* ✅ centro horizontal */
+  align-items: flex-start;  /* ✅ pega arriba */
+  min-height: 100vh;        /* permite crecer en vertical */
+  padding-top: 2rem;        /* separa del borde superior */
+}
+
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* CAJAS SECUNDARIAS */
+.contenedor-secundario {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  max-width: 960px;
+  background-color: #111;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* MENÚ */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-list a:hover {
+  color: #00d4ff;
+}
+
+/* MAIN */
+.main {
+  max-width: 960px;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.main h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.main p {
+  line-height: 1.6;
+}
+
+/* FOOTER */
+.footer {
+  max-width: 960px;
+  padding: 1rem 2rem;
+  text-align: center;
+  color: #666;
+}

@@ -75,31 +75,31 @@ function Datos() {
     <main className="main">
       <h2>Subir archivo CSV de entrenamiento</h2>
       <input type="file" accept=".csv" onChange={handleArchivo} />
-      <button onClick={handleSubir} style={{ marginLeft: '1rem' }}>Subir</button>
-      {mensaje && <p style={{ marginTop: '1rem' }}>{mensaje}</p>}
+      <button onClick={handleSubir} className="margen-izq">Subir</button>
+      {mensaje && <p className="margen-top">{mensaje}</p>}
 
-      <hr style={{ margin: '2rem 0' }} />
+      <hr className="hr-sep" />
 
       <h2>Subir archivo CSV de población (resultados de carreras)</h2>
       <p>
         (SIN TILDES) Recuerda que los nombres y órdenes de las columnas deben ser: <br />
-
         Nombre | Genero | BIB | Tiempo Chip | Paso Medio | Categoria | Tiempo Oficial
       </p>
       <br />
+
       <input
         type="text"
         placeholder="Nombre de la carrera"
         value={nombreCarrera}
         onChange={(e) => setNombreCarrera(e.target.value)}
-        style={{ display: 'block', marginBottom: '0.5rem' }}
+        className="campo"
       />
 
       <input
         type="date"
         value={fechaCarrera}
         onChange={(e) => setFechaCarrera(e.target.value)}
-        style={{ display: 'block', marginBottom: '0.5rem' }}
+        className="campo"
       />
 
       <input
@@ -107,7 +107,7 @@ function Datos() {
         placeholder="Distancia en km"
         value={distanciaCarrera}
         onChange={(e) => setDistanciaCarrera(e.target.value)}
-        style={{ display: 'block', marginBottom: '0.5rem' }}
+        className="campo"
       />
 
       <input
@@ -115,13 +115,13 @@ function Datos() {
         placeholder="Ascenso total en metros"
         value={ascensoTotal}
         onChange={(e) => setAscensoTotal(e.target.value)}
-        style={{ display: 'block', marginBottom: '0.5rem' }}
+        className="campo"
       />
 
       <input type="file" accept=".csv" onChange={handleArchivoPoblacion} />
-      <button onClick={handleSubirPoblacion} style={{ marginLeft: '1rem' }}>Subir</button>
+      <button onClick={handleSubirPoblacion} className="margen-izq">Subir</button>
 
-      {mensajePoblacion && <p style={{ marginTop: '1rem' }}>{mensajePoblacion}</p>}
+      {mensajePoblacion && <p className="margen-top">{mensajePoblacion}</p>}
     </main>
   );
 }

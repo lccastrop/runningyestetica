@@ -1,4 +1,4 @@
-import './App.css';
+import './style.css';
 import { Routes, Route, Link } from 'react-router-dom';
 import Inicio from './pages/Inicio';
 import Datos from './pages/Datos';

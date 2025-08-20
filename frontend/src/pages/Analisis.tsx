@@ -20,6 +20,18 @@ interface DistribucionRitmo {
   masculino_pct: number;
 }
 
+function formatRitmo(ritmo: string | null): string {
+  if (!ritmo) return '--:--';
+  const [h = '0', m = '0', s = '0'] = ritmo.split(':');
+  const horas = parseInt(h, 10) || 0;
+  const minutos = parseInt(m, 10) || 0;
+  const segundos = parseInt(s, 10) || 0;
+  const totalMinutos = horas * 60 + minutos;
+  return `${totalMinutos.toString().padStart(2, '0')}:${segundos
+    .toString()
+    .padStart(2, '0')}`;
+}
+
 function Analisis() {
   const [carreras, setCarreras] = useState<{ id: number; nombre: string }[]>([]);
   const [seleccionada, setSeleccionada] = useState<number | null>(null);
@@ -82,9 +94,9 @@ function Analisis() {
       {resultados && (
         <div style={{ marginTop: '2rem' }}>
           <h3>Ritmo promedio:</h3>
-          <p><strong>General:</strong> {resultados.ritmo_general} min/km</p>
-          <p><strong>Masculino:</strong> {resultados.ritmo_masculino} min/km ({resultados.conteo_masculino} corredores)</p>
-          <p><strong>Femenino:</strong> {resultados.ritmo_femenino} min/km ({resultados.conteo_femenino} corredoras)</p>
+          <p><strong>General:</strong> {formatRitmo(resultados.ritmo_general)} min/km</p>
+          <p><strong>Masculino:</strong> {formatRitmo(resultados.ritmo_masculino)} min/km ({resultados.conteo_masculino} corredores)</p>
+          <p><strong>Femenino:</strong> {formatRitmo(resultados.ritmo_femenino)} min/km ({resultados.conteo_femenino} corredoras)</p>
         </div>
       )}
 
@@ -103,7 +115,7 @@ function Analisis() {
               {categorias.map((fila, idx) => {
                 const genero = fila.corredoras > 0 ? '♀' : '♂';
                 const cantidad = fila.corredoras > 0 ? fila.corredoras : fila.corredores;
-                const ritmo = fila.corredoras > 0 ? fila.ritmo_femenino : fila.ritmo_masculino;
+                const ritmo = fila.corredoras > 0 ? formatRitmo(fila.ritmo_femenino) : formatRitmo(fila.ritmo_masculino);
                 return (
                   <tr key={idx}>
                     <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.categoria}</td>
@@ -111,7 +123,7 @@ function Analisis() {
                       {cantidad} {genero}
                     </td>
                     <td style={{ border: '1px solid #ccc', padding: '6px' }}>
-                      {ritmo || '--:--'}
+                      {ritmo}
                     </td>
                   </tr>
                 );

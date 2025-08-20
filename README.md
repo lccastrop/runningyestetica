@@ -36,5 +36,4 @@ Comparativas visuales con gráficas
 
 👤 Autor
 
-Camilo Castro — Instagram
- — LinkedIn
+Camilo Castro @Camilo92c Instagram — LinkedIn

@@ -4,6 +4,21 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
+interface CategoriaAnalisis {
+  categoria: string;
+  ritmo_femenino?: string | null;
+  corredoras?: number;
+  ritmo_masculino?: string | null;
+  corredores?: number;
+}
+
+interface DistribucionRitmo {
+  rango: string;
+  femenino: number;
+  femenino_pct: number;
+  masculino: number;
+  masculino_pct: number;
+}
 
 function Analisis() {
   const [carreras, setCarreras] = useState<{ id: number; nombre: string }[]>([]);
@@ -15,8 +30,8 @@ function Analisis() {
     conteo_masculino: number;
     conteo_femenino: number;
   } | null>(null);
-  const [categorias, setCategorias] = useState<any[]>([]);
-  const [distribucionRitmos, setDistribucionRitmos] = useState<any[]>([]);
+  const [categorias, setCategorias] = useState<CategoriaAnalisis[]>([]);
+  const [distribucionRitmos, setDistribucionRitmos] = useState<DistribucionRitmo[]>([]);
   const [totalesGenero, setTotalesGenero] = useState<{ femenino: number, masculino: number }>({ femenino: 0, masculino: 0 });
   const [mensaje, setMensaje] = useState('');
 
@@ -76,26 +91,31 @@ function Analisis() {
       {categorias.length > 0 && (
         <div style={{ marginTop: '3rem' }}>
           <h3>Comparativa por Categoría</h3>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
             <thead>
               <tr>
                 <th style={{ border: '1px solid #ccc', padding: '6px' }}>Categoría</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Ritmo Medio (♀)</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Corredoras</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Ritmo Medio (♂)</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Corredores</th>
+                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Corredores/as</th>
+                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Ritmo Medio</th>
               </tr>
             </thead>
             <tbody>
-              {categorias.map((fila, idx) => (
-                <tr key={idx}>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.categoria}</td>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.ritmo_femenino || '--:--'}</td>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.corredoras}</td>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.ritmo_masculino || '--:--'}</td>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.corredores}</td>
-                </tr>
-              ))}
+              {categorias.map((fila, idx) => {
+                const genero = fila.corredoras > 0 ? '♀' : '♂';
+                const cantidad = fila.corredoras > 0 ? fila.corredoras : fila.corredores;
+                const ritmo = fila.corredoras > 0 ? fila.ritmo_femenino : fila.ritmo_masculino;
+                return (
+                  <tr key={idx}>
+                    <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.categoria}</td>
+                    <td style={{ border: '1px solid #ccc', padding: '6px' }}>
+                      {cantidad} {genero}
+                    </td>
+                    <td style={{ border: '1px solid #ccc', padding: '6px' }}>
+                      {ritmo || '--:--'}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -159,7 +179,6 @@ function Analisis() {
           </ResponsiveContainer>
         </div>
       )}
-
     </main>
   );
 }

@@ -1,0 +1,124 @@
+diff --git a/frontend/src/pages/Datos.tsx b/frontend/src/pages/Datos.tsx
+index bd6f58719ee145e52256c2bee9e12adba7ceb6fd..dfe0db5de6796d0ce09643e1e339bcc923e68394 100644
+--- a/frontend/src/pages/Datos.tsx
++++ b/frontend/src/pages/Datos.tsx
+@@ -1,40 +1,59 @@
+ // frontend/src/pages/Datos.tsx
+-import { useState } from 'react';
++import { useState, useEffect } from 'react';
+ import axios from 'axios';
++import { useNavigate } from 'react-router-dom';
+ 
+ function Datos() {
++  const navigate = useNavigate();
++  const [verificado, setVerificado] = useState(false);
++  const [esAdmin, setEsAdmin] = useState(false);
++
+   const [archivo, setArchivo] = useState<File | null>(null);
+   const [mensaje, setMensaje] = useState('');
+ 
+   const [archivoPoblacion, setArchivoPoblacion] = useState<File | null>(null);
+   const [nombreCarrera, setNombreCarrera] = useState('');
+   const [fechaCarrera, setFechaCarrera] = useState('');
+   const [distanciaCarrera, setDistanciaCarrera] = useState('');
+   const [ascensoTotal, setAscensoTotal] = useState('');
+   const [mensajePoblacion, setMensajePoblacion] = useState('');
+ 
++  useEffect(() => {
++    axios
++      .get('http://localhost:3001/session', { withCredentials: true })
++      .then((res) => {
++        if (res.data.user?.role === 'admin') {
++          setEsAdmin(true);
++        } else {
++          navigate('/login');
++        }
++      })
++      .catch(() => navigate('/login'))
++      .finally(() => setVerificado(true));
++  }, [navigate]);
++
+   const handleArchivoPoblacion = (e: React.ChangeEvent<HTMLInputElement>) => {
+     setArchivoPoblacion(e.target.files?.[0] || null);
+   };
+ 
+   const handleSubirPoblacion = async () => {
+     if (!archivoPoblacion || !nombreCarrera) {
+       setMensajePoblacion('⚠️ Debes seleccionar un archivo CSV y escribir el nombre de la carrera');
+       return;
+     }
+ 
+     const formData = new FormData();
+     formData.append('file', archivoPoblacion);
+     formData.append('nombreCarrera', nombreCarrera);
+     formData.append('fecha', fechaCarrera);
+     formData.append('distancia', parseFloat(distanciaCarrera).toString());
+     formData.append('ascenso_total', parseInt(ascensoTotal).toString());
+ 
+     try {
+       const res = await axios.post('http://localhost:3001/upload-resultados', formData, {
+         headers: {
+           'Content-Type': 'multipart/form-data'
+         }
+       });
+ 
+       setMensajePoblacion(`✅ ${res.data.message} (${res.data.insertados} resultados insertados)`);
+diff --git a/frontend/src/pages/Datos.tsx b/frontend/src/pages/Datos.tsx
+index bd6f58719ee145e52256c2bee9e12adba7ceb6fd..dfe0db5de6796d0ce09643e1e339bcc923e68394 100644
+--- a/frontend/src/pages/Datos.tsx
++++ b/frontend/src/pages/Datos.tsx
+@@ -49,50 +68,54 @@ function Datos() {
+   };
+ 
+   const handleSubir = async () => {
+     if (!archivo) {
+       setMensaje('⚠️ Selecciona un archivo CSV primero');
+       return;
+     }
+ 
+     const formData = new FormData();
+     formData.append('file', archivo);
+ 
+     try {
+       const res = await axios.post('http://localhost:3001/upload-entrenamiento', formData, {
+         headers: {
+           'Content-Type': 'multipart/form-data'
+         }
+       });
+ 
+       setMensaje(`✅ ${res.data.message} (${res.data.series_insertadas} series insertadas)`);
+     } catch (error) {
+       console.error('❌ Error al subir CSV:', error);
+       setMensaje('❌ Error al subir el archivo');
+     }
+   };
+ 
++  if (!verificado || !esAdmin) {
++    return null;
++  }
++
+   return (
+     <main className="main">
+       <h2>Subir archivo CSV de entrenamiento</h2>
+       <input type="file" accept=".csv" onChange={handleArchivo} />
+       <button onClick={handleSubir} className="margen-izq">Subir</button>
+       {mensaje && <p className="margen-top">{mensaje}</p>}
+ 
+       <hr className="hr-sep" />
+ 
+       <h2>Subir archivo CSV de población (resultados de carreras)</h2>
+       <p>
+         (SIN TILDES) Recuerda que los nombres y órdenes de las columnas deben ser: <br />
+         Nombre | Genero | BIB | Tiempo Chip | Paso Medio | Categoria | Tiempo Oficial
+       </p>
+       <br />
+ 
+       <input
+         type="text"
+         placeholder="Nombre de la carrera"
+         value={nombreCarrera}
+         onChange={(e) => setNombreCarrera(e.target.value)}
+         className="campo"
+       />
+ 
+       <input

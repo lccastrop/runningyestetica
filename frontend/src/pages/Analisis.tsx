@@ -112,12 +112,17 @@ function Analisis() {
               </tr>
             </thead>
             <tbody>
-              {categorias.map((fila, idx) => {
-                const genero = fila.corredoras > 0 ? '♀' : '♂';
-                const cantidad = fila.corredoras > 0 ? fila.corredoras : fila.corredores;
-                const ritmo = fila.corredoras > 0 ? formatRitmo(fila.ritmo_femenino) : formatRitmo(fila.ritmo_masculino);
+              {categorias.map((fila) => {
+                const corredoras = fila.corredoras ?? 0;
+                const corredores = fila.corredores ?? 0;
+                const genero = corredoras > 0 ? '♀' : '♂';
+                const cantidad = corredoras > 0 ? corredoras : corredores;
+                const ritmo = corredoras > 0
+                  ? formatRitmo(fila.ritmo_femenino ?? null)
+                  : formatRitmo(fila.ritmo_masculino ?? null);
+
                 return (
-                  <tr key={idx}>
+                  <tr key={fila.categoria}>
                     <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.categoria}</td>
                     <td style={{ border: '1px solid #ccc', padding: '6px' }}>
                       {cantidad} {genero}

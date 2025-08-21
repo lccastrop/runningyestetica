@@ -1,8 +1,13 @@
 // frontend/src/pages/Datos.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Datos() {
+  const navigate = useNavigate();
+  const [verificado, setVerificado] = useState(false);
+  const [esAdmin, setEsAdmin] = useState(false);
+
   const [archivo, setArchivo] = useState<File | null>(null);
   const [mensaje, setMensaje] = useState('');
 
@@ -12,6 +17,20 @@ function Datos() {
   const [distanciaCarrera, setDistanciaCarrera] = useState('');
   const [ascensoTotal, setAscensoTotal] = useState('');
   const [mensajePoblacion, setMensajePoblacion] = useState('');
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/session', { withCredentials: true })
+      .then((res) => {
+        if (res.data.user?.role === 'admin') {
+          setEsAdmin(true);
+        } else {
+          navigate('/login');
+        }
+      })
+      .catch(() => navigate('/login'))
+      .finally(() => setVerificado(true));
+  }, [navigate]);
 
   const handleArchivoPoblacion = (e: React.ChangeEvent<HTMLInputElement>) => {
     setArchivoPoblacion(e.target.files?.[0] || null);
@@ -70,6 +89,10 @@ function Datos() {
       setMensaje('❌ Error al subir el archivo');
     }
   };
+
+  if (!verificado || !esAdmin) {
+    return null;
+  }
 
   return (
     <main className="main">

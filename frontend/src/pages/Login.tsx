@@ -18,8 +18,12 @@ function Login() {
       const res = await axios.post('http://localhost:3001/login', { email, password }, { withCredentials: true });
       setUser(res.data.user);
       setMensaje('✅ Sesión iniciada');
-    } catch (err: any) {
-      setMensaje(err.response?.data?.error || '❌ Error al iniciar sesión');
+        } catch (err: unknown) {
+      const mensajeError =
+        axios.isAxiosError(err) && err.response?.data?.error
+          ? err.response.data.error
+          : '❌ Error al iniciar sesión';
+      setMensaje(mensajeError);
       setUser(null);
     }
   };

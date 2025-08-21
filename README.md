@@ -24,6 +24,16 @@ cd frontend
 npm install
 npm run dev
 
+Subir cambios a GitHub
+git status
+git init
+git add .
+git commit -m "sesiones1 (falta ocultar datos)"
+git push -u origin main
+
+
+
+
 📊 Funciones
 
 Subida de resultados de carreras (CSV)

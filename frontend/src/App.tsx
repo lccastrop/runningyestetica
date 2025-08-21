@@ -4,6 +4,7 @@ import Inicio from './pages/Inicio';
 import Datos from './pages/Datos';
 import Analisis from './pages/Analisis';
 import Login from './pages/Login';
+import Blog from './pages/Blog';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <li><Link to="/">Inicio</Link></li>
               <li><Link to="/datos">Datos</Link></li>
               <li><Link to="/analisis">Análisis</Link></li>
+              <li><Link to="/blog">Blog</Link></li>
               <li><Link to="/login">Login</Link></li>
             </ul>
           </nav>
@@ -27,7 +29,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/datos" element={<Datos />} />
-          <Route path="/analisis" element={<Analisis />} />
+          <Route path="/analisis" element={<Analisis />} />´
+          <Route path="/blog" element={<Blog />} />
           <Route path="/login" element={<Login />} />
 
         </Routes>

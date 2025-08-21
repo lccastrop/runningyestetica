@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 interface User {
@@ -12,13 +13,21 @@ function Login() {
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
   const [user, setUser] = useState<User | null>(null);
+  const navigate = useNavigate();
 
   const iniciarSesion = async () => {
+    if (!email || !password) {
+      setMensaje('⚠️ Rellena email y contraseña');
+      return;
+    }
+
     try {
       const res = await axios.post('http://localhost:3001/login', { email, password }, { withCredentials: true });
       setUser(res.data.user);
       setMensaje('✅ Sesión iniciada');
-        } catch (err: unknown) {
+      // Redirigir a la página principal cuando el login sea correcto
+      navigate('/');
+    } catch (err: unknown) {
       const mensajeError =
         axios.isAxiosError(err) && err.response?.data?.error
           ? err.response.data.error
@@ -56,25 +65,33 @@ function Login() {
   return (
     <main className="main">
       <h2>Login</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="campo"
-      />
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="campo"
-      />
-      <div className="margen-top">
-        <button onClick={iniciarSesion}>Iniciar sesión</button>
-        <button onClick={verSesion} className="margen-izq">Ver sesión</button>
-        <button onClick={cerrarSesion} className="margen-izq">Cerrar sesión</button>
-      </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          iniciarSesion();
+        }}
+      >
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="campo"
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="campo"
+        />
+        <div className="margen-top">
+          <button type="submit">Iniciar sesión</button>
+          <button type="button" onClick={verSesion} className="margen-izq">Ver sesión</button>
+          <button type="button" onClick={cerrarSesion} className="margen-izq">Cerrar sesión</button>
+        </div>
+      </form>
+
       {mensaje && <p className="margen-top">{mensaje}</p>}
       {user && (
         <p className="margen-top">

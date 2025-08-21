@@ -28,7 +28,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "sesiones1 (falta ocultar datos)"
+git commit -m "2508211424"
 git push -u origin main
 
 

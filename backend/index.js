@@ -93,6 +93,64 @@ app.post('/logout', (req, res) => {
   });
 });
 
+// Rutas de blogs
+app.get('/blogs', (req, res) => {
+  const query = `SELECT b.id, b.title, b.content, b.user_id, u.email FROM blogs b JOIN users u ON b.user_id = u.id ORDER BY b.created_at DESC`;
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error al obtener blogs:', err);
+      return res.status(500).json({ error: 'Error al obtener blogs' });
+    }
+    res.json(results);
+  });
+});
+
+app.post('/blogs', requirePlus, (req, res) => {
+  const { title, content } = req.body;
+  const userId = req.session.user.id;
+  const query = 'INSERT INTO blogs (user_id, title, content) VALUES (?, ?, ?)';
+  db.query(query, [userId, title, content], (err, result) => {
+    if (err) {
+      console.error('Error al crear blog:', err);
+      return res.status(500).json({ error: 'Error al crear blog' });
+    }
+    res.json({ id: result.insertId, user_id: userId, title, content, email: req.session.user.email });
+  });
+});
+
+app.put('/blogs/:id', requirePlus, (req, res) => {
+  const blogId = req.params.id;
+  const { title, content } = req.body;
+  const user = req.session.user;
+  let query = 'UPDATE blogs SET title = ?, content = ? WHERE id = ?';
+  const params = [title, content, blogId];
+  if (user.role !== 'admin') {
+    query += ' AND user_id = ?';
+    params.push(user.id);
+  }
+  db.query(query, params, (err, result) => {
+    if (err) {
+      console.error('Error al actualizar blog:', err);
+      return res.status(500).json({ error: 'Error al actualizar blog' });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(403).json({ error: 'Acceso denegado' });
+    }
+    res.json({ message: 'Blog actualizado' });
+  });
+});
+
+app.delete('/blogs/:id', requireAdmin, (req, res) => {
+  const blogId = req.params.id;
+  db.query('DELETE FROM blogs WHERE id = ?', [blogId], (err) => {
+    if (err) {
+      console.error('Error al eliminar blog:', err);
+      return res.status(500).json({ error: 'Error al eliminar blog' });
+    }
+    res.json({ message: 'Blog eliminado' });
+  });
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

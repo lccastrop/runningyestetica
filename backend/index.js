@@ -5,19 +5,92 @@ const db = require('./db');
 const multer = require('multer');
 const csv = require('csv-parser');
 const fs = require('fs');
+const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
+const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
+
+const sessionStore = new MySQLStore({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  clearExpired: true,
+  checkExpirationInterval: 15 * 60 * 1000,
+  expiration: 24 * 60 * 60 * 1000,
+  createDatabaseTable: false,
+  schema: {
+    tableName: 'sessions',
+    columnNames: {
+      session_id: 'session_id',
+      expires: 'expires',
+      data: 'data',
+    },
+  },
+});
+
+app.use(
+  session({
+    key: 'session_id',
+    secret: process.env.SESSION_SECRET || 'devsecret',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+  })
+);
 
 const upload = multer({ dest: 'uploads/' });
 
 // Ruta de prueba
 app.get('/', (req, res) => {
   res.send('API de running funcionando 🎽');
+});
+
+// Rutas de autenticación
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Faltan credenciales' });
+  }
+
+  const query = 'SELECT id, email, password_hash, role FROM users WHERE email = ?';
+  db.query(query, [email], (err, results) => {
+    if (err) return res.status(500).json({ error: 'Error en la base de datos' });
+    if (results.length === 0) return res.status(401).json({ error: 'Credenciales inválidas' });
+
+    const user = results[0];
+    bcrypt.compare(password, user.password_hash, (err, match) => {
+      if (err) return res.status(500).json({ error: 'Error al verificar contraseña' });
+      if (!match) return res.status(401).json({ error: 'Credenciales inválidas' });
+
+      req.session.user = { id: user.id, email: user.email, role: user.role };
+      res.json({ message: 'Inicio de sesión exitoso', user: req.session.user });
+    });
+  });
+});
+
+app.get('/session', (req, res) => {
+  if (req.session.user) {
+    res.json({ authenticated: true, user: req.session.user });
+  } else {
+    res.status(401).json({ authenticated: false });
+  }
+});
+
+app.post('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) return res.status(500).json({ error: 'Error al cerrar sesión' });
+    res.clearCookie('session_id');
+    res.json({ message: 'Sesión cerrada' });
+  });
 });
 
 // Iniciar servidor

@@ -1,18 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-interface User {
-  id: number;
-  email: string;
-  role: string;
-}
+import { AuthContext } from '../AuthContext';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
-  const [user, setUser] = useState<User | null>(null);
+  const { user, setUser, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const iniciarSesion = async () => {
@@ -50,8 +46,7 @@ function Login() {
 
   const cerrarSesion = async () => {
     try {
-      await axios.post('http://localhost:3001/logout', {}, { withCredentials: true });
-      setUser(null);
+         await logout();
       setMensaje('👋 Sesión cerrada');
     } catch {
       setMensaje('❌ Error al cerrar sesión');

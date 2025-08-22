@@ -49,6 +49,23 @@ app.use(
 
 const upload = multer({ dest: 'uploads/' });
 
+// Middlewares de autorización
+function requirePlus(req, res, next) {
+  const user = req.session.user;
+  if (!user || (user.role !== 'plus' && user.role !== 'admin')) {
+    return res.status(403).json({ error: 'Acceso denegado' });
+  }
+  next();
+}
+
+function requireAdmin(req, res, next) {
+  const user = req.session.user;
+  if (!user || user.role !== 'admin') {
+    return res.status(403).json({ error: 'Acceso denegado' });
+  }
+  next();
+}
+
 // Ruta de prueba
 app.get('/', (req, res) => {
   res.send('API de running funcionando 🎽');

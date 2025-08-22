@@ -1,12 +1,24 @@
 import './style.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 import Inicio from './pages/Inicio';
 import Datos from './pages/Datos';
 import Analisis from './pages/Analisis';
 import Login from './pages/Login';
 import Blog from './pages/Blog';
+import { AuthContext } from './AuthContext';
+import RequireAdmin from './components/RequireAdmin';
 
 function App() {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    await logout();
+    navigate('/');
+  };
+
   return (
     <div className="contenedor-principal">
 
@@ -16,10 +28,14 @@ function App() {
           <nav>
             <ul className="nav-list">
               <li><Link to="/">Inicio</Link></li>
-              <li><Link to="/datos">Datos</Link></li>
+              {user?.role === 'admin' && <li><Link to="/datos">Datos</Link></li>}
               <li><Link to="/analisis">Análisis</Link></li>
               <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/login">Login</Link></li>
+              {user ? (
+                <li><a href="#" onClick={handleLogout}>Logout</a></li>
+              ) : (
+                <li><Link to="/login">Login</Link></li>
+              )}
             </ul>
           </nav>
         </header>
@@ -28,11 +44,10 @@ function App() {
       <div className="contenedor-secundario">
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/datos" element={<Datos />} />
-          <Route path="/analisis" element={<Analisis />} />´
+          <Route path="/datos" element={<RequireAdmin><Datos /></RequireAdmin>} />
+          <Route path="/analisis" element={<Analisis />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/login" element={<Login />} />
-
         </Routes>
       </div>
 

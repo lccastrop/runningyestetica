@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Blog from './pages/Blog';
 import { AuthContext } from './AuthContext';
 import RequireAdmin from './components/RequireAdmin';
+const logo = '/img/logo16-9.png';
 
 function App() {
   const { user, logout } = useContext(AuthContext);
@@ -24,7 +25,7 @@ function App() {
 
       <div className="contenedor-secundario">
         <header className="header">
-          <h1 className="logo">Running y Estética</h1>
+          <img src={logo} alt="Running y Estética" className="logo" />
           <nav>
             <ul className="nav-list">
               <li><Link to="/">Inicio</Link></li>

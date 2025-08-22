@@ -1,5 +1,7 @@
-import { createContext, useState, useEffect, type ReactNode, Dispatch, SetStateAction } from 'react';
+import { createContext, useState, useEffect } from 'react';
+import type { ReactNode, Dispatch, SetStateAction } from 'react';
 import axios from 'axios';
+
 
 export interface User {
   id: number;

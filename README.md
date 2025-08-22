@@ -28,7 +28,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Nuevo logo, nuevo fondo"
+git commit -m "Transparencias en CSS"
 git push -u origin main
 
 

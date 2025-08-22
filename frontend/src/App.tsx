@@ -22,27 +22,24 @@ function App() {
 
   return (
     <div className="contenedor-principal">
+      <header className="header">
+        <img src={logo} alt="Running y Estética" className="logo" />
+        <nav>
+          <ul className="nav-list">
+            <li><Link to="/">Inicio</Link></li>
+            {user?.role === 'admin' && <li><Link to="/datos">Datos</Link></li>}
+            <li><Link to="/analisis">Análisis</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
+            {user ? (
+              <li><a href="#" onClick={handleLogout}>Logout</a></li>
+            ) : (
+              <li><Link to="/login">Login</Link></li>
+            )}
+          </ul>
+        </nav>
+      </header>
 
-      <div className="contenedor-secundario">
-        <header className="header">
-          <img src={logo} alt="Running y Estética" className="logo" />
-          <nav>
-            <ul className="nav-list">
-              <li><Link to="/">Inicio</Link></li>
-              {user?.role === 'admin' && <li><Link to="/datos">Datos</Link></li>}
-              <li><Link to="/analisis">Análisis</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
-              {user ? (
-                <li><a href="#" onClick={handleLogout}>Logout</a></li>
-              ) : (
-                <li><Link to="/login">Login</Link></li>
-              )}
-            </ul>
-          </nav>
-        </header>
-      </div>
-
-      <div className="contenedor-secundario">
+      <main className="main">
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/datos" element={<RequireAdmin><Datos /></RequireAdmin>} />
@@ -50,14 +47,11 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-      </div>
+      </main>
 
-      <div className="contenedor-secundario">
-        <footer className="footer">
-          <p>© 2025 Running y Estética. Todos los derechos reservados.</p>
-        </footer>
-      </div>
-
+      <footer className="footer">
+        <p>© 2025 Running y Estética. Todos los derechos reservados.</p>
+      </footer>
     </div>
   );
 }

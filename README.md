@@ -28,7 +28,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Creando blog 1.0"
+git commit -m "Nuevo logo, nuevo fondo"
 git push -u origin main
 
 

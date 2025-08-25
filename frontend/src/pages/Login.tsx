@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { AuthContext } from '../AuthContext';
@@ -91,6 +91,11 @@ function Login() {
       {user && (
         <p className="margen-top">
           Sesión de <strong>{user.email}</strong> (rol: {user.role})
+        </p>
+      )}
+      {!user && (
+        <p className="margen-top">
+          ¿No tienes cuenta? <Link to="/registro">Regístrate</Link>
         </p>
       )}
     </main>

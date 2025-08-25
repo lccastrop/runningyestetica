@@ -17,7 +17,8 @@ interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType>({
   user: null,
-  setUser: () => {},
+  // El valor por defecto aquí solo existe para la inicialización; casteamos para cumplir el tipo.
+  setUser: (() => {}) as unknown as Dispatch<SetStateAction<User | null>>,
   logout: async () => {}
 });
 

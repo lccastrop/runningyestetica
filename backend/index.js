@@ -71,6 +71,31 @@ app.get('/', (req, res) => {
 });
 
 // Rutas de autenticación
+app.post('/register', (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Faltan datos' });
+  }
+
+  const checkQuery = 'SELECT id FROM users WHERE email = ?';
+  db.query(checkQuery, [email], (err, results) => {
+    if (err) return res.status(500).json({ error: 'Error en la base de datos' });
+    if (results.length > 0) {
+      return res.status(409).json({ error: 'Usuario ya existe' });
+    }
+
+    bcrypt.hash(password, 10, (err, hash) => {
+      if (err) return res.status(500).json({ error: 'Error al encriptar contraseña' });
+
+      const insertQuery = 'INSERT INTO users (email, password_hash, role) VALUES (?, ?, ?)';
+      db.query(insertQuery, [email, hash, 'free'], (err) => {
+        if (err) return res.status(500).json({ error: 'Error al registrar usuario' });
+        res.status(201).json({ message: 'Usuario registrado' });
+      });
+    });
+  });
+});
+
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {

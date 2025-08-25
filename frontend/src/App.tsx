@@ -6,6 +6,7 @@ import Datos from './pages/Datos';
 import Analisis from './pages/Analisis';
 import Login from './pages/Login';
 import Blog from './pages/Blog';
+import Registro from './pages/Registro';
 import { AuthContext } from './AuthContext';
 import RequireAdmin from './components/RequireAdmin';
 const logo = '/img/logo16-9.png';
@@ -33,7 +34,10 @@ function App() {
             {user ? (
               <li><a href="#" onClick={handleLogout}>Logout</a></li>
             ) : (
-              <li><Link to="/login">Login</Link></li>
+              <>
+                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/registro">Registro</Link></li>
+              </>
             )}
           </ul>
         </nav>
@@ -46,6 +50,7 @@ function App() {
           <Route path="/analisis" element={<Analisis />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
         </Routes>
       </main>
 

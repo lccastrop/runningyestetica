@@ -63,7 +63,7 @@ function Analisis() {
   const hacerAnalisis = async () => {
     if (!seleccionada) return;
     try {
-        const [resGeneral, resCategorias, resRangos] = await Promise.all([
+      const [resGeneral, resCategorias, resRangos] = await Promise.all([
         axios.get(`${API_URL}/analisis-carrera/${seleccionada}`),
         axios.get(`${API_URL}/analisis-carrera-categorias/${seleccionada}`),
         axios.get(`${API_URL}/analisis-carrera-ritmos/${seleccionada}`)
@@ -99,7 +99,7 @@ function Analisis() {
       {mensaje && <p style={{ color: 'red' }}>{mensaje}</p>}
 
       {resultados && (
-        <div style={{ marginTop: '2rem' }}>
+        <div className="contenedor-principal margen-top-2">
           <h3>Ritmo promedio:</h3>
           <p><strong>General:</strong> {formatRitmo(resultados.ritmo_general)} min/km</p>
           <p><strong>Masculino:</strong> {formatRitmo(resultados.ritmo_masculino)} min/km ({resultados.conteo_masculino} corredores)</p>
@@ -108,7 +108,7 @@ function Analisis() {
       )}
 
       {categorias.length > 0 && (
-        <div style={{ marginTop: '3rem' }}>
+        <div className="contenedor-principal margen-top-3">
           <h3>Comparativa por Categoría</h3>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
             <thead>
@@ -146,7 +146,7 @@ function Analisis() {
       )}
 
       {distribucionRitmos.length > 0 && (
-        <div style={{ marginTop: '3rem' }}>
+        <div className="contenedor-principal margen-top-3">
           <h3>Distribución por Rangos de Ritmo Medio</h3>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
             <thead>
@@ -185,7 +185,7 @@ function Analisis() {
         </div>
       )}
       {distribucionRitmos.length > 0 && (
-        <div style={{ marginTop: '3rem' }}>
+        <div className="contenedor-principal margen-top-3">
           <h3>Gráfica: Ritmos por género</h3>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart

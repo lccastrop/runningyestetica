@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../api';
+import { getApiUrl } from '../api';
 
 interface BlogPost {
   id: number;
@@ -24,6 +24,7 @@ function Blog() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editTitle, setEditTitle] = useState('');
   const [editContent, setEditContent] = useState('');
+  const API_URL = getApiUrl();
 
   const cargarBlogs = async () => {
     const res = await axios.get(`${API_URL}/blogs`);
@@ -47,7 +48,7 @@ function Blog() {
   const crearBlog = async () => {
     try {
       const res = await axios.post(
-        'http://localhost:3001/blogs',
+        `${API_URL}/blogs`,
         { title, content },
         { withCredentials: true }
       );

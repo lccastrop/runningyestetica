@@ -1,13 +1,14 @@
 // frontend/src/pages/Datos.tsx
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { API_URL } from '../api';
+import { getApiUrl } from '../api';
 import { useNavigate } from 'react-router-dom';
 
 function Datos() {
   const navigate = useNavigate();
   const [verificado, setVerificado] = useState(false);
   const [esAdmin, setEsAdmin] = useState(false);
+  const API_URL = getApiUrl();
 
   const [archivo, setArchivo] = useState<File | null>(null);
   const [mensaje, setMensaje] = useState('');

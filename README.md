@@ -28,7 +28,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Arreglos RUTA ENV VERCEL"
+git commit -m "08:37"
 git push -u origin main
 
 

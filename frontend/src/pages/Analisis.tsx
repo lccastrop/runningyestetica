@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../api'
+import { getApiUrl } from '../api';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
@@ -34,7 +34,7 @@ function formatRitmo(ritmo: string | null): string {
 }
 
 function Analisis() {
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  const API_URL = getApiUrl();
   const [carreras, setCarreras] = useState<{ id: number; nombre: string }[]>([]);
   const [seleccionada, setSeleccionada] = useState<number | null>(null);
   const [resultados, setResultados] = useState<{

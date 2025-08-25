@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../api';
+import { getApiUrl } from '../api';
 import { useNavigate } from 'react-router-dom';
 
 function Registro() {
@@ -8,6 +8,7 @@ function Registro() {
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
   const navigate = useNavigate();
+    const API_URL = getApiUrl();
 
   const registrar = async () => {
     if (!email || !password) {

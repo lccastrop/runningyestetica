@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import axios from 'axios';
-import { API_URL } from '../api';
+import { getApiUrl } from '../api';
 import { Navigate } from 'react-router-dom';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 function RequireAdmin({ children }: Props) {
   const [status, setStatus] = useState<'loading' | 'allowed' | 'denied'>('loading');
-
+  const API_URL = getApiUrl();
   useEffect(() => {
     const checkSession = async () => {
       try {

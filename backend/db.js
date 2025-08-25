@@ -3,14 +3,15 @@ const mysql = require('mysql2');
 require('dotenv').config();
 
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST || process.env.MYSQLHOST,
-  user: process.env.DB_USER || process.env.MYSQLUSER,
-  password: process.env.DB_PASSWORD || process.env.MYSQLPASSWORD,
-  database: process.env.DB_NAME || process.env.MYSQLDATABASE,
-  port: process.env.DB_PORT || process.env.MYSQLPORT,
+ host: process.env.MYSQLHOST || process.env.DB_HOST || 'localhost',
+  user: process.env.MYSQLUSER || process.env.DB_USER || 'root',
+  password: process.env.MYSQLPASSWORD || process.env.DB_PASSWORD || '',
+  database: process.env.MYSQLDATABASE || process.env.DB_NAME || 'runningyestetica',
+  port: process.env.MYSQLPORT || process.env.DB_PORT || 3306,
 });
 
 connection.connect((err) => {
+  console.log(`🔌 Intentando conectar a MySQL en ${connection.config.host}:${connection.config.port}`);
   if (err) {
     console.error('❌ Error al conectar a la base de datos:', err);
     return;

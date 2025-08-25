@@ -79,7 +79,10 @@ app.post('/register', (req, res) => {
 
   const checkQuery = 'SELECT id FROM users WHERE email = ?';
   db.query(checkQuery, [email], (err, results) => {
-    if (err) return res.status(500).json({ error: 'Error en la base de datos' });
+    if (err) {
+      console.error('Error al verificar usuario existente:', err);
+      return res.status(500).json({ error: 'Error en la base de datos' });
+    }
     if (results.length > 0) {
       return res.status(409).json({ error: 'Usuario ya existe' });
     }
@@ -89,7 +92,10 @@ app.post('/register', (req, res) => {
 
       const insertQuery = 'INSERT INTO users (email, password_hash, role) VALUES (?, ?, ?)';
       db.query(insertQuery, [email, hash, 'free'], (err) => {
-        if (err) return res.status(500).json({ error: 'Error al registrar usuario' });
+        if (err) {
+          console.error('Error al registrar usuario:', err);
+          return res.status(500).json({ error: 'Error al registrar usuario' });
+        }
         res.status(201).json({ message: 'Usuario registrado' });
       });
     });
@@ -104,7 +110,10 @@ app.post('/login', (req, res) => {
 
   const query = 'SELECT id, email, password_hash, role FROM users WHERE email = ?';
   db.query(query, [email], (err, results) => {
-    if (err) return res.status(500).json({ error: 'Error en la base de datos' });
+    if (err) {
+      console.error('Error al buscar usuario:', err);
+      return res.status(500).json({ error: 'Error en la base de datos' });
+    }
     if (results.length === 0) return res.status(401).json({ error: 'Credenciales inválidas' });
 
     const user = results[0];

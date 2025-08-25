@@ -476,7 +476,9 @@ app.get('/carreras', (req, res) => {
   db.query('SELECT id, nombre FROM carreras', (err, results) => {
     if (err) {
       console.error('Error obteniendo carreras:', err);
-      return res.status(500).json({ error: 'Error al obtener carreras' });
+            return res
+        .status(500)
+        .json({ error: 'Error al obtener carreras', details: err.message });
     }
     res.json(results);
   });

@@ -48,9 +48,14 @@ function Analisis() {
   const [mensaje, setMensaje] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/carreras')
+    axios
+      .get('http://localhost:3001/carreras')
       .then(res => setCarreras(res.data))
-      .catch(() => setMensaje('Error al cargar carreras'));
+      .catch((error) => {
+        console.error('Error al cargar carreras:', error);
+        const detalle = error.response?.data?.details || error.response?.data?.error || error.message;
+        setMensaje(`Error al cargar carreras: ${detalle}`);
+      });
   }, []);
 
   const hacerAnalisis = async () => {

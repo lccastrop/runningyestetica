@@ -123,7 +123,7 @@ const queries = [
       sql: `
         CREATE TABLE IF NOT EXISTS blogs (
           id INT AUTO_INCREMENT PRIMARY KEY,
-          user_id INT NOT NULL,
+          user_id INT UNSIGNED NOT NULL,
           title VARCHAR(255) NOT NULL,
           content TEXT NOT NULL,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

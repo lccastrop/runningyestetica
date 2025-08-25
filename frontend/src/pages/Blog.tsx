@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API_URL } from '../api';
 
 interface BlogPost {
   id: number;
@@ -25,13 +26,13 @@ function Blog() {
   const [editContent, setEditContent] = useState('');
 
   const cargarBlogs = async () => {
-    const res = await axios.get('http://localhost:3001/blogs');
+    const res = await axios.get(`${API_URL}/blogs`);
     setBlogs(res.data);
   };
 
   const verSesion = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/session', { withCredentials: true });
+      const res = await axios.get(`${API_URL}/session`, { withCredentials: true });
       setUser(res.data.user);
     } catch {
       setUser(null);
@@ -67,7 +68,7 @@ function Blog() {
 
   const guardarEdicion = async (id: number) => {
     await axios.put(
-      `http://localhost:3001/blogs/${id}`,
+      `${API_URL}/blogs/${id}`,
       { title: editTitle, content: editContent },
       { withCredentials: true }
     );
@@ -80,7 +81,7 @@ function Blog() {
   };
 
   const eliminarBlog = async (id: number) => {
-    await axios.delete(`http://localhost:3001/blogs/${id}`, {
+    await axios.delete(`${API_URL}/blogs/${id}`, {
       withCredentials: true,
     });
     setBlogs((prev) => prev.filter((b) => b.id !== id));

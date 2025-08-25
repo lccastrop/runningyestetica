@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import axios from 'axios';
+import { API_URL } from '../api';
 import { Navigate } from 'react-router-dom';
 
 interface Props {
@@ -12,7 +13,7 @@ function RequireAdmin({ children }: Props) {
   useEffect(() => {
     const checkSession = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/session', { withCredentials: true });
+        const res = await axios.get(`${API_URL}/session`, { withCredentials: true });
         if (res.data.user?.role === 'admin') {
           setStatus('allowed');
         } else {

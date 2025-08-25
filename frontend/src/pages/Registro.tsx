@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { API_URL } from '../api';
 import { useNavigate } from 'react-router-dom';
 
 function Registro() {
@@ -14,7 +15,7 @@ function Registro() {
       return;
     }
     try {
-      await axios.post('http://localhost:3001/register', { email, password });
+      await axios.post(`${API_URL}/register`, { email, password });
       setMensaje('✅ Usuario registrado, inicia sesión');
       setTimeout(() => navigate('/login'), 1500);
     } catch (err: unknown) {

@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import type { ReactNode, Dispatch, SetStateAction } from 'react';
 import axios from 'axios';
+import { API_URL } from './api';
 
 
 export interface User {
@@ -28,7 +29,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/session', { withCredentials: true });
+   const res = await axios.get(`${API_URL}/session`, { withCredentials: true });
         setUser(res.data.user || null);
       } catch {
         setUser(null);
@@ -38,7 +39,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const logout = async () => {
-    await axios.post('http://localhost:3001/logout', {}, { withCredentials: true });
+   const res = await axios.get(`${API_URL}/session`, { withCredentials: true });
     setUser(null);
   };
 

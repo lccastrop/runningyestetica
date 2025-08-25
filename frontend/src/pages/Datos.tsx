@@ -1,6 +1,7 @@
 // frontend/src/pages/Datos.tsx
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../api';
 import { useNavigate } from 'react-router-dom';
 
 function Datos() {
@@ -20,7 +21,7 @@ function Datos() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/session', { withCredentials: true })
+      .get(`${API_URL}/session`, { withCredentials: true })
       .then((res) => {
         if (res.data.user?.role === 'admin') {
           setEsAdmin(true);
@@ -50,7 +51,7 @@ function Datos() {
     formData.append('ascenso_total', parseInt(ascensoTotal).toString());
 
     try {
-      const res = await axios.post('http://localhost:3001/upload-resultados', formData, {
+      const res = await axios.post(`${API_URL}/upload-resultados`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -77,7 +78,7 @@ function Datos() {
     formData.append('file', archivo);
 
     try {
-      const res = await axios.post('http://localhost:3001/upload-entrenamiento', formData, {
+      const res = await axios.post(`${API_URL}/upload-entrenamiento`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

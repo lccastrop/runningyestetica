@@ -27,7 +27,7 @@ function Login() {
       const mensajeError =
         axios.isAxiosError(err) && err.response?.data?.error
           ? err.response.data.error
-          : '❌ Error al iniciar sesión:' + err;
+          : '❌ Error al iniciar sesión:' + (err as Error).message;
       setMensaje(mensajeError);
       setUser(null);
     }

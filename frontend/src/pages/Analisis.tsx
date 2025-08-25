@@ -33,6 +33,7 @@ function formatRitmo(ritmo: string | null): string {
 }
 
 function Analisis() {
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
   const [carreras, setCarreras] = useState<{ id: number; nombre: string }[]>([]);
   const [seleccionada, setSeleccionada] = useState<number | null>(null);
   const [resultados, setResultados] = useState<{
@@ -49,22 +50,22 @@ function Analisis() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/carreras')
+      .get(`${API_URL}/carreras`)
       .then(res => setCarreras(res.data))
       .catch((error) => {
         console.error('Error al cargar carreras:', error);
         const detalle = error.response?.data?.details || error.response?.data?.error || error.message;
         setMensaje(`Error al cargar carreras: ${detalle}`);
       });
-  }, []);
+  }, [API_URL]);
 
   const hacerAnalisis = async () => {
     if (!seleccionada) return;
     try {
-      const [resGeneral, resCategorias, resRangos] = await Promise.all([
-        axios.get(`http://localhost:3001/analisis-carrera/${seleccionada}`),
-        axios.get(`http://localhost:3001/analisis-carrera-categorias/${seleccionada}`),
-        axios.get(`http://localhost:3001/analisis-carrera-ritmos/${seleccionada}`)
+        const [resGeneral, resCategorias, resRangos] = await Promise.all([
+        axios.get(`${API_URL}/analisis-carrera/${seleccionada}`),
+        axios.get(`${API_URL}/analisis-carrera-categorias/${seleccionada}`),
+        axios.get(`${API_URL}/analisis-carrera-ritmos/${seleccionada}`)
       ]);
 
       setResultados(resGeneral.data);

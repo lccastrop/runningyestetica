@@ -70,6 +70,23 @@ app.get('/', (req, res) => {
   res.send('API de running funcionando 🎽');
 });
 
+// Bandera para comprobar conexión y lectura de la BD
+app.get('/flag-user', (req, res) => {
+  db.query('SELECT id, email, role FROM users WHERE id = 1', (err, results) => {
+    if (err) {
+      console.error('Bandera: error al consultar usuario 1:', err);
+      return res.status(500).json({ error: 'Error al consultar usuario' });
+    }
+    if (results.length === 0) {
+      console.log('Bandera: usuario 1 no encontrado');
+      return res.json({ user: null });
+    }
+    console.log('Bandera: usuario 1 encontrado', results[0]);
+    res.json({ user: results[0] });
+  });
+});
+
+
 // Rutas de autenticación
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
@@ -81,7 +98,10 @@ app.post('/register', (req, res) => {
   db.query(checkQuery, [email], (err, results) => {
     if (err) {
       console.error('Error al verificar usuario existente:', err);
+      if (err) {
+      console.error('Error al verificar usuario existente:', err);
       return res.status(500).json({ error: 'Error en la base de datos' });
+    }
     }
     if (results.length > 0) {
       return res.status(409).json({ error: 'Usuario ya existe' });
@@ -94,7 +114,10 @@ app.post('/register', (req, res) => {
       db.query(insertQuery, [email, hash, 'free'], (err) => {
         if (err) {
           console.error('Error al registrar usuario:', err);
+                  if (err) {
+          console.error('Error al registrar usuario:', err);
           return res.status(500).json({ error: 'Error al registrar usuario' });
+        }
         }
         res.status(201).json({ message: 'Usuario registrado' });
       });

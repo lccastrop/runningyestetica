@@ -28,7 +28,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Transparencias en CSS"
+git commit -m "Arreglos RUTA ENV VERCEL"
 git push -u origin main
 
 

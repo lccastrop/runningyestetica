@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import { API_URL } from '../api';
+import { getApiUrl } from '../api';
 
 import { AuthContext } from '../AuthContext';
 
@@ -11,6 +11,8 @@ function Login() {
   const [mensaje, setMensaje] = useState('');
   const { user, setUser, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const API_URL = getApiUrl();
+
 
   const iniciarSesion = async () => {
     if (!email || !password) {
@@ -19,7 +21,7 @@ function Login() {
     }
 
     try {
-            const res = await axios.post(`${API_URL}/login`, { email, password }, { withCredentials: true });
+      const res = await axios.post(`${API_URL}/login`, { email, password }, { withCredentials: true });
       setUser(res.data.user);
       setMensaje('✅ Sesión iniciada');
       // Redirigir a la página principal cuando el login sea correcto
@@ -47,7 +49,7 @@ function Login() {
 
   const cerrarSesion = async () => {
     try {
-         await logout();
+      await logout();
       setMensaje('👋 Sesión cerrada');
     } catch {
       setMensaje('❌ Error al cerrar sesión');
@@ -56,7 +58,7 @@ function Login() {
 
   useEffect(() => {
     verSesion();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

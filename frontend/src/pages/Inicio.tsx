@@ -1,8 +1,11 @@
 function Inicio() {
   return (
     <main className="main">
-      <h2>Bienvenido a mi sitio personal</h2>
-      <p>Aquí irán contenidos sobre entrenamiento, cuerpo, experiencia y estética.</p>
+      <div className="contenedor-principal inicio-layout">
+        <div className="contenedor-principal">Contenido 1</div>
+        <div className="contenedor-cuarto">Contenido 2</div>
+        <div className="contenedor-cuarto">Contenido 3</div>
+      </div>
     </main>
   );
 }

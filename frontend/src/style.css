@@ -65,7 +65,7 @@ button:hover {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .contenedor-secundario {
@@ -118,7 +118,6 @@ button:hover {
   max-width: 960px;
   padding: 3rem 1rem;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .main h2 {
@@ -128,6 +127,22 @@ button:hover {
 
 .main p {
   line-height: 1.6;
+}
+.inicio-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 400px;
+  gap: 1rem;
+}
+
+.inicio-layout > .contenedor-principal {
+  grid-column: 1 / span 2;
+  width: 100%;
+}
+
+.inicio-layout > .contenedor-cuarto {
+  width: 100%;
 }
 
 .footer {

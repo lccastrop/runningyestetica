@@ -28,15 +28,15 @@ function App() {
         <nav>
           <ul className="nav-list">
             <li><Link to="/">Inicio</Link></li>
-            {user?.role === 'admin' && <li><Link to="/datos">Datos</Link></li>}
-            <li><Link to="/analisis">Análisis</Link></li>
+            {user?.role === 'admin' && <li><Link to="/datos">Subir Datos</Link></li>}
+            <li><Link to="/analisis">Datos Carreras</Link></li>
             <li><Link to="/blog">Blog</Link></li>
             {user ? (
               <li><a href="#" onClick={handleLogout}>Logout</a></li>
             ) : (
               <>
                 <li><Link to="/login">Login</Link></li>
-                <li><Link to="/registro">Registro</Link></li>
+                {/* <li><Link to="/registro">Registro</Link></li> */}
               </>
             )}
           </ul>

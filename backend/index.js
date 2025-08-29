@@ -72,7 +72,7 @@ app.get('/', (req, res) => {
 
 // Bandera para comprobar conexión y lectura de la BD
 app.get('/flag-user', (req, res) => {
-  db.query('SELECT id, email, role FROM users WHERE id = 1', (err, results) => {
+  db.query('SELECT id, email, role, nombres, apellidos FROM users WHERE id = 1', (err, results) => {
     if (err) {
       console.error('Bandera: error al consultar usuario 1:', err);
       return res.status(500).json({ error: 'Error al consultar usuario' });
@@ -89,8 +89,8 @@ app.get('/flag-user', (req, res) => {
 
 // Rutas de autenticación
 app.post('/register', (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
+  const { email, password, nombres, apellidos } = req.body;
+  if (!email || !password || !nombres || !apellidos) {
     return res.status(400).json({ error: 'Faltan datos' });
   }
 
@@ -110,8 +110,8 @@ app.post('/register', (req, res) => {
     bcrypt.hash(password, 10, (err, hash) => {
       if (err) return res.status(500).json({ error: 'Error al encriptar contraseña' });
 
-      const insertQuery = 'INSERT INTO users (email, password_hash, role) VALUES (?, ?, ?)';
-      db.query(insertQuery, [email, hash, 'free'], (err) => {
+      const insertQuery = 'INSERT INTO users (email, nombres, apellidos, password_hash, role) VALUES (?, ?, ?, ?, ?)';
+      db.query(insertQuery, [email, nombres, apellidos, hash, 'free'], (err) => {
         if (err) {
           console.error('Error al registrar usuario:', err);
                   if (err) {
@@ -131,7 +131,7 @@ app.post('/login', (req, res) => {
     return res.status(400).json({ error: 'Faltan credenciales' });
   }
 
-  const query = 'SELECT id, email, password_hash, role FROM users WHERE email = ?';
+  const query = 'SELECT id, email, password_hash, role, nombres, apellidos FROM users WHERE email = ?';
   db.query(query, [email], (err, results) => {
     if (err) {
       console.error('Error al buscar usuario:', err);
@@ -144,7 +144,13 @@ app.post('/login', (req, res) => {
       if (err) return res.status(500).json({ error: 'Error al verificar contraseña' });
       if (!match) return res.status(401).json({ error: 'Credenciales inválidas' });
 
-      req.session.user = { id: user.id, email: user.email, role: user.role };
+      req.session.user = {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+        nombres: user.nombres,
+        apellidos: user.apellidos,
+      };
       res.json({ message: 'Inicio de sesión exitoso', user: req.session.user });
     });
   });
@@ -168,8 +174,7 @@ app.post('/logout', (req, res) => {
 
 // Rutas de blogs
 app.get('/blogs', (req, res) => {
-  const query = `SELECT b.id, b.title, b.content, b.user_id, u.email FROM blogs b JOIN users u ON b.user_id = u.id ORDER BY b.created_at DESC`;
-  db.query(query, (err, results) => {
+    const query = `SELECT b.id, b.title, b.content, b.user_id, b.created_at, u.nombres, u.apellidos FROM blogs b JOIN users u ON b.user_id = u.id ORDER BY b.created_at DESC`;db.query(query, (err, results) => {
     if (err) {
       console.error('Error al obtener blogs:', err);
       return res.status(500).json({ error: 'Error al obtener blogs' });
@@ -187,7 +192,15 @@ app.post('/blogs', requirePlus, (req, res) => {
       console.error('Error al crear blog:', err);
       return res.status(500).json({ error: 'Error al crear blog' });
     }
-    res.json({ id: result.insertId, user_id: userId, title, content, email: req.session.user.email });
+    res.json({
+      id: result.insertId,
+      user_id: userId,
+      title,
+      content,
+      nombres: req.session.user.nombres,
+      apellidos: req.session.user.apellidos,
+      created_at: new Date().toISOString(),
+    });
   });
 });
 

@@ -7,13 +7,17 @@ interface BlogPost {
   title: string;
   content: string;
   user_id: number;
-  email: string;
+  nombres: string;
+  apellidos: string;
+  created_at: string;
 }
 
 interface User {
   id: number;
   email: string;
   role: string;
+  nombres: string;
+  apellidos: string;
 }
 
 function Blog() {
@@ -105,6 +109,8 @@ function Blog() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="campo margen-top"
+            rows={6}
+            style={{ width: '100%' }}
           />
           <button onClick={crearBlog} className="margen-top">
             Crear
@@ -126,6 +132,8 @@ function Blog() {
                   value={editContent}
                   onChange={(e) => setEditContent(e.target.value)}
                   className="campo margen-top"
+                                    rows={6}
+                  style={{ width: '100%' }}
                 />
                 <button
                   onClick={() => guardarEdicion(blog.id)}
@@ -144,7 +152,10 @@ function Blog() {
               <div>
                 <h3>{blog.title}</h3>
                 <p>{blog.content}</p>
-                <small>Autor: {blog.email}</small>
+                <small>
+                  Autor: {blog.nombres} {blog.apellidos} -{' '}
+                  {new Date(blog.created_at).toLocaleDateString()}
+                </small>
                 {user && (user.role === 'admin' || user.id === blog.user_id) && (
                   <button
                     onClick={() => iniciarEdicion(blog)}

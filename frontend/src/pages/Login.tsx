@@ -94,7 +94,7 @@ function Login() {
       {mensaje && <p className="margen-top">{mensaje}</p>}
       {user && (
         <p className="margen-top">
-          Sesión de <strong>{user.email}</strong> (rol: {user.role})
+          Sesión de <strong>{user.nombres} {user.apellidos}</strong> (rol: {user.role})
         </p>
       )}
       {!user && (

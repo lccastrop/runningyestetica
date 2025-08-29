@@ -36,6 +36,8 @@ const queries = [
         CREATE TABLE IF NOT EXISTS users (
           id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
           email VARCHAR(255) UNIQUE NOT NULL,
+          nombres VARCHAR(100),
+          apellidos VARCHAR(100),
           password_hash VARCHAR(255) NOT NULL,
           role ENUM('free','plus','admin') DEFAULT 'free',
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -140,6 +142,20 @@ const queries = [
     } catch (e) {
       console.error(`❌ Error al asegurar tabla ${q.name}:`, e);
     }
+  }
+  
+  // Asegurar columnas adicionales en users
+  try {
+    await connection
+      .promise()
+      .query(
+        `ALTER TABLE users
+          ADD COLUMN IF NOT EXISTS nombres VARCHAR(100) AFTER email,
+          ADD COLUMN IF NOT EXISTS apellidos VARCHAR(100) AFTER nombres`
+      );
+    console.log('✅ Columnas nombres y apellidos listas en users');
+  } catch (e) {
+    console.error('❌ Error al asegurar columnas en users:', e);
   }
 });
 

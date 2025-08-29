@@ -32,6 +32,7 @@ git commit -m "Cambios en inicio y estilos css"
 git push -u origin main
 
 Forzar un commit anterior
+
 git fetch origin
 git switch main
 git reset --hard 005fe0b

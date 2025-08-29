@@ -28,10 +28,14 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "08:37"
+git commit -m "Vuelta a estable"
 git push -u origin main
 
-
+Forzar un commit anterior
+git fetch origin
+git switch main
+git reset --hard 005fe0b
+git push -f origin main  
 
 
 📊 Funciones

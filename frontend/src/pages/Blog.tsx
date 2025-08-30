@@ -117,7 +117,7 @@ function Blog() {
           </button>
         </div>
       )}
-      <ul className="margen-top">
+      <ul className="margen-top lista-blog">
         {blogs.map((blog) => (
           <li key={blog.id} className="margen-top">
             {editingId === blog.id ? (
@@ -150,12 +150,13 @@ function Blog() {
               </div>
             ) : (
               <div>
-                <h3>{blog.title}</h3>
-                <p>{blog.content}</p>
-                <small>
+                <div className="margen-top titulo">
+                <h3 >{blog.title}</h3>                <small>
                   Autor: {blog.nombres} {blog.apellidos} -{' '}
                   {new Date(blog.created_at).toLocaleDateString()}
-                </small>
+                </small> </div>
+                <p className="margen-top texto-justificado">{blog.content}</p>
+
                 {user && (user.role === 'admin' || user.id === blog.user_id) && (
                   <button
                     onClick={() => iniciarEdicion(blog)}
@@ -172,6 +173,7 @@ function Blog() {
                     Eliminar
                   </button>
                 )}
+                <br /><br />
               </div>
             )}
           </li>

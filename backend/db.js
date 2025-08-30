@@ -146,13 +146,31 @@ const queries = [
   
   // Asegurar columnas adicionales en users
   try {
-    await connection
+    // Verificar y agregar columna nombres si no existe
+    const [nombresCol] = await connection
       .promise()
-      .query(
-        `ALTER TABLE users
-          ADD COLUMN IF NOT EXISTS nombres VARCHAR(100) AFTER email,
-          ADD COLUMN IF NOT EXISTS apellidos VARCHAR(100) AFTER nombres`
-      );
+      .query("SHOW COLUMNS FROM users LIKE 'nombres'");
+    if (nombresCol.length === 0) {
+      await connection
+        .promise()
+        .query(
+          "ALTER TABLE users ADD COLUMN nombres VARCHAR(100) AFTER email"
+        );
+      console.log('✅ Columna nombres añadida en users');
+    }
+
+    // Verificar y agregar columna apellidos si no existe
+    const [apellidosCol] = await connection
+      .promise()
+      .query("SHOW COLUMNS FROM users LIKE 'apellidos'");
+    if (apellidosCol.length === 0) {
+      await connection
+        .promise()
+        .query(
+          "ALTER TABLE users ADD COLUMN apellidos VARCHAR(100) AFTER nombres"
+        );
+      console.log('✅ Columna apellidos añadida en users');
+    }
     console.log('✅ Columnas nombres y apellidos listas en users');
   } catch (e) {
     console.error('❌ Error al asegurar columnas en users:', e);

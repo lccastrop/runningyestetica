@@ -210,6 +210,18 @@ button:hover {
   font-weight: bold;
   background-color: #d4edda;
 }
+.lista-blog {
+  list-style: none;
+  padding-left: 0;
+}
+.titulo {
+  background-color: rgba(255, 254, 166, 0.8);
+}
+
+.texto-justificado {
+  text-align: justify;
+    background-color: rgba(255, 254, 166, 0.8);
+}
 
 /* Responsive */
 @media (max-width: 600px) {

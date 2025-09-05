@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import { getApiUrl } from '../api';
+import { api } from '../api';
 
 import { AuthContext } from '../AuthContext';
 
@@ -11,7 +11,6 @@ function Login() {
   const [mensaje, setMensaje] = useState('');
   const { user, setUser, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const API_URL = getApiUrl();
 
 
   const iniciarSesion = async () => {
@@ -21,7 +20,7 @@ function Login() {
     }
 
     try {
-      const res = await axios.post(`${API_URL}/login`, { email, password }, { withCredentials: true });
+      const res = await api.post('/login', { email, password });
       setUser(res.data.user);
       setMensaje('✅ Sesión iniciada');
       // Redirigir a la página principal cuando el login sea correcto
@@ -38,7 +37,7 @@ function Login() {
 
   const verSesion = async () => {
     try {
-      const res = await axios.get(`${API_URL}/session`, { withCredentials: true });
+      const res = await api.get('/session');
       setUser(res.data.user);
       setMensaje('📢 Sesión activa');
     } catch {

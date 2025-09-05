@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { getApiUrl } from '../api';
+import { api } from '../api';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
@@ -34,7 +33,6 @@ function formatRitmo(ritmo: string | null): string {
 }
 
 function Analisis() {
-  const API_URL = getApiUrl();
   const [carreras, setCarreras] = useState<{ id: number; nombre: string }[]>([]);
   const [seleccionada, setSeleccionada] = useState<number | null>(null);
   const [resultados, setResultados] = useState<{
@@ -50,23 +48,23 @@ function Analisis() {
   const [mensaje, setMensaje] = useState('');
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/carreras`)
+    api
+      .get('/carreras')
       .then(res => setCarreras(res.data))
       .catch((error) => {
         console.error('Error al cargar carreras:', error);
         const detalle = error.response?.data?.details || error.response?.data?.error || error.message;
         setMensaje(`Error al cargar carreras: ${detalle}`);
       });
-  }, [API_URL]);
+  }, []);
 
   const hacerAnalisis = async () => {
     if (!seleccionada) return;
     try {
       const [resGeneral, resCategorias, resRangos] = await Promise.all([
-        axios.get(`${API_URL}/analisis-carrera/${seleccionada}`),
-        axios.get(`${API_URL}/analisis-carrera-categorias/${seleccionada}`),
-        axios.get(`${API_URL}/analisis-carrera-ritmos/${seleccionada}`)
+        api.get(`/analisis-carrera/${seleccionada}`),
+        api.get(`/analisis-carrera-categorias/${seleccionada}`),
+        api.get(`/analisis-carrera-ritmos/${seleccionada}`)
       ]);
 
       setResultados(resGeneral.data);

@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import type { ReactNode, Dispatch, SetStateAction } from 'react';
-import axios from 'axios';
-import { getApiUrl } from './api';
+import { api } from './api';
 
 
 export interface User {
@@ -27,22 +26,21 @@ export const AuthContext = createContext<AuthContextType>({
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const API_URL = getApiUrl();
 
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const res = await axios.get(`${API_URL}/session`, { withCredentials: true });
+        const res = await api.get('/session');
         setUser(res.data.user || null);
       } catch {
         setUser(null);
       }
     };
     fetchSession();
-  }, [API_URL]);
+  }, []);
 
   const logout = async () => {
-    await axios.get(`${API_URL}/session`, { withCredentials: true });
+    await api.post('/logout');
     setUser(null);
   };
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { getApiUrl } from '../api';
+import { api } from '../api';
 import { useNavigate } from 'react-router-dom';
 
 function Registro() {
@@ -10,7 +10,6 @@ function Registro() {
   const [apellidos, setApellidos] = useState('');
   const [mensaje, setMensaje] = useState('');
   const navigate = useNavigate();
-    const API_URL = getApiUrl();
 
   const registrar = async () => {
     if (!email || !password || !nombres || !apellidos) {
@@ -18,7 +17,7 @@ function Registro() {
       return;
     }
     try {
-      await axios.post(`${API_URL}/register`, { email, password, nombres, apellidos });
+      await api.post('/register', { email, password, nombres, apellidos });
       setMensaje('✅ Usuario registrado, inicia sesión');
       setTimeout(() => navigate('/login'), 1500);
     } catch (err: unknown) {

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { getApiUrl } from '../api';
+import { api } from '../api';
 
 interface BlogPost {
   id: number;
@@ -28,16 +27,15 @@ function Blog() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editTitle, setEditTitle] = useState('');
   const [editContent, setEditContent] = useState('');
-  const API_URL = getApiUrl();
 
   const cargarBlogs = async () => {
-    const res = await axios.get(`${API_URL}/blogs`);
+    const res = await api.get('/blogs');
     setBlogs(res.data);
   };
 
   const verSesion = async () => {
     try {
-      const res = await axios.get(`${API_URL}/session`, { withCredentials: true });
+      const res = await api.get('/session');
       setUser(res.data.user);
     } catch {
       setUser(null);
@@ -51,11 +49,7 @@ function Blog() {
 
   const crearBlog = async () => {
     try {
-      const res = await axios.post(
-        `${API_URL}/blogs`,
-        { title, content },
-        { withCredentials: true }
-      );
+      const res = await api.post('/blogs', { title, content });
       setBlogs((prev) => [res.data, ...prev]);
       setTitle('');
       setContent('');
@@ -72,11 +66,7 @@ function Blog() {
   };
 
   const guardarEdicion = async (id: number) => {
-    await axios.put(
-      `${API_URL}/blogs/${id}`,
-      { title: editTitle, content: editContent },
-      { withCredentials: true }
-    );
+    await api.put(`/blogs/${id}`, { title: editTitle, content: editContent });
     setBlogs((prev) =>
       prev.map((b) =>
         b.id === id ? { ...b, title: editTitle, content: editContent } : b
@@ -86,9 +76,7 @@ function Blog() {
   };
 
   const eliminarBlog = async (id: number) => {
-    await axios.delete(`${API_URL}/blogs/${id}`, {
-      withCredentials: true,
-    });
+    await api.delete(`/blogs/${id}`);
     setBlogs((prev) => prev.filter((b) => b.id !== id));
   };
 

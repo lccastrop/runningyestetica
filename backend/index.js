@@ -12,10 +12,13 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const isProd = process.env.NODE_ENV === 'production';
+const allowedOrigin = isProd ? process.env.FRONTEND_URL : true;
 
 // Middleware
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: allowedOrigin, credentials: true }));
 app.use(express.json());
+app.set('trust proxy', 1);
 
 const sessionStore = new MySQLStore(
   {
@@ -37,12 +40,17 @@ const sessionStore = new MySQLStore(
 
 app.use(
   session({
-    key: 'session_id',
+    name: 'session_id',
     secret: process.env.SESSION_SECRET || 'devsecret',
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      sameSite: isProd ? 'none' : 'lax',
+      secure: isProd,
+    },
   })
 );
 
@@ -167,7 +175,10 @@ app.get('/session', (req, res) => {
 app.post('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(500).json({ error: 'Error al cerrar sesión' });
-    res.clearCookie('session_id');
+    res.clearCookie('session_id', {
+      sameSite: isProd ? 'none' : 'lax',
+      secure: isProd,
+    });
     res.json({ message: 'Sesión cerrada' });
   });
 });

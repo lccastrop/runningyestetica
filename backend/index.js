@@ -5,6 +5,8 @@ const db = require('./db');
 const multer = require('multer');
 const csv = require('csv-parser');
 const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcryptjs');
@@ -54,7 +56,48 @@ app.use(
   })
 );
 
-const upload = multer({ dest: 'uploads/' });
+// Ensure uploads directory and static serving
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  try { fs.mkdirSync(uploadsDir, { recursive: true }); } catch (_) {}
+}
+app.use('/uploads', express.static(uploadsDir, {
+  maxAge: '1y',
+  immutable: true,
+  setHeaders: (res) => {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+  }
+}));
+
+// Multer for CSV (existing usage)
+const upload = multer({ dest: uploadsDir });
+
+// Multer config for image uploads
+const imageStorage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, uploadsDir),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname || '').toLowerCase();
+    const hash = crypto
+      .createHash('sha256')
+      .update((file.originalname || '') + Date.now().toString() + Math.random().toString())
+      .digest('hex')
+      .slice(0, 32);
+    cb(null, `${hash}${ext}`);
+  },
+});
+
+const imageFileFilter = (req, file, cb) => {
+  const allowed = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/svg+xml']);
+  if (!allowed.has(file.mimetype)) return cb(new Error('Tipo de archivo no permitido'));
+  cb(null, true);
+};
+
+const uploadImages = multer({
+  storage: imageStorage,
+  fileFilter: imageFileFilter,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+});
 
 // Middlewares de autorización
 function requirePlus(req, res, next) {
@@ -313,6 +356,35 @@ app.get('/analisis-carrera-ritmos/:id', (req, res) => {
     });
   });
 }); //ANALISIS TERMINA
+
+// Subida de imágenes (requiere usuario plus o admin)
+app.post('/upload-image', requirePlus, uploadImages.single('image'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'Archivo requerido (campo: image)' });
+  const user = req.session.user || null;
+  const url = `/uploads/${req.file.filename}`;
+  const insert = `
+    INSERT INTO imagenes (user_id, url, original_name, mime, size_bytes, width, height)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  db.query(
+    insert,
+    [user?.id || null, url, req.file.originalname || null, req.file.mimetype, req.file.size || 0, null, null],
+    (err, result) => {
+      if (err) {
+        console.error('Error registrando metadatos imagen:', err);
+        return res.status(500).json({ error: 'Error al guardar metadatos' });
+      }
+      res.json({
+        id: result.insertId,
+        url,
+        original_name: req.file.originalname,
+        mime: req.file.mimetype,
+        size_bytes: req.file.size,
+      });
+    }
+  );
+});
 
 app.post('/upload-entrenamiento', upload.single('file'), (req, res) => {
   const filePath = req.file.path;

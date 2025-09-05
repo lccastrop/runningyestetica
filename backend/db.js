@@ -29,7 +29,7 @@ connection.connect(async (err) => {
   console.log('✅ Conexión a la base de datos establecida');
    
 
-const queries = [
+  const queries = [
     {
       name: 'users',
       sql: `
@@ -130,6 +130,23 @@ const queries = [
           content TEXT NOT NULL,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        )
+      `,
+    },
+    {
+      name: 'imagenes',
+      sql: `
+        CREATE TABLE IF NOT EXISTS imagenes (
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          user_id INT UNSIGNED NULL,
+          url VARCHAR(255) NOT NULL,
+          original_name VARCHAR(255),
+          mime VARCHAR(100),
+          size_bytes INT UNSIGNED,
+          width INT NULL,
+          height INT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
         )
       `,
     },

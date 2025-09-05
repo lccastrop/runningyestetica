@@ -31,6 +31,17 @@ body {
   padding-top: 2rem;
 }
 
+/* App shell to keep footer at bottom */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-shell .main {
+  flex: 1 0 auto;
+}
+
 a {
   color: var(--color-primary);
   text-decoration: none;
@@ -184,7 +195,7 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  height: 400px;
+  min-height: 400px;
   gap: 1rem;
 }
 
@@ -296,5 +307,16 @@ button:hover {
 
   .nav-list {
     flex-direction: column;
+  }
+
+  .inicio-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: auto;
+  }
+
+  .inicio-layout>.contenedor-principal,
+  .inicio-layout>.contenedor-cuarto {
+    width: 100%;
   }
 }

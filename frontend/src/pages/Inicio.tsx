@@ -2,19 +2,20 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 function Inicio() {
-  const [ultimoBlog, setUltimoBlog] = useState<{ id: number; title: string } | null>(null);
+  const [ultimosBlogs, setUltimosBlogs] = useState<Array<{ id: number; title: string }>>([]);
+  const ultimoBlog = ultimosBlogs[0] || null;
 
   useEffect(() => {
     api
       .get('/blogs')
       .then((res) => {
-        if (Array.isArray(res.data) && res.data.length > 0) {
-          const first = res.data[0];
-          setUltimoBlog({ id: first.id, title: first.title });
+        if (Array.isArray(res.data)) {
+          const previews = res.data.slice(0, 3).map((b: any) => ({ id: b.id, title: b.title }));
+          setUltimosBlogs(previews);
         }
       })
       .catch(() => {
-        setUltimoBlog(null);
+        setUltimosBlogs([]);
       });
   }, []);
   return (
@@ -34,6 +35,13 @@ function Inicio() {
         <div className="contenedor-cuarto">
           Último blog:
           <h4 style={{ marginTop: '0.5rem' }}>{ultimoBlog ? ultimoBlog.title : 'Aún no hay publicaciones'}</h4>
+          {ultimosBlogs.length > 1 && (
+            <ul style={{ listStyle: 'none', padding: 0, marginTop: '0.25rem' }}>
+              {ultimosBlogs.slice(1).map((b) => (
+                <li key={b.id} style={{ fontSize: '0.95rem', opacity: 0.9 }}>{b.title}</li>
+              ))}
+            </ul>
+          )}
           <Link to="/blog" className="btn btn--light btn--sm" style={{ marginTop: '0.5rem' }}>Leer</Link>
         </div>
       </div>

@@ -28,7 +28,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Cambios en inicio y estilos css"
+git commit -m "Cambios de diseño e imagen"
 git push -u origin main
 
 Forzar un commit anterior

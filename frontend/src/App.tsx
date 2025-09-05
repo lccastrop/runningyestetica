@@ -22,7 +22,7 @@ function App() {
   };
 
   return (
-    <div className="contenedor-principal">
+    <div className="contenedor-principal app-shell">
       <header className="header">
         <img src={logo} alt="Running y Estética" className="logo" />
         <nav>

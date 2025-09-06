@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { useSearchParams, Link } from 'react-router-dom';
 
 interface BlogPost {
   id: number;
@@ -27,6 +28,7 @@ function Blog() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editTitle, setEditTitle] = useState('');
   const [editContent, setEditContent] = useState('');
+  const [searchParams] = useSearchParams();
 
   const cargarBlogs = async () => {
     const res = await api.get('/blogs');
@@ -80,6 +82,73 @@ function Blog() {
     setBlogs((prev) => prev.filter((b) => b.id !== id));
   };
 
+  // Upload image and inject markdown tag into content
+  const onUploadNewImage: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
+    const input = e.currentTarget;
+    const file = input.files?.[0];
+    if (!file) return;
+    const fd = new FormData();
+    fd.append('image', file);
+    try {
+      const res = await api.post('/upload-image', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      // Insert relative URL so it works with same origin + proxy and avoids mixed content
+      setContent((prev) => `${prev}\n\n![imagen](${res.data.url})\n\n`);
+    } catch (err) {
+      console.error('Error al subir imagen:', err);
+    } finally {
+      if (input) input.value = '';
+    }
+  };
+
+  const onUploadEditImage: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
+    const input = e.currentTarget;
+    const file = input.files?.[0];
+    if (!file) return;
+    const fd = new FormData();
+    fd.append('image', file);
+    try {
+      const res = await api.post('/upload-image', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      setEditContent((prev) => `${prev}\n\n![imagen](${res.data.url})\n\n`);
+    } catch (err) {
+      console.error('Error al subir imagen (edición):', err);
+    } finally {
+      if (input) input.value = '';
+    }
+  };
+
+  // Render content supporting inline markdown image tags anywhere in the text
+  const renderContent = (text: string) => {
+    const blocks = text.split(/\n{2,}/);
+    const imgRe = /!\[(.*?)\]\((.*?)\)/g;
+    return blocks.map((block, idx) => {
+      const nodes: React.ReactNode[] = [];
+      let lastIndex = 0;
+      let match: RegExpExecArray | null;
+      while ((match = imgRe.exec(block)) !== null) {
+        const [full, altRaw, src] = match;
+        const start = match.index;
+        if (start > lastIndex) {
+          nodes.push(block.slice(lastIndex, start));
+        }
+        const alt = altRaw || 'Imagen';
+        nodes.push(<img key={`${idx}-img-${start}`} src={src} alt={alt} className="blog-img" />);
+        lastIndex = start + full.length;
+      }
+      if (lastIndex < block.length) {
+        nodes.push(block.slice(lastIndex));
+      }
+      const onlyImages = nodes.length > 0 && nodes.every(n => typeof n !== 'string');
+      return onlyImages ? (
+        <div key={idx}>{nodes}</div>
+      ) : (
+        <p key={idx} className="margen-top texto-justificado">{nodes.length ? nodes : block}</p>
+      );
+    });
+  };
+
+  const selectedId = Number(searchParams.get('id')) || (blogs[0]?.id ?? 0);
+  const selected = blogs.find((b) => b.id === selectedId) || null;
+
   return (
     <main className="main">
       <h2>Blog</h2>
@@ -100,73 +169,79 @@ function Blog() {
             rows={6}
             style={{ width: '100%' }}
           />
+          <div className="margen-top">
+            <label className="btn btn--light btn--sm" style={{ cursor: 'pointer' }}>
+              Insertar imagen
+              <input type="file" accept="image/*" onChange={onUploadNewImage} style={{ display: 'none' }} />
+            </label>
+          </div>
           <button onClick={crearBlog} className="margen-top">
             Crear
           </button>
         </div>
       )}
-      <ul className="margen-top lista-blog">
-        {blogs.map((blog) => (
-          <li key={blog.id} className="margen-top">
-            {editingId === blog.id ? (
-              <div>
-                <input
-                  type="text"
-                  value={editTitle}
-                  onChange={(e) => setEditTitle(e.target.value)}
-                  className="campo"
-                />
-                <textarea
-                  value={editContent}
-                  onChange={(e) => setEditContent(e.target.value)}
-                  className="campo margen-top"
-                                    rows={6}
-                  style={{ width: '100%' }}
-                />
-                <button
-                  onClick={() => guardarEdicion(blog.id)}
-                  className="margen-top"
-                >
-                  Guardar
-                </button>
-                <button
-                  onClick={() => setEditingId(null)}
-                  className="margen-izq margen-top"
-                >
-                  Cancelar
-                </button>
+      <div className="blog-layout margen-top">
+        <aside className="blog-sidebar">
+          <h3>Otros blogs</h3>
+          <ul className="lista-blog">
+            {blogs.map((b) => (
+              <li key={b.id} className="margen-top">
+                <Link to={`?id=${b.id}`}>{b.title}</Link><br />
+                <small>
+                  Autor: {b.nombres} {b.apellidos} - {new Date(b.created_at).toLocaleDateString()}
+                <br /><br /></small>
+              </li>
+            ))}
+          </ul>
+        </aside>
+        <section className="blog-content">
+          {!selected ? (
+            <p>Cargando...</p>
+          ) : editingId === selected.id ? (
+            <div>
+              <input
+                type="text"
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+                className="campo"
+              />
+              <textarea
+                value={editContent}
+                onChange={(e) => setEditContent(e.target.value)}
+                className="campo margen-top"
+                rows={6}
+                style={{ width: '100%' }}
+              />
+              <div className="margen-top">
+                <label className="btn btn--light btn--sm" style={{ cursor: 'pointer' }}>
+                  Insertar imagen
+                  <input type="file" accept="image/*" onChange={onUploadEditImage} style={{ display: 'none' }} />
+                </label>
               </div>
-            ) : (
-              <div>
-                <div className="margen-top titulo">
-                <h3 >{blog.title}</h3>                <small>
-                  Autor: {blog.nombres} {blog.apellidos} -{' '}
-                  {new Date(blog.created_at).toLocaleDateString()}
-                </small> </div>
-                <p className="margen-top texto-justificado">{blog.content}</p>
-
-                {user && (user.role === 'admin' || user.id === blog.user_id) && (
-                  <button
-                    onClick={() => iniciarEdicion(blog)}
-                    className="margen-top"
-                  >
-                    Editar
-                  </button>
-                )}
-                {user && user.role === 'admin' && (
-                  <button
-                    onClick={() => eliminarBlog(blog.id)}
-                    className="margen-izq margen-top"
-                  >
-                    Eliminar
-                  </button>
-                )}
-                <br /><br />
+              <button onClick={() => guardarEdicion(selected.id)} className="margen-top">Guardar</button>
+              <button onClick={() => setEditingId(null)} className="margen-izq margen-top">Cancelar</button>
+            </div>
+          ) : (
+            <div>
+              <div className="margen-top titulo">
+                <h3>{selected.title}</h3>
+                <small>
+                  Autor: {selected.nombres} {selected.apellidos} - {new Date(selected.created_at).toLocaleDateString()}
+                </small>
               </div>
-            )}
-          </li>
-        ))}
-      </ul>
+              <div className="margen-top">
+                {renderContent(selected.content)}
+              </div>
+              {user && (user.role === 'admin' || user.id === selected.user_id) && (
+                <button onClick={() => iniciarEdicion(selected)} className="margen-top">Editar</button>
+              )}
+              {user && user.role === 'admin' && (
+                <button onClick={() => eliminarBlog(selected.id)} className="margen-izq margen-top">Eliminar</button>
+              )}
+            </div>
+          )}
+        </section>
+      </div>
     </main>
   );
 }

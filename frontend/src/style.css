@@ -320,3 +320,55 @@ button:hover {
     width: 100%;
   }
 }
+
+/* Blog layout */
+.blog-layout {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.blog-sidebar {
+  width: 30%;
+  max-width: 260px;
+}
+
+.blog-content {
+  flex: 1 1 auto;
+}
+
+.blog-content img.blog-img {
+  display: block;
+  width: 100%;
+  max-width: 720px; /* máximo en desktop */
+  height: auto;
+  border-radius: 8px;
+  margin: 0.75rem auto; /* centrado */
+}
+
+/* Variantes de tamaño opcionales */
+.blog-content img.blog-img--sm { max-width: 480px; }
+.blog-content img.blog-img--lg { max-width: 960px; }
+
+.blog-sidebar a,
+.lista-blog a {
+  color: #000;
+}
+
+.blog-sidebar a:hover,
+.lista-blog a:hover {
+  color: #0090b5;
+}
+
+@media (max-width: 600px) {
+  .blog-layout {
+    flex-direction: column;
+  }
+  .blog-sidebar {
+    width: 100%;
+    max-width: none;
+  }
+  .blog-content img.blog-img {
+    max-width: 100%; /* en móvil ocupa el ancho disponible */
+  }
+}

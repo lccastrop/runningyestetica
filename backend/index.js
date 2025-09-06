@@ -291,6 +291,18 @@ app.delete('/blogs/:id', requireAdmin, (req, res) => {
   });
 });
 
+// Listado de imágenes subidas (para verificación)
+app.get('/imagenes', requirePlus, (req, res) => {
+  const q = `SELECT id, url, original_name, mime, size_bytes, created_at FROM imagenes ORDER BY created_at DESC`;
+  db.query(q, (err, rows) => {
+    if (err) {
+      console.error('Error al listar imágenes:', err);
+      return res.status(500).json({ error: 'Error al listar imágenes' });
+    }
+    res.json(rows);
+  });
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);

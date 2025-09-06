@@ -29,16 +29,16 @@ function Inicio() {
         </div>
         <div className="contenedor-cuarto">
           Último análisis:
-          <img src="/img/logoMaratonCDMX2025.png" alt="Running y Estética" className="img-hero" width="320"loading="lazy" />
+          <img src="/img/logoMaratonCDMX2025.png" alt="Running y Estética" className="img-hero" width="320" loading="lazy" />
           <Link to="/analisis" className="btn btn--primary btn--sm">Ir a análisis</Link>
         </div>
         <div className="contenedor-cuarto">
           Último blog:
-          <h4 style={{ marginTop: '0.5rem' }}>{ultimoBlog ? ultimoBlog.title : 'Aún no hay publicaciones'}</h4>
+          <h4 style={{ marginTop: '0.5rem' }}>{ultimoBlog ? <Link to={`/blog?id=${ultimoBlog.id}`}>{ultimoBlog.title}</Link> : 'Aún no hay publicaciones'}</h4>
           {ultimosBlogs.length > 1 && (
-            <ul style={{ listStyle: 'none', padding: 0, marginTop: '0.25rem' }}>
+            <ul className="lista-blog">
               {ultimosBlogs.slice(1).map((b) => (
-                <li key={b.id} style={{ fontSize: '0.95rem', opacity: 0.9 }}>{b.title}</li>
+                <li key={b.id} style={{ fontSize: '0.95rem', opacity: 0.6 }}><Link to={`/blog?id=${b.id}`}>{b.title}</Link></li>
               ))}
             </ul>
           )}

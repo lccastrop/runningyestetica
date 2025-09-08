@@ -21,13 +21,12 @@ if (process.env.MYSQL_URL || process.env.DATABASE_URL) {
 }
 
 connection.connect(async (err) => {
-  console.log(`🔌 Intentando conectar a MySQL en ${connection.config.host}:${connection.config.port}`);
+  console.log(`Intentando conectar a MySQL en ${connection.config.host}:${connection.config.port}`);
   if (err) {
-    console.error('❌ Error al conectar a la base de datos:', err);
+    console.error('Error al conectar a la base de datos:', err);
     return;
   }
-  console.log('✅ Conexión a la base de datos establecida');
-   
+  console.log('Conexión a la base de datos establecida');
 
   const queries = [
     {
@@ -155,12 +154,12 @@ connection.connect(async (err) => {
   for (const q of queries) {
     try {
       await connection.promise().query(q.sql);
-      console.log(`✅ Tabla ${q.name} lista`);
+      console.log(`Tabla ${q.name} lista`);
     } catch (e) {
-      console.error(`❌ Error al asegurar tabla ${q.name}:`, e);
+      console.error(`Error al asegurar tabla ${q.name}:`, e);
     }
   }
-  
+
   // Asegurar columnas adicionales en users
   try {
     // Verificar y agregar columna nombres si no existe
@@ -173,7 +172,7 @@ connection.connect(async (err) => {
         .query(
           "ALTER TABLE users ADD COLUMN nombres VARCHAR(100) AFTER email"
         );
-      console.log('✅ Columna nombres añadida en users');
+      console.log('Columna nombres añadida en users');
     }
 
     // Verificar y agregar columna apellidos si no existe
@@ -186,12 +185,13 @@ connection.connect(async (err) => {
         .query(
           "ALTER TABLE users ADD COLUMN apellidos VARCHAR(100) AFTER nombres"
         );
-      console.log('✅ Columna apellidos añadida en users');
+      console.log('Columna apellidos añadida en users');
     }
-    console.log('✅ Columnas nombres y apellidos listas en users');
+    console.log('Columnas nombres y apellidos listas en users');
   } catch (e) {
-    console.error('❌ Error al asegurar columnas en users:', e);
+    console.error('Error al asegurar columnas en users:', e);
   }
 });
 
 module.exports = connection;
+

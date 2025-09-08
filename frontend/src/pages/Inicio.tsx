@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+
 function Inicio() {
   const [ultimosBlogs, setUltimosBlogs] = useState<Array<{ id: number; title: string }>>([]);
   const ultimoBlog = ultimosBlogs[0] || null;
@@ -18,13 +19,14 @@ function Inicio() {
         setUltimosBlogs([]);
       });
   }, []);
+
   return (
     <main className="main">
       <div className="contenedor-principal inicio-layout">
         <div className="contenedor-principal">
           <p className="texto-grande">
-            "Difundir y socializar el rendimiento deportivo para fortalecer y 
-            cualificar la relación de la comunidad corredora con la práctica deportiva" 
+            "Difundir y socializar el rendimiento deportivo para fortalecer y
+            cualificar la relación de la comunidad corredora con la práctica deportiva"
           </p>
         </div>
         <div className="contenedor-cuarto">
@@ -50,3 +52,4 @@ function Inicio() {
 }
 
 export default Inicio;
+

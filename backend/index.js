@@ -116,29 +116,12 @@ function requireAdmin(req, res, next) {
   next();
 }
 
-// Ruta de prueba
+// Root
 app.get('/', (req, res) => {
-  res.send('API de running funcionando 🎽');
+  res.send('API de running funcionando');
 });
 
-// Bandera para comprobar conexión y lectura de la BD
-app.get('/flag-user', (req, res) => {
-  db.query('SELECT id, email, role, nombres, apellidos FROM users WHERE id = 1', (err, results) => {
-    if (err) {
-      console.error('Bandera: error al consultar usuario 1:', err);
-      return res.status(500).json({ error: 'Error al consultar usuario' });
-    }
-    if (results.length === 0) {
-      console.log('Bandera: usuario 1 no encontrado');
-      return res.json({ user: null });
-    }
-    console.log('Bandera: usuario 1 encontrado', results[0]);
-    res.json({ user: results[0] });
-  });
-});
-
-
-// Rutas de autenticación
+// Auth
 app.post('/register', (req, res) => {
   const { email, password, nombres, apellidos } = req.body;
   if (!email || !password || !nombres || !apellidos) {
@@ -149,10 +132,7 @@ app.post('/register', (req, res) => {
   db.query(checkQuery, [email], (err, results) => {
     if (err) {
       console.error('Error al verificar usuario existente:', err);
-      if (err) {
-      console.error('Error al verificar usuario existente:', err);
       return res.status(500).json({ error: 'Error en la base de datos' });
-    }
     }
     if (results.length > 0) {
       return res.status(409).json({ error: 'Usuario ya existe' });
@@ -162,13 +142,10 @@ app.post('/register', (req, res) => {
       if (err) return res.status(500).json({ error: 'Error al encriptar contraseña' });
 
       const insertQuery = 'INSERT INTO users (email, nombres, apellidos, password_hash, role) VALUES (?, ?, ?, ?, ?)';
-      db.query(insertQuery, [email, nombres, apellidos, hash, 'free'], (err) => {
-        if (err) {
-          console.error('Error al registrar usuario:', err);
-                  if (err) {
-          console.error('Error al registrar usuario:', err);
+      db.query(insertQuery, [email, nombres, apellidos, hash, 'free'], (err2) => {
+        if (err2) {
+          console.error('Error al registrar usuario:', err2);
           return res.status(500).json({ error: 'Error al registrar usuario' });
-        }
         }
         res.status(201).json({ message: 'Usuario registrado' });
       });
@@ -191,8 +168,8 @@ app.post('/login', (req, res) => {
     if (results.length === 0) return res.status(401).json({ error: 'Credenciales inválidas' });
 
     const user = results[0];
-    bcrypt.compare(password, user.password_hash, (err, match) => {
-      if (err) return res.status(500).json({ error: 'Error al verificar contraseña' });
+    bcrypt.compare(password, user.password_hash, (err2, match) => {
+      if (err2) return res.status(500).json({ error: 'Error al verificar contraseña' });
       if (!match) return res.status(401).json({ error: 'Credenciales inválidas' });
 
       req.session.user = {
@@ -226,9 +203,15 @@ app.post('/logout', (req, res) => {
   });
 });
 
-// Rutas de blogs
+// Blogs
 app.get('/blogs', (req, res) => {
-    const query = `SELECT b.id, b.title, b.content, b.user_id, b.created_at, u.nombres, u.apellidos FROM blogs b JOIN users u ON b.user_id = u.id ORDER BY b.created_at DESC`;db.query(query, (err, results) => {
+  const query = `
+    SELECT b.id, b.title, b.content, b.user_id, b.created_at, u.nombres, u.apellidos
+    FROM blogs b
+    JOIN users u ON b.user_id = u.id
+    ORDER BY b.created_at DESC
+  `;
+  db.query(query, (err, results) => {
     if (err) {
       console.error('Error al obtener blogs:', err);
       return res.status(500).json({ error: 'Error al obtener blogs' });
@@ -291,85 +274,7 @@ app.delete('/blogs/:id', requireAdmin, (req, res) => {
   });
 });
 
-// Listado de imágenes subidas (para verificación)
-app.get('/imagenes', requirePlus, (req, res) => {
-  const q = `SELECT id, url, original_name, mime, size_bytes, created_at FROM imagenes ORDER BY created_at DESC`;
-  db.query(q, (err, rows) => {
-    if (err) {
-      console.error('Error al listar imágenes:', err);
-      return res.status(500).json({ error: 'Error al listar imágenes' });
-    }
-    res.json(rows);
-  });
-});
-
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
-
-//ANALISIS INICIA
-app.get('/analisis-carrera-ritmos/:id', (req, res) => {
-  const carreraId = req.params.id;
-
-  const rangos = [
-    { etiqueta: '< 03:20', min: 0, max: 199 },
-    { etiqueta: '03:20–03:45', min: 200, max: 225 },
-    { etiqueta: '03:45–04:00', min: 226, max: 240 },
-    { etiqueta: '04:00–04:15', min: 241, max: 255 },
-    { etiqueta: '04:16–04:46', min: 256, max: 286 },
-    { etiqueta: '04:47–05:14', min: 287, max: 314 },
-    { etiqueta: '05:15–05:30', min: 315, max: 330 },
-    { etiqueta: '05:31–06:30', min: 331, max: 390 },
-    { etiqueta: '06:31–07:37', min: 391, max: 457 },
-    { etiqueta: '07:38–08:28', min: 458, max: 508 },
-    { etiqueta: '≥ 08:29', min: 509, max: 10000 }
-  ];
-
-  const queries = rangos.map(rango => `
-    SELECT
-      '${rango.etiqueta}' AS rango,
-      SUM(CASE WHEN genero = 'Femenino' AND TIME_TO_SEC(ritmo_medio) BETWEEN ${rango.min} AND ${rango.max} THEN 1 ELSE 0 END) AS femenino,
-      SUM(CASE WHEN genero = 'Masculino' AND TIME_TO_SEC(ritmo_medio) BETWEEN ${rango.min} AND ${rango.max} THEN 1 ELSE 0 END) AS masculino
-    FROM resultados
-    WHERE carrera_id = ${carreraId}
-  `);
-
-  const totalQuery = `
-    SELECT
-      SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS total_femenino,
-      SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS total_masculino
-    FROM resultados
-    WHERE carrera_id = ?
-  `;
-
-  db.query(totalQuery, [carreraId], (err, totales) => {
-    if (err) return res.status(500).json({ error: 'Error al obtener totales' });
-
-    const totalF = totales[0].total_femenino || 1;
-    const totalM = totales[0].total_masculino || 1;
-
-    db.query(queries.join(' UNION ALL '), (err2, filas) => {
-      if (err2) return res.status(500).json({ error: 'Error al obtener rangos' });
-
-      const procesado = filas.map(fila => ({
-        rango: fila.rango,
-        femenino: fila.femenino,
-        femenino_pct: ((fila.femenino / totalF) * 100).toFixed(2),
-        masculino: fila.masculino,
-        masculino_pct: ((fila.masculino / totalM) * 100).toFixed(2)
-      }));
-
-      res.json({
-        total_femenino: totalF,
-        total_masculino: totalM,
-        distribucion: procesado
-      });
-    });
-  });
-}); //ANALISIS TERMINA
-
-// Subida de imágenes (requiere usuario plus o admin)
+// Subida de imágenes
 app.post('/upload-image', requirePlus, uploadImages.single('image'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'Archivo requerido (campo: image)' });
   const user = req.session.user || null;
@@ -398,7 +303,8 @@ app.post('/upload-image', requirePlus, uploadImages.single('image'), (req, res) 
   );
 });
 
-app.post('/upload-entrenamiento', upload.single('file'), (req, res) => {
+// CSV entrenamiento
+app.post('/upload-entrenamiento', requireAdmin, upload.single('file'), (req, res) => {
   const filePath = req.file.path;
   const results = [];
 
@@ -421,7 +327,7 @@ app.post('/upload-entrenamiento', upload.single('file'), (req, res) => {
       db.query(insertEntrenamiento, ['Entreno COROS', 'Cargado desde CSV'], (err, result) => {
         if (err) {
           fs.unlinkSync(filePath);
-          console.error('❌ Error al insertar entrenamiento:', err.message);
+          console.error('Error al insertar entrenamiento:', err.message);
           return res.status(500).json({ error: 'Error al crear entrenamiento' });
         }
 
@@ -461,7 +367,7 @@ app.post('/upload-entrenamiento', upload.single('file'), (req, res) => {
           fs.unlinkSync(filePath);
 
           if (err2) {
-            console.error('❌ Error al insertar series:', err2.message);
+            console.error('Error al insertar series:', err2.message);
             return res.status(500).json({ error: 'Error al insertar series' });
           }
 
@@ -475,7 +381,8 @@ app.post('/upload-entrenamiento', upload.single('file'), (req, res) => {
     });
 });
 
-app.post('/upload-resultados', upload.single('file'), (req, res) => {
+// CSV resultados de carreras
+app.post('/upload-resultados', requireAdmin, upload.single('file'), (req, res) => {
   const { nombreCarrera, fecha, distancia, ascenso_total } = req.body;
   const filePath = req.file.path;
   const resultados = [];
@@ -490,8 +397,8 @@ app.post('/upload-resultados', upload.single('file'), (req, res) => {
         db.query(
           'INSERT INTO carreras (nombre, fecha, distancia, ascenso_total) VALUES (?, ?, ?, ?)',
           [nombreCarrera, fecha || null, distancia || null, ascenso_total || null],
-          (err, result) => {
-            if (err) return reject(err);
+          (err2, result) => {
+            if (err2) return reject(err2);
             resolve(result.insertId);
           }
         );
@@ -499,7 +406,7 @@ app.post('/upload-resultados', upload.single('file'), (req, res) => {
     });
   };
 
-  // ✅ Corregida: convierte segundos decimales a HH:MM:SS
+  // Convierte segundos a HH:MM:SS
   const segundosAHHMMSS = (segundosDecimales) => {
     const totalSegundos = Math.round(segundosDecimales);
     const hh = Math.floor(totalSegundos / 3600).toString().padStart(2, '0');
@@ -531,12 +438,9 @@ app.post('/upload-resultados', upload.single('file'), (req, res) => {
 
           if (tiempoStr && distanciaKm) {
             const partes = tiempoStr.split(':').map(Number);
-
             if (partes.length === 3) {
               const tiempoSeg = partes[0] * 3600 + partes[1] * 60 + partes[2];
-
               const ritmoSeg = tiempoSeg / distanciaKm;
-
               ritmoMedio = segundosAHHMMSS(ritmoSeg);
             }
           }
@@ -559,34 +463,27 @@ app.post('/upload-resultados', upload.single('file'), (req, res) => {
           ) VALUES ?
         `;
 
-
         db.query(query, [valores], (err, result) => {
           fs.unlinkSync(filePath);
           if (err) {
-            console.error('❌ Error al insertar resultados:', err.message);
+            console.error('Error al insertar resultados:', err.message);
             return res.status(500).json({ error: 'Error al insertar resultados' });
           }
-
           res.json({ message: 'Resultados cargados exitosamente', insertados: result.affectedRows });
         });
-
       } catch (err) {
-        console.error('❌ Error al procesar carrera:', err.message);
+        console.error('Error al procesar carrera:', err.message);
         res.status(500).json({ error: 'Error al procesar la carrera' });
       }
     });
 });
 
-
-
-
+// Carreras y análisis
 app.get('/carreras', (req, res) => {
   db.query('SELECT id, nombre FROM carreras', (err, results) => {
     if (err) {
       console.error('Error obteniendo carreras:', err);
-            return res
-        .status(500)
-        .json({ error: 'Error al obtener carreras', details: err.message });
+      return res.status(500).json({ error: 'Error al obtener carreras', details: err.message });
     }
     res.json(results);
   });
@@ -594,7 +491,6 @@ app.get('/carreras', (req, res) => {
 
 app.get('/analisis-carrera/:id', (req, res) => {
   const carreraId = req.params.id;
-
   const query = `
     SELECT 
       SEC_TO_TIME(AVG(TIME_TO_SEC(ritmo_medio))) AS ritmo_general,
@@ -605,13 +501,11 @@ app.get('/analisis-carrera/:id', (req, res) => {
     FROM resultados
     WHERE carrera_id = ?
   `;
-
   db.query(query, [carreraId], (err, results) => {
     if (err) {
-      console.error('❌ Error en análisis:', err.message);
+      console.error('Error en análisis:', err.message);
       return res.status(500).json({ error: 'Error en el análisis de la carrera' });
     }
-
     res.json({
       ritmo_general: results[0].ritmo_general,
       ritmo_masculino: results[0].ritmo_masculino,
@@ -622,6 +516,64 @@ app.get('/analisis-carrera/:id', (req, res) => {
   });
 });
 
+app.get('/analisis-carrera-ritmos/:id', (req, res) => {
+  const carreraId = req.params.id;
+  const rangos = [
+    { etiqueta: '< 03:20', min: 0, max: 199 },
+    { etiqueta: '03:20–03:45', min: 200, max: 225 },
+    { etiqueta: '03:45–04:00', min: 226, max: 240 },
+    { etiqueta: '04:00–04:15', min: 241, max: 255 },
+    { etiqueta: '04:16–04:46', min: 256, max: 286 },
+    { etiqueta: '04:47–05:14', min: 287, max: 314 },
+    { etiqueta: '05:15–05:30', min: 315, max: 330 },
+    { etiqueta: '05:31–06:30', min: 331, max: 390 },
+    { etiqueta: '06:31–07:37', min: 391, max: 457 },
+    { etiqueta: '07:38–08:28', min: 458, max: 508 },
+    { etiqueta: '≥ 08:29', min: 509, max: 10000 }
+  ];
+
+  const totalQuery = `
+    SELECT
+      SUM(CASE WHEN genero = 'Femenino' THEN 1 ELSE 0 END) AS total_femenino,
+      SUM(CASE WHEN genero = 'Masculino' THEN 1 ELSE 0 END) AS total_masculino
+    FROM resultados
+    WHERE carrera_id = ?
+  `;
+
+  db.query(totalQuery, [carreraId], (err, totales) => {
+    if (err) return res.status(500).json({ error: 'Error al obtener totales' });
+
+    const totalF = totales[0].total_femenino || 1;
+    const totalM = totales[0].total_masculino || 1;
+
+    const queries = rangos.map(rango => `
+      SELECT
+        '${rango.etiqueta}' AS rango,
+        SUM(CASE WHEN genero = 'Femenino' AND TIME_TO_SEC(ritmo_medio) BETWEEN ${rango.min} AND ${rango.max} THEN 1 ELSE 0 END) AS femenino,
+        SUM(CASE WHEN genero = 'Masculino' AND TIME_TO_SEC(ritmo_medio) BETWEEN ${rango.min} AND ${rango.max} THEN 1 ELSE 0 END) AS masculino
+      FROM resultados
+      WHERE carrera_id = ${carreraId}
+    `);
+
+    db.query(queries.join(' UNION ALL '), (err2, filas) => {
+      if (err2) return res.status(500).json({ error: 'Error al obtener rangos' });
+
+      const procesado = filas.map(fila => ({
+        rango: fila.rango,
+        femenino: fila.femenino,
+        femenino_pct: ((fila.femenino / totalF) * 100).toFixed(2),
+        masculino: fila.masculino,
+        masculino_pct: ((fila.masculino / totalM) * 100).toFixed(2)
+      }));
+
+      res.json({
+        total_femenino: totalF,
+        total_masculino: totalM,
+        distribucion: procesado
+      });
+    });
+  });
+});
 
 app.get('/analisis-carrera-categorias/:id', (req, res) => {
   const carreraId = req.params.id;
@@ -640,11 +592,15 @@ app.get('/analisis-carrera-categorias/:id', (req, res) => {
 
   db.query(query, [carreraId], (err, rows) => {
     if (err) {
-      console.error('❌ Error al obtener análisis por categoría:', err.message);
+      console.error('Error al obtener análisis por categoría:', err.message);
       return res.status(500).json({ error: 'Error al obtener análisis por categoría' });
     }
-
-    res.json(rows); // devuelve un arreglo de filas
+    res.json(rows);
   });
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 

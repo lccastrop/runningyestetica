@@ -14,21 +14,20 @@ Incluye carga de archivos CSV, análisis por género y ritmo, tablas comparativa
 ## 🚀 Cómo usar
 
 ### Backend
-```bash
-cd backend
 npm install
+cd backend
 node index.js
 
 Frontend
-cd frontend
 npm install
+cd frontend
 npm run dev
 
 Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Cambios de diseño e imagen 07:33"
+git commit -m "VERSIÓN REDUCIDA 08/09"
 git push -u origin main
 
 Forzar un commit anterior

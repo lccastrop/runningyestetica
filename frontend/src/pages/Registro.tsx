@@ -6,25 +6,25 @@ import { useNavigate } from 'react-router-dom';
 function Registro() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-    const [nombres, setNombres] = useState('');
+  const [nombres, setNombres] = useState('');
   const [apellidos, setApellidos] = useState('');
   const [mensaje, setMensaje] = useState('');
   const navigate = useNavigate();
 
   const registrar = async () => {
     if (!email || !password || !nombres || !apellidos) {
-      setMensaje('⚠️ Rellena todos los campos');
+      setMensaje('Rellena todos los campos');
       return;
     }
     try {
       await api.post('/register', { email, password, nombres, apellidos });
-      setMensaje('✅ Usuario registrado, inicia sesión');
+      setMensaje('Usuario registrado, inicia sesión');
       setTimeout(() => navigate('/login'), 1500);
     } catch (err: unknown) {
       const mensajeError =
         axios.isAxiosError(err) && err.response?.data?.error
           ? err.response.data.error
-          : '❌ Error al registrar';
+          : 'Error al registrar';
       setMensaje(mensajeError);
     }
   };
@@ -35,10 +35,10 @@ function Registro() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-       registrar();
-      }}
+          registrar();
+        }}
       >
-                <input
+        <input
           type="text"
           placeholder="Nombres"
           value={nombres}
@@ -76,3 +76,4 @@ function Registro() {
 }
 
 export default Registro;
+

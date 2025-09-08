@@ -7,7 +7,7 @@
   --color-footer-text: #666;
   --femenino-bg: #f9c5dd;
   --masculino-bg: #cce5f6;
-  --font-family: Georgia, serif;
+  --font-family: "Century Gothic", "URW Gothic", "Avantgarde", "AppleGothic", "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -192,11 +192,10 @@ button:hover {
 }
 
 .inicio-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  min-height: 400px;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  min-height: 400px;
 }
 
 .inicio-layout>.contenedor-principal {
@@ -234,7 +233,13 @@ button:hover {
 
 .campo {
   display: block;
+  width: 100%;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
 }
 
 .hr-sep {
@@ -319,6 +324,32 @@ button:hover {
   .inicio-layout>.contenedor-cuarto {
     width: 100%;
   }
+}
+
+/* Mobile-first additions */
+@media (max-width: 600px) {
+  .contenedor-secundario,
+  .contenedor-terciario,
+  .contenedor-cuarto {
+    width: 100%;
+  }
+  .logo { height: 56px; }
+  .main { padding: 1.5rem 1rem; text-align: left; }
+}
+
+/* Desktop enhancements for Inicio layout */
+@media (min-width: 800px) {
+  .inicio-layout { flex-direction: row; flex-wrap: wrap; }
+  .inicio-layout > .contenedor-principal { flex: 1 0 100%; }
+  .inicio-layout > .contenedor-cuarto { flex: 1 1 0; }
+}
+
+/* Images */
+.img-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 320px;
 }
 
 /* Blog layout */

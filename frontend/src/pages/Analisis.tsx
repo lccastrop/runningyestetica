@@ -53,7 +53,7 @@ function Analisis() {
       .then(res => setCarreras(res.data))
       .catch((error) => {
         console.error('Error al cargar carreras:', error);
-        const detalle = error.response?.data?.details || error.response?.data?.error || error.message;
+        const detalle = (error as any).response?.data?.details || (error as any).response?.data?.error || (error as any).message;
         setMensaje(`Error al cargar carreras: ${detalle}`);
       });
   }, []);
@@ -77,7 +77,7 @@ function Analisis() {
       setMensaje('');
     } catch (error) {
       console.error('Error en análisis:', error);
-      setMensaje('❌ Error al hacer análisis');
+      setMensaje('Error al hacer análisis');
     }
   };
 
@@ -120,7 +120,7 @@ function Analisis() {
               {categorias.map((fila) => {
                 const corredoras = fila.corredoras ?? 0;
                 const corredores = fila.corredores ?? 0;
-                const genero = corredoras > 0 ? '♀' : '♂';
+                const generoLabel = corredoras > 0 ? 'corredoras' : 'corredores';
                 const cantidad = corredoras > 0 ? corredoras : corredores;
                 const ritmo = corredoras > 0
                   ? formatRitmo(fila.ritmo_femenino ?? null)
@@ -130,7 +130,7 @@ function Analisis() {
                   <tr key={fila.categoria}>
                     <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.categoria}</td>
                     <td style={{ border: '1px solid #ccc', padding: '6px' }}>
-                      {cantidad} {genero}
+                      {cantidad} {generoLabel}
                     </td>
                     <td style={{ border: '1px solid #ccc', padding: '6px' }}>
                       {ritmo}
@@ -206,3 +206,4 @@ function Analisis() {
 }
 
 export default Analisis;
+

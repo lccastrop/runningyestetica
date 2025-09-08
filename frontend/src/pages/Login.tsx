@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { api } from '../api';
-
 import { AuthContext } from '../AuthContext';
 
 function Login() {
@@ -12,24 +11,22 @@ function Login() {
   const { user, setUser, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-
   const iniciarSesion = async () => {
     if (!email || !password) {
-      setMensaje('⚠️ Rellena email y contraseña');
+      setMensaje('Rellena email y contraseña');
       return;
     }
 
     try {
       const res = await api.post('/login', { email, password });
       setUser(res.data.user);
-      setMensaje('✅ Sesión iniciada');
-      // Redirigir a la página principal cuando el login sea correcto
+      setMensaje('Sesión iniciada');
       navigate('/');
     } catch (err: unknown) {
       const mensajeError =
         axios.isAxiosError(err) && err.response?.data?.error
           ? err.response.data.error
-          : '❌ Error al iniciar sesión:' + (err as Error).message;
+          : 'Error al iniciar sesión: ' + (err as Error).message;
       setMensaje(mensajeError);
       setUser(null);
     }
@@ -39,19 +36,19 @@ function Login() {
     try {
       const res = await api.get('/session');
       setUser(res.data.user);
-      setMensaje('📢 Sesión activa');
+      setMensaje('Sesión activa');
     } catch {
       setUser(null);
-      setMensaje('⚠️ Sin sesión');
+      setMensaje('Sin sesión');
     }
   };
 
   const cerrarSesion = async () => {
     try {
       await logout();
-      setMensaje('👋 Sesión cerrada');
+      setMensaje('Sesión cerrada');
     } catch {
-      setMensaje('❌ Error al cerrar sesión');
+      setMensaje('Error al cerrar sesión');
     }
   };
 
@@ -106,3 +103,4 @@ function Login() {
 }
 
 export default Login;
+

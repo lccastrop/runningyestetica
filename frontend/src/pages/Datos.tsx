@@ -1,13 +1,8 @@
 // frontend/src/pages/Datos.tsx
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { api } from '../api';
-import { useNavigate } from 'react-router-dom';
 
 function Datos() {
-  const navigate = useNavigate();
-  const [verificado, setVerificado] = useState(false);
-  const [esAdmin, setEsAdmin] = useState(false);
-
   const [archivo, setArchivo] = useState<File | null>(null);
   const [mensaje, setMensaje] = useState('');
 
@@ -18,27 +13,13 @@ function Datos() {
   const [ascensoTotal, setAscensoTotal] = useState('');
   const [mensajePoblacion, setMensajePoblacion] = useState('');
 
-  useEffect(() => {
-    api
-      .get('/session')
-      .then((res) => {
-        if (res.data.user?.role === 'admin') {
-          setEsAdmin(true);
-        } else {
-          navigate('/login');
-        }
-      })
-      .catch(() => navigate('/login'))
-      .finally(() => setVerificado(true));
-  }, [navigate]);
-
   const handleArchivoPoblacion = (e: React.ChangeEvent<HTMLInputElement>) => {
     setArchivoPoblacion(e.target.files?.[0] || null);
   };
 
   const handleSubirPoblacion = async () => {
     if (!archivoPoblacion || !nombreCarrera) {
-      setMensajePoblacion('⚠️ Debes seleccionar un archivo CSV y escribir el nombre de la carrera');
+      setMensajePoblacion('Debes seleccionar un archivo CSV y escribir el nombre de la carrera');
       return;
     }
 
@@ -46,20 +27,17 @@ function Datos() {
     formData.append('file', archivoPoblacion);
     formData.append('nombreCarrera', nombreCarrera);
     formData.append('fecha', fechaCarrera);
-    formData.append('distancia', parseFloat(distanciaCarrera).toString());
-    formData.append('ascenso_total', parseInt(ascensoTotal).toString());
+    formData.append('distancia', parseFloat(distanciaCarrera || '0').toString());
+    formData.append('ascenso_total', parseInt(ascensoTotal || '0').toString());
 
     try {
       const res = await api.post('/upload-resultados', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
-
-      setMensajePoblacion(`✅ ${res.data.message} (${res.data.insertados} resultados insertados)`);
+      setMensajePoblacion(`${res.data.message} (${res.data.insertados} resultados insertados)`);
     } catch (error) {
-      console.error('❌ Error al subir resultados:', error);
-      setMensajePoblacion('❌ Error al subir el archivo de población');
+      console.error('Error al subir resultados:', error);
+      setMensajePoblacion('Error al subir el archivo de población');
     }
   };
 
@@ -69,7 +47,7 @@ function Datos() {
 
   const handleSubir = async () => {
     if (!archivo) {
-      setMensaje('⚠️ Selecciona un archivo CSV primero');
+      setMensaje('Selecciona un archivo CSV primero');
       return;
     }
 
@@ -78,21 +56,14 @@ function Datos() {
 
     try {
       const res = await api.post('/upload-entrenamiento', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
-
-      setMensaje(`✅ ${res.data.message} (${res.data.series_insertadas} series insertadas)`);
+      setMensaje(`${res.data.message} (${res.data.series_insertadas} series insertadas)`);
     } catch (error) {
-      console.error('❌ Error al subir CSV:', error);
-      setMensaje('❌ Error al subir el archivo');
+      console.error('Error al subir CSV:', error);
+      setMensaje('Error al subir el archivo');
     }
   };
-
-  if (!verificado || !esAdmin) {
-    return null;
-  }
 
   return (
     <main className="main">
@@ -150,3 +121,4 @@ function Datos() {
 }
 
 export default Datos;
+

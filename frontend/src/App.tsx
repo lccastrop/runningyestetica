@@ -9,6 +9,7 @@ import Blog from './pages/Blog';
 import Registro from './pages/Registro';
 import { AuthContext } from './AuthContext';
 import RequireAdmin from './components/RequireAdmin';
+
 const logo = '/img/logo16-9.png';
 
 function App() {
@@ -62,3 +63,4 @@ function App() {
 }
 
 export default App;
+

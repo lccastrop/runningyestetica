@@ -97,7 +97,7 @@ function Analisis() {
       {mensaje && <p style={{ color: 'red' }}>{mensaje}</p>}
 
       {resultados && (
-        <div className="contenedor-principal margen-top-2">
+        <div className="contenedor-principal contenedor-analisis margen-top-2">
           <h3>Ritmo promedio:</h3>
           <p><strong>General:</strong> {formatRitmo(resultados.ritmo_general)} min/km</p>
           <p><strong>Masculino:</strong> {formatRitmo(resultados.ritmo_masculino)} min/km ({resultados.conteo_masculino} corredores)</p>
@@ -106,7 +106,7 @@ function Analisis() {
       )}
 
       {categorias.length > 0 && (
-        <div className="contenedor-principal margen-top-3">
+        <div className="contenedor-principal contenedor-analisis margen-top-3">
           <h3>Comparativa por Categoría</h3>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
             <thead>
@@ -144,7 +144,7 @@ function Analisis() {
       )}
 
       {distribucionRitmos.length > 0 && (
-        <div className="contenedor-principal margen-top-3">
+        <div className="contenedor-principal contenedor-analisis margen-top-3">
           <h3>Distribución por Rangos de Ritmo Medio</h3>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
             <thead>
@@ -206,4 +206,3 @@ function Analisis() {
 }
 
 export default Analisis;
-

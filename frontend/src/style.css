@@ -43,7 +43,7 @@ body {
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-text);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
@@ -151,7 +151,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .header {
@@ -163,6 +163,11 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Ensure header links remain visible on dark background */
+.header a {
+  color: #fff;
 }
 
 .logo {
@@ -180,6 +185,7 @@ button:hover {
   max-width: 960px;
   padding: 3rem 1rem;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .main h2 {
@@ -335,6 +341,10 @@ button:hover {
   }
   .logo { height: 56px; }
   .main { padding: 1.5rem 1rem; text-align: left; }
+  /* Improve readability for analysis containers on mobile */
+  .contenedor-analisis {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
 }
 
 /* Desktop enhancements for Inicio layout */

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { api } from '../api';
+import { api, getFilesBaseUrl } from '../api';
 import { useSearchParams, Link } from 'react-router-dom';
 
 interface BlogPost {
@@ -118,6 +118,7 @@ function Blog() {
 
   // Render content supporting inline markdown image tags anywhere in the text
   const renderContent = (text: string) => {
+    const filesBase = getFilesBaseUrl();
     const blocks = text.split(/\n{2,}/);
     const imgRe = /!\[(.*?)\]\((.*?)\)/g;
     return blocks.map((block, idx) => {
@@ -131,7 +132,12 @@ function Blog() {
           nodes.push(block.slice(lastIndex, start));
         }
         const alt = altRaw || 'Imagen';
-        nodes.push(<img key={`${idx}-img-${start}`} src={src} alt={alt} className="blog-img" />);
+        // If image src is relative to backend uploads, prefix with backend base URL in production
+        let finalSrc = src;
+        if (src?.startsWith('/uploads/') && filesBase) {
+          finalSrc = `${filesBase}${src}`;
+        }
+        nodes.push(<img key={`${idx}-img-${start}`} src={finalSrc} alt={alt} className="blog-img" />);
         lastIndex = start + full.length;
       }
       if (lastIndex < block.length) {

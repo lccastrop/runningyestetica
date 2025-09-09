@@ -204,10 +204,14 @@ app.post('/login-google', async (req, res) => {
     const apellidos = parts.length > 1 ? parts.slice(-1).join(' ') : '';
 
     const selectQ = 'SELECT id, email, role, nombres, apellidos FROM users WHERE email = ?';
-    db.query(selectQ, [email], (err, rows) => {
+  db.query(selectQ, [email], (err, rows) => {
       if (err) {
         console.error('Error buscando usuario Google:', err);
-        return res.status(500).json({ error: 'Error en la base de datos' });
+        return res.status(500).json({
+          error: 'Error en la base de datos',
+          code: err.code,
+          message: isProd ? undefined : err.sqlMessage,
+        });
       }
       if (rows.length > 0) {
         const u = rows[0];
@@ -219,7 +223,11 @@ app.post('/login-google', async (req, res) => {
       db.query(insertQ, [email, nombres, apellidos, '', 'free'], (err2, result) => {
         if (err2) {
           console.error('Error creando usuario Google:', err2);
-          return res.status(500).json({ error: 'Error al registrar usuario' });
+          return res.status(500).json({
+            error: 'Error al registrar usuario',
+            code: err2.code,
+            message: isProd ? undefined : err2.sqlMessage,
+          });
         }
         const user = { id: result.insertId, email, role: 'free', nombres, apellidos };
         req.session.user = user;
@@ -286,6 +294,26 @@ app.post('/blogs', requirePlus, (req, res) => {
       apellidos: req.session.user.apellidos,
       created_at: new Date().toISOString(),
     });
+  });
+});
+
+// Blogs del usuario autenticado
+app.get('/my-blogs', (req, res, next) => {
+  const user = req.session.user;
+  if (!user) return res.status(401).json({ error: 'No autenticado' });
+  const query = `
+    SELECT b.id, b.title, b.content, b.user_id, b.created_at, u.nombres, u.apellidos
+    FROM blogs b
+    JOIN users u ON b.user_id = u.id
+    WHERE b.user_id = ?
+    ORDER BY b.created_at DESC
+  `;
+  db.query(query, [user.id], (err, results) => {
+    if (err) {
+      console.error('Error al obtener mis blogs:', err);
+      return res.status(500).json({ error: 'Error al obtener mis blogs' });
+    }
+    res.json(results);
   });
 });
 
@@ -644,6 +672,63 @@ app.get('/analisis-carrera-categorias/:id', (req, res) => {
       return res.status(500).json({ error: 'Error al obtener análisis por categoría' });
     }
     res.json(rows);
+  });
+});
+
+// Perfil del usuario autenticado
+function requireAuth(req, res, next) {
+  const user = req.session.user;
+  if (!user) return res.status(401).json({ error: 'No autenticado' });
+  next();
+}
+
+app.get('/me', requireAuth, (req, res) => {
+  res.json({ user: req.session.user });
+});
+
+app.put('/me', requireAuth, (req, res) => {
+  const user = req.session.user;
+  const { email, nombres, apellidos } = req.body || {};
+  const emailTrim = (email || '').trim();
+  const nomTrim = (nombres || '').trim();
+  const apeTrim = (apellidos || '').trim();
+
+  if (!emailTrim) return res.status(400).json({ error: 'Email requerido' });
+  // Validaciones básicas
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRe.test(emailTrim)) {
+    return res.status(400).json({ error: 'Email inválido' });
+  }
+  if (nomTrim.length > 100) {
+    return res.status(400).json({ error: 'Nombres demasiado largos (máx 100)' });
+  }
+  if (apeTrim.length > 100) {
+    return res.status(400).json({ error: 'Apellidos demasiado largos (máx 100)' });
+  }
+
+  const check = 'SELECT id FROM users WHERE email = ? AND id <> ?';
+  db.query(check, [emailTrim, user.id], (err, rows) => {
+    if (err) {
+      console.error('Error comprobando email único:', err);
+      return res.status(500).json({ error: 'Error en la base de datos' });
+    }
+    if (rows.length > 0) {
+      return res.status(409).json({ error: 'El email ya está en uso' });
+    }
+
+    const upd = 'UPDATE users SET email = ?, nombres = ?, apellidos = ? WHERE id = ?';
+    db.query(upd, [emailTrim, nomTrim, apeTrim, user.id], (err2) => {
+      if (err2) {
+        console.error('Error actualizando perfil:', err2);
+        return res.status(500).json({
+          error: 'No se pudo actualizar el perfil',
+          code: err2.code,
+          message: isProd ? undefined : err2.sqlMessage || String(err2),
+        });
+      }
+      req.session.user = { ...user, email: emailTrim, nombres: nomTrim, apellidos: apeTrim };
+      res.json({ message: 'Perfil actualizado', user: req.session.user });
+    });
   });
 });
 

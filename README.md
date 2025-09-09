@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Sesion de google funcionando y medidas seguridad"
+git commit -m "Correciones 0909"
 git push -u origin main
 
 Forzar un commit anterior

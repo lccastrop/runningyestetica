@@ -187,19 +187,6 @@ function Blog() {
         </div>
       )}
       <div className="blog-layout margen-top">
-        <aside className="blog-sidebar">
-          <h3>Otros blogs</h3>
-          <ul className="lista-blog">
-            {blogs.map((b) => (
-              <li key={b.id} className="margen-top">
-                <Link to={`?id=${b.id}`}>{b.title}</Link><br />
-                <small>
-                  Autor: {b.nombres} {b.apellidos} - {new Date(b.created_at).toLocaleDateString()}
-                <br /><br /></small>
-              </li>
-            ))}
-          </ul>
-        </aside>
         <section className="blog-content">
           {!selected ? (
             <p>Cargando...</p>
@@ -247,6 +234,19 @@ function Blog() {
             </div>
           )}
         </section>
+        <aside className="blog-sidebar">
+          <h3>Otros blogs</h3>
+          <ul className="lista-blog">
+            {blogs.map((b) => (
+              <li key={b.id} className="margen-top">
+                <Link to={`?id=${b.id}`}>{b.title}</Link><br />
+                <small>
+                  Autor: {b.nombres} {b.apellidos} - {new Date(b.created_at).toLocaleDateString()}
+                  <br /><br /></small>
+              </li>
+            ))}
+          </ul>
+        </aside>
       </div>
     </main>
   );

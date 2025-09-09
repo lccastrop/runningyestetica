@@ -7,8 +7,10 @@ import Analisis from './pages/Analisis';
 import Login from './pages/Login';
 import Blog from './pages/Blog';
 import Registro from './pages/Registro';
+import Perfil from './pages/Perfil';
 import { AuthContext } from './AuthContext';
 import RequireAdmin from './components/RequireAdmin';
+import RequireAuth from './components/RequireAuth';
 
 const logo = '/img/logo16-9.png';
 
@@ -33,7 +35,10 @@ function App() {
             <li><Link to="/analisis">Datos Carreras</Link></li>
             <li><Link to="/blog">Blog</Link></li>
             {user ? (
-              <li><a href="#" onClick={handleLogout}>Logout</a></li>
+              <>
+                <li><Link to="/perfil">Mi Perfil</Link></li>
+                <li><a href="#" onClick={handleLogout}>Logout</a></li>
+              </>
             ) : (
               <>
                 <li><Link to="/login">Login</Link></li>
@@ -51,6 +56,7 @@ function App() {
           <Route path="/analisis" element={<Analisis />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/perfil" element={<RequireAuth><Perfil /></RequireAuth>} />
           <Route path="/registro" element={<Registro />} />
         </Routes>
       </main>
@@ -63,4 +69,3 @@ function App() {
 }
 
 export default App;
-

@@ -10,6 +10,7 @@ const crypto = require('crypto');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcryptjs');
+const admin = require('./firebaseAdmin');
 require('dotenv').config();
 
 const app = express();
@@ -182,6 +183,50 @@ app.post('/login', (req, res) => {
       res.json({ message: 'Inicio de sesión exitoso', user: req.session.user });
     });
   });
+});
+
+// Login con Google (Firebase ID token)
+app.post('/login-google', async (req, res) => {
+  const { idToken } = req.body || {};
+  if (!idToken) return res.status(400).json({ error: 'idToken requerido' });
+
+  try {
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    const email = decoded.email;
+    const fullName = decoded.name || '';
+    if (!email) return res.status(400).json({ error: 'Email no disponible en token' });
+
+    const parts = fullName.trim().split(/\s+/).filter(Boolean);
+    const nombres = parts.length > 1 ? parts.slice(0, -1).join(' ') : (parts[0] || email.split('@')[0]);
+    const apellidos = parts.length > 1 ? parts.slice(-1).join(' ') : '';
+
+    const selectQ = 'SELECT id, email, role, nombres, apellidos FROM users WHERE email = ?';
+    db.query(selectQ, [email], (err, rows) => {
+      if (err) {
+        console.error('Error buscando usuario Google:', err);
+        return res.status(500).json({ error: 'Error en la base de datos' });
+      }
+      if (rows.length > 0) {
+        const u = rows[0];
+        req.session.user = { id: u.id, email: u.email, role: u.role, nombres: u.nombres, apellidos: u.apellidos };
+        return res.json({ message: 'Inicio de sesión con Google', user: req.session.user });
+      }
+
+      const insertQ = 'INSERT INTO users (email, nombres, apellidos, password_hash, role) VALUES (?, ?, ?, ?, ?)';
+      db.query(insertQ, [email, nombres, apellidos, '', 'free'], (err2, result) => {
+        if (err2) {
+          console.error('Error creando usuario Google:', err2);
+          return res.status(500).json({ error: 'Error al registrar usuario' });
+        }
+        const user = { id: result.insertId, email, role: 'free', nombres, apellidos };
+        req.session.user = user;
+        res.json({ message: 'Usuario creado con Google', user });
+      });
+    });
+  } catch (e) {
+    console.error('Error verificando idToken de Google:', e);
+    res.status(401).json({ error: 'Token inválido' });
+  }
 });
 
 app.get('/session', (req, res) => {
@@ -603,4 +648,3 @@ app.get('/analisis-carrera-categorias/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-

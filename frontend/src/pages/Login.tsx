@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { api } from '../api';
 import { AuthContext } from '../AuthContext';
+import { auth, googleProvider } from '../firebaseConfig';
+import { signInWithPopup } from 'firebase/auth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -52,6 +54,23 @@ function Login() {
     }
   };
 
+  const handleGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const idToken = await result.user.getIdToken();
+      const res = await api.post('/login-google', { idToken });
+      setUser(res.data.user);
+      setMensaje('Sesión iniciada con Google');
+      navigate('/');
+    } catch (error) {
+      console.error('Error con Google:', error);
+      const msg = axios.isAxiosError(error) && error.response?.data?.error
+        ? error.response.data.error
+        : 'No se pudo iniciar sesión con Google';
+      setMensaje(msg);
+    }
+  };
+
   useEffect(() => {
     verSesion();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,6 +107,11 @@ function Login() {
       </form>
 
       {mensaje && <p className="margen-top">{mensaje}</p>}
+
+      <div className="margen-top">
+        <button type="button" className="btn btn--light" onClick={handleGoogle}>Iniciar sesión con Google</button>
+      </div>
+
       {user && (
         <p className="margen-top">
           Sesión de <strong>{user.nombres} {user.apellidos}</strong> (rol: {user.role})

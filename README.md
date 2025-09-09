@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Correcion inicio sesion google"
+git commit -m "Sesion de google funcionando y medidas seguridad"
 git push -u origin main
 
 Forzar un commit anterior

@@ -95,9 +95,7 @@ function Registro() {
       {mensaje && <p className="margen-top">{mensaje}</p>}
 
       <div className="margen-top">
-        <button type="button" className="btn btn--light" onClick={handleGoogle}>
-          Regístrate con Google
-        </button>
+        <button type="button" className="btn btn--light" onClick={handleGoogle}>Regístrate con Google</button>
       </div>
     </main>
   );

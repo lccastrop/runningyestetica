@@ -17,6 +17,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const isProd = process.env.NODE_ENV === 'production';
 const allowedOrigin = isProd ? process.env.FRONTEND_URL : true;
+// Debug flags removed for production hardening
 
 // Middleware
 app.use(cors({ origin: allowedOrigin, credentials: true }));
@@ -56,6 +57,8 @@ app.use(
     },
   })
 );
+
+// Removed debug request logger
 
 // Ensure uploads directory and static serving
 const uploadsDir = path.join(__dirname, 'uploads');

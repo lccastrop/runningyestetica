@@ -6,3 +6,4 @@ backend/uploads/
 backend/.env
 backend/firebase-service-account.json
 firebase-service-account.json
+backend/.env

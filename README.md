@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "REDISEÑO TOTAL CSS"
+git commit -m "Integración RECAPTCHA"
 git push -u origin main
 
 Forzar un commit anterior

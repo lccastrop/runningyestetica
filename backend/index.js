@@ -11,6 +11,7 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcryptjs');
 const admin = require('./firebaseAdmin');
+const https = require('https');
 require('dotenv').config();
 
 const app = express();
@@ -74,6 +75,43 @@ app.use('/uploads', express.static(uploadsDir, {
   }
 }));
 
+// Verify Google reCAPTCHA v2 token
+function verifyRecaptcha(token, remoteip) {
+  return new Promise((resolve) => {
+    try {
+      const secret = process.env.RECAPTCHA_SECRET;
+      if (!secret || !token) return resolve(false);
+      const postData = `secret=${encodeURIComponent(secret)}&response=${encodeURIComponent(token)}${remoteip ? `&remoteip=${encodeURIComponent(remoteip)}` : ''}`;
+      const options = {
+        hostname: 'www.google.com',
+        path: '/recaptcha/api/siteverify',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': Buffer.byteLength(postData),
+        },
+      };
+      const req = https.request(options, (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => {
+          try {
+            const json = JSON.parse(data);
+            resolve(Boolean(json && json.success));
+          } catch (_) {
+            resolve(false);
+          }
+        });
+      });
+      req.on('error', () => resolve(false));
+      req.write(postData);
+      req.end();
+    } catch (_) {
+      resolve(false);
+    }
+  });
+}
+
 // Multer for CSV (existing usage)
 const upload = multer({ dest: uploadsDir });
 
@@ -126,10 +164,17 @@ app.get('/', (req, res) => {
 });
 
 // Auth
-app.post('/register', (req, res) => {
-  const { email, password, nombres, apellidos } = req.body;
+app.post('/register', async (req, res) => {
+  const { email, password, nombres, apellidos, recaptcha } = req.body || {};
   if (!email || !password || !nombres || !apellidos) {
     return res.status(400).json({ error: 'Faltan datos' });
+  }
+  // Verify reCAPTCHA
+  try {
+    const ok = await verifyRecaptcha(recaptcha || req.body?.['g-recaptcha-response'], req.ip);
+    if (!ok) return res.status(400).json({ error: 'Verificación reCAPTCHA falló' });
+  } catch (_) {
+    return res.status(400).json({ error: 'Verificación reCAPTCHA falló' });
   }
 
   const checkQuery = 'SELECT id FROM users WHERE email = ?';

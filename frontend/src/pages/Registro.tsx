@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { api } from '../api';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,33 @@ function Registro() {
   const [mensaje, setMensaje] = useState('');
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
+
+  // reCAPTCHA V2 (checkbox)
+  const recaptchaRef = useRef<HTMLDivElement | null>(null);
+  const widgetIdRef = useRef<number | null>(null);
+  const siteKey = (import.meta as any).env?.VITE_RECAPTCHA_SITE_KEY || '6LcS5cYrAAAAAFU-0Q5-DQOIFZ1f-URelQ8x68Qb';
+
+  useEffect(() => {
+    const tryRender = () => {
+      const w = window as any;
+      if (!recaptchaRef.current) return false;
+      if (widgetIdRef.current !== null) return true;
+      if (w.grecaptcha && typeof w.grecaptcha.render === 'function') {
+        try {
+          widgetIdRef.current = w.grecaptcha.render(recaptchaRef.current, { sitekey: siteKey });
+          return true;
+        } catch (_) {
+          return false;
+        }
+      }
+      return false;
+    };
+
+    if (!tryRender()) {
+      const id = setInterval(() => { if (tryRender()) clearInterval(id); }, 300);
+      return () => clearInterval(id);
+    }
+  }, [siteKey]);
 
   const handleGoogle = async () => {
     try {
@@ -37,10 +64,27 @@ function Registro() {
       setMensaje('Rellena todos los campos');
       return;
     }
+    // Obtener token de reCAPTCHA
+    const w = window as any;
+    let recaptchaToken = '';
+    if (widgetIdRef.current !== null && w.grecaptcha && typeof w.grecaptcha.getResponse === 'function') {
+      recaptchaToken = w.grecaptcha.getResponse(widgetIdRef.current);
+    }
+    if (!recaptchaToken) {
+      setMensaje('Por favor verifica el reCAPTCHA.');
+      return;
+    }
     try {
-      await api.post('/register', { email, password, nombres, apellidos });
+      await api.post('/register', { email, password, nombres, apellidos, recaptcha: recaptchaToken });
       setMensaje('Usuario registrado, inicia sesión');
       setTimeout(() => navigate('/login'), 1500);
+      // Reset reCAPTCHA para otro intento
+      try {
+        const w2 = window as any;
+        if (widgetIdRef.current !== null && w2.grecaptcha && typeof w2.grecaptcha.reset === 'function') {
+          w2.grecaptcha.reset(widgetIdRef.current);
+        }
+      } catch (_) {}
     } catch (err: unknown) {
       const mensajeError =
         axios.isAxiosError(err) && err.response?.data?.error
@@ -102,6 +146,9 @@ function Registro() {
                 className="form-input"
               />
             </div>
+            <div className="form-field">
+              <div ref={recaptchaRef} className="g-recaptcha" />
+            </div>
             <div className="form-actions">
               <button type="submit">Registrarse</button>
             </div>
@@ -119,4 +166,3 @@ function Registro() {
 }
 
 export default Registro;
-

@@ -322,6 +322,7 @@ button:hover {
   .contenedor-terciario {
     flex-basis: 100%;
     max-width: 100%;
+    background: rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -329,6 +330,7 @@ button:hover {
   .contenedor-cuarto {
     flex-basis: 100%;
     max-width: 100%;
+    background: rgba(255, 255, 255, 0.5);
   }
 }
 

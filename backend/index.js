@@ -567,13 +567,17 @@ app.post('/upload-resultados', requireAdmin, upload.single('file'), (req, res) =
   // Normaliza valores de género a 'Masculino'/'Femenino' cuando sea reconocible
   const normalizeGender = (val) => {
     if (val === undefined || val === null) return null;
-    const s = String(val).trim().toLowerCase();
-    if (!s) return null;
-    const fem = new Set(['f','fem','feme','femenil','femenino','female','woman','women','mujer']);
-    const masc = new Set(['m','masc','mascu','masculino','varonil','male','man','men','hombre']);
+    const raw = String(val).trim();
+    if (!raw) return null;
+    // minúsculas y sin acentos para comparar con sinónimos
+    const s = raw.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const fem = new Set(['f','f.','fem','fem.','feme','femen','femenil','femenina','femeninas','femenino','female','females','woman','women','mujer','mujeres','dama','damas','lady','ladies','girl','girls']);
+    const masc = new Set(['m','m.','masc','masc.','mascu','mascul','masculino','masculina','masculinas','varon','varones','varonil','male','males','man','men','hombre','hombres','caballero','caballeros','gentleman','gentlemen','boy','boys']);
     if (fem.has(s)) return 'Femenino';
     if (masc.has(s)) return 'Masculino';
-    // Dejar el original capitalizado si no se reconoce
+    // heurística por subcadenas seguras
+    if (/\bfem(en|enin[oa]?|enil)?\b/.test(s) || /\bmujer(es)?\b/.test(s) || /\bdamas?\b/.test(s) || /\blad(y|ies)\b/.test(s) || /\bgirls?\b/.test(s)) { return 'Femenino'; }
+    if (/\bmasc(ulino|ulina)?\b/.test(s) || /\bvaron(es)?\b/.test(s) || /\bhombre(s)?\b/.test(s) || /\bcaballer(os|o)\b/.test(s) || /\bgentlemen?\b/.test(s) || /\bboys?\b/.test(s)) { return 'Masculino'; }
     return val;
   };
 
@@ -624,20 +628,20 @@ app.post('/upload-resultados', requireAdmin, upload.single('file'), (req, res) =
             'bib','dorsal','numero','num','nro','numeroatleta','numero_corredor','numcorredor'
           ] },
           // 5 km
-          makeTimeDesc('RM_5km', ['rm5km','rm_5k','rm5k','ritmo5km','ritmo5k','pace5km','pace5k','ritmo_5km','pace_5km','pace_5k','ritmo_5k']),
-          makeTimeDesc('split_5km', ['split5km','split_5k','split5k','parcial5km','parcial_5km','lap5km','lap_5k','lap5k','partial5km','partial5k']),
+          makeTimeDesc('RM_5km', ['rm5km','rm_5k','rm5k','ritmo5km','ritmo5k','pace5km','pace5k','ritmo_5km','pace_5km','pace_5k','ritmo_5k','ritmop1','ritmo_p1','pacerp1','pacep1','pace_p1','ritmo01','ritmop01','ritmo_p01']),
+          makeTimeDesc('split_5km', ['split5km','split_5k','split5k','parcial5km','parcial_5km','lap5km','lap_5k','lap5k','partial5km','partial5k','parcial1','parcial_1','p1','p_1','p01','parcial01','primerparcial','parcialp1']),
           // 10 km
-          makeTimeDesc('RM_10km', ['rm10km','rm_10k','rm10k','ritmo10km','ritmo10k','pace10km','pace10k','ritmo_10km','pace_10km']),
-          makeTimeDesc('split_10km', ['split10km','split_10k','split10k','parcial10km','lap10km','partial10km']),
+          makeTimeDesc('RM_10km', ['rm10km','rm_10k','rm10k','ritmo10km','ritmo10k','pace10km','pace10k','ritmo_10km','pace_10km','ritmop2','ritmo_p2','pacep2','pace_p2','ritmo02','ritmop02','ritmo_p02']),
+          makeTimeDesc('split_10km', ['split10km','split_10k','split10k','parcial10km','lap10km','partial10km','parcial2','parcial_2','p2','p_2','p02','parcial02','segundoparcial','parcialp2']),
           // 15 km
-          makeTimeDesc('RM_15km', ['rm15km','rm_15k','rm15k','ritmo15km','pace15km']),
-          makeTimeDesc('split_15km', ['split15km','split_15k','split15k','parcial15km','lap15km','partial15km']),
+          makeTimeDesc('RM_15km', ['rm15km','rm_15k','rm15k','ritmo15km','pace15km','ritmop3','ritmo_p3','pacep3','pace_p3','ritmo03','ritmop03','ritmo_p03']),
+          makeTimeDesc('split_15km', ['split15km','split_15k','split15k','parcial15km','lap15km','partial15km','parcial3','parcial_3','p3','p_3','p03','parcial03','tercerparcial','parcialp3']),
           // 21 km (mediamaratón)
-          makeTimeDesc('RM_21km', ['rm21km','rm_21k','rm21k','ritmo21km','ritmo21k','pace21km','pace21k']),
-          makeTimeDesc('split_21km', ['split21km','split_21k','split21k','parcial21km','lap21km','partial21km']),
+          makeTimeDesc('RM_21km', ['rm21km','rm_21k','rm21k','ritmo21km','ritmo21k','pace21km','pace21k','ritmop4','ritmo_p4','pacep4','pace_p4','ritmo04','ritmop04','ritmo_p04']),
+          makeTimeDesc('split_21km', ['split21km','split_21k','split21k','parcial21km','lap21km','partial21km','parcial4','parcial_4','p4','p_4','p04','parcial04','cuartoparcial','parcialp4']),
           // 25 km
-          makeTimeDesc('RM_25km', ['rm25km','rm_25k','rm25k','ritmo25km','pace25km']),
-          makeTimeDesc('split_25km', ['split25km','split_25k','split25k','parcial25km','lap25km','partial25km']),
+          makeTimeDesc('RM_25km', ['rm25km','rm_25k','rm25k','ritmo25km','pace25km','ritmop5','ritmo_p5','pacep5','pace_p5','ritmo05','ritmop05','ritmo_p05']),
+          makeTimeDesc('split_25km', ['split25km','split_25k','split25k','parcial25km','lap25km','partial25km','parcial5','parcial_5','p5','p_5','p05','parcial05','quintoparcial','parcialp5']),
           // 30 km
           makeTimeDesc('RM_30km', ['rm30km','rm_30k','rm30k','ritmo30km','pace30km']),
           makeTimeDesc('split_30km', ['split30km','split_30k','split30k','parcial30km','lap30km','partial30km']),
@@ -688,8 +692,10 @@ app.post('/upload-resultados', requireAdmin, upload.single('file'), (req, res) =
           ]);
           // incluir variantes con y sin guión bajo y también tiempo_oficial como fallback
           const tiempoChipVRaw = getByAliases([
-            'tiempochip','tiempo_chip','chiptime','chip_time','nettime','net_time','tiempofinal','tiempo_final','tiempooficial','tiempo_oficial','tiempo','time','finaltime','final_time','officialtime','official_time'
-          ]) || row.TiempoChip || row['Tiempo_Chip'] || null;
+            'tiempochip','tiempo_chip','chiptime','chip_time','nettime','net_time','tiempofinal','tiempo_final','tiempooficial','tiempo_oficial','tiempo','time','finaltime','final_time','officialtime','official_time',
+            // nuevos sinónimos para tiempo total
+            'tiempototal','tiempo_total','totaltime','total_time','tiempofinaltotal','tiempo_final_total'
+          ]) || row.TiempoChip || row['Tiempo_Chip'] || row.TiempoTotal || row['Tiempo_Total'] || null;
 
           const tiempoChipV = normalizeTime(tiempoChipVRaw);
 

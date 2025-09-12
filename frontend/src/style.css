@@ -440,6 +440,45 @@ button:hover {
 
 .form-actions { display: flex; gap: 12px; justify-content: center; margin-top: 8px; }
 
+/* Selects minimalistas */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font: inherit;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 12px 36px 12px 14px; /* espacio para la flecha */
+  cursor: pointer;
+  max-width: 100%;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'><path d='M5 8l5 5 5-5' stroke='%23111' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 12px;
+}
+
+/* Quitar flecha por defecto en IE/Edge antiguo */
+select::-ms-expand { display: none; }
+
+select:hover {
+  border-color: rgba(0,0,0,0.25);
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.12);
+}
+
+/* Opciones (limitado por soporte de navegador) */
+select option {
+  padding: 8px 12px;
+}
+
 /* Botón de Google en registro */
 .form-card .mt-1 > button[type="button"] {
   display: inline-flex;

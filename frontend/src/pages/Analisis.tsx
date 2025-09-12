@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { api } from '../api';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
@@ -18,6 +18,23 @@ interface DistribucionRitmo {
   femenino_pct: number;
   masculino: number;
   masculino_pct: number;
+}
+
+interface TopEntry {
+  nombre: string;
+  genero: string;
+  categoria: string;
+  tiempo_chip: string | null;
+  ritmo_medio: string | null;
+}
+
+interface TopCategoriaEntry {
+  categoria: string;
+  nombre: string;
+  genero: string;
+  tiempo_chip: string | null;
+  ritmo_medio: string | null;
+  pos: number;
 }
 
 function formatRitmo(ritmo: string | null): string {
@@ -46,6 +63,19 @@ function Analisis() {
   const [distribucionRitmos, setDistribucionRitmos] = useState<DistribucionRitmo[]>([]);
   const [totalesGenero, setTotalesGenero] = useState<{ femenino: number, masculino: number }>({ femenino: 0, masculino: 0 });
   const [mensaje, setMensaje] = useState('');
+  const [topGenero, setTopGenero] = useState<{ femenino: TopEntry[]; masculino: TopEntry[] }>({ femenino: [], masculino: [] });
+  const [topCategorias, setTopCategorias] = useState<TopCategoriaEntry[]>([]);
+
+  const topPorCategoria = useMemo(() => {
+    const map = new Map<string, TopCategoriaEntry[]>();
+    for (const r of topCategorias) {
+      const key = r.categoria || 'Sin categoría';
+      const arr = map.get(key) || [];
+      arr.push(r);
+      map.set(key, arr);
+    }
+    return Array.from(map.entries()).map(([categoria, items]) => ({ categoria, items }));
+  }, [topCategorias]);
 
   useEffect(() => {
     api
@@ -74,6 +104,12 @@ function Analisis() {
         femenino: resRangos.data.total_femenino,
         masculino: resRangos.data.total_masculino
       });
+      const [resTopGenero, resTopCat] = await Promise.all([
+        api.get(`/analisis-carrera-top-genero/${seleccionada}`),
+        api.get(`/analisis-carrera-top-categorias/${seleccionada}`)
+      ]);
+      setTopGenero(resTopGenero.data);
+      setTopCategorias(resTopCat.data);
       setMensaje('');
     } catch (error) {
       console.error('Error en análisis:', error);
@@ -199,6 +235,98 @@ function Analisis() {
               <Bar dataKey="masculino" name="Masculino" fill="lightblue" />
             </BarChart>
           </ResponsiveContainer>
+        </div>
+      )}
+      {(topGenero.femenino.length > 0 || topGenero.masculino.length > 0) && (
+        <div>
+          <h3>Top 5 por género</h3>
+          <div className="grid-tops">
+            <div>
+              <h4>Femenino</h4>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th className="cell">Puesto</th>
+                    <th className="cell">Nombre</th>
+                    <th className="cell">Categoría</th>
+                    <th className="cell">Tiempo chip</th>
+                    <th className="cell">Ritmo medio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {topGenero.femenino.map((r, i) => (
+                    <tr key={`f-${i}`}>
+                      <td className="cell">{i + 1}</td>
+                      <td className="cell">{r.nombre}</td>
+                      <td className="cell">{r.categoria}</td>
+                      <td className="cell">{r.tiempo_chip || '--:--:--'}</td>
+                      <td className="cell">{formatRitmo(r.ritmo_medio ?? null)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <h4>Masculino</h4>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th className="cell">Puesto</th>
+                    <th className="cell">Nombre</th>
+                    <th className="cell">Categoría</th>
+                    <th className="cell">Tiempo chip</th>
+                    <th className="cell">Ritmo medio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {topGenero.masculino.map((r, i) => (
+                    <tr key={`m-${i}`}>
+                      <td className="cell">{i + 1}</td>
+                      <td className="cell">{r.nombre}</td>
+                      <td className="cell">{r.categoria}</td>
+                      <td className="cell">{r.tiempo_chip || '--:--:--'}</td>
+                      <td className="cell">{formatRitmo(r.ritmo_medio ?? null)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {topCategorias.length > 0 && (
+        <div>
+          <h3>Top 5 por categoría</h3>
+          <div className="grid-tops">
+            {topPorCategoria.map(({ categoria, items }) => (
+              <div key={categoria} className="top-categoria">
+                <h4>{categoria}</h4>
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th className="cell">Puesto</th>
+                      <th className="cell">Nombre</th>
+                      <th className="cell">Género</th>
+                      <th className="cell">Tiempo chip</th>
+                      <th className="cell">Ritmo medio</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {items.map((r, idx) => (
+                      <tr key={idx}>
+                        <td className="cell">{r.pos}</td>
+                        <td className="cell">{r.nombre}</td>
+                        <td className="cell">{r.genero}</td>
+                        <td className="cell">{r.tiempo_chip || '--:--:--'}</td>
+                        <td className="cell">{formatRitmo(r.ritmo_medio ?? null)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </>

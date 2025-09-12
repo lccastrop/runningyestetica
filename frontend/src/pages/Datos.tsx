@@ -12,6 +12,7 @@ function Datos() {
   const [distanciaCarrera, setDistanciaCarrera] = useState('');
   const [ascensoTotal, setAscensoTotal] = useState('');
   const [mensajePoblacion, setMensajePoblacion] = useState('');
+  const [debugPoblacion, setDebugPoblacion] = useState(false);
 
   const handleArchivoPoblacion = (e: React.ChangeEvent<HTMLInputElement>) => {
     setArchivoPoblacion(e.target.files?.[0] || null);
@@ -33,9 +34,16 @@ function Datos() {
     try {
       const res = await api.post('/upload-resultados', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
+        params: debugPoblacion ? { debug: '1' } : undefined,
       });
-      setMensajePoblacion(`${res.data.message} (${res.data.insertados} resultados insertados)`);
+      setMensajePoblacion(`${res.data.message} (${res.data.insertados} resultados insertados${res.data.omitidos !== undefined ? ", omitidos: " + res.data.omitidos : ''})`);
     } catch (error) {
+      const err: any = error as any;
+      const errMsg = err?.response?.data?.error || err?.message || 'Error desconocido';
+      const extra = err?.response?.data?.message ? ` - ${err.response.data.message}` : '';
+      const code = err?.response?.data?.code ? ` [${err.response.data.code}]` : '';
+      setMensajePoblacion(`Error al subir el archivo de población: ${errMsg}${extra}${code}`);
+      return;
       console.error('Error al subir resultados:', error);
       setMensajePoblacion('Error al subir el archivo de población');
     }
@@ -105,6 +113,9 @@ function Datos() {
         />
         <div className="mt-05">
           <input type="file" accept=".csv" onChange={handleArchivoPoblacion} />
+          <label className="ml-05">
+            <input type="checkbox" checked={debugPoblacion} onChange={(e) => setDebugPoblacion(e.target.checked)} /> Debug
+          </label>
           <button onClick={handleSubirPoblacion} className="ml-05">Subir</button>
         </div>
         {mensajePoblacion && <p className="mt-05">{mensajePoblacion}</p>}

@@ -191,6 +191,46 @@ connection.connect(async (err) => {
   } catch (e) {
     console.error('Error al asegurar columnas en users:', e);
   }
+
+  // Asegurar columnas adicionales en resultados
+  try {
+    const colsToEnsure = [
+      { name: 'bib', type: 'VARCHAR(20)', after: 'categoria' },
+      { name: 'RM_5km', type: 'TIME', after: 'ritmo_medio' },
+      { name: 'split_5km', type: 'TIME', after: 'RM_5km' },
+      { name: 'RM_10km', type: 'TIME', after: 'split_5km' },
+      { name: 'split_10km', type: 'TIME', after: 'RM_10km' },
+      { name: 'RM_15km', type: 'TIME', after: 'split_10km' },
+      { name: 'split_15km', type: 'TIME', after: 'RM_15km' },
+      { name: 'RM_21km', type: 'TIME', after: 'split_15km' },
+      { name: 'split_21km', type: 'TIME', after: 'RM_21km' },
+      { name: 'RM_25km', type: 'TIME', after: 'split_21km' },
+      { name: 'split_25km', type: 'TIME', after: 'RM_25km' },
+      { name: 'RM_30km', type: 'TIME', after: 'split_25km' },
+      { name: 'split_30km', type: 'TIME', after: 'RM_30km' },
+      { name: 'RM_35km', type: 'TIME', after: 'split_30km' },
+      { name: 'split_35km', type: 'TIME', after: 'RM_35km' },
+      { name: 'RM_40km', type: 'TIME', after: 'split_35km' },
+      { name: 'split_40km', type: 'TIME', after: 'RM_40km' },
+      { name: 'RM_42km', type: 'TIME', after: 'split_40km' },
+      { name: 'split_42km', type: 'TIME', after: 'RM_42km' },
+    ];
+
+    for (const col of colsToEnsure) {
+      const [exists] = await connection
+        .promise()
+        .query(`SHOW COLUMNS FROM resultados LIKE ?`, [col.name]);
+      if (exists.length === 0) {
+        const afterClause = col.after ? ` AFTER \`${col.after}\`` : '';
+        const sql = `ALTER TABLE resultados ADD COLUMN \`${col.name}\` ${col.type} NULL${afterClause}`;
+        await connection.promise().query(sql);
+        console.log(`Columna ${col.name} añadida en resultados`);
+      }
+    }
+    console.log('Columnas adicionales listas en resultados');
+  } catch (e) {
+    console.error('Error al asegurar columnas en resultados:', e);
+  }
 });
 
 module.exports = connection;

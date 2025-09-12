@@ -507,6 +507,8 @@ app.post('/upload-resultados', requireAdmin, upload.single('file'), (req, res) =
   const { nombreCarrera, fecha, distancia, ascenso_total } = req.body;
   const filePath = req.file.path;
   const resultados = [];
+  const debugUploads = (process.env.DEBUG_UPLOADS === '1') || (String(req.query?.debug || '').toLowerCase() === '1') || (String(req.query?.debug || '').toLowerCase() === 'true');
+  const dbg = (...args) => { if (debugUploads) console.log('[upload-resultados]', ...args); };
 
   // Buscar o crear la carrera
   const obtenerIdCarrera = () => {
@@ -536,12 +538,61 @@ app.post('/upload-resultados', requireAdmin, upload.single('file'), (req, res) =
     return `${hh}:${mm}:${ss}`;
   };
 
+  // Normaliza un valor a formato TIME MySQL HH:MM:SS
+  const normalizeTime = (val) => {
+    if (val === undefined || val === null) return null;
+    let s = String(val).trim();
+    if (!s) return null;
+    // Extraer primer patrón de tiempo h:mm[:ss]
+    const m = s.match(/(\d{1,2}:\d{2}(?::\d{2})?)/);
+    if (m) s = m[1];
+    // hh:mm:ss
+    if (/^\d{1,2}:\d{2}:\d{2}$/.test(s)) {
+      const [h, mm, ss] = s.split(':');
+      return `${String(parseInt(h,10)).padStart(2,'0')}:${mm}:${ss}`;
+    }
+    // mm:ss -> 00:mm:ss
+    if (/^\d{1,2}:\d{2}$/.test(s)) return `00:${s.padStart(5, '0')}`;
+    // Sólo segundos numéricos
+    if (/^\d+$/.test(s)) {
+      const total = parseInt(s, 10);
+      const hh = String(Math.floor(total / 3600)).padStart(2, '0');
+      const mm = String(Math.floor((total % 3600) / 60)).padStart(2, '0');
+      const ss = String(total % 60).padStart(2, '0');
+      return `${hh}:${mm}:${ss}`;
+    }
+    return null;
+  };
+
+  // Normaliza valores de género a 'Masculino'/'Femenino' cuando sea reconocible
+  const normalizeGender = (val) => {
+    if (val === undefined || val === null) return null;
+    const s = String(val).trim().toLowerCase();
+    if (!s) return null;
+    const fem = new Set(['f','fem','feme','femenil','femenino','female','woman','women','mujer']);
+    const masc = new Set(['m','masc','mascu','masculino','varonil','male','man','men','hombre']);
+    if (fem.has(s)) return 'Femenino';
+    if (masc.has(s)) return 'Masculino';
+    // Dejar el original capitalizado si no se reconoce
+    return val;
+  };
+
+  dbg('Recibiendo carga CSV de resultados', {
+    nombreCarrera,
+    fecha,
+    distancia,
+    ascenso_total,
+    filePath
+  });
+
   fs.createReadStream(filePath)
     .pipe(csv())
     .on('data', (data) => resultados.push(data))
     .on('end', async () => {
       try {
+        dbg('Filas CSV leídas:', resultados.length);
         const carreraId = await obtenerIdCarrera();
+        dbg('Carrera ID', carreraId);
         const distanciaKm = parseFloat(distancia);
 
         const normalizarClave = (clave) => clave.replace(/\s+/g, '').replace(/[^\w]/g, '');
@@ -552,49 +603,171 @@ app.post('/upload-resultados', requireAdmin, upload.single('file'), (req, res) =
           }
           return nuevo;
         });
+        dbg('Ejemplo fila normalizada', resultadosNormalizados[0]);
 
+        // Determinar columnas opcionales disponibles en el CSV (case-insensitive, unión de todas las filas)
+        const lowerKeys = new Set();
+        for (const obj of resultadosNormalizados) {
+          for (const k of Object.keys(obj)) lowerKeys.add(k.toLowerCase());
+        }
+        // Descriptores de columnas opcionales: nombre en BD y formas reconocidas en CSV (normalizadas y minúsculas)
+        const makeTimeDesc = (dbName, extra = []) => {
+          const base = dbName.toLowerCase();
+          const noUnderscore = base.replace(/_/g, '');
+          // admitir variantes con "k"/"km" y con/ sin subrayado
+          const variants = new Set([base, noUnderscore, ...extra.map(s => s.toLowerCase())]);
+          return { dbName, kind: 'time', keys: Array.from(variants) };
+        };
+        const optionalDescs = [
+          { dbName: 'bib', kind: 'text', keys: [
+            // comunes
+            'bib','dorsal','numero','num','nro','numeroatleta','numero_corredor','numcorredor'
+          ] },
+          // 5 km
+          makeTimeDesc('RM_5km', ['rm5km','rm_5k','rm5k','ritmo5km','ritmo5k','pace5km','pace5k','ritmo_5km','pace_5km','pace_5k','ritmo_5k']),
+          makeTimeDesc('split_5km', ['split5km','split_5k','split5k','parcial5km','parcial_5km','lap5km','lap_5k','lap5k','partial5km','partial5k']),
+          // 10 km
+          makeTimeDesc('RM_10km', ['rm10km','rm_10k','rm10k','ritmo10km','ritmo10k','pace10km','pace10k','ritmo_10km','pace_10km']),
+          makeTimeDesc('split_10km', ['split10km','split_10k','split10k','parcial10km','lap10km','partial10km']),
+          // 15 km
+          makeTimeDesc('RM_15km', ['rm15km','rm_15k','rm15k','ritmo15km','pace15km']),
+          makeTimeDesc('split_15km', ['split15km','split_15k','split15k','parcial15km','lap15km','partial15km']),
+          // 21 km (mediamaratón)
+          makeTimeDesc('RM_21km', ['rm21km','rm_21k','rm21k','ritmo21km','ritmo21k','pace21km','pace21k']),
+          makeTimeDesc('split_21km', ['split21km','split_21k','split21k','parcial21km','lap21km','partial21km']),
+          // 25 km
+          makeTimeDesc('RM_25km', ['rm25km','rm_25k','rm25k','ritmo25km','pace25km']),
+          makeTimeDesc('split_25km', ['split25km','split_25k','split25k','parcial25km','lap25km','partial25km']),
+          // 30 km
+          makeTimeDesc('RM_30km', ['rm30km','rm_30k','rm30k','ritmo30km','pace30km']),
+          makeTimeDesc('split_30km', ['split30km','split_30k','split30k','parcial30km','lap30km','partial30km']),
+          // 35 km
+          makeTimeDesc('RM_35km', ['rm35km','rm_35k','rm35k','ritmo35km','pace35km']),
+          makeTimeDesc('split_35km', ['split35km','split_35k','split35k','parcial35km','lap35km','partial35km']),
+          // 40 km
+          makeTimeDesc('RM_40km', ['rm40km','rm_40k','rm40k','ritmo40km','pace40km']),
+          makeTimeDesc('split_40km', ['split40km','split_40k','split40k','parcial40km','lap40km','partial40km']),
+          // 42 km (maratón)
+          makeTimeDesc('RM_42km', ['rm42km','rm_42k','rm42k','ritmo42km','pace42km','maratonrm','marathonpace']),
+          makeTimeDesc('split_42km', ['split42km','split_42k','split42k','parcial42km','lap42km','partial42km']),
+        ];
+        const presentOptional = [];
+        for (const d of optionalDescs) {
+          if (d.keys.some(k => lowerKeys.has(k))) presentOptional.push(d);
+        }
+        dbg('Opcionales detectados', presentOptional.map(d => d.dbName));
+
+        const baseCols = [
+          'carrera_id','nombre','genero','categoria','tiempo_chip','ritmo_medio','distancia','ascenso_total'
+        ];
+        const insertCols = baseCols.concat(presentOptional.map(c => c.dbName));
+        dbg('Columnas a insertar', insertCols);
+
+        let omitidos = 0;
         const valores = resultadosNormalizados.map(row => {
-          const tiempoStr = row.TiempoChip;
-          let ritmoMedio = null;
+          // mapa en minúsculas para acceso flexible
+          const rowLC = {};
+          for (const k of Object.keys(row)) rowLC[k.toLowerCase()] = row[k];
 
-          if (tiempoStr && distanciaKm) {
-            const partes = tiempoStr.split(':').map(Number);
+          // aliases para columnas base
+          const getByAliases = (aliases) => {
+            for (const a of aliases) {
+              if (a in rowLC) return rowLC[a];
+            }
+            return null;
+          };
+
+          const nombreV = getByAliases([
+            'nombre','atleta','corredor','competidor','participante','participant','nombrecompleto','fullname','name','nombre_completo','athlete','athlete_name','athletename'
+          ]);
+          const generoV = getByAliases([
+            'genero','gnero','rama','sexo','gender','sex','rama_m','rama_f','division_sexo','genderdivision'
+          ]);
+          const categoriaV = getByAliases([
+            'categoria','categoría','cat','catg','agegroup','age_group','division','category','grupo_edad','grupoedad','agecategory','age_cat'
+          ]);
+          // incluir variantes con y sin guión bajo y también tiempo_oficial como fallback
+          const tiempoChipVRaw = getByAliases([
+            'tiempochip','tiempo_chip','chiptime','chip_time','nettime','net_time','tiempofinal','tiempo_final','tiempooficial','tiempo_oficial','tiempo','time','finaltime','final_time','officialtime','official_time'
+          ]) || row.TiempoChip || row['Tiempo_Chip'] || null;
+
+          const tiempoChipV = normalizeTime(tiempoChipVRaw);
+
+          // Calcular ritmo_medio usando tiempoChip y distanciaKm
+          let ritmoMedio = null;
+          if (tiempoChipV && distanciaKm) {
+            const partes = tiempoChipV.split(':').map(Number);
             if (partes.length === 3) {
-              const tiempoSeg = partes[0] * 3600 + partes[1] * 60 + partes[2];
+              const tiempoSeg = (partes[0] * 3600) + (partes[1] * 60) + partes[2];
               const ritmoSeg = tiempoSeg / distanciaKm;
               ritmoMedio = segundosAHHMMSS(ritmoSeg);
             }
           }
 
-          return [
+          // Si no hay tiempo válido o es cero (00:00:00 o 0:00:00, etc.), omitir la fila
+          let tiempoEsCero = false;
+          if (tiempoChipV) {
+            const p = tiempoChipV.split(':').map(Number);
+            const secs = p.length === 3 ? (p[0]*3600 + p[1]*60 + p[2]) : (p.length === 2 ? (p[0]*60 + p[1]) : (parseInt(tiempoChipV,10) || 0));
+            tiempoEsCero = secs === 0;
+          }
+          if (!tiempoChipV || tiempoEsCero) {
+            omitidos++;
+            return null;
+          }
+
+          const baseValues = [
             carreraId,
-            row.Nombre || null,
-            row.Genero || null,
-            row.Categoria || null,
-            tiempoStr || null,
+            nombreV || row.Nombre || null,
+            normalizeGender(generoV || row.Genero || null),
+            categoriaV || row.Categoria || null,
+            tiempoChipV,
             ritmoMedio,
             distanciaKm || null,
             ascenso_total || null
           ];
-        });
 
-        const query = `
-          INSERT INTO resultados (
-            carrera_id, nombre, genero, categoria, tiempo_chip, ritmo_medio, distancia, ascenso_total
-          ) VALUES ?
-        `;
+          const extraValues = presentOptional.map(c => {
+            // Busca por cualquiera de las claves reconocidas
+            let v = null;
+            for (const key of c.keys) {
+              if (key in rowLC) { v = rowLC[key]; break; }
+            }
+            if (c.kind === 'time') return normalizeTime(v);
+            return v != null && String(v).trim() !== '' ? String(v) : null;
+          });
+
+          return baseValues.concat(extraValues);
+        }).filter(v => v !== null);
+
+        dbg('Filas a insertar', valores.length, 'omitidos', omitidos);
+        if (valores.length === 0) {
+          fs.unlinkSync(filePath);
+          return res.status(400).json({ error: 'No hay resultados con tiempo válido para insertar', omitidos });
+        }
+
+        const query = `INSERT INTO resultados (${insertCols.join(', ')}) VALUES ?`;
 
         db.query(query, [valores], (err, result) => {
-          fs.unlinkSync(filePath);
+          try { fs.unlinkSync(filePath); } catch (_) {}
           if (err) {
-            console.error('Error al insertar resultados:', err.message);
-            return res.status(500).json({ error: 'Error al insertar resultados' });
+            console.error('Error al insertar resultados:', err);
+            return res.status(500).json({
+              error: 'Error al insertar resultados',
+              code: err.code,
+              message: isProd && !debugUploads ? undefined : (err.sqlMessage || String(err))
+            });
           }
-          res.json({ message: 'Resultados cargados exitosamente', insertados: result.affectedRows });
+          res.json({ message: 'Resultados cargados exitosamente', insertados: result.affectedRows, omitidos, columnas: insertCols });
         });
       } catch (err) {
-        console.error('Error al procesar carrera:', err.message);
-        res.status(500).json({ error: 'Error al procesar la carrera' });
+        try { fs.unlinkSync(filePath); } catch (_) {}
+        console.error('Error al procesar carrera:', err);
+        res.status(500).json({
+          error: 'Error al procesar la carrera',
+          code: err.code,
+          message: isProd && !debugUploads ? undefined : (err.message || String(err))
+        });
       }
     });
 });
@@ -774,6 +947,83 @@ app.put('/me', requireAuth, (req, res) => {
       req.session.user = { ...user, email: emailTrim, nombres: nomTrim, apellidos: apeTrim };
       res.json({ message: 'Perfil actualizado', user: req.session.user });
     });
+  });
+});
+
+// Top 5 posiciones por género (femenino y masculino) para una carrera
+app.get('/analisis-carrera-top-genero/:id', (req, res) => {
+  const carreraId = req.params.id;
+  // Excluir categorías de discapacidad con varios sinónimos
+  const base = `
+    SELECT nombre, genero, categoria, tiempo_chip, ritmo_medio
+    FROM resultados
+    WHERE carrera_id = ?
+      AND genero = ?
+      AND tiempo_chip IS NOT NULL
+      AND (
+        categoria IS NULL OR (
+          LOWER(categoria) NOT LIKE ? AND
+          LOWER(categoria) NOT LIKE ? AND
+          LOWER(categoria) NOT LIKE ? AND
+          LOWER(categoria) NOT LIKE ? AND
+          LOWER(categoria) NOT LIKE ? AND
+          LOWER(categoria) NOT LIKE ? AND
+          LOWER(categoria) NOT LIKE ? AND
+          LOWER(categoria) NOT LIKE ? AND
+          LOWER(categoria) NOT LIKE ?
+        )
+      )
+    ORDER BY tiempo_chip ASC
+    LIMIT 5
+  `;
+
+  const excludePatterns = [
+    '%invident%',     // Invidente/Invidentes
+    '%ciego%',        // Ciego/Ciegos
+    '%silla de ruedas%', // Silla de Ruedas
+    '%ruedas%',       // Ruedas
+    '%wheelchair%',   // Wheelchair
+    '%paralimp%',     // Paralimpico/Paralímpico
+    '%paralymp%',     // Paralympic
+    '%discapacidad%', // Discapacidad
+    '%pcd%'           // Personas con Discapacidad (PCD)
+  ];
+
+  db.query(base, [carreraId, 'Femenino', ...excludePatterns], (errF, femRows) => {
+    if (errF) {
+      console.error('Error al obtener top femenino:', errF);
+      return res.status(500).json({ error: 'Error al obtener top femenino' });
+    }
+    db.query(base, [carreraId, 'Masculino', ...excludePatterns], (errM, masRows) => {
+      if (errM) {
+        console.error('Error al obtener top masculino:', errM);
+        return res.status(500).json({ error: 'Error al obtener top masculino' });
+      }
+      res.json({ femenino: femRows, masculino: masRows });
+    });
+  });
+});
+
+// Top 5 posiciones por categoría para una carrera (usa window functions de MySQL 8)
+app.get('/analisis-carrera-top-categorias/:id', (req, res) => {
+  const carreraId = req.params.id;
+  const q = `
+    SELECT categoria, nombre, genero, tiempo_chip, ritmo_medio, rn AS pos
+    FROM (
+      SELECT categoria, nombre, genero, tiempo_chip, ritmo_medio,
+             ROW_NUMBER() OVER (PARTITION BY categoria ORDER BY tiempo_chip ASC) AS rn
+      FROM resultados
+      WHERE carrera_id = ? AND tiempo_chip IS NOT NULL
+    ) t
+    WHERE rn <= 5
+    ORDER BY categoria, rn
+  `;
+  db.query(q, [carreraId], (err, rows) => {
+    if (err) {
+      console.error('Error al obtener top por categoría:', err);
+      return res.status(500).json({ error: 'Error al obtener top por categoría' });
+    }
+    res.json(rows);
   });
 });
 

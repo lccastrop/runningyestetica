@@ -18,7 +18,6 @@ function Perfil() {
       setEmail(user.email || '');
       setNombres(user.nombres || '');
       setApellidos(user.apellidos || '');
-      // Cargar blogs del usuario
       api.get('/my-blogs')
         .then((res) => setMisBlogs(res.data || []))
         .catch(() => setMisBlogs([]));
@@ -53,49 +52,50 @@ function Perfil() {
   };
 
   return (
-    <section>
+    <>
       <h2>Mi Perfil</h2>
-      <form onSubmit={onSubmit} className="form">
-        <div className="fila">
+      <form onSubmit={onSubmit}>
+        <div>
           <label>Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="campo" />
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
-        <div className="fila">
+        <div>
           <label>Nombres</label>
-          <input type="text" value={nombres} onChange={(e) => setNombres(e.target.value)} className="campo" />
+          <input type="text" value={nombres} onChange={(e) => setNombres(e.target.value)} />
         </div>
-        <div className="fila">
+        <div>
           <label>Apellidos</label>
-          <input type="text" value={apellidos} onChange={(e) => setApellidos(e.target.value)} className="campo" />
+          <input type="text" value={apellidos} onChange={(e) => setApellidos(e.target.value)} />
         </div>
         <p>Rol: <strong>{user?.role}</strong> (no editable)</p>
-        <div className="margen-top">
+        <div>
           <button type="submit" disabled={saving}>{saving ? 'Guardando...' : 'Guardar cambios'}</button>
         </div>
       </form>
-      {mensaje && <p className="margen-top">{mensaje}</p>}
+      {mensaje && <p>{mensaje}</p>}
 
-      <div className="margen-top">
+      <div>
         <h3>Mis Blogs</h3>
         {misBlogs.length === 0 ? (
-          <p className="margen-top">Aún no has escrito blogs.</p>
+          <p>Aún no has escrito blogs.</p>
         ) : (
-          <ul className="lista-blog">
+          <ul>
             {misBlogs.map((b) => (
-              <li key={b.id} className="margen-top">
-                <Link to={`/blog?id=${b.id}`}>{b.title}</Link>
+              <li key={b.id}>
+                <Link className="link" to={`/blog?id=${b.id}`}>{b.title}</Link>
                 <br />
                 <small>{new Date(b.created_at).toLocaleDateString()}</small>
               </li>
             ))}
           </ul>
         )}
-        <div className="margen-top">
-          <Link to="/blog" className="btn btn--light">Ir al Blog</Link>
+        <div>
+          <Link to="/blog" className="link">Ir al Blog</Link>
         </div>
       </div>
-    </section>
+    </>
   );
 }
 
 export default Perfil;
+

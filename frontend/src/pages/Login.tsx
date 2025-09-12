@@ -77,52 +77,63 @@ function Login() {
   }, []);
 
   return (
-    <main className="main">
-      <h2>Login</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          iniciarSesion();
-        }}
-      >
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="campo"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="campo"
-        />
-        <div className="margen-top">
-          <button type="submit">Iniciar sesión</button>
-          <button type="button" onClick={verSesion} className="margen-izq">Ver sesión</button>
-          <button type="button" onClick={cerrarSesion} className="margen-izq">Cerrar sesión</button>
+    <>
+      <div className="contenedor-secundario form-wrap">
+        <div className="form-card">
+          <h2 className="form-title">Login</h2>
+          <form
+            className="form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              iniciarSesion();
+            }}
+          >
+            <div className="form-field">
+              <label className="form-label" htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-input"
+              />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="password">Contraseña</label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-input"
+              />
+            </div>
+            <div className="form-actions">
+              <button type="submit">Iniciar sesión</button>
+              <button type="button" onClick={verSesion}>Ver sesión</button>
+              <button type="button" onClick={cerrarSesion}>Cerrar sesión</button>
+            </div>
+          </form>
+
+          {mensaje && <p className="mt-05">{mensaje}</p>}
+
+          <div className="mt-1">
+            <button type="button" onClick={handleGoogle}>Iniciar sesión con Google</button>
+          </div>
+
+          {user && (
+            <p className="mt-05">
+              Sesión de <strong>{user.nombres} {user.apellidos}</strong> (rol: {user.role})
+            </p>
+          )}
+          {!user && (
+            <p className="mt-05">
+              ¿No tienes cuenta? <Link to="/registro" className="link">Regístrate</Link>
+            </p>
+          )}
         </div>
-      </form>
-
-      {mensaje && <p className="margen-top">{mensaje}</p>}
-
-      <div className="margen-top">
-        <button type="button" className="btn btn--light" onClick={handleGoogle}>Iniciar sesión con Google</button>
       </div>
-
-      {user && (
-        <p className="margen-top">
-          Sesión de <strong>{user.nombres} {user.apellidos}</strong> (rol: {user.role})
-        </p>
-      )}
-      {!user && (
-        <p className="margen-top">
-          ¿No tienes cuenta? <Link to="/registro">Regístrate</Link>
-        </p>
-      )}
-    </main>
+    </>
   );
 }
 

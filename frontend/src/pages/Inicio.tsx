@@ -21,35 +21,40 @@ function Inicio() {
   }, []);
 
   return (
-    <main className="main">
-      <div className="contenedor-principal inicio-layout">
-        <div className="contenedor-principal">
-          <p className="texto-grande">
-            "Difundir y socializar el rendimiento deportivo para fortalecer y
-            cualificar la relación de la comunidad corredora con la práctica deportiva"
-          </p>
-        </div>
-        <div className="contenedor-cuarto">
-          Último análisis:
-          <img src="/img/logoMaratonCDMX2025.png" alt="Running y Estética" className="img-hero" width="320" loading="lazy" />
-          <Link to="/analisis" className="btn btn--primary btn--sm">Ir a análisis</Link>
-        </div>
-        <div className="contenedor-cuarto">
-          Último blog:
-          <h4 style={{ marginTop: '0.5rem' }}>{ultimoBlog ? <Link to={`/blog?id=${ultimoBlog.id}`}>{ultimoBlog.title}</Link> : 'Aún no hay publicaciones'}</h4>
-          {ultimosBlogs.length > 1 && (
-            <ul className="lista-blog">
-              {ultimosBlogs.slice(1).map((b) => (
-                <li key={b.id} style={{ fontSize: '0.95rem', opacity: 0.6 }}><Link to={`/blog?id=${b.id}`}>{b.title}</Link></li>
-              ))}
-            </ul>
-          )}
-          <Link to="/blog" className="btn btn--light btn--sm" style={{ marginTop: '0.5rem' }}>Leer</Link>
+    <>
+      <div className="contenedor-principal">
+        <p>
+          "Difundir y socializar el rendimiento deportivo para fortalecer y
+          cualificar la relación de la comunidad corredora con la práctica deportiva"
+        </p>
+      </div>
+      <div className="contenedor-secundario text-center">
+        <h3>Último análisis:</h3>
+        <img src="/img/logoMaratonCDMX2025.png" alt="Running y Estética" width="320" loading="lazy" />
+        <div className="mt-05">
+          <Link to="/analisis" className="link">Ir a análisis</Link>
         </div>
       </div>
-    </main>
+      <div className="contenedor-terciario">
+        <h3>Último blog:</h3>
+        <h4>{ultimoBlog ? <Link className="link" to={`/blog?id=${ultimoBlog.id}`}>{ultimoBlog.title}</Link> : 'Aún no hay publicaciones'}</h4>
+        {ultimosBlogs.length > 1 && (
+          <ul className="mt-05">
+            {ultimosBlogs.slice(1).map((b) => (
+              <li key={b.id} className="fs-095 muted">
+                <Link className="link" to={`/blog?id=${b.id}`}>{b.title}</Link>
+              </li>
+            ))}
+          </ul>
+        )}
+        <div className="mt-05">
+          <Link to="/blog" className="link">Leer</Link>
+        </div>
+      </div>
+    </>
   );
 }
 
 export default Inicio;
+
 

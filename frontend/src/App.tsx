@@ -1,6 +1,6 @@
 import './style.css';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Inicio from './pages/Inicio';
 import Datos from './pages/Datos';
 import Analisis from './pages/Analisis';
@@ -17,6 +17,7 @@ const logo = '/img/logo16-9.png';
 function App() {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [navOpen, setNavOpen] = useState(false);
 
   const handleLogout = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -25,11 +26,22 @@ function App() {
   };
 
   return (
-    <div className="contenedor-principal app-shell">
-      <header className="header">
-        <img src={logo} alt="Running y Estética" className="logo" />
-        <nav>
-          <ul className="nav-list">
+    <div>
+      <header>
+        <div className="header-inner">
+        <Link to="/" aria-label="Ir al inicio" className="logo-link"><img src={logo} alt="Running y Est�tica" /></Link>
+        <button
+          className="nav-toggle"
+          aria-label={navOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={navOpen}
+          onClick={() => setNavOpen((v) => !v)}
+        >
+          <span className="nav-toggle__bar" />
+          <span className="nav-toggle__bar" />
+          <span className="nav-toggle__bar" />
+        </button>
+        <nav className={navOpen ? 'nav open' : 'nav'}>
+          <ul className="nav-list" onClick={() => setNavOpen(false)}>
             <li><Link to="/">Inicio</Link></li>
             {user?.role === 'admin' && <li><Link to="/datos">Subir Datos</Link></li>}
             <li><Link to="/analisis">Datos Carreras</Link></li>
@@ -42,14 +54,15 @@ function App() {
             ) : (
               <>
                 <li><Link to="/login">Login</Link></li>
-                {/* <li><Link to="/registro">Registro</Link></li> */}
+                <li><Link to="/registro">Registro</Link></li>
               </>
             )}
           </ul>
         </nav>
+        </div>
       </header>
 
-      <main className="main">
+      <main className="contenedor-principal">
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/datos" element={<RequireAdmin><Datos /></RequireAdmin>} />
@@ -61,7 +74,7 @@ function App() {
         </Routes>
       </main>
 
-      <footer className="footer">
+      <footer>
         <p>© 2025 Running y Estética. Todos los derechos reservados.</p>
       </footer>
     </div>
@@ -69,3 +82,5 @@ function App() {
 }
 
 export default App;
+
+

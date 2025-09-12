@@ -137,7 +137,7 @@ function Blog() {
         if (src?.startsWith('/uploads/') && filesBase) {
           finalSrc = `${filesBase}${src}`;
         }
-        nodes.push(<img key={`${idx}-img-${start}`} src={finalSrc} alt={alt} className="blog-img" />);
+        nodes.push(<img key={`${idx}-img-${start}`} src={finalSrc} alt={alt} />);
         lastIndex = start + full.length;
       }
       if (lastIndex < block.length) {
@@ -147,7 +147,7 @@ function Blog() {
       return onlyImages ? (
         <div key={idx}>{nodes}</div>
       ) : (
-        <p key={idx} className="margen-top texto-justificado">{nodes.length ? nodes : block}</p>
+        <p key={idx}>{nodes.length ? nodes : block}</p>
       );
     });
   };
@@ -156,38 +156,36 @@ function Blog() {
   const selected = blogs.find((b) => b.id === selectedId) || null;
 
   return (
-    <main className="main">
-      <h2>Blog</h2>
-      {user && (user.role === 'plus' || user.role === 'admin') && (
-        <div className="margen-top">
-          <input
-            type="text"
-            placeholder="Título"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="campo"
-          />
-          <textarea
-            placeholder="Contenido"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className="campo margen-top"
-            rows={6}
-            style={{ width: '100%' }}
-          />
-          <div className="margen-top">
-            <label className="btn btn--light btn--sm" style={{ cursor: 'pointer' }}>
-              Insertar imagen
-              <input type="file" accept="image/*" onChange={onUploadNewImage} style={{ display: 'none' }} />
-            </label>
+    <div className="blog-layout">
+      <section className="blog-main">
+        <h2>Blog</h2>
+        {user && (user.role === 'plus' || user.role === 'admin') && (
+          <div className="mt-1">
+            <input
+              type="text"
+              placeholder="Título"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <textarea
+              placeholder="Contenido"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              rows={6}
+              className="w-100 mt-05"
+            />
+            <div className="mt-05">
+              <label className="clickable">
+                Insertar imagen
+                <input type="file" accept="image/*" onChange={onUploadNewImage} className="hidden" />
+              </label>
+            </div>
+            <button onClick={crearBlog} className="mt-05">
+              Crear
+            </button>
           </div>
-          <button onClick={crearBlog} className="margen-top">
-            Crear
-          </button>
-        </div>
-      )}
-      <div className="blog-layout margen-top">
-        <section className="blog-content">
+        )}
+        <div className="mt-1">
           {!selected ? (
             <p>Cargando...</p>
           ) : editingId === selected.id ? (
@@ -196,60 +194,59 @@ function Blog() {
                 type="text"
                 value={editTitle}
                 onChange={(e) => setEditTitle(e.target.value)}
-                className="campo"
               />
               <textarea
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
-                className="campo margen-top"
                 rows={6}
-                style={{ width: '100%' }}
+                className="w-100 mt-05"
               />
-              <div className="margen-top">
-                <label className="btn btn--light btn--sm" style={{ cursor: 'pointer' }}>
+              <div className="mt-05">
+                <label className="clickable">
                   Insertar imagen
-                  <input type="file" accept="image/*" onChange={onUploadEditImage} style={{ display: 'none' }} />
+                  <input type="file" accept="image/*" onChange={onUploadEditImage} className="hidden" />
                 </label>
               </div>
-              <button onClick={() => guardarEdicion(selected.id)} className="margen-top">Guardar</button>
-              <button onClick={() => setEditingId(null)} className="margen-izq margen-top">Cancelar</button>
+              <button onClick={() => guardarEdicion(selected.id)} className="mt-05">Guardar</button>
+              <button onClick={() => setEditingId(null)} className="mt-05 ml-05">Cancelar</button>
             </div>
           ) : (
             <div>
-              <div className="margen-top titulo">
+              <div>
                 <h3>{selected.title}</h3>
                 <small>
                   Autor: {selected.nombres} {selected.apellidos} - {new Date(selected.created_at).toLocaleDateString()}
                 </small>
               </div>
-              <div className="margen-top">
+              <div className="mt-05">
                 {renderContent(selected.content)}
               </div>
               {user && (user.role === 'admin' || user.id === selected.user_id) && (
-                <button onClick={() => iniciarEdicion(selected)} className="margen-top">Editar</button>
+                <button onClick={() => iniciarEdicion(selected)} className="mt-05">Editar</button>
               )}
               {user && user.role === 'admin' && (
-                <button onClick={() => eliminarBlog(selected.id)} className="margen-izq margen-top">Eliminar</button>
+                <button onClick={() => eliminarBlog(selected.id)} className="mt-05 ml-05">Eliminar</button>
               )}
             </div>
           )}
-        </section>
-        <aside className="blog-sidebar">
-          <h3>Otros blogs</h3>
-          <ul className="lista-blog">
-            {blogs.map((b) => (
-              <li key={b.id} className="margen-top">
-                <Link to={`?id=${b.id}`}>{b.title}</Link><br />
-                <small>
-                  Autor: {b.nombres} {b.apellidos} - {new Date(b.created_at).toLocaleDateString()}
-                  <br /><br /></small>
-              </li>
-            ))}
-          </ul>
-        </aside>
-      </div>
-    </main>
+        </div>
+      </section>
+      <aside className="blog-aside">
+        <h3>Otros blogs</h3>
+        <ul className="blog-list">
+          {blogs.map((b) => (
+            <li key={b.id} className="blog-item">
+              <Link className="link" to={`?id=${b.id}`}>{b.title}</Link><br />
+              <small>
+                Autor: {b.nombres} {b.apellidos} - {new Date(b.created_at).toLocaleDateString()}
+              </small>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
   );
 }
 
 export default Blog;
+

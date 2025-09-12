@@ -82,22 +82,22 @@ function Analisis() {
   };
 
   return (
-    <main className="main">
-      <h2>Análisis de Resultados</h2>
+    <>
+      <div className='contenedor-secundario'> <h2>Análisis de Resultados</h2>
 
-      <select onChange={(e) => setSeleccionada(parseInt(e.target.value))} defaultValue="">
-        <option value="" disabled>Selecciona una carrera</option>
-        {carreras.map(c => (
-          <option key={c.id} value={c.id}>{c.nombre}</option>
-        ))}
-      </select>
+        <select onChange={(e) => setSeleccionada(parseInt(e.target.value))} defaultValue="">
+          <option value="" disabled>Selecciona una carrera</option>
+          {carreras.map(c => (
+            <option key={c.id} value={c.id}>{c.nombre}</option>
+          ))}
+        </select>
 
-      <button onClick={hacerAnalisis} style={{ marginLeft: '1rem' }}>Hacer análisis</button>
-
-      {mensaje && <p style={{ color: 'red' }}>{mensaje}</p>}
+        <button onClick={hacerAnalisis} className="ml-1">Hacer análisis</button>
+      </div>
+      {mensaje && <p>{mensaje}</p>}
 
       {resultados && (
-        <div className="contenedor-principal contenedor-analisis margen-top-2">
+        <div>
           <h3>Ritmo promedio:</h3>
           <p><strong>General:</strong> {formatRitmo(resultados.ritmo_general)} min/km</p>
           <p><strong>Masculino:</strong> {formatRitmo(resultados.ritmo_masculino)} min/km ({resultados.conteo_masculino} corredores)</p>
@@ -106,14 +106,14 @@ function Analisis() {
       )}
 
       {categorias.length > 0 && (
-        <div className="contenedor-principal contenedor-analisis margen-top-3">
+        <div>
           <h3>Comparativa por Categoría</h3>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
+          <table className="table">
             <thead>
               <tr>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Categoría</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Corredores/as</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Ritmo Medio</th>
+                <th className="cell">Categoría</th>
+                <th className="cell">Corredores/as</th>
+                <th className="cell">Ritmo Medio</th>
               </tr>
             </thead>
             <tbody>
@@ -128,11 +128,11 @@ function Analisis() {
 
                 return (
                   <tr key={fila.categoria}>
-                    <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.categoria}</td>
-                    <td style={{ border: '1px solid #ccc', padding: '6px' }}>
+                    <td className="cell">{fila.categoria}</td>
+                    <td className="cell">
                       {cantidad} {generoLabel}
                     </td>
-                    <td style={{ border: '1px solid #ccc', padding: '6px' }}>
+                    <td className="cell">
                       {ritmo}
                     </td>
                   </tr>
@@ -144,46 +144,46 @@ function Analisis() {
       )}
 
       {distribucionRitmos.length > 0 && (
-        <div className="contenedor-principal contenedor-analisis margen-top-3">
+        <div>
           <h3>Distribución por Rangos de Ritmo Medio</h3>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
+          <table className="table">
             <thead>
               <tr>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Rango Ritmo medio</th>
-                <th colSpan={2} style={{ backgroundColor: '#f9c5dd', border: '1px solid #ccc' }}>Femenino</th>
-                <th colSpan={2} style={{ backgroundColor: '#cce5f6', border: '1px solid #ccc' }}>Masculino</th>
+                <th className="cell">Rango Ritmo medio</th>
+                <th colSpan={2} className="cell thead-group">Femenino</th>
+                <th colSpan={2} className="cell thead-group">Masculino</th>
               </tr>
               <tr>
                 <th></th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Cantidad</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>%</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>Cantidad</th>
-                <th style={{ border: '1px solid #ccc', padding: '6px' }}>%</th>
+                <th className="cell">Cantidad</th>
+                <th className="cell">%</th>
+                <th className="cell">Cantidad</th>
+                <th className="cell">%</th>
               </tr>
             </thead>
             <tbody>
               {distribucionRitmos.map((fila, idx) => (
                 <tr key={idx}>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.rango}</td>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.femenino}</td>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.femenino_pct}%</td>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.masculino}</td>
-                  <td style={{ border: '1px solid #ccc', padding: '6px' }}>{fila.masculino_pct}%</td>
+                  <td className="cell">{fila.rango}</td>
+                  <td className="cell">{fila.femenino}</td>
+                  <td className="cell">{fila.femenino_pct}%</td>
+                  <td className="cell">{fila.masculino}</td>
+                  <td className="cell">{fila.masculino_pct}%</td>
                 </tr>
               ))}
-              <tr>
-                <td style={{ border: '1px solid #ccc', fontWeight: 'bold', backgroundColor: '#d4edda' }}>Total</td>
-                <td style={{ border: '1px solid #ccc', fontWeight: 'bold' }}>{totalesGenero.femenino}</td>
-                <td style={{ border: '1px solid #ccc', fontWeight: 'bold' }}>100%</td>
-                <td style={{ border: '1px solid #ccc', fontWeight: 'bold' }}>{totalesGenero.masculino}</td>
-                <td style={{ border: '1px solid #ccc', fontWeight: 'bold' }}>100%</td>
+              <tr className="row-total">
+                <td className="cell">Total</td>
+                <td className="cell">{totalesGenero.femenino}</td>
+                <td className="cell">100%</td>
+                <td className="cell">{totalesGenero.masculino}</td>
+                <td className="cell">100%</td>
               </tr>
             </tbody>
           </table>
         </div>
       )}
       {distribucionRitmos.length > 0 && (
-        <div className="contenedor-principal margen-top-3">
+        <div>
           <h3>Gráfica: Ritmos por género</h3>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart
@@ -201,7 +201,7 @@ function Analisis() {
           </ResponsiveContainer>
         </div>
       )}
-    </main>
+    </>
   );
 }
 

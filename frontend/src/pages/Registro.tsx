@@ -51,53 +51,70 @@ function Registro() {
   };
 
   return (
-    <main className="main">
-      <h2>Registro</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          registrar();
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Nombres"
-          value={nombres}
-          onChange={(e) => setNombres(e.target.value)}
-          className="campo"
-        />
-        <input
-          type="text"
-          placeholder="Apellidos"
-          value={apellidos}
-          onChange={(e) => setApellidos(e.target.value)}
-          className="campo"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="campo"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="campo"
-        />
-        <div className="margen-top">
-          <button type="submit">Registrarse</button>
+    <>
+      <div className="contenedor-secundario form-wrap">
+        <div className="form-card">
+          <h2 className="form-title">Registro</h2>
+          <form
+            className="form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              registrar();
+            }}
+          >
+            <div className="form-field">
+              <label className="form-label" htmlFor="nombres">Nombres</label>
+              <input
+                id="nombres"
+                type="text"
+                value={nombres}
+                onChange={(e) => setNombres(e.target.value)}
+                className="form-input"
+              />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="apellidos">Apellidos</label>
+              <input
+                id="apellidos"
+                type="text"
+                value={apellidos}
+                onChange={(e) => setApellidos(e.target.value)}
+                className="form-input"
+              />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-input"
+              />
+            </div>
+            <div className="form-field">
+              <label className="form-label" htmlFor="password">Contraseña</label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-input"
+              />
+            </div>
+            <div className="form-actions">
+              <button type="submit">Registrarse</button>
+            </div>
+          </form>
+
+          {mensaje && <p className="mt-05">{mensaje}</p>}
+
+          <div className="mt-1">
+            <button type="button" onClick={handleGoogle}>Regístrate con Google</button>
+          </div>
         </div>
-      </form>
-
-      {mensaje && <p className="margen-top">{mensaje}</p>}
-
-      <div className="margen-top">
-        <button type="button" className="btn btn--light" onClick={handleGoogle}>Regístrate con Google</button>
       </div>
-    </main>
+    </>
   );
 }
 

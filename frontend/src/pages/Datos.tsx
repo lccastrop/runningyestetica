@@ -66,59 +66,51 @@ function Datos() {
   };
 
   return (
-    <main className="main">
-      <h2>Subir archivo CSV de entrenamiento</h2>
-      <input type="file" accept=".csv" onChange={handleArchivo} />
-      <button onClick={handleSubir} className="margen-izq">Subir</button>
-      {mensaje && <p className="margen-top">{mensaje}</p>}
+    <>
+      <div className="contenedor-secundario">
+        <h2>CSV de entrenamiento</h2>
+        <input type="file" accept=".csv" onChange={handleArchivo} />
+        <button onClick={handleSubir} className="ml-05">Subir</button>
+        {mensaje && <p className="mt-05">{mensaje}</p>}
+      </div>
 
-      <hr className="hr-sep" />
-
-      <h2>Subir archivo CSV de población (resultados de carreras)</h2>
-      <p>
-        (SIN TILDES) Recuerda que los nombres y órdenes de las columnas deben ser: <br />
-        Nombre | Genero | BIB | Tiempo Chip | Paso Medio | Categoria | Tiempo Oficial
-      </p>
-      <br />
-
-      <input
-        type="text"
-        placeholder="Nombre de la carrera"
-        value={nombreCarrera}
-        onChange={(e) => setNombreCarrera(e.target.value)}
-        className="campo"
-      />
-
-      <input
-        type="date"
-        value={fechaCarrera}
-        onChange={(e) => setFechaCarrera(e.target.value)}
-        className="campo"
-      />
-
-      <input
-        type="number"
-        placeholder="Distancia en km"
-        value={distanciaCarrera}
-        onChange={(e) => setDistanciaCarrera(e.target.value)}
-        className="campo"
-      />
-
-      <input
-        type="number"
-        placeholder="Ascenso total en metros"
-        value={ascensoTotal}
-        onChange={(e) => setAscensoTotal(e.target.value)}
-        className="campo"
-      />
-
-      <input type="file" accept=".csv" onChange={handleArchivoPoblacion} />
-      <button onClick={handleSubirPoblacion} className="margen-izq">Subir</button>
-
-      {mensajePoblacion && <p className="margen-top">{mensajePoblacion}</p>}
-    </main>
+      <div className="contenedor-secundario">
+        <h2>CSV de población (resultados)</h2>
+        <p>
+          (SIN TILDES) Recuerda que los nombres y órdenes de las columnas deben ser: <br />
+          Nombre | Genero | BIB | Tiempo Chip | Paso Medio | Categoria | Tiempo Oficial
+        </p>
+        <input
+          type="text"
+          placeholder="Nombre de la carrera"
+          value={nombreCarrera}
+          onChange={(e) => setNombreCarrera(e.target.value)}
+        />
+        <input
+          type="date"
+          value={fechaCarrera}
+          onChange={(e) => setFechaCarrera(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Distancia en km"
+          value={distanciaCarrera}
+          onChange={(e) => setDistanciaCarrera(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Ascenso total en metros"
+          value={ascensoTotal}
+          onChange={(e) => setAscensoTotal(e.target.value)}
+        />
+        <div className="mt-05">
+          <input type="file" accept=".csv" onChange={handleArchivoPoblacion} />
+          <button onClick={handleSubirPoblacion} className="ml-05">Subir</button>
+        </div>
+        {mensajePoblacion && <p className="mt-05">{mensajePoblacion}</p>}
+      </div>
+    </>
   );
 }
 
 export default Datos;
-

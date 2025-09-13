@@ -30,7 +30,7 @@ function Inicio() {
       </div>
       <div className="contenedor-secundario text-center">
         <h3>Último análisis:</h3>
-        <img src="/img/logoMaratonCDMX2025.png" alt="Running y Estética" width="320" loading="lazy" />
+        <img src="/img/logoMaratonCDMX2025.png" alt="Pace Social" width="320" loading="lazy" />
         <div className="mt-05">
           <Link to="/analisis" className="link">Ir a análisis</Link>
         </div>
@@ -56,5 +56,4 @@ function Inicio() {
 }
 
 export default Inicio;
-
 

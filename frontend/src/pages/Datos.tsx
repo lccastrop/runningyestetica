@@ -1,4 +1,4 @@
-// frontend/src/pages/Datos.tsx
+﻿// frontend/src/pages/Datos.tsx
 import { useState } from 'react';
 import { api } from '../api';
 
@@ -85,7 +85,7 @@ function Datos() {
       <div className="contenedor-secundario">
         <h2>CSV de población (resultados)</h2>
         <p>
-          (SIN TILDES) Recuerda que los nombres y órdenes de las columnas deben ser: <br />
+          (SIN TILDES) Recuerda que los nombres y Ã³rdenes de las columnas deben ser: <br />
           Nombre | Genero | BIB | Tiempo Chip | Paso Medio | Categoria | Tiempo Oficial
         </p>
         <input
@@ -125,3 +125,4 @@ function Datos() {
 }
 
 export default Datos;
+

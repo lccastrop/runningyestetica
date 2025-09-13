@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+﻿import { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { api } from '../api';
@@ -28,7 +28,7 @@ function Login() {
       const mensajeError =
         axios.isAxiosError(err) && err.response?.data?.error
           ? err.response.data.error
-          : 'Error al iniciar sesión: ' + (err as Error).message;
+          : 'Error al iniciar Sesión: ' + (err as Error).message;
       setMensaje(mensajeError);
       setUser(null);
     }
@@ -41,7 +41,7 @@ function Login() {
       setMensaje('Sesión activa');
     } catch {
       setUser(null);
-      setMensaje('Sin sesión');
+      setMensaje('Sin Sesión');
     }
   };
 
@@ -50,7 +50,7 @@ function Login() {
       await logout();
       setMensaje('Sesión cerrada');
     } catch {
-      setMensaje('Error al cerrar sesión');
+      setMensaje('Error al cerrar Sesión');
     }
   };
 
@@ -66,7 +66,7 @@ function Login() {
       console.error('Error con Google:', error);
       const msg = axios.isAxiosError(error) && error.response?.data?.error
         ? error.response.data.error
-        : 'No se pudo iniciar sesión con Google';
+        : 'No se pudo iniciar Sesión con Google';
       setMensaje(msg);
     }
   };
@@ -99,7 +99,7 @@ function Login() {
               />
             </div>
             <div className="form-field">
-              <label className="form-label" htmlFor="password">Contraseña</label>
+              <label className="form-label" htmlFor="password">contraseña</label>
               <input
                 id="password"
                 type="password"
@@ -109,16 +109,16 @@ function Login() {
               />
             </div>
             <div className="form-actions">
-              <button type="submit">Iniciar sesión</button>
-              <button type="button" onClick={verSesion}>Ver sesión</button>
-              <button type="button" onClick={cerrarSesion}>Cerrar sesión</button>
+              <button type="submit">Iniciar Sesión</button>
+              <button type="button" onClick={verSesion}>Ver Sesión</button>
+              <button type="button" onClick={cerrarSesion}>Cerrar Sesión</button>
             </div>
           </form>
 
           {mensaje && <p className="mt-05">{mensaje}</p>}
 
           <div className="mt-1">
-            <button type="button" onClick={handleGoogle}>Iniciar sesión con Google</button>
+            <button type="button" onClick={handleGoogle}>Iniciar Sesión con Google</button>
           </div>
 
           {user && (
@@ -128,7 +128,7 @@ function Login() {
           )}
           {!user && (
             <p className="mt-05">
-              ¿No tienes cuenta? <Link to="/registro" className="link">Regístrate</Link>
+              Â¿No tienes cuenta? <Link to="/registro" className="link">Regístrate</Link>
             </p>
           )}
         </div>
@@ -138,4 +138,6 @@ function Login() {
 }
 
 export default Login;
+
+
 

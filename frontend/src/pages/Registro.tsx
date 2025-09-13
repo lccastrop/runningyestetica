@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from 'react';
+﻿import { useState, useContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { api } from '../api';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,7 @@ function Registro() {
       console.error('Error con Google:', error);
       const msg = axios.isAxiosError(error) && error.response?.data?.error
         ? error.response.data.error
-        : 'No se pudo iniciar sesión con Google';
+        : 'No se pudo iniciar Sesión con Google';
       setMensaje(msg);
     }
   };
@@ -76,7 +76,7 @@ function Registro() {
     }
     try {
       await api.post('/register', { email, password, nombres, apellidos, recaptcha: recaptchaToken });
-      setMensaje('Usuario registrado, inicia sesión');
+      setMensaje('Usuario registrado, inicia Sesión');
       setTimeout(() => navigate('/login'), 1500);
       // Reset reCAPTCHA para otro intento
       try {
@@ -166,3 +166,4 @@ function Registro() {
 }
 
 export default Registro;
+

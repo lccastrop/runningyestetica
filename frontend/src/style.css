@@ -364,6 +364,32 @@ button:hover {
   }
 }
 
+/* Mejora de legibilidad en móvil: fondos blancos en contenedores */
+@media (max-width: 900px) {
+  /* Fondo del contenedor principal más sólido en móvil */
+  .contenedor-principal {
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Tarjetas para los hijos directos del contenedor principal
+     (excepto el layout del blog que se maneja abajo) */
+  .contenedor-principal > div:not(.blog-layout),
+  .contenedor-principal > section,
+  .contenedor-principal > form,
+  .contenedor-principal > article {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  /* Fondo específico para el contenido principal del blog */
+  .blog-main {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 12px;
+  }
+}
+
 /* Utilidades */
 .text-center { text-align: center; }
 .muted { opacity: 0.7; }

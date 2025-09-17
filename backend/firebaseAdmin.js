@@ -32,11 +32,12 @@ if (!admin.apps || admin.apps.length === 0) {
       admin.initializeApp({ credential: admin.credential.applicationDefault() });
       console.log('firebase-admin: inicializado con Application Default (dev)');
     } else {
-      throw new Error('Credenciales Firebase no configuradas. Define FIREBASE_SERVICE_ACCOUNT_JSON en producción.');
+      console.warn('firebase-admin: credenciales no configuradas en producción; deshabilitando login con Google.');
+      // No inicializamos en este caso para permitir que el servidor arranque.
     }
   } catch (e) {
     console.error('Error inicializando firebase-admin:', e);
-    throw e;
+    // No re-lanzamos el error para que el servidor pueda iniciar y otras rutas funcionen.
   }
 }
 

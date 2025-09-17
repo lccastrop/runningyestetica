@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Pago railway, arreglo captcha, rediseño movil2s"
+git commit -m "Urg"
 git push -u origin main
 
 Forzar un commit anterior

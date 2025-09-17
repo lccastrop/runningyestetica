@@ -1,10 +1,10 @@
-﻿import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { api } from '../api';
 import { AuthContext } from '../AuthContext';
 import { auth, googleProvider } from '../firebaseConfig';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, signInWithRedirect, getRedirectResult } from 'firebase/auth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -28,7 +28,7 @@ function Login() {
       const mensajeError =
         axios.isAxiosError(err) && err.response?.data?.error
           ? err.response.data.error
-          : 'Error al iniciar Sesión: ' + (err as Error).message;
+          : 'Error al iniciar sesión: ' + (err as Error).message;
       setMensaje(mensajeError);
       setUser(null);
     }
@@ -41,7 +41,7 @@ function Login() {
       setMensaje('Sesión activa');
     } catch {
       setUser(null);
-      setMensaje('Sin Sesión');
+      setMensaje('Sin sesión');
     }
   };
 
@@ -50,29 +50,65 @@ function Login() {
       await logout();
       setMensaje('Sesión cerrada');
     } catch {
-      setMensaje('Error al cerrar Sesión');
+      setMensaje('Error al cerrar sesión');
     }
+  };
+
+  const isLikelyMobileWebview = () => {
+    const ua = (navigator.userAgent || '').toLowerCase();
+    return /fbav|fban|instagram|line\//.test(ua) ||
+      (/iphone|ipad|ipod/.test(ua) && /safari/.test(ua) && !/crios|fxios/.test(ua));
   };
 
   const handleGoogle = async () => {
     try {
+      if (isLikelyMobileWebview()) {
+        await signInWithRedirect(auth, googleProvider);
+        return;
+      }
       const result = await signInWithPopup(auth, googleProvider);
       const idToken = await result.user.getIdToken();
       const res = await api.post('/login-google', { idToken });
       setUser(res.data.user);
       setMensaje('Sesión iniciada con Google');
       navigate('/');
-    } catch (error) {
+    } catch (error: any) {
+      const code = error?.code || '';
+      if (code.includes('popup') || code.includes('operation-not-supported')) {
+        try {
+          await signInWithRedirect(auth, googleProvider);
+          return;
+        } catch (e) {
+          console.error('Redirect Google error:', e);
+        }
+      }
       console.error('Error con Google:', error);
       const msg = axios.isAxiosError(error) && error.response?.data?.error
         ? error.response.data.error
-        : 'No se pudo iniciar Sesión con Google';
+        : 'No se pudo iniciar sesión con Google';
       setMensaje(msg);
     }
   };
 
   useEffect(() => {
-    verSesion();
+    const handleRedirect = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result && result.user) {
+          const idToken = await result.user.getIdToken();
+          const res = await api.post('/login-google', { idToken });
+          setUser(res.data.user);
+          setMensaje('Sesión iniciada con Google');
+          navigate('/');
+          return;
+        }
+      } catch (e) {
+        console.error('getRedirectResult error:', e);
+      }
+      // No redirect result -> check any existing session
+      verSesion();
+    };
+    handleRedirect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -99,7 +135,7 @@ function Login() {
               />
             </div>
             <div className="form-field">
-              <label className="form-label" htmlFor="password">contraseña</label>
+              <label className="form-label" htmlFor="password">Contraseña</label>
               <input
                 id="password"
                 type="password"
@@ -109,16 +145,16 @@ function Login() {
               />
             </div>
             <div className="form-actions">
-              <button type="submit">Iniciar Sesión</button>
-              <button type="button" onClick={verSesion}>Ver Sesión</button>
-              <button type="button" onClick={cerrarSesion}>Cerrar Sesión</button>
+              <button type="submit">Iniciar sesión</button>
+              <button type="button" onClick={verSesion}>Ver sesión</button>
+              <button type="button" onClick={cerrarSesion}>Cerrar sesión</button>
             </div>
           </form>
 
           {mensaje && <p className="mt-05">{mensaje}</p>}
 
           <div className="mt-1">
-            <button type="button" onClick={handleGoogle}>Iniciar Sesión con Google</button>
+            <button type="button" onClick={handleGoogle}>Iniciar sesión con Google</button>
           </div>
 
           {user && (
@@ -128,7 +164,7 @@ function Login() {
           )}
           {!user && (
             <p className="mt-05">
-              Â¿No tienes cuenta? <Link to="/registro" className="link">Regístrate</Link>
+              ¿No tienes cuenta? <Link to="/registro" className="link">Regístrate</Link>
             </p>
           )}
         </div>
@@ -138,6 +174,4 @@ function Login() {
 }
 
 export default Login;
-
-
 

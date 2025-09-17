@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Urg"
+git commit -m "Urg3"
 git push -u origin main
 
 Forzar un commit anterior

@@ -18,10 +18,33 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const isProd = process.env.NODE_ENV === 'production';
 const allowedOrigin = isProd ? process.env.FRONTEND_URL : true;
+// Optional: allow multiple origins in production via FRONTEND_URLS (comma-separated)
+const allowedOriginsList = isProd
+  ? (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || '')
+      .split(',')
+      .map((s) => (s || '').trim())
+      .filter(Boolean)
+  : [];
 // Debug flags removed for production hardening
 
 // Middleware
-app.use(cors({ origin: allowedOrigin, credentials: true }));
+// CORS: accept a single origin or a list of allowed origins
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!isProd) return callback(null, true);
+      if (!origin) return callback(null, true); // allow non-browser tools
+      if (
+        origin === allowedOrigin ||
+        (allowedOriginsList.length > 0 && allowedOriginsList.includes(origin))
+      ) {
+        return callback(null, true);
+      }
+      return callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.set('trust proxy', 1);
 

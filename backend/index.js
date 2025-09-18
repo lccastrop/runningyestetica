@@ -12,6 +12,8 @@ const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcryptjs');
 const admin = require('./firebaseAdmin');
 const https = require('https');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
@@ -48,6 +50,20 @@ app.use(
 app.use(express.json());
 app.set('trust proxy', 1);
 
+// Security headers
+app.use(
+  helmet({
+    contentSecurityPolicy: false, // keep simple for now; can be tightened later
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+    hsts: isProd ? undefined : false,
+  })
+);
+
+// Rate limiters
+const loginLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 10, standardHeaders: true, legacyHeaders: false });
+const registerLimiter = rateLimit({ windowMs: 60 * 60 * 1000, max: 20, standardHeaders: true, legacyHeaders: false });
+const uploadLimiter = rateLimit({ windowMs: 60 * 60 * 1000, max: 20, standardHeaders: true, legacyHeaders: false });
+
 const sessionStore = new MySQLStore(
   {
     clearExpired: true,
@@ -76,7 +92,7 @@ app.use(
     cookie: {
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
-      sameSite: isProd ? 'none' : 'lax',
+      sameSite: 'lax',
       secure: isProd,
     },
   })
@@ -153,7 +169,8 @@ const imageStorage = multer.diskStorage({
 });
 
 const imageFileFilter = (req, file, cb) => {
-  const allowed = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/svg+xml']);
+  // SVG deshabilitado por seguridad
+  const allowed = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif']);
   if (!allowed.has(file.mimetype)) return cb(new Error('Tipo de archivo no permitido'));
   cb(null, true);
 };
@@ -187,7 +204,7 @@ app.get('/', (req, res) => {
 });
 
 // Auth
-app.post('/register', async (req, res) => {
+app.post('/register', registerLimiter, async (req, res) => {
   const { email, password, nombres, apellidos, recaptcha } = req.body || {};
   if (!email || !password || !nombres || !apellidos) {
     return res.status(400).json({ error: 'Faltan datos' });
@@ -225,7 +242,7 @@ app.post('/register', async (req, res) => {
   });
 });
 
-app.post('/login', (req, res) => {
+app.post('/login', loginLimiter, (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).json({ error: 'Faltan credenciales' });
@@ -244,20 +261,23 @@ app.post('/login', (req, res) => {
       if (err2) return res.status(500).json({ error: 'Error al verificar contraseña' });
       if (!match) return res.status(401).json({ error: 'Credenciales inválidas' });
 
-      req.session.user = {
-        id: user.id,
-        email: user.email,
-        role: user.role,
-        nombres: user.nombres,
-        apellidos: user.apellidos,
-      };
-      res.json({ message: 'Inicio de sesión exitoso', user: req.session.user });
+      req.session.regenerate((err) => {
+        if (err) return res.status(500).json({ error: 'Error de sesión' });
+        req.session.user = {
+          id: user.id,
+          email: user.email,
+          role: user.role,
+          nombres: user.nombres,
+          apellidos: user.apellidos,
+        };
+        res.json({ message: 'Inicio de sesión exitoso', user: req.session.user });
+      });
     });
   });
 });
 
 // Login con Google (Firebase ID token)
-app.post('/login-google', async (req, res) => {
+app.post('/login-google', loginLimiter, async (req, res) => {
   const { idToken } = req.body || {};
   if (!idToken) return res.status(400).json({ error: 'idToken requerido' });
 
@@ -283,8 +303,11 @@ app.post('/login-google', async (req, res) => {
       }
       if (rows.length > 0) {
         const u = rows[0];
-        req.session.user = { id: u.id, email: u.email, role: u.role, nombres: u.nombres, apellidos: u.apellidos };
-        return res.json({ message: 'Inicio de sesión con Google', user: req.session.user });
+        return req.session.regenerate((err) => {
+          if (err) return res.status(500).json({ error: 'Error de sesión' });
+          req.session.user = { id: u.id, email: u.email, role: u.role, nombres: u.nombres, apellidos: u.apellidos };
+          return res.json({ message: 'Inicio de sesión con Google', user: req.session.user });
+        });
       }
 
       const insertQ = 'INSERT INTO users (email, nombres, apellidos, password_hash, role) VALUES (?, ?, ?, ?, ?)';
@@ -298,8 +321,11 @@ app.post('/login-google', async (req, res) => {
           });
         }
         const user = { id: result.insertId, email, role: 'free', nombres, apellidos };
-        req.session.user = user;
-        res.json({ message: 'Usuario creado con Google', user });
+        req.session.regenerate((err3) => {
+          if (err3) return res.status(500).json({ error: 'Error de sesión' });
+          req.session.user = user;
+          res.json({ message: 'Usuario creado con Google', user });
+        });
       });
     });
   } catch (e) {
@@ -320,7 +346,7 @@ app.post('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(500).json({ error: 'Error al cerrar sesión' });
     res.clearCookie('session_id', {
-      sameSite: isProd ? 'none' : 'lax',
+      sameSite: 'lax',
       secure: isProd,
     });
     res.json({ message: 'Sesión cerrada' });
@@ -419,7 +445,7 @@ app.delete('/blogs/:id', requireAdmin, (req, res) => {
 });
 
 // Subida de imágenes
-app.post('/upload-image', requirePlus, uploadImages.single('image'), (req, res) => {
+app.post('/upload-image', requirePlus, uploadLimiter, uploadImages.single('image'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'Archivo requerido (campo: image)' });
   const user = req.session.user || null;
   const url = `/uploads/${req.file.filename}`;

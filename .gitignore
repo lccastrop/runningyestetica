@@ -7,3 +7,18 @@ backend/.env
 backend/firebase-service-account.json
 firebase-service-account.json
 backend/.env
+
+# Environment files (keep prod example if needed)
+*.env
+*.env.*
+!frontend/.env.production
+
+# Private keys / certificates
+*.pem
+*.key
+*private*.pem
+*private*.key
+
+# Service account credentials
+*service-account*.json
+**/firebase-service-account.json

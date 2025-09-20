@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from 'react';
 import Inicio from './pages/Inicio';
 import Datos from './pages/Datos';
 import Analisis from './pages/Analisis';
+import Informes from './pages/Informes';
 import Login from './pages/Login';
 import Blog from './pages/Blog';
 import Registro from './pages/Registro';
@@ -27,6 +28,7 @@ function App() {
       '/': 'Inicio',
       '/datos': 'Subir Datos',
       '/analisis': 'Datos Carreras',
+      '/informes': 'Informes Carreras',
       '/blog': 'Blog',
       '/contacto': 'Contacto',
       '/login': 'Login',
@@ -63,8 +65,13 @@ function App() {
           <nav className={navOpen ? 'nav open' : 'nav'}>
             <ul className="nav-list" onClick={() => setNavOpen(false)}>
               <li><Link to="/">Inicio</Link></li>
-              {user?.role === 'admin' && <li><Link to="/datos">Subir Datos</Link></li>}
-              <li><Link to="/analisis">Datos Carreras</Link></li>
+              {user?.role === 'admin' && (
+                <>
+                  <li><Link to="/datos">Subir Datos</Link></li>
+                  <li><Link to="/analisis">Datos Carreras</Link></li>
+                </>
+              )}
+              <li><Link to="/informes">Informes Carreras</Link></li>
               <li><Link to="/blog">Blog</Link></li>
               <li><Link to="/contacto">Contacto</Link></li>
               {user ? (
@@ -87,7 +94,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/datos" element={<RequireAdmin><Datos /></RequireAdmin>} />
-          <Route path="/analisis" element={<Analisis />} />
+          <Route path="/analisis" element={<RequireAdmin><Analisis /></RequireAdmin>} />
+          <Route path="/informes" element={<Informes />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/login" element={<Login />} />
@@ -104,4 +112,5 @@ function App() {
 }
 
 export default App;
+
 

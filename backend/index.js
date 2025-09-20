@@ -838,7 +838,7 @@ app.get('/carreras', (req, res) => {
   });
 });
 
-app.get('/analisis-carrera/:id', (req, res) => {
+app.get('/analisis-carrera/:id', requireAdmin, (req, res) => {
   const carreraId = req.params.id;
   const query = `
     SELECT 
@@ -865,7 +865,7 @@ app.get('/analisis-carrera/:id', (req, res) => {
   });
 });
 
-app.get('/analisis-carrera-ritmos/:id', (req, res) => {
+app.get('/analisis-carrera-ritmos/:id', requireAdmin, (req, res) => {
   const carreraId = req.params.id;
   const rangos = [
     { etiqueta: '< 03:20', min: 0, max: 199 },
@@ -924,7 +924,7 @@ app.get('/analisis-carrera-ritmos/:id', (req, res) => {
   });
 });
 
-app.get('/analisis-carrera-categorias/:id', (req, res) => {
+app.get('/analisis-carrera-categorias/:id', requireAdmin, (req, res) => {
   const carreraId = req.params.id;
   const query = `
     SELECT 
@@ -1006,7 +1006,7 @@ app.put('/me', requireAuth, (req, res) => {
 });
 
 // Top 5 posiciones por género (femenino y masculino) para una carrera
-app.get('/analisis-carrera-top-genero/:id', (req, res) => {
+app.get('/analisis-carrera-top-genero/:id', requireAdmin, (req, res) => {
   const carreraId = req.params.id;
   // Excluir categorías de discapacidad con varios sinónimos
   const base = `
@@ -1060,7 +1060,7 @@ app.get('/analisis-carrera-top-genero/:id', (req, res) => {
 });
 
 // Top 5 posiciones por categoría para una carrera (usa window functions de MySQL 8)
-app.get('/analisis-carrera-top-categorias/:id', (req, res) => {
+app.get('/analisis-carrera-top-categorias/:id', requireAdmin, (req, res) => {
   const carreraId = req.params.id;
   const q = `
     SELECT categoria, nombre, genero, tiempo_chip, ritmo_medio, rn AS pos
@@ -1086,3 +1086,4 @@ app.get('/analisis-carrera-top-categorias/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+

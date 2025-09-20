@@ -1,4 +1,4 @@
-ï»¿/* Base reset and typography */
+/* Base reset and typography */
 * {
   box-sizing: border-box;
 }
@@ -24,10 +24,10 @@ img {
   display: block;
 }
 
-/* Header & footer (sin clases, solo elementos semÃƒÂ¡nticos) */
+/* Header & footer (sin clases, solo elementos semÃ¡nticos) */
 header {
   /* Glassmorphism ligero, minimalista */
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.75);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: #111;
@@ -121,7 +121,7 @@ header nav ul,
   transform: scaleX(1);
 }
 
-/* BotÃ³n hamburguesa */
+/* Botón hamburguesa */
 .nav-toggle {
   display: none;
   align-items: center;
@@ -158,7 +158,7 @@ footer {
   padding: 16px 12px;
 }
 
-/* Enlaces y BotÃ³nes: hover azul brillante */
+/* Enlaces y Botónes: hover azul brillante */
 a {
   color: inherit;
   text-decoration: none;
@@ -224,7 +224,7 @@ button:hover {
   --gap: 16px;
   gap: var(--gap);
   justify-content: center;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.65);
 }
 
 /* Por defecto, los hijos ocupan 100% */
@@ -281,7 +281,7 @@ button:hover {
   max-width: 360px;
   padding: 12px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
@@ -316,13 +316,13 @@ button:hover {
   }
 }
 
-/* Responsivo bÃƒÂ¡sico */
+/* Responsivo bÃ¡sico */
 @media (max-width: 900px) {
   .contenedor-secundario,
   .contenedor-terciario {
     flex-basis: 100%;
     max-width: 100%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
   }
 }
 
@@ -330,7 +330,7 @@ button:hover {
   .contenedor-cuarto {
     flex-basis: 100%;
     max-width: 100%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
   }
 }
 
@@ -364,11 +364,11 @@ button:hover {
   }
 }
 
-/* Mejora de legibilidad en mÃ³vil: fondos blancos en contenedores */
+/* Mejora de legibilidad en móvil: fondos blancos en contenedores */
 @media (max-width: 900px) {
-  /* Fondo del contenedor principal mÃ¡s sÃ³lido en mÃ³vil */
+  /* Fondo del contenedor principal más sólido en móvil */
   .contenedor-principal {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.75);
   }
 
   /* Tarjetas para los hijos directos del contenedor principal
@@ -382,7 +382,7 @@ button:hover {
     padding: 12px;
   }
 
-  /* Fondo especÃ­fico para el contenido principal del blog */
+  /* Fondo específico para el contenido principal del blog */
   .blog-main {
     background: rgba(255, 255, 255, 0.85);
     border-radius: 12px;
@@ -507,7 +507,7 @@ select option {
   padding: 8px 12px;
 }
 
-/* BotÃ³n de Google en registro */
+/* Botón de Google en registro */
 .form-card .mt-1 > button[type="button"] {
   display: inline-flex;
   align-items: center;
@@ -520,5 +520,125 @@ select option {
   margin-right: 8px;
   background: no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 262'><path fill='%234285F4' d='M255.88 133.45c0-10.78-.86-18.64-2.73-26.8H130.55v48.77h71.82c-1.45 12.03-9.28 30.12-26.7 42.35l-.24 1.6 38.78 30 2.68.27c24.65-22.75 38.99-56.24 38.99-96.19'/><path fill='%2334A853' d='M130.55 261.1c35.35 0 65.05-11.62 86.73-31.62l-41.31-31.93c-11.07 7.71-25.83 13.1-45.42 13.1-34.76 0-64.26-22.71-74.82-54.28l-1.54.13-40.37 31.23-.53 1.47C34.06 231.44 79.76 261.1 130.55 261.1'/><path fill='%23FBBC05' d='M55.73 156.37c-2.74-8.16-4.32-16.86-4.32-25.82s1.58-17.66 4.3-25.82l-.07-1.73-40.86-31.74-1.34.64c-8.77 17.36-13.78 36.74-13.78 58.65s5.01 41.29 13.78 58.65'/><path fill='%23EA4335' d='M130.55 50.74c24.61 0 41.17 10.61 50.6 19.48l36.88-35.87C195.5 12.95 165.9 0 130.55 0 79.76 0 34.06 29.66 21.34 79.65l41.06 31.9c10.56-31.57 40.06-54.28 74.82-54.28'/></svg>");
 }
+.informes-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap, 24px);
+}
 
+.informes-panel {
+  flex: 0 0 320px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
+.informes-select {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.informes-empty {
+  padding: 12px;
+  border: 1px dashed var(--color-border, #d0d0d0);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.informes-meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+
+.informes-meta strong {
+  margin-right: 4px;
+}
+
+.informes-display {
+  flex: 1 1 480px;
+  min-height: 400px;
+}
+
+.report-content {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  overflow: auto;
+}
+
+.report-content--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  font-size: 1rem;
+}
+
+.report-content h2,
+.report-content h3 {
+  margin-top: 0;
+}
+
+.report-content h3 {
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+  padding-bottom: 4px;
+}
+
+.report-content ul {
+  padding-left: 18px;
+}
+
+@media (max-width: 900px) {
+  .informes-panel,
+  .informes-display {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+.report-content--pdf {
+  padding: 0;
+  background: transparent;
+}
+
+.report-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4em 1.1em;
+  border-radius: 999px;
+  background: #007bff;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 24px rgba(0, 123, 255, 0.2);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.btn-pill:hover {
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0, 123, 255, 0.28);
+}
+
+.btn-pill:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.22);
+}

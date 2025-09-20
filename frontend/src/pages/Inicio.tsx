@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { raceReports } from '../data/raceReports';
 import { api } from '../api';
 
 function Inicio() {
   const [ultimosBlogs, setUltimosBlogs] = useState<Array<{ id: number; title: string }>>([]);
   const ultimoBlog = ultimosBlogs[0] || null;
+  const ultimoInforme = raceReports[0] || null;
 
   useEffect(() => {
     api
@@ -25,19 +27,26 @@ function Inicio() {
       <div className="contenedor-principal">
         <p>
           "Difundir y socializar el rendimiento deportivo para fortalecer y
-          cualificar la relación de la comunidad corredora con la práctica deportiva"
+          cualificar la relacion de la comunidad corredora con la practica deportiva"
         </p>
       </div>
       <div className="contenedor-secundario text-center">
-        <h3>Último análisis:</h3>
-        <img src="/img/logoMaratonCDMX2025.png" alt="Pace Social" width="320" loading="lazy" />
+        <h3>Informes de Carreras</h3>
+        <p className="muted">Consulta reportes listos para compartir con tu equipo.</p>
         <div className="mt-05">
-          <Link to="/analisis" className="link">Ir a análisis</Link>
+          <Link to="/informes" className="link">Ver informes</Link>
         </div>
+        {ultimoInforme && (
+          <div className="mt-05">
+            <Link to={`/informes?id=${ultimoInforme.id}`} className="btn-pill">
+              Ultimo informe: {ultimoInforme.title}
+            </Link>
+          </div>
+        )}
       </div>
       <div className="contenedor-terciario">
-        <h3>Último blog:</h3>
-        <h4>{ultimoBlog ? <Link className="link" to={`/blog?id=${ultimoBlog.id}`}>{ultimoBlog.title}</Link> : 'Aún no hay publicaciones'}</h4>
+        <h3>Ultimo blog:</h3>
+        <h4>{ultimoBlog ? <Link className="link" to={`/blog?id=${ultimoBlog.id}`}>{ultimoBlog.title}</Link> : 'Aun no hay publicaciones'}</h4>
         {ultimosBlogs.length > 1 && (
           <ul className="mt-05">
             {ultimosBlogs.slice(1).map((b) => (
@@ -56,4 +65,3 @@ function Inicio() {
 }
 
 export default Inicio;
-

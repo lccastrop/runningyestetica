@@ -609,6 +609,7 @@ select option {
 .report-content--pdf {
   padding: 0;
   background: transparent;
+  min-height: 70vh;
 }
 
 .report-frame {
@@ -641,4 +642,18 @@ select option {
 .btn-pill:active {
   transform: translateY(0);
   box-shadow: 0 6px 18px rgba(0, 123, 255, 0.22);
+}
+
+@media (max-width: 640px) {
+  .informes-display {
+    padding: 0;
+  }
+
+  .report-content--pdf {
+    min-height: calc(100vh - 140px);
+  }
+
+  .report-frame {
+    height: 100%;
+  }
 }

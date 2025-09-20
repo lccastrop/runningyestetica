@@ -103,8 +103,7 @@ function Informes() {
       <div className="contenedor-secundario informes-panel">
         <h2>Informes de Carreras</h2>
         <p className="muted">
-          Selecciona un informe para visualizarlo. Edita <code>src/data/raceReports.ts</code>
-          {' '}para agregar o actualizar informes y enlazar archivos PDF.
+          Selecciona un informe para visualizarlo
         </p>
 
         {hasReports ? (

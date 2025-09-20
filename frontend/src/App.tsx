@@ -73,6 +73,7 @@ function App() {
               )}
               <li><Link to="/informes">Informes Carreras</Link></li>
               <li><Link to="/blog">Blog</Link></li>
+              <li className="nav-donate"><a href="https://ko-fi.com/camilo92c" target="_blank" rel="noopener noreferrer" className="nav-donate__link">Apoyo &#9749;</a></li>
               <li><Link to="/contacto">Contacto</Link></li>
               {user ? (
                 <>

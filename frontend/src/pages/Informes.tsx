@@ -70,7 +70,7 @@ function Informes() {
               rel="noopener noreferrer"
               className="btn-pill btn-pill--compact"
             >
-              Pantalla Completa
+              Informe Completo
             </a>
           </div>
           <iframe

@@ -63,6 +63,16 @@ function Informes() {
     if (selectedReport.pdfSrc) {
       return (
         <div className="report-content report-content--pdf">
+          <div className="report-toolbar">
+            <a
+              href={selectedReport.pdfSrc}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-pill btn-pill--compact"
+            >
+              Pantalla Completa
+            </a>
+          </div>
           <iframe
             src={selectedReport.pdfSrc}
             title={`Informe ${selectedReport.title}`}
@@ -148,3 +158,4 @@ function Informes() {
 }
 
 export default Informes;
+

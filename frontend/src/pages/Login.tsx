@@ -5,6 +5,7 @@ import { api } from '../api';
 import { AuthContext } from '../AuthContext';
 import { auth, googleProvider } from '../firebaseConfig';
 import { signInWithPopup, signInWithRedirect, getRedirectResult } from 'firebase/auth';
+import type { User as FirebaseUser } from 'firebase/auth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -54,32 +55,26 @@ function Login() {
     }
   };
 
-  const isLikelyMobileWebview = () => {
-    const ua = (navigator.userAgent || '').toLowerCase();
-    return /fbav|fban|instagram|line\//.test(ua) ||
-      (/iphone|ipad|ipod/.test(ua) && /safari/.test(ua) && !/crios|fxios/.test(ua));
+  const completeGoogleLogin = async (firebaseUser: FirebaseUser) => {
+    const idToken = await firebaseUser.getIdToken();
+    const res = await api.post('/login-google', { idToken });
+    setUser(res.data.user);
+    setMensaje('Sesión iniciada con Google');
+    navigate('/');
   };
 
   const handleGoogle = async () => {
     try {
-      if (isLikelyMobileWebview()) {
-        await signInWithRedirect(auth, googleProvider);
-        return;
-      }
       const result = await signInWithPopup(auth, googleProvider);
-      const idToken = await result.user.getIdToken();
-      const res = await api.post('/login-google', { idToken });
-      setUser(res.data.user);
-      setMensaje('Sesión iniciada con Google');
-      navigate('/');
+      await completeGoogleLogin(result.user);
     } catch (error: any) {
       const code = error?.code || '';
       if (code.includes('popup') || code.includes('operation-not-supported')) {
         try {
           await signInWithRedirect(auth, googleProvider);
           return;
-        } catch (e) {
-          console.error('Redirect Google error:', e);
+        } catch (redirectError) {
+          console.error('Redirect Google error:', redirectError);
         }
       }
       console.error('Error con Google:', error);
@@ -95,11 +90,7 @@ function Login() {
       try {
         const result = await getRedirectResult(auth);
         if (result && result.user) {
-          const idToken = await result.user.getIdToken();
-          const res = await api.post('/login-google', { idToken });
-          setUser(res.data.user);
-          setMensaje('Sesión iniciada con Google');
-          navigate('/');
+          await completeGoogleLogin(result.user);
           return;
         }
       } catch (e) {

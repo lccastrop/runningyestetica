@@ -17,7 +17,7 @@ export const raceReports: RaceReport[] = [
     location: 'Berlin, Alemania',
     pdfSrc: '/reports/maraton_2024_09_berlin.pdf',
   },{
-    id: 'Elite maraton-berlin-2025',
+    id: 'maraton-berlin-2025-elite',
     title: 'Elite Maraton de Berlin 2025',
     summary: 'Datos del top 5 del Maraton de Berlin 2025 vs Kipchoge 2022.',
     eventDate: '21 septiembre 2025',

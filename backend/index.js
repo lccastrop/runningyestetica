@@ -838,6 +838,18 @@ app.get('/carreras', (req, res) => {
   });
 });
 
+app.get('/carrera-resultados/:id', requireAdmin, (req, res) => {
+  const carreraId = req.params.id;
+  const query = 'SELECT * FROM resultados WHERE carrera_id = ?';
+  db.query(query, [carreraId], (err, results) => {
+    if (err) {
+      console.error('Error obteniendo resultados de la carrera:', err);
+      return res.status(500).json({ error: 'Error al obtener resultados de la carrera' });
+    }
+    res.json(results);
+  });
+});
+
 app.get('/analisis-carrera/:id', requireAdmin, (req, res) => {
   const carreraId = req.params.id;
   const query = `

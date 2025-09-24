@@ -1,8 +1,9 @@
-import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+﻿import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import Inicio from './pages/Inicio';
 import Datos from './pages/Datos';
 import Analisis from './pages/Analisis';
+import CrearInforme from './pages/CrearInforme';
 import Informes from './pages/Informes';
 import Login from './pages/Login';
 import Blog from './pages/Blog';
@@ -28,6 +29,7 @@ function App() {
       '/': 'Inicio',
       '/datos': 'Subir Datos',
       '/analisis': 'Datos Carreras',
+      '/crear-informe': 'Crear Informe',
       '/informes': 'Informes Carreras',
       '/blog': 'Blog',
       '/contacto': 'Contacto',
@@ -69,6 +71,7 @@ function App() {
                 <>
                   <li><Link to="/datos">Subir Datos</Link></li>
                   <li><Link to="/analisis">Datos Carreras</Link></li>
+                  <li><Link to="/crear-informe">Crear Informe</Link></li>
                 </>
               )}
               <li><Link to="/informes">Informes Carreras</Link></li>
@@ -96,6 +99,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/datos" element={<RequireAdmin><Datos /></RequireAdmin>} />
           <Route path="/analisis" element={<RequireAdmin><Analisis /></RequireAdmin>} />
+          <Route path="/crear-informe" element={<RequireAdmin><CrearInforme /></RequireAdmin>} />
           <Route path="/informes" element={<Informes />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contacto" element={<Contacto />} />
@@ -113,5 +117,9 @@ function App() {
 }
 
 export default App;
+
+
+
+
 
 

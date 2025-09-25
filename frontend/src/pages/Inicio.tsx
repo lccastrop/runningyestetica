@@ -23,7 +23,7 @@ function Inicio() {
   return (
     <>
       <div className="contenedor-principal">
-        <p>
+        <p> 
           "Difundir y socializar el rendimiento deportivo para fortalecer y
           cualificar la relacion de la comunidad corredora con la practica deportiva"
         </p>

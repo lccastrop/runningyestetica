@@ -1,4 +1,4 @@
-﻿import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import Inicio from './pages/Inicio';
 import CrearInforme from './pages/CrearInforme';
@@ -7,6 +7,7 @@ import Blog from './pages/Blog';
 import Registro from './pages/Registro';
 import Perfil from './pages/Perfil';
 import Contacto from './pages/Contacto';
+import InformesCarreras from './pages/InformesCarreras';
 import { AuthContext } from './AuthContext';
 import RequireAdmin from './components/RequireAdmin';
 import RequireAuth from './components/RequireAuth';
@@ -25,6 +26,7 @@ function App() {
       '/': 'Inicio',
       '/crear-informe': 'Crear Informe',
       '/blog': 'Blog',
+      '/informes': 'Informes',
       '/contacto': 'Contacto',
       '/login': 'Login',
       '/perfil': 'Mi Perfil',
@@ -63,6 +65,7 @@ function App() {
               {user?.role === 'admin' && (
                 <li><Link to="/crear-informe">Crear Informe</Link></li>
               )}
+              <li><Link to="/informes">Informes</Link></li>
               <li><Link to="/blog">Blog</Link></li>
               <li className="nav-donate"><a href="https://ko-fi.com/camilo92c" target="_blank" rel="noopener noreferrer" className="nav-donate__link">Apoyo &#9749;</a></li>
               <li><Link to="/contacto">Contacto</Link></li>
@@ -86,6 +89,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/crear-informe" element={<RequireAdmin><CrearInforme /></RequireAdmin>} />
+          <Route path="/informes" element={<InformesCarreras />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/login" element={<Login />} />

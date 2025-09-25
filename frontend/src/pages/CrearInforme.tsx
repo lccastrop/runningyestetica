@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Papa from 'papaparse';
 import type { ChangeEvent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter } from 'recharts';
@@ -693,13 +693,37 @@ const CrearInforme = () => {
   const [distanceInput, setDistanceInput] = useState('');
   const [showDistancePrompt, setShowDistancePrompt] = useState(false);
   const [analysisRun, setAnalysisRun] = useState(false);
+  const [reportName, setReportName] = useState('');
+  const [analysisCollapsed, setAnalysisCollapsed] = useState(false);
+
+  // Cache de resultados del análisis para evitar recomputaciones y actividad posterior
+  type AnalysisCache = {
+    percentileRows: ReturnType<typeof computePercentilesByGender>;
+    paceDistributionRows: ReturnType<typeof computePaceDistribution>;
+    paceDistributionTotals: { label: string; F: number; M: number; X: number };
+    summaryStatsRows: ReturnType<typeof computeSummaryStats>;
+    genderSummaryStatsRows: ReturnType<typeof computeGenderSummaryStats>;
+    categoryStatsRows: ReturnType<typeof computeCategoryStats>;
+    genderSummaryStatsByCategory: Record<string, ReturnType<typeof computeGenderSummaryStats>>;
+    scatterDataByCategory: Record<string, { dataM: { x: number; y: number }[]; dataF: { x: number; y: number }[] }>;
+    scatterData: { x: number; y: number }[];
+    scatterDataGenero: { dataM: { x: number; y: number }[]; dataF: { x: number; y: number }[] };
+  } | null;
+  const [analysisDataCache, setAnalysisDataCache] = useState<AnalysisCache>(null);
 
   const percentileRows = useMemo(() => {
+    if (analysisDataCache?.percentileRows) return analysisDataCache.percentileRows;
     if (!analysisRun) return [];
     return computePercentilesByGender(normalizedData);
-  }, [normalizedData, analysisRun]);
+  }, [normalizedData, analysisRun, analysisDataCache]);
 
   const { paceDistributionRows, paceDistributionTotals } = useMemo(() => {
+    if (analysisDataCache?.paceDistributionRows && analysisDataCache?.paceDistributionTotals) {
+      return {
+        paceDistributionRows: analysisDataCache.paceDistributionRows,
+        paceDistributionTotals: analysisDataCache.paceDistributionTotals,
+      };
+    }
     if (!analysisRun) {
       const emptyRows = paceRanges.map(({ label }) => ({ label, F: 0, M: 0, X: 0 }));
       const emptyTotals = { label: 'Total', F: 0, M: 0, X: 0 };
@@ -714,24 +738,28 @@ const CrearInforme = () => {
       X: rows.reduce((sum, row) => sum + row.X, 0),
     };
     return { paceDistributionRows: rows, paceDistributionTotals: totals };
-  }, [normalizedData, analysisRun]);
+  }, [normalizedData, analysisRun, analysisDataCache]);
 
   const summaryStatsRows = useMemo(() => {
+    if (analysisDataCache?.summaryStatsRows) return analysisDataCache.summaryStatsRows;
     if (!analysisRun) return [];
     return computeSummaryStats(normalizedData);
-  }, [normalizedData, analysisRun]);
+  }, [normalizedData, analysisRun, analysisDataCache]);
 
   const genderSummaryStatsRows = useMemo(() => {
+    if (analysisDataCache?.genderSummaryStatsRows) return analysisDataCache.genderSummaryStatsRows;
     if (!analysisRun) return [];
     return computeGenderSummaryStats(normalizedData);
-  }, [normalizedData, analysisRun]);
+  }, [normalizedData, analysisRun, analysisDataCache]);
 
   const categoryStatsRows = useMemo(() => {
+    if (analysisDataCache?.categoryStatsRows) return analysisDataCache.categoryStatsRows;
     if (!analysisRun) return [];
     return computeCategoryStats(normalizedData);
-  }, [normalizedData, analysisRun]);
+  }, [normalizedData, analysisRun, analysisDataCache]);
 
   const genderSummaryStatsByCategory = useMemo(() => {
+    if (analysisDataCache?.genderSummaryStatsByCategory) return analysisDataCache.genderSummaryStatsByCategory;
     if (!analysisRun) return {};
     const analysisRecords = normalizedData.filter(isValidForAnalysis);
     const categories = [...new Set(analysisRecords.map(row => row.categoria))].sort();
@@ -744,9 +772,10 @@ const CrearInforme = () => {
     }
 
     return stats;
-  }, [normalizedData, analysisRun]);
+  }, [normalizedData, analysisRun, analysisDataCache]);
 
   const scatterDataByCategory = useMemo(() => {
+    if (analysisDataCache?.scatterDataByCategory) return analysisDataCache.scatterDataByCategory;
     if (!analysisRun) return {};
     const result: Record<string, { dataM: { x: number; y: number }[], dataF: { x: number; y: number }[] }> = {};
     const labelToKm: Record<string, number> = {
@@ -787,9 +816,10 @@ const CrearInforme = () => {
       };
     }
     return result;
-  }, [genderSummaryStatsByCategory, analysisRun]);
+  }, [genderSummaryStatsByCategory, analysisRun, analysisDataCache]);
 
   const scatterData = useMemo(() => {
+    if (analysisDataCache?.scatterData) return analysisDataCache.scatterData;
     if (!analysisRun) return [];
     const dataPoints: { x: number; y: number }[] = [];
     const labelToKm: Record<string, number> = {
@@ -825,9 +855,10 @@ const CrearInforme = () => {
     }
 
     return dataPoints.sort((a, b) => a.x - b.x);
-  }, [summaryStatsRows, analysisRun]);
+  }, [summaryStatsRows, analysisRun, analysisDataCache]);
 
   const scatterDataGenero = useMemo(() => {
+    if (analysisDataCache?.scatterDataGenero) return analysisDataCache.scatterDataGenero;
     if (!analysisRun) return { dataM: [], dataF: [] };
     const dataM: { x: number; y: number }[] = [];
     const dataF: { x: number; y: number }[] = [];
@@ -875,7 +906,126 @@ const CrearInforme = () => {
     }
 
     return { dataM: dataM.sort((a, b) => a.x - b.x), dataF: dataF.sort((a, b) => a.x - b.x) };
-  }, [genderSummaryStatsRows, analysisRun]);
+  }, [genderSummaryStatsRows, analysisRun, analysisDataCache]);
+
+  // Computa el análisis una sola vez cuando se solicita y congela los resultados en cache
+  useEffect(() => {
+    if (!analysisRun) return;
+    if (normalizedData.length === 0) return;
+
+    const analysisRecords = normalizedData.filter(isValidForAnalysis);
+
+    const percentileRowsOnce = computePercentilesByGender(normalizedData);
+
+    const paceRowsOnce = computePaceDistribution(analysisRecords);
+    const paceTotalsOnce = {
+      label: 'Total',
+      F: paceRowsOnce.reduce((sum, r) => sum + r.F, 0),
+      M: paceRowsOnce.reduce((sum, r) => sum + r.M, 0),
+      X: paceRowsOnce.reduce((sum, r) => sum + r.X, 0),
+    };
+
+    const summaryStatsOnce = computeSummaryStats(normalizedData);
+    const genderSummaryOnce = computeGenderSummaryStats(normalizedData);
+    const categoryStatsOnce = computeCategoryStats(normalizedData);
+
+    const categories = [...new Set(analysisRecords.map(row => row.categoria))].sort();
+    const genderSummaryByCatOnce: Record<string, ReturnType<typeof computeGenderSummaryStats>> = {};
+    for (const category of categories) {
+      if (!category) continue;
+      const categoryData = analysisRecords.filter(row => row.categoria === category);
+      genderSummaryByCatOnce[category] = computeGenderSummaryStats(categoryData);
+    }
+
+    const labelToKm: Record<string, number> = {
+      'split 5K': 5, 'split 10K': 10, 'split 15K': 15, 'split 20K': 20,
+      'split 21K': 21, 'split 25K': 25, 'split 30K': 30, 'split 35K': 35,
+      'split 40K': 40, 'split 42K': 42.195,
+    };
+
+    const scatterByCatOnce: Record<string, { dataM: { x: number; y: number }[]; dataF: { x: number; y: number }[] }> = {};
+    for (const category in genderSummaryByCatOnce) {
+      const rows = genderSummaryByCatOnce[category];
+      const dataM: { x: number; y: number }[] = [];
+      const dataF: { x: number; y: number }[] = [];
+      let yForKm5M: number | null = null;
+      let yForKm5F: number | null = null;
+      rows.forEach(row => {
+        const km = labelToKm[row.label];
+        if (km) {
+          const paceSecondsM = parseDurationToSeconds(row.avgPaceM);
+          if (paceSecondsM !== null) {
+            dataM.push({ x: km, y: paceSecondsM });
+            if (km === 5) yForKm5M = paceSecondsM;
+          }
+          const paceSecondsF = parseDurationToSeconds(row.avgPaceF);
+          if (paceSecondsF !== null) {
+            dataF.push({ x: km, y: paceSecondsF });
+            if (km === 5) yForKm5F = paceSecondsF;
+          }
+        }
+      });
+      if (yForKm5M !== null) dataM.push({ x: 0, y: yForKm5M });
+      if (yForKm5F !== null) dataF.push({ x: 0, y: yForKm5F });
+      scatterByCatOnce[category] = {
+        dataM: dataM.sort((a, b) => a.x - b.x),
+        dataF: dataF.sort((a, b) => a.x - b.x),
+      };
+    }
+
+    const scatterOnce: { x: number; y: number }[] = [];
+    let yForKm5: number | null = null;
+    summaryStatsOnce.forEach(row => {
+      const km = labelToKm[row.label];
+      if (km) {
+        const paceSeconds = parseDurationToSeconds(row.avgPace);
+        if (paceSeconds !== null) {
+          scatterOnce.push({ x: km, y: paceSeconds });
+          if (km === 5) yForKm5 = paceSeconds;
+        }
+      }
+    });
+    if (yForKm5 !== null) scatterOnce.push({ x: 0, y: yForKm5 });
+    scatterOnce.sort((a, b) => a.x - b.x);
+
+    const scatterGeneroOnce = { dataM: [] as { x: number; y: number }[], dataF: [] as { x: number; y: number }[] };
+    let yKm5M: number | null = null;
+    let yKm5F: number | null = null;
+    genderSummaryOnce.forEach(row => {
+      const km = labelToKm[row.label];
+      if (km) {
+        const paceSecondsM = parseDurationToSeconds(row.avgPaceM);
+        if (paceSecondsM !== null) {
+          scatterGeneroOnce.dataM.push({ x: km, y: paceSecondsM });
+          if (km === 5) yKm5M = paceSecondsM;
+        }
+        const paceSecondsF = parseDurationToSeconds(row.avgPaceF);
+        if (paceSecondsF !== null) {
+          scatterGeneroOnce.dataF.push({ x: km, y: paceSecondsF });
+          if (km === 5) yKm5F = paceSecondsF;
+        }
+      }
+    });
+    if (yKm5M !== null) scatterGeneroOnce.dataM.push({ x: 0, y: yKm5M });
+    if (yKm5F !== null) scatterGeneroOnce.dataF.push({ x: 0, y: yKm5F });
+    scatterGeneroOnce.dataM.sort((a, b) => a.x - b.x);
+    scatterGeneroOnce.dataF.sort((a, b) => a.x - b.x);
+
+    setAnalysisDataCache({
+      percentileRows: percentileRowsOnce,
+      paceDistributionRows: paceRowsOnce,
+      paceDistributionTotals: paceTotalsOnce,
+      summaryStatsRows: summaryStatsOnce,
+      genderSummaryStatsRows: genderSummaryOnce,
+      categoryStatsRows: categoryStatsOnce,
+      genderSummaryStatsByCategory: genderSummaryByCatOnce,
+      scatterDataByCategory: scatterByCatOnce,
+      scatterData: scatterOnce,
+      scatterDataGenero: scatterGeneroOnce,
+    });
+    // Colapsa la sección de análisis por defecto tras calcular
+    setAnalysisCollapsed(true);
+  }, [analysisRun, normalizedData]);
 
   const hasAnalysisData = analysisRun && normalizedData.length > 0;
 
@@ -888,6 +1038,7 @@ const CrearInforme = () => {
     setDistanceInput('');
     setShowDistancePrompt(!!file);
     setAnalysisRun(false);
+    setAnalysisDataCache(null);
     setStatusMessage(file ? `Archivo listo: ${file.name}` : '');
   };
 
@@ -991,6 +1142,53 @@ const CrearInforme = () => {
     }
   };
 
+  const handleSaveReport = () => {
+    if (!reportName.trim()) {
+      setStatusMessage('Por favor, dale un nombre al informe.');
+      return;
+    }
+    if (!hasAnalysisData) {
+      setStatusMessage('No hay datos analizados para guardar. Por favor, completa los pasos 1 y 2.');
+      return;
+    }
+
+    const reportData = {
+      percentileRows,
+      paceDistributionRows,
+      paceDistributionTotals,
+      summaryStatsRows,
+      genderSummaryStatsRows,
+      categoryStatsRows,
+      genderSummaryStatsByCategory,
+      scatterDataByCategory,
+      scatterData,
+      scatterDataGenero,
+    };
+
+    const newReport = {
+      id: `informe_${Date.now()}`,
+      name: reportName.trim(),
+      createdAt: new Date().toISOString(),
+      analysis: reportData,
+      metadata: {
+        fileName: selectedFile?.name,
+        distanceKm,
+        rowCount: normalizedData.length,
+      }
+    };
+
+    try {
+      const existingReportsJSON = localStorage.getItem('race_reports');
+      const existingReports = existingReportsJSON ? JSON.parse(existingReportsJSON) : [];
+      const updatedReports = [...existingReports, newReport];
+      localStorage.setItem('race_reports', JSON.stringify(updatedReports));
+      setStatusMessage(`Informe "${newReport.name}" guardado correctamente.`);
+    } catch (error) {
+      console.error('Error al guardar el informe en localStorage:', error);
+      setStatusMessage('Hubo un error al guardar el informe.');
+    }
+  };
+
   return (
     <div className="crear-informe">
       {sections.map((section) => (
@@ -1034,6 +1232,15 @@ const CrearInforme = () => {
                   Analizar
                 </button>
               </div>
+              {hasAnalysisData && (
+                <div className="mt-05">
+                  <button type="button" onClick={() => setAnalysisCollapsed((v) => !v)}>
+                    {analysisCollapsed ? 'Mostrar análisis' : 'Ocultar análisis'}
+                  </button>
+                </div>
+              )}
+              {!analysisCollapsed && (
+                <>
               <h3 className="mt-1">2.1 Analisis General</h3>
               <div className="crear-informe__analizar-bloque">
                 <h4>2.1.1 Distribucion de percentiles por Genero</h4>
@@ -1103,9 +1310,9 @@ const CrearInforme = () => {
                           <YAxis />
                           <Tooltip />
                           <Legend />
-                          <Bar dataKey="F" name="Femenino" fill="magenta" />
-                          <Bar dataKey="M" name="Masculino" fill="blue" />
-                          <Bar dataKey="X" name="X" fill="#ffc658" />
+                          <Bar dataKey="F" name="Femenino" fill="magenta" isAnimationActive={false} />
+                          <Bar dataKey="M" name="Masculino" fill="blue" isAnimationActive={false} />
+                          <Bar dataKey="X" name="X" fill="#ffc658" isAnimationActive={false} />
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
@@ -1160,7 +1367,7 @@ const CrearInforme = () => {
                             cursor={{ strokeDasharray: '3 3' }}
                             formatter={(value: number, name: string) => (name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value)}
                           />
-                          <Scatter name="Ritmo Medio por Split" data={scatterData} fill="blue" line />
+                          <Scatter name="Ritmo Medio por Split" data={scatterData} fill="blue" line isAnimationActive={false} />
                         </ScatterChart>
                       </ResponsiveContainer>
                     </div>
@@ -1224,8 +1431,8 @@ const CrearInforme = () => {
                             formatter={(value: number, name: string) => (name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value)}
                           />
                           <Legend />
-                          <Scatter name="Masculino" data={scatterDataGenero.dataM} fill="blue" line />
-                          <Scatter name="Femenino" data={scatterDataGenero.dataF} fill="magenta" line />
+                          <Scatter name="Masculino" data={scatterDataGenero.dataM} fill="blue" line isAnimationActive={false} />
+                          <Scatter name="Femenino" data={scatterDataGenero.dataF} fill="magenta" line isAnimationActive={false} />
                         </ScatterChart>
                       </ResponsiveContainer>
                     </div>
@@ -1276,8 +1483,8 @@ const CrearInforme = () => {
                           <YAxis />
                           <Tooltip />
                           <Legend />
-                          <Bar dataKey="countF" name="Femenino" stackId="a" fill="magenta" />
-                          <Bar dataKey="countM" name="Masculino" stackId="a" fill="blue" />
+                          <Bar dataKey="countF" name="Femenino" stackId="a" fill="magenta" isAnimationActive={false} />
+                          <Bar dataKey="countM" name="Masculino" stackId="a" fill="blue" isAnimationActive={false} />
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
@@ -1329,8 +1536,8 @@ const CrearInforme = () => {
                                   <YAxis type="number" dataKey="y" name="Ritmo Medio" tickFormatter={(tick) => formatSecondsToHHMMSS(tick)} reversed={true} />
                                   <Tooltip cursor={{ strokeDasharray: '3 3' }} formatter={(value: number, name: string) => (name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value)} />
                                   <Legend />
-                                  <Scatter name="Masculino" data={scatterDataByCategory[category]?.dataM} fill="blue" line />
-                                  <Scatter name="Femenino" data={scatterDataByCategory[category]?.dataF} fill="magenta" line />
+                                  <Scatter name="Masculino" data={scatterDataByCategory[category]?.dataM} fill="blue" line isAnimationActive={false} />
+                                  <Scatter name="Femenino" data={scatterDataByCategory[category]?.dataF} fill="magenta" line isAnimationActive={false} />
                                 </ScatterChart>
                               </ResponsiveContainer>
                             </div>
@@ -1346,6 +1553,26 @@ const CrearInforme = () => {
                 ) : (
                   <p>Normaliza y analiza un CSV para ver esta informacion.</p>
                 )}
+              </div>
+              </>
+              )}
+            </div>
+          )}
+          {section.id === 'guardar' && (
+            <div className="crear-informe__guardar">
+              <label className="mt-1">
+                <span>Nombre del Informe</span>
+                <input
+                  type="text"
+                  value={reportName}
+                  onChange={(e) => setReportName(e.target.value)}
+                  placeholder="Ej: Maratón de Berlín 2025"
+                />
+              </label>
+              <div className="mt-1">
+                <button type="button" onClick={handleSaveReport} disabled={!hasAnalysisData || !reportName}>
+                  Guardar Informe
+                </button>
               </div>
             </div>
           )}

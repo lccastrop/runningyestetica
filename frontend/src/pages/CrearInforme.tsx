@@ -356,6 +356,51 @@ function computeGenderSummaryStats(data: NormalizedRecord[]): GenderSummaryStatR
   return results;
 }
 
+type CategoryStatRow = {
+  categoria: string;
+  countM: number;
+  countF: number;
+  avgPaceM: string;
+  avgPaceF: string;
+};
+
+function computeCategoryStats(data: NormalizedRecord[]): CategoryStatRow[] {
+  const categories: Record<string, {
+    maleData: NormalizedRecord[],
+    femaleData: NormalizedRecord[]
+  }> = {};
+
+  data.forEach(row => {
+    const categoria = row.categoria || 'Sin categoría';
+    if (!categories[categoria]) {
+      categories[categoria] = { maleData: [], femaleData: [] };
+    }
+    if (row.genero === 'Masculino') {
+      categories[categoria].maleData.push(row);
+    } else if (row.genero === 'Femenino') {
+      categories[categoria].femaleData.push(row);
+    }
+  });
+
+  const results: CategoryStatRow[] = Object.entries(categories).map(([categoria, { maleData, femaleData }]) => {
+    const calculateAvgPace = (genderSubset: NormalizedRecord[]): string => {
+      if (genderSubset.length === 0) return ZERO_PACE;
+      const totalSeconds = genderSubset.reduce((sum, row) => sum + (parseDurationToSeconds(row['Ritmo Medio']) ?? 0), 0);
+      return formatSecondsToHHMMSS(totalSeconds / genderSubset.length);
+    };
+
+    return {
+      categoria,
+      countM: maleData.length,
+      countF: femaleData.length,
+      avgPaceM: calculateAvgPace(maleData),
+      avgPaceF: calculateAvgPace(femaleData),
+    };
+  });
+
+  return results.sort((a, b) => a.categoria.localeCompare(b.categoria));
+}
+
 
 function normalizeHeader(value: string): string {
   return value
@@ -569,6 +614,19 @@ function normalizeRow(
       return;
     }
 
+    if (column === 'categoria') {
+      let categoriaValue = value;
+      const normalizedCategoria = categoriaValue.toLowerCase().trim();
+
+      if (normalizedCategoria === 'h') {
+        categoriaValue = '20 a 29';
+      } else if (normalizedCategoria === 'ju20') {
+        categoriaValue = '18 a 19 años';
+      }
+      result.push(categoriaValue);
+      return;
+    }
+
     if (column === 'genero') {
       result.push(normalizeGenero(value));
       return;
@@ -654,6 +712,64 @@ const CrearInforme = () => {
 
   const genderSummaryStatsRows = useMemo(() => computeGenderSummaryStats(normalizedData), [normalizedData]);
 
+  const categoryStatsRows = useMemo(() => computeCategoryStats(normalizedData), [normalizedData]);
+
+  const genderSummaryStatsByCategory = useMemo(() => {
+    const analysisRecords = normalizedData.filter(isValidForAnalysis);
+    const categories = [...new Set(analysisRecords.map(row => row.categoria))].sort();
+    const stats: Record<string, GenderSummaryStatRow[]> = {};
+
+    for (const category of categories) {
+      if (!category) continue;
+      const categoryData = analysisRecords.filter(row => row.categoria === category);
+      stats[category] = computeGenderSummaryStats(categoryData);
+    }
+
+    return stats;
+  }, [normalizedData]);
+
+  const scatterDataByCategory = useMemo(() => {
+    const result: Record<string, { dataM: { x: number; y: number }[], dataF: { x: number; y: number }[] }> = {};
+    const labelToKm: Record<string, number> = {
+      'split 5K': 5, 'split 10K': 10, 'split 15K': 15, 'split 20K': 20,
+      'split 21K': 21, 'split 25K': 25, 'split 30K': 30, 'split 35K': 35,
+      'split 40K': 40, 'split 42K': 42.195,
+    };
+
+    for (const category in genderSummaryStatsByCategory) {
+      const rows = genderSummaryStatsByCategory[category];
+      const dataM: { x: number; y: number }[] = [];
+      const dataF: { x: number; y: number }[] = [];
+      let yForKm5M: number | null = null;
+      let yForKm5F: number | null = null;
+
+      rows.forEach(row => {
+        const km = labelToKm[row.label];
+        if (km) {
+          const paceSecondsM = parseDurationToSeconds(row.avgPaceM);
+          if (paceSecondsM !== null) {
+            dataM.push({ x: km, y: paceSecondsM });
+            if (km === 5) yForKm5M = paceSecondsM;
+          }
+          const paceSecondsF = parseDurationToSeconds(row.avgPaceF);
+          if (paceSecondsF !== null) {
+            dataF.push({ x: km, y: paceSecondsF });
+            if (km === 5) yForKm5F = paceSecondsF;
+          }
+        }
+      });
+
+      if (yForKm5M !== null) dataM.push({ x: 0, y: yForKm5M });
+      if (yForKm5F !== null) dataF.push({ x: 0, y: yForKm5F });
+
+      result[category] = {
+        dataM: dataM.sort((a, b) => a.x - b.x),
+        dataF: dataF.sort((a, b) => a.x - b.x),
+      };
+    }
+    return result;
+  }, [genderSummaryStatsByCategory]);
+
   const scatterData = useMemo(() => {
     const dataPoints: { x: number; y: number }[] = [];
     const labelToKm: Record<string, number> = {
@@ -690,6 +806,55 @@ const CrearInforme = () => {
 
     return dataPoints.sort((a, b) => a.x - b.x);
   }, [summaryStatsRows]);
+
+  const scatterDataGenero = useMemo(() => {
+    const dataM: { x: number; y: number }[] = [];
+    const dataF: { x: number; y: number }[] = [];
+    const labelToKm: Record<string, number> = {
+      'split 5K': 5,
+      'split 10K': 10,
+      'split 15K': 15,
+      'split 20K': 20,
+      'split 21K': 21,
+      'split 25K': 25,
+      'split 30K': 30,
+      'split 35K': 35,
+      'split 40K': 40,
+      'split 42K': 42.195,
+    };
+
+    let yForKm5M: number | null = null;
+    let yForKm5F: number | null = null;
+
+    genderSummaryStatsRows.forEach(row => {
+      const km = labelToKm[row.label];
+      if (km) {
+        const paceSecondsM = parseDurationToSeconds(row.avgPaceM);
+        if (paceSecondsM !== null) {
+          dataM.push({ x: km, y: paceSecondsM });
+          if (km === 5) {
+            yForKm5M = paceSecondsM;
+          }
+        }
+        const paceSecondsF = parseDurationToSeconds(row.avgPaceF);
+        if (paceSecondsF !== null) {
+          dataF.push({ x: km, y: paceSecondsF });
+          if (km === 5) {
+            yForKm5F = paceSecondsF;
+          }
+        }
+      }
+    });
+
+    if (yForKm5M !== null) {
+      dataM.push({ x: 0, y: yForKm5M });
+    }
+    if (yForKm5F !== null) {
+      dataF.push({ x: 0, y: yForKm5F });
+    }
+
+    return { dataM: dataM.sort((a, b) => a.x - b.x), dataF: dataF.sort((a, b) => a.x - b.x) };
+  }, [genderSummaryStatsRows]);
 
   const hasAnalysisData = normalizedData.length > 0;
 
@@ -901,8 +1066,8 @@ const CrearInforme = () => {
                           <YAxis />
                           <Tooltip />
                           <Legend />
-                          <Bar dataKey="F" name="Femenino" fill="#8884d8" />
-                          <Bar dataKey="M" name="Masculino" fill="#82ca9d" />
+                          <Bar dataKey="F" name="Femenino" fill="magenta" />
+                          <Bar dataKey="M" name="Masculino" fill="blue" />
                           <Bar dataKey="X" name="X" fill="#ffc658" />
                         </BarChart>
                       </ResponsiveContainer>
@@ -958,7 +1123,7 @@ const CrearInforme = () => {
                             cursor={{ strokeDasharray: '3 3' }}
                             formatter={(value: number, name: string) => (name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value)}
                           />
-                          <Scatter name="Ritmo Medio por Split" data={scatterData} fill="#8884d8" line />
+                          <Scatter name="Ritmo Medio por Split" data={scatterData} fill="blue" line />
                         </ScatterChart>
                       </ResponsiveContainer>
                     </div>
@@ -970,32 +1135,177 @@ const CrearInforme = () => {
               <div className="crear-informe__analizar-bloque">
                 <h4>2.1.4 Distribución por Splits General por género</h4>
                 {hasAnalysisData ? (
-                  <table className="tabla-percentiles">
-                    <thead>
-                      <tr>
-                        <th rowSpan={2}>Criterio</th>
-                        <th colSpan={2}>Total corredores/as</th>
-                        <th colSpan={2}>Ritmo Medio</th>
-                      </tr>
-                      <tr>
-                        <th>Masculino</th>
-                        <th>Femenino</th>
-                        <th>Masculino</th>
-                        <th>Femenino</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {genderSummaryStatsRows.map((row) => (
-                        <tr key={row.label}>
-                          <th scope="row">{row.label}</th>
-                          <td>{row.countM}</td>
-                          <td>{row.countF}</td>
-                          <td>{row.avgPaceM}</td>
-                          <td>{row.avgPaceF}</td>
+                  <>
+                    <table className="tabla-percentiles">
+                      <thead>
+                        <tr>
+                          <th rowSpan={2}>Criterio</th>
+                          <th colSpan={2}>Total corredores/as</th>
+                          <th colSpan={2}>Ritmo Medio</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                        <tr>
+                          <th>Masculino</th>
+                          <th>Femenino</th>
+                          <th>Masculino</th>
+                          <th>Femenino</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {genderSummaryStatsRows.map((row) => (
+                          <tr key={row.label}>
+                            <th scope="row">{row.label}</th>
+                            <td>{row.countM}</td>
+                            <td>{row.countF}</td>
+                            <td>{row.avgPaceM}</td>
+                            <td>{row.avgPaceF}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <div className="mt-2">
+                      <ResponsiveContainer width="100%" height={400}>
+                        <ScatterChart
+                          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                        >
+                          <CartesianGrid />
+                          <XAxis
+                            type="number"
+                            dataKey="x"
+                            name="kilómetro"
+                            unit="km"
+                            domain={['dataMin', 'dataMax']}
+                          />
+                          <YAxis
+                            type="number"
+                            dataKey="y"
+                            name="Ritmo Medio"
+                            tickFormatter={(tick) => formatSecondsToHHMMSS(tick)}
+                            reversed={true}
+                          />
+                          <Tooltip
+                            cursor={{ strokeDasharray: '3 3' }}
+                            formatter={(value: number, name: string) => (name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value)}
+                          />
+                          <Legend />
+                          <Scatter name="Masculino" data={scatterDataGenero.dataM} fill="blue" line />
+                          <Scatter name="Femenino" data={scatterDataGenero.dataF} fill="magenta" line />
+                        </ScatterChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </>
+                ) : (
+                  <p>Normaliza un CSV para ver esta informacion.</p>
+                )}
+              </div>
+              <div className="crear-informe__analizar-bloque">
+                <h3>2.2 Análisis Categorías</h3>
+                <h4>2.2.1 Distribución de Corredores y Ritmos Medios por categoría</h4>
+                {hasAnalysisData ? (
+                  <>
+                    <table className="tabla-percentiles">
+                      <thead>
+                        <tr>
+                          <th rowSpan={2}>Categoría</th>
+                          <th colSpan={2}>Total corredores/as</th>
+                          <th colSpan={2}>Ritmo Medio</th>
+                        </tr>
+                        <tr>
+                          <th>Masculino</th>
+                          <th>Femenino</th>
+                          <th>Masculino</th>
+                          <th>Femenino</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {categoryStatsRows.map((row) => (
+                          <tr key={row.categoria}>
+                            <th scope="row">{row.categoria}</th>
+                            <td>{row.countM}</td>
+                            <td>{row.countF}</td>
+                            <td>{row.avgPaceM}</td>
+                            <td>{row.avgPaceF}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <div className="mt-2">
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart
+                          data={categoryStatsRows}
+                          margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="categoria" angle={-45} textAnchor="end" interval={0} />
+                          <YAxis />
+                          <Tooltip />
+                          <Legend />
+                          <Bar dataKey="countF" name="Femenino" stackId="a" fill="magenta" />
+                          <Bar dataKey="countM" name="Masculino" stackId="a" fill="blue" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </>
+                ) : (
+                  <p>Normaliza un CSV para ver esta informacion.</p>
+                )}
+              </div>
+              <div className="crear-informe__analizar-bloque">
+                <h3>2.2.2 Distribución por Splits por categoría y género</h3>
+                {hasAnalysisData ? (
+                  Object.entries(genderSummaryStatsByCategory).length > 0 ? (
+                    Object.entries(genderSummaryStatsByCategory).map(([category, rows]) => (
+                      <div key={category} className="mt-2">
+                        <h4>{category}</h4>
+                        {rows.length > 0 ? (
+                          <>
+                            <table className="tabla-percentiles">
+                              <thead>
+                                <tr>
+                                  <th rowSpan={2}>Criterio</th>
+                                  <th colSpan={2}>Total corredores/as</th>
+                                  <th colSpan={2}>Ritmo Medio</th>
+                                </tr>
+                                <tr>
+                                  <th>Masculino</th>
+                                  <th>Femenino</th>
+                                  <th>Masculino</th>
+                                  <th>Femenino</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {rows.map((row) => (
+                                  <tr key={row.label}>
+                                    <th scope="row">{row.label}</th>
+                                    <td>{row.countM}</td>
+                                    <td>{row.countF}</td>
+                                    <td>{row.avgPaceM}</td>
+                                    <td>{row.avgPaceF}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                            <div className="mt-2">
+                              <ResponsiveContainer width="100%" height={400}>
+                                <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                                  <CartesianGrid />
+                                  <XAxis type="number" dataKey="x" name="kilómetro" unit="km" domain={['dataMin', 'dataMax']} />
+                                  <YAxis type="number" dataKey="y" name="Ritmo Medio" tickFormatter={(tick) => formatSecondsToHHMMSS(tick)} reversed={true} />
+                                  <Tooltip cursor={{ strokeDasharray: '3 3' }} formatter={(value: number, name: string) => (name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value)} />
+                                  <Legend />
+                                  <Scatter name="Masculino" data={scatterDataByCategory[category]?.dataM} fill="blue" line />
+                                  <Scatter name="Femenino" data={scatterDataByCategory[category]?.dataF} fill="magenta" line />
+                                </ScatterChart>
+                              </ResponsiveContainer>
+                            </div>
+                          </>
+                        ) : (
+                          <p>No hay suficientes datos en esta categoría para generar el informe.</p>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    <p>No se encontraron datos de categorías para analizar.</p>
+                  )
                 ) : (
                   <p>Normaliza un CSV para ver esta informacion.</p>
                 )}

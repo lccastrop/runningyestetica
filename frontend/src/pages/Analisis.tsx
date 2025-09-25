@@ -127,6 +127,7 @@ function Analisis() {
       ]);
 
       const rawData = resRaw.data;
+      console.log("rawData", rawData);
 
       setResultados(resGeneral.data);
       setCategorias(resCategorias.data);
@@ -221,6 +222,7 @@ function Analisis() {
       
       setDistribucionSplits(calculos);
       setDistribucionSplitsGenero(calculosGenero);
+      console.log("distribucionSplitsGenero", calculosGenero);
 
     } catch (error) {
       console.error('Error en análisis:', error);
@@ -255,6 +257,7 @@ function Analisis() {
     if (dataF.length > 0) {
       dataF.unshift({ x: 0, y: dataF[0].y });
     }
+    console.log("scatterDataGenero", { dataM, dataF });
     return { dataM, dataF };
   }, [distribucionSplitsGenero]);
 

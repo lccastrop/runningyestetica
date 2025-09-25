@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react';
-import type { FormEvent } from 'react';
 import Papa from 'papaparse';
 import type { ChangeEvent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter } from 'recharts';
@@ -693,28 +692,47 @@ const CrearInforme = () => {
   const [distanceKm, setDistanceKm] = useState(0);
   const [distanceInput, setDistanceInput] = useState('');
   const [showDistancePrompt, setShowDistancePrompt] = useState(false);
+  const [analysisRun, setAnalysisRun] = useState(false);
 
-  const percentileRows = useMemo(() => computePercentilesByGender(normalizedData), [normalizedData]);
+  const percentileRows = useMemo(() => {
+    if (!analysisRun) return [];
+    return computePercentilesByGender(normalizedData);
+  }, [normalizedData, analysisRun]);
 
   const { paceDistributionRows, paceDistributionTotals } = useMemo(() => {
+    if (!analysisRun) {
+      const emptyRows = paceRanges.map(({ label }) => ({ label, F: 0, M: 0, X: 0 }));
+      const emptyTotals = { label: 'Total', F: 0, M: 0, X: 0 };
+      return { paceDistributionRows: emptyRows, paceDistributionTotals: emptyTotals };
+    }
     const analysisRecords = normalizedData.filter(isValidForAnalysis);
     const rows = computePaceDistribution(analysisRecords);
     const totals: PaceDistributionRow = {
-        label: 'Total',
-        F: rows.reduce((sum, row) => sum + row.F, 0),
-        M: rows.reduce((sum, row) => sum + row.M, 0),
-        X: rows.reduce((sum, row) => sum + row.X, 0),
+      label: 'Total',
+      F: rows.reduce((sum, row) => sum + row.F, 0),
+      M: rows.reduce((sum, row) => sum + row.M, 0),
+      X: rows.reduce((sum, row) => sum + row.X, 0),
     };
     return { paceDistributionRows: rows, paceDistributionTotals: totals };
-  }, [normalizedData]);
+  }, [normalizedData, analysisRun]);
 
-  const summaryStatsRows = useMemo(() => computeSummaryStats(normalizedData), [normalizedData]);
+  const summaryStatsRows = useMemo(() => {
+    if (!analysisRun) return [];
+    return computeSummaryStats(normalizedData);
+  }, [normalizedData, analysisRun]);
 
-  const genderSummaryStatsRows = useMemo(() => computeGenderSummaryStats(normalizedData), [normalizedData]);
+  const genderSummaryStatsRows = useMemo(() => {
+    if (!analysisRun) return [];
+    return computeGenderSummaryStats(normalizedData);
+  }, [normalizedData, analysisRun]);
 
-  const categoryStatsRows = useMemo(() => computeCategoryStats(normalizedData), [normalizedData]);
+  const categoryStatsRows = useMemo(() => {
+    if (!analysisRun) return [];
+    return computeCategoryStats(normalizedData);
+  }, [normalizedData, analysisRun]);
 
   const genderSummaryStatsByCategory = useMemo(() => {
+    if (!analysisRun) return {};
     const analysisRecords = normalizedData.filter(isValidForAnalysis);
     const categories = [...new Set(analysisRecords.map(row => row.categoria))].sort();
     const stats: Record<string, GenderSummaryStatRow[]> = {};
@@ -726,9 +744,10 @@ const CrearInforme = () => {
     }
 
     return stats;
-  }, [normalizedData]);
+  }, [normalizedData, analysisRun]);
 
   const scatterDataByCategory = useMemo(() => {
+    if (!analysisRun) return {};
     const result: Record<string, { dataM: { x: number; y: number }[], dataF: { x: number; y: number }[] }> = {};
     const labelToKm: Record<string, number> = {
       'split 5K': 5, 'split 10K': 10, 'split 15K': 15, 'split 20K': 20,
@@ -768,9 +787,10 @@ const CrearInforme = () => {
       };
     }
     return result;
-  }, [genderSummaryStatsByCategory]);
+  }, [genderSummaryStatsByCategory, analysisRun]);
 
   const scatterData = useMemo(() => {
+    if (!analysisRun) return [];
     const dataPoints: { x: number; y: number }[] = [];
     const labelToKm: Record<string, number> = {
       'split 5K': 5,
@@ -805,9 +825,10 @@ const CrearInforme = () => {
     }
 
     return dataPoints.sort((a, b) => a.x - b.x);
-  }, [summaryStatsRows]);
+  }, [summaryStatsRows, analysisRun]);
 
   const scatterDataGenero = useMemo(() => {
+    if (!analysisRun) return { dataM: [], dataF: [] };
     const dataM: { x: number; y: number }[] = [];
     const dataF: { x: number; y: number }[] = [];
     const labelToKm: Record<string, number> = {
@@ -854,9 +875,9 @@ const CrearInforme = () => {
     }
 
     return { dataM: dataM.sort((a, b) => a.x - b.x), dataF: dataF.sort((a, b) => a.x - b.x) };
-  }, [genderSummaryStatsRows]);
+  }, [genderSummaryStatsRows, analysisRun]);
 
-  const hasAnalysisData = normalizedData.length > 0;
+  const hasAnalysisData = analysisRun && normalizedData.length > 0;
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] ?? null;
@@ -866,6 +887,7 @@ const CrearInforme = () => {
     setDistanceKm(0);
     setDistanceInput('');
     setShowDistancePrompt(!!file);
+    setAnalysisRun(false);
     setStatusMessage(file ? `Archivo listo: ${file.name}` : '');
   };
 
@@ -899,6 +921,7 @@ const CrearInforme = () => {
     setStatusMessage('Normalizando datos...');
     setNormalizedCsv(null);
     setNormalizedData([]);
+    setAnalysisRun(false);
 
     try {
       const text = await selectedFile.text();
@@ -959,6 +982,15 @@ const CrearInforme = () => {
     URL.revokeObjectURL(url);
   };
 
+  const handleAnalyze = () => {
+    if (normalizedData.length > 0) {
+      setAnalysisRun(true);
+      setStatusMessage('Análisis completado.');
+    } else {
+      setStatusMessage('Normaliza los datos antes de analizar.');
+    }
+  };
+
   return (
     <div className="crear-informe">
       {sections.map((section) => (
@@ -997,7 +1029,12 @@ const CrearInforme = () => {
           )}
           {section.id === 'analizar' && (
             <div className="crear-informe__analizar">
-              <h3>2.1 Analisis General</h3>
+              <div className="mt-1">
+                <button type="button" onClick={handleAnalyze} disabled={!normalizedData.length || processing}>
+                  Analizar
+                </button>
+              </div>
+              <h3 className="mt-1">2.1 Analisis General</h3>
               <div className="crear-informe__analizar-bloque">
                 <h4>2.1.1 Distribucion de percentiles por Genero</h4>
                 {hasAnalysisData ? (
@@ -1020,7 +1057,7 @@ const CrearInforme = () => {
                     </tbody>
                   </table>
                 ) : (
-                  <p>Normaliza un CSV para ver esta informacion.</p>
+                  <p>Normaliza y analiza un CSV para ver esta informacion.</p>
                 )}
               </div>
               <div className="crear-informe__analizar-bloque">
@@ -1074,7 +1111,7 @@ const CrearInforme = () => {
                     </div>
                   </>
                 ) : (
-                  <p>Normaliza un CSV para ver esta informacion.</p>
+                  <p>Normaliza y analiza un CSV para ver esta informacion.</p>
                 )}
               </div>
               <div className="crear-informe__analizar-bloque">
@@ -1129,7 +1166,7 @@ const CrearInforme = () => {
                     </div>
                   </>
                 ) : (
-                  <p>Normaliza un CSV para ver esta informacion.</p>
+                  <p>Normaliza y analiza un CSV para ver esta informacion.</p>
                 )}
               </div>
               <div className="crear-informe__analizar-bloque">
@@ -1194,7 +1231,7 @@ const CrearInforme = () => {
                     </div>
                   </>
                 ) : (
-                  <p>Normaliza un CSV para ver esta informacion.</p>
+                  <p>Normaliza y analiza un CSV para ver esta informacion.</p>
                 )}
               </div>
               <div className="crear-informe__analizar-bloque">
@@ -1246,7 +1283,7 @@ const CrearInforme = () => {
                     </div>
                   </>
                 ) : (
-                  <p>Normaliza un CSV para ver esta informacion.</p>
+                  <p>Normaliza y analiza un CSV para ver esta informacion.</p>
                 )}
               </div>
               <div className="crear-informe__analizar-bloque">
@@ -1307,7 +1344,7 @@ const CrearInforme = () => {
                     <p>No se encontraron datos de categorías para analizar.</p>
                   )
                 ) : (
-                  <p>Normaliza un CSV para ver esta informacion.</p>
+                  <p>Normaliza y analiza un CSV para ver esta informacion.</p>
                 )}
               </div>
             </div>

@@ -1,10 +1,7 @@
 ﻿import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import Inicio from './pages/Inicio';
-import Datos from './pages/Datos';
-import Analisis from './pages/Analisis';
 import CrearInforme from './pages/CrearInforme';
-import Informes from './pages/Informes';
 import Login from './pages/Login';
 import Blog from './pages/Blog';
 import Registro from './pages/Registro';
@@ -21,16 +18,12 @@ function App() {
   const navigate = useNavigate();
   const [navOpen, setNavOpen] = useState(false);
 
-  // Dynamic document title per route
   const location = useLocation();
   useEffect(() => {
     const base = 'Pace Social';
     const titles: Record<string, string> = {
       '/': 'Inicio',
-      '/datos': 'Subir Datos',
-      '/analisis': 'Datos Carreras',
       '/crear-informe': 'Crear Informe',
-      '/informes': 'Informes Carreras',
       '/blog': 'Blog',
       '/contacto': 'Contacto',
       '/login': 'Login',
@@ -68,13 +61,8 @@ function App() {
             <ul className="nav-list" onClick={() => setNavOpen(false)}>
               <li><Link to="/">Inicio</Link></li>
               {user?.role === 'admin' && (
-                <>
-                  <li><Link to="/datos">Subir Datos</Link></li>
-                  <li><Link to="/analisis">Datos Carreras</Link></li>
-                  <li><Link to="/crear-informe">Crear Informe</Link></li>
-                </>
+                <li><Link to="/crear-informe">Crear Informe</Link></li>
               )}
-              <li><Link to="/informes">Informes Carreras</Link></li>
               <li><Link to="/blog">Blog</Link></li>
               <li className="nav-donate"><a href="https://ko-fi.com/camilo92c" target="_blank" rel="noopener noreferrer" className="nav-donate__link">Apoyo &#9749;</a></li>
               <li><Link to="/contacto">Contacto</Link></li>
@@ -97,10 +85,7 @@ function App() {
       <main className="contenedor-principal">
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/datos" element={<RequireAdmin><Datos /></RequireAdmin>} />
-          <Route path="/analisis" element={<RequireAdmin><Analisis /></RequireAdmin>} />
           <Route path="/crear-informe" element={<RequireAdmin><CrearInforme /></RequireAdmin>} />
-          <Route path="/informes" element={<Informes />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/login" element={<Login />} />
@@ -117,9 +102,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-

@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Crear Informe 1.1"
+git commit -m "Eliminados datos, analisis y se mantiene sesión"
 git push -u origin main
 
 Forzar un commit anterior

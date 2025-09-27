@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Crear Informe e Informe Funcionando"
+git commit -m "Correcciones Vercel"
 git push -u origin main
 
 Forzar un commit anterior

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import Papa from 'papaparse';
+import { api } from '../api';
 import type { ChangeEvent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter } from 'recharts';
 
@@ -687,6 +688,7 @@ const CrearInforme = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [statusMessage, setStatusMessage] = useState('');
   const [processing, setProcessing] = useState(false);
+  const [savingReport, setSavingReport] = useState(false);
   const [normalizedCsv, setNormalizedCsv] = useState<string | null>(null);
   const [normalizedData, setNormalizedData] = useState<NormalizedRecord[]>([]);
   const [distanceKm, setDistanceKm] = useState(0);
@@ -1142,7 +1144,10 @@ const CrearInforme = () => {
     }
   };
 
-  const handleSaveReport = () => {
+  const handleSaveReport = async () => {
+    if (savingReport) {
+      return;
+    }
     if (!reportName.trim()) {
       setStatusMessage('Por favor, dale un nombre al informe.');
       return;
@@ -1152,6 +1157,7 @@ const CrearInforme = () => {
       return;
     }
 
+    const trimmedName = reportName.trim();
     const reportData = {
       percentileRows,
       paceDistributionRows,
@@ -1165,27 +1171,26 @@ const CrearInforme = () => {
       scatterDataGenero,
     };
 
-    const newReport = {
-      id: `informe_${Date.now()}`,
-      name: reportName.trim(),
-      createdAt: new Date().toISOString(),
-      analysis: reportData,
-      metadata: {
-        fileName: selectedFile?.name,
-        distanceKm,
-        rowCount: normalizedData.length,
-      }
-    };
+    setSavingReport(true);
+    setStatusMessage('Guardando informe...');
 
     try {
-      const existingReportsJSON = localStorage.getItem('race_reports');
-      const existingReports = existingReportsJSON ? JSON.parse(existingReportsJSON) : [];
-      const updatedReports = [...existingReports, newReport];
-      localStorage.setItem('race_reports', JSON.stringify(updatedReports));
-      setStatusMessage(`Informe "${newReport.name}" guardado correctamente.`);
+      const response = await api.post('/informes', {
+        nombre: trimmedName,
+        analysis: reportData,
+        metadata: {
+          fileName: selectedFile?.name ?? null,
+          distanceKm,
+          rowCount: normalizedData.length,
+        },
+      });
+      const savedName = typeof response?.data?.nombre === 'string' ? response.data.nombre : trimmedName;
+      setStatusMessage(`Informe "${savedName}" guardado correctamente.`);
     } catch (error) {
-      console.error('Error al guardar el informe en localStorage:', error);
+      console.error('Error al guardar el informe:', error);
       setStatusMessage('Hubo un error al guardar el informe.');
+    } finally {
+      setSavingReport(false);
     }
   };
 
@@ -1570,8 +1575,8 @@ const CrearInforme = () => {
                 />
               </label>
               <div className="mt-1">
-                <button type="button" onClick={handleSaveReport} disabled={!hasAnalysisData || !reportName}>
-                  Guardar Informe
+                <button type="button" onClick={handleSaveReport} disabled={!hasAnalysisData || !reportName || savingReport}>
+                  {savingReport ? 'Guardando...' : 'Guardar Informe'}
                 </button>
               </div>
             </div>

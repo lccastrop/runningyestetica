@@ -94,6 +94,19 @@ connection.connect(async (err) => {
       `,
     },
     {
+      name: 'informes_carreras',
+      sql: `
+        CREATE TABLE IF NOT EXISTS informes_carreras (
+          id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          public_id VARCHAR(64) NOT NULL UNIQUE,
+          nombre VARCHAR(255) NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          metadata_json LONGTEXT NULL,
+          analysis_json LONGTEXT NOT NULL
+        )
+      `,
+    },
+    {
       name: 'series',
       sql: `
         CREATE TABLE IF NOT EXISTS series (

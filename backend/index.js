@@ -196,6 +196,21 @@ function requireAdmin(req, res, next) {
   next();
 }
 
+const generateInformePublicId = () => {
+  if (typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return `informe_${Date.now()}_${crypto.randomBytes(6).toString('hex')}`;
+};
+
+function safeParseJson(value, fallback = null) {
+  try {
+    return value ? JSON.parse(value) : fallback;
+  } catch (_) {
+    return fallback;
+  }
+}
+
 // Root
 app.get('/', (req, res) => {
   res.send('API de running funcionando');
@@ -348,6 +363,102 @@ app.post('/logout', (req, res) => {
       secure: isProd,
     });
     res.json({ message: 'Sesión cerrada' });
+  });
+});
+
+// Informes
+app.get('/informes', (req, res) => {
+  const query = `
+    SELECT public_id AS id, nombre, created_at AS fecha
+    FROM informes_carreras
+    ORDER BY created_at DESC
+  `;
+  db.query(query, (err, rows) => {
+    if (err) {
+      console.error('Error al obtener informes:', err);
+      return res.status(500).json({ error: 'Error al obtener informes' });
+    }
+    const data = rows.map((row) => ({
+      id: row.id,
+      nombre: row.nombre,
+      fecha: row.fecha ? new Date(row.fecha).toISOString() : new Date().toISOString(),
+    }));
+    res.json(data);
+  });
+});
+
+app.post('/informes', requireAdmin, (req, res) => {
+  const { nombre, analysis, metadata } = req.body || {};
+  const trimmedName = typeof nombre === 'string' ? nombre.trim() : '';
+  if (!trimmedName) {
+    return res.status(400).json({ error: 'Nombre de informe requerido' });
+  }
+  if (analysis === undefined) {
+    return res.status(400).json({ error: 'Datos de análisis requeridos' });
+  }
+
+  let analysisJson;
+  try {
+    analysisJson = JSON.stringify(analysis);
+  } catch (e) {
+    console.error('Error serializando análisis de informe:', e);
+    return res.status(400).json({ error: 'Análisis inválido' });
+  }
+
+  let metadataJson = null;
+  if (metadata !== undefined) {
+    try {
+      metadataJson = JSON.stringify(metadata);
+    } catch (e) {
+      console.error('Error serializando metadata de informe:', e);
+      return res.status(400).json({ error: 'Metadatos inválidos' });
+    }
+  }
+
+  const publicId = generateInformePublicId();
+  const createdAt = new Date();
+  const query = `
+    INSERT INTO informes_carreras (public_id, nombre, created_at, metadata_json, analysis_json)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+  db.query(query, [publicId, trimmedName, createdAt, metadataJson, analysisJson], (err) => {
+    if (err) {
+      console.error('Error al guardar informe de carrera:', err);
+      return res.status(500).json({ error: 'Error al guardar informe' });
+    }
+    res.status(201).json({
+      id: publicId,
+      nombre: trimmedName,
+      fecha: createdAt.toISOString(),
+      metadata: metadata ?? null,
+    });
+  });
+});
+
+app.get('/informes/:id', (req, res) => {
+  const { id } = req.params;
+  const query = `
+    SELECT public_id AS id, nombre, created_at AS fecha, metadata_json, analysis_json
+    FROM informes_carreras
+    WHERE public_id = ?
+    LIMIT 1
+  `;
+  db.query(query, [id], (err, rows) => {
+    if (err) {
+      console.error('Error al obtener informe de carrera:', err);
+      return res.status(500).json({ error: 'Error al obtener informe' });
+    }
+    if (!rows || rows.length === 0) {
+      return res.status(404).json({ error: 'Informe no encontrado' });
+    }
+    const row = rows[0];
+    res.json({
+      id: row.id,
+      nombre: row.nombre,
+      fecha: row.fecha ? new Date(row.fecha).toISOString() : new Date().toISOString(),
+      metadata: safeParseJson(row.metadata_json, null),
+      analysis: safeParseJson(row.analysis_json, null),
+    });
   });
 });
 

@@ -695,11 +695,12 @@ const InformesCarreras = () => {
       });
   }, [showExample, mockInforme]);
 
+  // Selecciona un informe por defecto solo si no hay uno seleccionado aún
   useEffect(() => {
-    if (!loading && !error && informes.length > 0) {
+    if (!loading && !error && informes.length > 0 && !selectedId) {
       const preferred =
         informes.find((i) => i.id !== mockInforme.id) ?? informes[0];
-      if (preferred && preferred.id !== selectedId) {
+      if (preferred) {
         setSelectedId(preferred.id);
       }
     }

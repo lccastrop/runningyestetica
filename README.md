@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Correcciones Analisis CSV maraton cdmx"
+git commit -m "Correcciones de select informes"
 git push -u origin main
 
 Forzar un commit anterior

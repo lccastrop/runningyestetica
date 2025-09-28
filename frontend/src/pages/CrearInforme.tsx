@@ -5,9 +5,9 @@ import type { ChangeEvent } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter } from 'recharts';
 
 const sections = [
-  { id: 'normalizar', title: 'Normalizar CSV' },
-  { id: 'analizar', title: 'Analizar CSV' },
-  { id: 'guardar', title: 'Guardar Informe' },
+  { id: 'normalizar', title: '1. Normalización CSV' },
+  { id: 'analizar', title: '2. Analizar CSV' },
+  { id: 'guardar', title: '3. Guardar Informe' },
 ] as const;
 
 const desiredColumns = [
@@ -523,6 +523,69 @@ function buildHeaderMatches(fields: string[] | undefined): Map<DesiredColumn, st
   return matches;
 }
 
+// Detecta categorías asociadas a discapacidad para excluirlas del dataset
+const disabilityCategoryPatterns: string[] = [
+  'discap',
+  'sillarueda',
+  'wheelchair',
+  'handcycle',
+  'handbike',
+  'paralimp',
+  'paralymp',
+  'paratri',
+  'paratlet',
+  'adaptive',
+  'pcd',
+  'invident',
+  'ciego',
+  'blind',
+  'visuallyimpaired',
+  'lowvision',
+  'amputad',
+  'amputee',
+  'sordo',
+  'deaf',
+  'paraplej',
+  'tetraplej',
+  'specialneeds',
+].map((s) => normalizeHeader(s));
+
+// Add additional wheelchair patterns (normalized) to be safer
+disabilityCategoryPatterns.push(
+  ...['silladerueda', 'silladeruedas'].map((s) => normalizeHeader(s)),
+);
+
+function isDisabilityCategory(value: unknown): boolean {
+  if (value === null || value === undefined) return false;
+  const text = typeof value === 'string' ? value : String(value);
+  const norm = normalizeHeader(text);
+  if (!norm) return false;
+  return disabilityCategoryPatterns.some((pat) => norm.includes(pat));
+}
+
+// Remove gender markers (varonil/femenil and synonyms) from category labels
+const genderTokensToStrip = new Set(
+  [
+    // masculine
+    'varonil', 'varon', 'varones', 'masculino', 'masculina', 'hombre', 'hombres', 'caballero', 'caballeros', 'male', 'man', 'men',
+    // feminine
+    'femenil', 'femenino', 'femenina', 'mujer', 'mujeres', 'dama', 'damas', 'female', 'woman', 'women',
+  ].map(normalizeHeader),
+);
+
+function unifyCategoryGenderless(value: string): string {
+  if (!value) return value;
+  const tokens = value.split(/\s+/);
+  const kept: string[] = [];
+  for (const tok of tokens) {
+    const normTok = normalizeHeader(tok);
+    if (!normTok) continue;
+    if (genderTokensToStrip.has(normTok)) continue;
+    kept.push(tok);
+  }
+  return kept.join(' ').replace(/\s{2,}/g, ' ').trim();
+}
+
 function normalizeGenero(value: unknown): 'Masculino' | 'Femenino' | 'X' {
   if (typeof value !== 'string') return 'X';
   const trimmed = value.trim();
@@ -581,6 +644,30 @@ function normalizeRow(
     }
   }
 
+  // 4. Backfill split_20km from split_21km if missing
+  const split20Raw = sanitizeHHMMSS(getRawValue('split_20km'));
+  const split21San = sanitizeHHMMSS(getRawValue('split_21km'));
+  let split20kmValue = split20Raw;
+  {
+    const s20 = parseDurationToSeconds(split20kmValue) ?? 0;
+    const s21 = parseDurationToSeconds(split21San) ?? 0;
+    if (s20 <= 0 && s21 > 0) {
+      split20kmValue = split21San;
+    }
+  }
+
+  // 5. Backfill RM_20km from RM_21km if missing
+  const rm20Raw = sanitizeHHMMSS(getRawValue('RM_20km'));
+  const rm21San = sanitizeHHMMSS(getRawValue('RM_21km'));
+  let rm20kmValue = rm20Raw;
+  {
+    const r20 = parseDurationToSeconds(rm20kmValue) ?? 0;
+    const r21 = parseDurationToSeconds(rm21San) ?? 0;
+    if (r20 <= 0 && r21 > 0) {
+      rm20kmValue = rm21San;
+    }
+  }
+
   let rangoValue = '-';
   const ritmoMedioSeconds = parseDurationToSeconds(ritmoMedioValue);
   if (ritmoMedioSeconds !== null) {
@@ -605,8 +692,16 @@ function normalizeRow(
       result.push(split42kmValue);
       return;
     }
+    if (column === 'split_20km') {
+      result.push(split20kmValue);
+      return;
+    }
     if (column === 'RM_42km') {
       result.push(rm42kmValue);
+      return;
+    }
+    if (column === 'RM_20km') {
+      result.push(rm20kmValue);
       return;
     }
     if (column === 'Rango') {
@@ -623,6 +718,7 @@ function normalizeRow(
       } else if (normalizedCategoria === 'ju20') {
         categoriaValue = '18 a 19 años';
       }
+      categoriaValue = unifyCategoryGenderless(categoriaValue);
       result.push(categoriaValue);
       return;
     }
@@ -763,13 +859,14 @@ const CrearInforme = () => {
   const genderSummaryStatsByCategory = useMemo(() => {
     if (analysisDataCache?.genderSummaryStatsByCategory) return analysisDataCache.genderSummaryStatsByCategory;
     if (!analysisRun) return {};
-    const analysisRecords = normalizedData.filter(isValidForAnalysis);
-    const categories = [...new Set(analysisRecords.map(row => row.categoria))].sort();
+    // Importante: no prefiltrar por todos los splits válidos aquí.
+    // computeGenderSummaryStats ya filtra progresivamente por cada RM_*
+    const categories = [...new Set(normalizedData.map(row => row.categoria))].sort();
     const stats: Record<string, GenderSummaryStatRow[]> = {};
 
     for (const category of categories) {
       if (!category) continue;
-      const categoryData = analysisRecords.filter(row => row.categoria === category);
+      const categoryData = normalizedData.filter(row => row.categoria === category);
       stats[category] = computeGenderSummaryStats(categoryData);
     }
 
@@ -931,11 +1028,12 @@ const CrearInforme = () => {
     const genderSummaryOnce = computeGenderSummaryStats(normalizedData);
     const categoryStatsOnce = computeCategoryStats(normalizedData);
 
-    const categories = [...new Set(analysisRecords.map(row => row.categoria))].sort();
+    // Para el desglose por categoría y género, no uses el filtro estricto de splits.
+    const categories = [...new Set(normalizedData.map(row => row.categoria))].sort();
     const genderSummaryByCatOnce: Record<string, ReturnType<typeof computeGenderSummaryStats>> = {};
     for (const category of categories) {
       if (!category) continue;
-      const categoryData = analysisRecords.filter(row => row.categoria === category);
+      const categoryData = normalizedData.filter(row => row.categoria === category);
       genderSummaryByCatOnce[category] = computeGenderSummaryStats(categoryData);
     }
 
@@ -1093,7 +1191,15 @@ const CrearInforme = () => {
 
       const headerMatches = buildHeaderMatches(parsed.meta.fields);
       const rows = filterMeaningfulRows(parsed.data);
-      const normalizedRows = rows.map((row) =>
+      // Excluir corredores de categorías asociadas a discapacidad
+      const filteredRows = rows.filter((row) => {
+        const categoriaHeader = headerMatches.get('categoria');
+        if (!categoriaHeader) return true;
+        const raw = (row as Record<string, unknown>)[categoriaHeader];
+        return !isDisabilityCategory(raw);
+      });
+
+      const normalizedRows = filteredRows.map((row) =>
         normalizeRow(row, headerMatches, distanceKm),
       );
       const normalizedRecords: NormalizedRecord[] = normalizedRows.map((values) => {

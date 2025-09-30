@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
+import type { ReactElement } from 'react';
 import {
   ResponsiveContainer,
   BarChart,
@@ -12,6 +13,7 @@ import {
   Scatter,
 } from 'recharts';
 import { api } from '../api';
+import { AuthContext } from '../AuthContext';
 
 type Informe = {
   id: string;
@@ -43,6 +45,7 @@ type InformeAnalysis = {
 type InformeDetalle = Informe & {
   metadata: InformeMetadata;
   analysis: InformeAnalysis;
+  comments?: Record<string, string>;
 };
 
 const formatSecondsToHHMMSS = (totalSeconds: number): string => {
@@ -191,6 +194,73 @@ const normalizeAnalysis = (raw: any): InformeAnalysis => {
 
 const emptySectionMessage = 'Este informe no contiene datos en esta sección.';
 
+type SectionNoteProps = {
+  sectionKey: string;
+  comments: Record<string, string>;
+  setComments: (next: Record<string, string>) => void;
+  canEdit: boolean;
+  onSave: (next: Record<string, string>) => Promise<void>;
+};
+
+const SectionNote = ({ sectionKey, comments, setComments, canEdit, onSave }: SectionNoteProps) => {
+  const [local, setLocal] = useState<string>(comments[sectionKey] || '');
+  const [saving, setSaving] = useState(false);
+  const [savedAt, setSavedAt] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLocal(comments[sectionKey] || '');
+  }, [comments, sectionKey]);
+
+  const handleSave = async () => {
+    setSaving(true);
+    setError(null);
+    const next = { ...comments, [sectionKey]: local.trim() };
+    try {
+      await onSave(next);
+      setComments(next);
+      setSavedAt(Date.now());
+    } catch (e) {
+      setError('No se pudo guardar');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const hasText = Boolean((comments[sectionKey] || '').trim());
+
+  if (!canEdit) {
+    return hasText ? <p className="muted mt-05">{comments[sectionKey]}</p> : null;
+  }
+
+  return (
+    <div className="mt-05">
+      <textarea
+        value={local}
+        onChange={(e) => setLocal(e.target.value)}
+        placeholder="Agregar comentario o aclaración para esta sección (visible para todos)"
+        rows={3}
+        style={{ width: '100%' }}
+      />
+      <div className="mt-025">
+        <button onClick={handleSave} disabled={saving}>
+          {saving ? 'Guardando...' : 'Guardar comentario'}
+        </button>
+        {savedAt && !saving && !error && (
+          <span className="muted" style={{ marginLeft: 8 }}>
+            Guardado
+          </span>
+        )}
+        {error && (
+          <span className="muted" style={{ marginLeft: 8, color: 'red' }}>
+            {error}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+};
+
 type InformeMetadataPanelProps = {
   metadata: InformeMetadata;
 };
@@ -228,9 +298,10 @@ const InformeMetadataPanel = ({ metadata }: InformeMetadataPanelProps) => {
 
 type InformeAnalysisViewProps = {
   analysis: InformeAnalysis;
+  Note: ({ sectionKey }: { sectionKey: string }) => ReactElement | null;
 };
 
-const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
+const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
   const {
     percentileRows,
     paceDistributionRows,
@@ -249,8 +320,10 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
   return (
     <div>
       <h3 className="mt-1">2.1 Analisis General</h3>
+      <Note sectionKey="sec_2_1" />
       <div className="mt-1">
         <h4>2.1.1 Distribucion de percentiles por Genero</h4>
+        <Note sectionKey="sec_2_1_1" />
         {percentileRows.length > 0 ? (
           <table className="table">
             <thead>
@@ -276,6 +349,7 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
       </div>
       <div className="mt-1">
         <h4>2.1.2 Distribucion de participantes por rangos de ritmo y genero</h4>
+        <Note sectionKey="sec_2_1_2" />
         {paceDistributionRows.length > 0 ? (
           <>
               <table className="table">
@@ -331,6 +405,7 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
       </div>
       <div className="mt-1">
         <h4>2.1.3 Resumen de Tiempos y Ritmos</h4>
+        <Note sectionKey="sec_2_1_3" />
         {summaryStatsRows.length > 0 ? (
           <>
             <div className="contenedor-principal mt-1">
@@ -396,6 +471,7 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
       </div>
       <div className="mt-1">
         <h4>2.1.4 Distribucion por Splits general por genero</h4>
+        <Note sectionKey="sec_2_1_4" />
         {genderSummaryStatsRows.length > 0 ? (
           <>
             <div className="contenedor-principal mt-1">
@@ -478,6 +554,8 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
       <div className="mt-1">
         <h3>2.2 Analisis Categorias</h3>
         <h4>2.2.1 Distribucion de Corredores y Ritmos Medios por categoria</h4>
+        <Note sectionKey="sec_2_2" />
+        <Note sectionKey="sec_2_2_1" />
         {categoryStatsRows.length > 0 ? (
           <>
             <div className="contenedor-principal mt-1">
@@ -543,16 +621,18 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
       </div>
       <div className="mt-1">
         <h3>2.2.2 Distribucion por Splits por categoria y genero</h3>
+        <Note sectionKey="sec_2_2_2" />
         {hasGenderByCategory ? (
           Object.entries(genderSummaryStatsByCategory).map(([category, rows]) => {
             const chartSeries = scatterDataByCategory[category] ?? { dataM: [], dataF: [] };
             const hasSeriesData =
               chartSeries.dataM.length > 0 || chartSeries.dataF.length > 0;
 
-            return (
-              <div key={category} className="mt-1">
-                <h4>{category}</h4>
-                {rows.length > 0 ? (
+              return (
+                <div key={category} className="mt-1">
+                  <h4>{category}</h4>
+                  <Note sectionKey={`sec_2_2_2__${category}`} />
+                  {rows.length > 0 ? (
                   <>
                     <div className="contenedor-principal mt-1">
                       <table className="table">
@@ -642,6 +722,7 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
 };
 
 const InformesCarreras = () => {
+  const { user } = useContext(AuthContext);
   const [informes, setInformes] = useState<Informe[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -650,6 +731,7 @@ const InformesCarreras = () => {
   const [detalle, setDetalle] = useState<InformeDetalle | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState<string | null>(null);
+  const [comments, setComments] = useState<Record<string, string>>({});
 
   const mockInforme: Informe = useMemo(
     () => ({
@@ -747,9 +829,11 @@ const InformesCarreras = () => {
           fecha,
           metadata: normalizeMetadata(data.metadata),
           analysis: normalizeAnalysis(data.analysis),
+          comments: (data.comments && typeof data.comments === 'object') ? data.comments : {},
         };
 
         setDetalle(normalizedDetail);
+        setComments(normalizedDetail.comments || {});
         setDetailLoading(false);
       })
       .catch((err) => {
@@ -768,6 +852,21 @@ const InformesCarreras = () => {
       setSelectedId(next.length > 0 ? next[0].id : null);
     }
   };
+
+  const saveComments = async (next: Record<string, string>) => {
+    if (!selectedId || selectedId === mockInforme.id) return;
+    await api.put(`/informes/${selectedId}/comments`, { comments: next });
+  };
+
+  const Note = ({ sectionKey }: { sectionKey: string }) => (
+    <SectionNote
+      sectionKey={sectionKey}
+      comments={comments}
+      setComments={setComments}
+      canEdit={Boolean(user && user.role === 'admin')}
+      onSave={saveComments}
+    />
+  );
 
   return (
     <div>
@@ -828,7 +927,7 @@ const InformesCarreras = () => {
                       {!detailLoading && !detailError && detalle && (
                         <>
                           <InformeMetadataPanel metadata={detalle.metadata} />
-                          <InformeAnalysisView analysis={detalle.analysis} />
+                          <InformeAnalysisView analysis={detalle.analysis} Note={Note} />
                         </>
                       )}
                     </div>

@@ -6,6 +6,11 @@ function Inicio() {
   const [ultimosBlogs, setUltimosBlogs] = useState<Array<{ id: number; title: string }>>([]);
   const ultimoBlog = ultimosBlogs[0] || null;
 
+  const [ultimosInformes, setUltimosInformes] = useState<
+    Array<{ id: string; nombre: string; fecha: string }>
+  >([]);
+  const ultimoInforme = ultimosInformes[0] || null;
+
   useEffect(() => {
     api
       .get('/blogs')
@@ -17,6 +22,33 @@ function Inicio() {
       })
       .catch(() => {
         setUltimosBlogs([]);
+      });
+  }, []);
+
+  useEffect(() => {
+    api
+      .get('/informes')
+      .then((res) => {
+        const list = Array.isArray(res.data) ? res.data : [];
+        const normalized = list
+          .map((item: any) => ({
+            id: String(item?.id ?? ''),
+            nombre:
+              typeof item?.nombre === 'string' ? item.nombre : 'Informe sin nombre',
+            fecha: item?.fecha
+              ? new Date(item.fecha).toISOString()
+              : new Date().toISOString(),
+          }))
+          .filter((i: any) => i.id.trim().length > 0)
+          .sort(
+            (a: any, b: any) =>
+              new Date(b.fecha).getTime() - new Date(a.fecha).getTime(),
+          )
+          .slice(0, 3);
+        setUltimosInformes(normalized);
+      })
+      .catch(() => {
+        setUltimosInformes([]);
       });
   }, []);
 
@@ -42,6 +74,22 @@ function Inicio() {
         )}
         <div className="mt-05">
           <Link to="/blog" className="link">Leer</Link>
+        </div>
+      </div>
+      <div className="contenedor-terciario">
+        <h3>Ultimo informe:</h3>
+        <h4>{ultimoInforme ? <Link className="link" to="/informes">{ultimoInforme.nombre}</Link> : 'Aun no hay informes'}</h4>
+        {ultimosInformes.length > 1 && (
+          <ul className="mt-05">
+            {ultimosInformes.slice(1).map((inf) => (
+              <li key={inf.id} className="fs-095 muted">
+                <Link className="link" to="/informes">{inf.nombre}</Link>
+              </li>
+            ))}
+          </ul>
+        )}
+        <div className="mt-05">
+          <Link to="/informes" className="link">Ver informes</Link>
         </div>
       </div>
     </>

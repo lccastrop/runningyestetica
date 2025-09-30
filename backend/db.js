@@ -102,7 +102,8 @@ connection.connect(async (err) => {
           nombre VARCHAR(255) NOT NULL,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           metadata_json LONGTEXT NULL,
-          analysis_json LONGTEXT NOT NULL
+          analysis_json LONGTEXT NOT NULL,
+          comments_json LONGTEXT NULL
         )
       `,
     },
@@ -243,6 +244,22 @@ connection.connect(async (err) => {
     console.log('Columnas adicionales listas en resultados');
   } catch (e) {
     console.error('Error al asegurar columnas en resultados:', e);
+  }
+
+  // Asegurar columna adicional en informes_carreras: comments_json
+  try {
+    const [exists] = await connection
+      .promise()
+      .query("SHOW COLUMNS FROM informes_carreras LIKE 'comments_json'");
+    if (exists.length === 0) {
+      await connection
+        .promise()
+        .query("ALTER TABLE informes_carreras ADD COLUMN comments_json LONGTEXT NULL AFTER analysis_json");
+      console.log('Columna comments_json añadida en informes_carreras');
+    }
+    console.log('Columna comments_json lista en informes_carreras');
+  } catch (e) {
+    console.error('Error al asegurar columna comments_json en informes_carreras:', e);
   }
 });
 

@@ -438,7 +438,7 @@ app.post('/informes', requireAdmin, (req, res) => {
 app.get('/informes/:id', (req, res) => {
   const { id } = req.params;
   const query = `
-    SELECT public_id AS id, nombre, created_at AS fecha, metadata_json, analysis_json
+    SELECT public_id AS id, nombre, created_at AS fecha, metadata_json, analysis_json, comments_json
     FROM informes_carreras
     WHERE public_id = ?
     LIMIT 1
@@ -458,7 +458,36 @@ app.get('/informes/:id', (req, res) => {
       fecha: row.fecha ? new Date(row.fecha).toISOString() : new Date().toISOString(),
       metadata: safeParseJson(row.metadata_json, null),
       analysis: safeParseJson(row.analysis_json, null),
+      comments: safeParseJson(row.comments_json, {}),
     });
+  });
+});
+
+// Actualizar comentarios de informe (solo admin)
+app.put('/informes/:id/comments', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  const { comments } = req.body || {};
+  if (comments !== undefined && typeof comments !== 'object') {
+    return res.status(400).json({ error: 'comments debe ser un objeto' });
+  }
+
+  let commentsJson = null;
+  try {
+    commentsJson = comments ? JSON.stringify(comments) : null;
+  } catch (e) {
+    return res.status(400).json({ error: 'Comentarios inválidos' });
+  }
+
+  const query = 'UPDATE informes_carreras SET comments_json = ? WHERE public_id = ? LIMIT 1';
+  db.query(query, [commentsJson, id], (err, result) => {
+    if (err) {
+      console.error('Error actualizando comentarios de informe:', err);
+      return res.status(500).json({ error: 'Error al actualizar comentarios' });
+    }
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Informe no encontrado' });
+    }
+    return res.json({ ok: true });
   });
 });
 

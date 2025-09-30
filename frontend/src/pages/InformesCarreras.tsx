@@ -203,9 +203,6 @@ const InformeMetadataPanel = ({ metadata }: InformeMetadataPanelProps) => {
   const distanceText = formatDistance(metadata.distanceKm ?? null);
 
   const items: string[] = [];
-  if (metadata.fileName) {
-    items.push(`Archivo original: ${metadata.fileName}`);
-  }
   if (distanceText) {
     items.push(`Distancia registrada: ${distanceText}`);
   }
@@ -218,7 +215,7 @@ const InformeMetadataPanel = ({ metadata }: InformeMetadataPanelProps) => {
   }
 
   return (
-    <div className="contenedor-secundario mt-1">
+    <div>
       <h4>Resumen del archivo</h4>
       <ul className="mt-05">
         {items.map((text) => (
@@ -250,12 +247,12 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
   const hasGenderByCategory = Object.keys(genderSummaryStatsByCategory).length > 0;
 
   return (
-    <div className="contenedor-secundario mt-1 crear-informe__analizar">
+    <div>
       <h3 className="mt-1">2.1 Analisis General</h3>
-      <div className="crear-informe__analizar-bloque">
+      <div className="mt-1">
         <h4>2.1.1 Distribucion de percentiles por Genero</h4>
         {percentileRows.length > 0 ? (
-          <table className="tabla-percentiles">
+          <table className="table">
             <thead>
               <tr>
                 <th>Percentil</th>
@@ -277,267 +274,274 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
           <p>{emptySectionMessage}</p>
         )}
       </div>
-      <div className="crear-informe__analizar-bloque">
+      <div className="mt-1">
         <h4>2.1.2 Distribucion de participantes por rangos de ritmo y genero</h4>
         {paceDistributionRows.length > 0 ? (
           <>
-            <table className="tabla-percentiles">
-              <thead>
-                <tr>
-                  <th>RangoRitmo</th>
-                  <th>F</th>
-                  <th>M</th>
-                  <th>X</th>
-                </tr>
-              </thead>
-              <tbody>
-                {paceDistributionRows.map((row) => (
-                  <tr key={row.label}>
-                    <th scope="row">{row.label}</th>
-                    <td>{row.F}</td>
-                    <td>{row.M}</td>
-                    <td>{row.X}</td>
-                  </tr>
-                ))}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th scope="row">{paceDistributionTotals.label}</th>
-                  <td>{paceDistributionTotals.F}</td>
-                  <td>{paceDistributionTotals.M}</td>
-                  <td>{paceDistributionTotals.X}</td>
-                </tr>
-              </tfoot>
-            </table>
-            <div className="mt-2">
-              <ResponsiveContainer width="100%" height={400}>
-                <BarChart
-                  data={paceDistributionRows}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="label" angle={-45} textAnchor="end" interval={0} />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="F" name="Femenino" fill="magenta" isAnimationActive={false} />
-                  <Bar dataKey="M" name="Masculino" fill="blue" isAnimationActive={false} />
-                  <Bar dataKey="X" name="X" fill="#ffc658" isAnimationActive={false} />
-                </BarChart>
-              </ResponsiveContainer>
+              <table className="table">
+                  <thead>
+                    <tr>
+                      <th>RangoRitmo</th>
+                      <th>F</th>
+                      <th>M</th>
+                      <th>X</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {paceDistributionRows.map((row) => (
+                      <tr key={row.label}>
+                        <th scope="row">{row.label}</th>
+                        <td>{row.F}</td>
+                        <td>{row.M}</td>
+                        <td>{row.X}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th scope="row">{paceDistributionTotals.label}</th>
+                      <td>{paceDistributionTotals.F}</td>
+                      <td>{paceDistributionTotals.M}</td>
+                      <td>{paceDistributionTotals.X}</td>
+                    </tr>
+                  </tfoot>
+              </table>
+              <div>
+                <ResponsiveContainer width="100%" height={400}>
+                  <BarChart
+                    data={paceDistributionRows}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="label" angle={-45} textAnchor="end" interval={0} />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="F" name="Femenino" fill="magenta" isAnimationActive={false} />
+                    <Bar dataKey="M" name="Masculino" fill="blue" isAnimationActive={false} />
+                    <Bar dataKey="X" name="X" fill="#ffc658" isAnimationActive={false} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            
+          </>
+        ) : (
+          <p>{emptySectionMessage}</p>
+        )}
+      </div>
+      <div className="mt-1">
+        <h4>2.1.3 Resumen de Tiempos y Ritmos</h4>
+        {summaryStatsRows.length > 0 ? (
+          <>
+            <div className="contenedor-principal mt-1">
+              <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Criterio</th>
+                      <th>Total Corredores/as</th>
+                      <th>Ritmo Medio</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {summaryStatsRows.map((row) => (
+                      <tr key={row.label}>
+                        <th scope="row">{row.label}</th>
+                        <td>{row.count}</td>
+                        <td>{row.avgPace}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              {scatterData.length > 0 && (
+                <div>
+                  <ResponsiveContainer width="100%" height={400}>
+                    <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                      <CartesianGrid />
+                      <XAxis
+                        type="number"
+                        dataKey="x"
+                        name="kilometro"
+                        unit="km"
+                        domain={['dataMin', 'dataMax']}
+                      />
+                      <YAxis
+                        type="number"
+                        dataKey="y"
+                        name="Ritmo Medio"
+                        tickFormatter={(tick) => formatSecondsToHHMMSS(tick)}
+                        reversed={true}
+                      />
+                      <Tooltip
+                        cursor={{ strokeDasharray: '3 3' }}
+                        formatter={(value: number, name: string) =>
+                          name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value
+                        }
+                      />
+                      <Scatter
+                        name="Ritmo Medio por Split"
+                        data={scatterData}
+                        fill="blue"
+                        line
+                        isAnimationActive={false}
+                      />
+                    </ScatterChart>
+                  </ResponsiveContainer>
+                </div>
+              )}
             </div>
           </>
         ) : (
           <p>{emptySectionMessage}</p>
         )}
       </div>
-      <div className="crear-informe__analizar-bloque">
-        <h4>2.1.3 Resumen de Tiempos y Ritmos</h4>
-        {summaryStatsRows.length > 0 ? (
-          <>
-            <table className="tabla-percentiles">
-              <thead>
-                <tr>
-                  <th>Criterio</th>
-                  <th>Total Corredores/as</th>
-                  <th>Ritmo Medio</th>
-                </tr>
-              </thead>
-              <tbody>
-                {summaryStatsRows.map((row) => (
-                  <tr key={row.label}>
-                    <th scope="row">{row.label}</th>
-                    <td>{row.count}</td>
-                    <td>{row.avgPace}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            {scatterData.length > 0 && (
-              <div className="mt-2">
-                <ResponsiveContainer width="100%" height={400}>
-                  <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-                    <CartesianGrid />
-                    <XAxis
-                      type="number"
-                      dataKey="x"
-                      name="kilometro"
-                      unit="km"
-                      domain={['dataMin', 'dataMax']}
-                    />
-                    <YAxis
-                      type="number"
-                      dataKey="y"
-                      name="Ritmo Medio"
-                      tickFormatter={(tick) => formatSecondsToHHMMSS(tick)}
-                      reversed={true}
-                    />
-                    <Tooltip
-                      cursor={{ strokeDasharray: '3 3' }}
-                      formatter={(value: number, name: string) =>
-                        name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value
-                      }
-                    />
-                    <Scatter
-                      name="Ritmo Medio por Split"
-                      data={scatterData}
-                      fill="blue"
-                      line
-                      isAnimationActive={false}
-                    />
-                  </ScatterChart>
-                </ResponsiveContainer>
-              </div>
-            )}
-          </>
-        ) : (
-          <p>{emptySectionMessage}</p>
-        )}
-      </div>
-      <div className="crear-informe__analizar-bloque">
+      <div className="mt-1">
         <h4>2.1.4 Distribucion por Splits general por genero</h4>
         {genderSummaryStatsRows.length > 0 ? (
           <>
-            <table className="tabla-percentiles">
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Criterio</th>
-                  <th colSpan={2}>Total corredores/as</th>
-                  <th colSpan={2}>Ritmo Medio</th>
-                </tr>
-                <tr>
-                  <th>Masculino</th>
-                  <th>Femenino</th>
-                  <th>Masculino</th>
-                  <th>Femenino</th>
-                </tr>
-              </thead>
-              <tbody>
-                {genderSummaryStatsRows.map((row) => (
-                  <tr key={row.label}>
-                    <th scope="row">{row.label}</th>
-                    <td>{row.countM}</td>
-                    <td>{row.countF}</td>
-                    <td>{row.avgPaceM}</td>
-                    <td>{row.avgPaceF}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            {(scatterDataGenero.dataM.length > 0 || scatterDataGenero.dataF.length > 0) && (
-              <div className="mt-2">
-                <ResponsiveContainer width="100%" height={400}>
-                  <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-                    <CartesianGrid />
-                    <XAxis
-                      type="number"
-                      dataKey="x"
-                      name="kilometro"
-                      unit="km"
-                      domain={['dataMin', 'dataMax']}
-                    />
-                    <YAxis
-                      type="number"
-                      dataKey="y"
-                      name="Ritmo Medio"
-                      tickFormatter={(tick) => formatSecondsToHHMMSS(tick)}
-                      reversed={true}
-                    />
-                    <Tooltip
-                      cursor={{ strokeDasharray: '3 3' }}
-                      formatter={(value: number, name: string) =>
-                        name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value
-                      }
-                    />
-                    <Legend />
-                    <Scatter
-                      name="Masculino"
-                      data={scatterDataGenero.dataM}
-                      fill="blue"
-                      line
-                      isAnimationActive={false}
-                    />
-                    <Scatter
-                      name="Femenino"
-                      data={scatterDataGenero.dataF}
-                      fill="magenta"
-                      line
-                      isAnimationActive={false}
-                    />
-                  </ScatterChart>
-                </ResponsiveContainer>
-              </div>
-            )}
+            <div className="contenedor-principal mt-1">
+              <table className="table">
+                  <thead>
+                    <tr>
+                      <th rowSpan={2}>Criterio</th>
+                      <th colSpan={2}>Total corredores/as</th>
+                      <th colSpan={2}>Ritmo Medio</th>
+                    </tr>
+                    <tr>
+                      <th>Masculino</th>
+                      <th>Femenino</th>
+                      <th>Masculino</th>
+                      <th>Femenino</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {genderSummaryStatsRows.map((row) => (
+                      <tr key={row.label}>
+                        <th scope="row">{row.label}</th>
+                        <td>{row.countM}</td>
+                        <td>{row.countF}</td>
+                        <td>{row.avgPaceM}</td>
+                        <td>{row.avgPaceF}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              {(scatterDataGenero.dataM.length > 0 || scatterDataGenero.dataF.length > 0) && (
+                <div>
+                  <ResponsiveContainer width="100%" height={400}>
+                    <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                      <CartesianGrid />
+                      <XAxis
+                        type="number"
+                        dataKey="x"
+                        name="kilometro"
+                        unit="km"
+                        domain={['dataMin', 'dataMax']}
+                      />
+                      <YAxis
+                        type="number"
+                        dataKey="y"
+                        name="Ritmo Medio"
+                        tickFormatter={(tick) => formatSecondsToHHMMSS(tick)}
+                        reversed={true}
+                      />
+                      <Tooltip
+                        cursor={{ strokeDasharray: '3 3' }}
+                        formatter={(value: number, name: string) =>
+                          name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value
+                        }
+                      />
+                      <Legend />
+                      <Scatter
+                        name="Masculino"
+                        data={scatterDataGenero.dataM}
+                        fill="blue"
+                        line
+                        isAnimationActive={false}
+                      />
+                      <Scatter
+                        name="Femenino"
+                        data={scatterDataGenero.dataF}
+                        fill="magenta"
+                        line
+                        isAnimationActive={false}
+                      />
+                    </ScatterChart>
+                  </ResponsiveContainer>
+                </div>
+              )}
+            </div>
           </>
         ) : (
           <p>{emptySectionMessage}</p>
         )}
       </div>
-      <div className="crear-informe__analizar-bloque">
+      <div className="mt-1">
         <h3>2.2 Analisis Categorias</h3>
         <h4>2.2.1 Distribucion de Corredores y Ritmos Medios por categoria</h4>
         {categoryStatsRows.length > 0 ? (
           <>
-            <table className="tabla-percentiles">
-              <thead>
-                <tr>
-                  <th rowSpan={2}>Categoria</th>
-                  <th colSpan={2}>Total corredores/as</th>
-                  <th colSpan={2}>Ritmo Medio</th>
-                </tr>
-                <tr>
-                  <th>Masculino</th>
-                  <th>Femenino</th>
-                  <th>Masculino</th>
-                  <th>Femenino</th>
-                </tr>
-              </thead>
-              <tbody>
-                {categoryStatsRows.map((row) => (
-                  <tr key={row.categoria}>
-                    <th scope="row">{row.categoria}</th>
-                    <td>{row.countM}</td>
-                    <td>{row.countF}</td>
-                    <td>{row.avgPaceM}</td>
-                    <td>{row.avgPaceF}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="mt-2">
-              <ResponsiveContainer width="100%" height={400}>
-                <BarChart
-                  data={categoryStatsRows}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="categoria" angle={-45} textAnchor="end" interval={0} />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar
-                    dataKey="countF"
-                    name="Femenino"
-                    stackId="a"
-                    fill="magenta"
-                    isAnimationActive={false}
-                  />
-                  <Bar
-                    dataKey="countM"
-                    name="Masculino"
-                    stackId="a"
-                    fill="blue"
-                    isAnimationActive={false}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
+            <div className="contenedor-principal mt-1">
+              <table className="table">
+                  <thead>
+                    <tr>
+                      <th rowSpan={2}>Categoria</th>
+                      <th colSpan={2}>Total corredores/as</th>
+                      <th colSpan={2}>Ritmo Medio</th>
+                    </tr>
+                    <tr>
+                      <th>Masculino</th>
+                      <th>Femenino</th>
+                      <th>Masculino</th>
+                      <th>Femenino</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {categoryStatsRows.map((row) => (
+                      <tr key={row.categoria}>
+                        <th scope="row">{row.categoria}</th>
+                        <td>{row.countM}</td>
+                        <td>{row.countF}</td>
+                        <td>{row.avgPaceM}</td>
+                        <td>{row.avgPaceF}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              <div>
+                <ResponsiveContainer width="100%" height={400}>
+                  <BarChart
+                    data={categoryStatsRows}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="categoria" angle={-45} textAnchor="end" interval={0} />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar
+                      dataKey="countF"
+                      name="Femenino"
+                      stackId="a"
+                      fill="magenta"
+                      isAnimationActive={false}
+                    />
+                    <Bar
+                      dataKey="countM"
+                      name="Masculino"
+                      stackId="a"
+                      fill="blue"
+                      isAnimationActive={false}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
             </div>
           </>
         ) : (
           <p>{emptySectionMessage}</p>
         )}
       </div>
-      <div className="crear-informe__analizar-bloque">
+      <div className="mt-1">
         <h3>2.2.2 Distribucion por Splits por categoria y genero</h3>
         {hasGenderByCategory ? (
           Object.entries(genderSummaryStatsByCategory).map(([category, rows]) => {
@@ -546,80 +550,82 @@ const InformeAnalysisView = ({ analysis }: InformeAnalysisViewProps) => {
               chartSeries.dataM.length > 0 || chartSeries.dataF.length > 0;
 
             return (
-              <div key={category} className="mt-2">
+              <div key={category} className="mt-1">
                 <h4>{category}</h4>
                 {rows.length > 0 ? (
                   <>
-                    <table className="tabla-percentiles">
-                      <thead>
-                        <tr>
-                          <th rowSpan={2}>Criterio</th>
-                          <th colSpan={2}>Total corredores/as</th>
-                          <th colSpan={2}>Ritmo Medio</th>
-                        </tr>
-                        <tr>
-                          <th>Masculino</th>
-                          <th>Femenino</th>
-                          <th>Masculino</th>
-                          <th>Femenino</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {rows.map((row) => (
-                          <tr key={row.label}>
-                            <th scope="row">{row.label}</th>
-                            <td>{row.countM}</td>
-                            <td>{row.countF}</td>
-                            <td>{row.avgPaceM}</td>
-                            <td>{row.avgPaceF}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    {hasSeriesData && (
-                      <div className="mt-2">
-                        <ResponsiveContainer width="100%" height={400}>
-                          <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-                            <CartesianGrid />
-                            <XAxis
-                              type="number"
-                              dataKey="x"
-                              name="kilometro"
-                              unit="km"
-                              domain={['dataMin', 'dataMax']}
-                            />
-                            <YAxis
-                              type="number"
-                              dataKey="y"
-                              name="Ritmo Medio"
-                              tickFormatter={(tick) => formatSecondsToHHMMSS(tick)}
-                              reversed={true}
-                            />
-                            <Tooltip
-                              cursor={{ strokeDasharray: '3 3' }}
-                              formatter={(value: number, name: string) =>
-                                name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value
-                              }
-                            />
-                            <Legend />
-                            <Scatter
-                              name="Masculino"
-                              data={chartSeries.dataM}
-                              fill="blue"
-                              line
-                              isAnimationActive={false}
-                            />
-                            <Scatter
-                              name="Femenino"
-                              data={chartSeries.dataF}
-                              fill="magenta"
-                              line
-                              isAnimationActive={false}
-                            />
-                          </ScatterChart>
-                        </ResponsiveContainer>
-                      </div>
-                    )}
+                    <div className="contenedor-principal mt-1">
+                      <table className="table">
+                          <thead>
+                            <tr>
+                              <th rowSpan={2}>Criterio</th>
+                              <th colSpan={2}>Total corredores/as</th>
+                              <th colSpan={2}>Ritmo Medio</th>
+                            </tr>
+                            <tr>
+                              <th>Masculino</th>
+                              <th>Femenino</th>
+                              <th>Masculino</th>
+                              <th>Femenino</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {rows.map((row) => (
+                              <tr key={row.label}>
+                                <th scope="row">{row.label}</th>
+                                <td>{row.countM}</td>
+                                <td>{row.countF}</td>
+                                <td>{row.avgPaceM}</td>
+                                <td>{row.avgPaceF}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      {hasSeriesData && (
+                        <div>
+                          <ResponsiveContainer width="100%" height={400}>
+                            <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+                              <CartesianGrid />
+                              <XAxis
+                                type="number"
+                                dataKey="x"
+                                name="kilometro"
+                                unit="km"
+                                domain={['dataMin', 'dataMax']}
+                              />
+                              <YAxis
+                                type="number"
+                                dataKey="y"
+                                name="Ritmo Medio"
+                                tickFormatter={(tick) => formatSecondsToHHMMSS(tick)}
+                                reversed={true}
+                              />
+                              <Tooltip
+                                cursor={{ strokeDasharray: '3 3' }}
+                                formatter={(value: number, name: string) =>
+                                  name === 'Ritmo Medio' ? formatSecondsToHHMMSS(value) : value
+                                }
+                              />
+                              <Legend />
+                              <Scatter
+                                name="Masculino"
+                                data={chartSeries.dataM}
+                                fill="blue"
+                                line
+                                isAnimationActive={false}
+                              />
+                              <Scatter
+                                name="Femenino"
+                                data={chartSeries.dataF}
+                                fill="magenta"
+                                line
+                                isAnimationActive={false}
+                              />
+                            </ScatterChart>
+                          </ResponsiveContainer>
+                        </div>
+                      )}
+                    </div>
                   </>
                 ) : (
                   <p>No hay suficientes datos en esta categoria para generar el informe.</p>
@@ -764,7 +770,7 @@ const InformesCarreras = () => {
   };
 
   return (
-    <div className="contenedor-principal">
+    <div>
       <h2>Informes de Carreras</h2>
       {loading && <p>Cargando informes...</p>}
       {error && <p>{error}</p>}
@@ -785,14 +791,13 @@ const InformesCarreras = () => {
                       onClick={() => setSelectedId(informe.id)}
                       aria-selected={isActive}
                     >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
-                        <span style={{ fontWeight: isActive ? 700 : 500 }}>
-                          {informe.nombre}
-                          {isDemo ? ' (ejemplo)' : ''}
-                        </span>
-                        <span className="muted fs-095">
+                      <div>
+                        <div>
+                          <strong>{informe.nombre}{isDemo ? ' (ejemplo)' : ''}</strong>
+                        </div>
+                        <div className="muted fs-095">
                           {new Date(informe.fecha).toLocaleDateString()}
-                        </span>
+                        </div>
                       </div>
                     </li>
                   );

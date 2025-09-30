@@ -1,0 +1,22 @@
+/* Overrides para comportamiento sticky del blog-aside */
+.blog-layout { align-items: flex-start; }
+
+.blog-aside {
+  position: sticky;
+  top: calc(16px + var(--header-offset, 0px));
+  align-self: flex-start; /* requerido para sticky dentro de flex */
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  z-index: 2;
+}
+
+/* Desactivar sticky en pantallas pequeñas para evitar solapamientos */
+@media (max-width: 900px) {
+  .blog-aside {
+    position: static;
+    top: auto;
+    max-height: none;
+    overflow: visible;
+  }
+}
+

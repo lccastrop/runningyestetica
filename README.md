@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Estilo y cositas en Informe"
+git commit -m "Correciones de normalizacion (maraton berlin 2025)"
 git push -u origin main
 
 Forzar un commit anterior

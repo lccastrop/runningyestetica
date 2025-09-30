@@ -464,11 +464,15 @@ const columnSynonyms: Record<DesiredColumn, string[]> = {
   nombre: ['nombre completo', 'name', 'full name', 'vorname', 'nachname'],
   distancia: ['distance', 'dist'],
   genero: ['gender', 'sexo', 'sex', 'rama', 'gender category'],
-  categoria: ['category', 'cat', 'division', 'ak'],
+  categoria: [
+    'category', 'cat', 'division', 'ak',
+    // age category variants
+    'categoria_edad', 'categoria edad', 'age category', 'age_category', 'age-category', 'age group', 'age_group', 'agegroup', 'edad'
+  ],
   equipo: ['team', 'club', 'equipo/club', 'asociacion', 'verein'],
-  tiempo_oficial: ['tiempo oficial', 'official time', 'gun time', 'tiempo_general', 'brutto'],
+  tiempo_oficial: ['tiempo oficial', 'official time', 'gun time', 'tiempo_general', 'brutto', 'finish_gun', 'finish gun', 'gun_finish', 'gun finish', 'finishgun', 'gunfinish'],
   'Ritmo Medio': ['ritmo medio', 'ritmo_promedio', 'pace', 'average pace', 'pace promedio', 'ritmo promedio'],
-  tiempo_chip: ['tiempo chip', 'chip time', 'net time', 'tiempo neto', 'netto'],
+  tiempo_chip: ['tiempo chip', 'chip time', 'net time', 'tiempo neto', 'netto', 'finish_net', 'finish net', 'net_finish', 'net finish', 'finishnet', 'netfinish'],
   RM_5km: ['rm 5km', 'ritmo medio 5k', 'pace 5k', 'rm5k', 'z5pace'],
   split_5km: ['split 5km', '5km split', 'split 5k', '5k split', 'z5'],
   RM_10km: ['rm 10km', 'ritmo medio 10k', 'pace 10k', 'rm10k', 'z10pace'],
@@ -476,9 +480,21 @@ const columnSynonyms: Record<DesiredColumn, string[]> = {
   RM_15km: ['rm 15km', 'ritmo medio 15k', 'pace 15k', 'rm15k', 'z15pace'],
   split_15km: ['split 15km', '15km split', 'split 15k', '15k split', 'z15'],
   RM_20km: ['rm 20km', 'ritmo medio 20k', 'pace 20k', 'rm20k', 'z20pace'],
-  split_20km: ['split 20km', '20km split', 'split 20km2', '20k split', 'split20km', 'split20km2', 'split_20km2', 'z20'],
+  split_20km: [
+    'split 20km', '20km split', 'split 20km2',
+    // 20k variants
+    '20k split', 'split 20k', 'split_20k', 'split20k',
+    // existing compact variants
+    'split20km', 'split20km2', 'split_20km2', 'z20'
+  ],
   RM_21km: ['rm 21km', 'ritmo medio 21k', 'pace 21k', 'rm21k', 'ritmo medio media maraton', 'hm1pace'],
-  split_21km: ['split 21km', '21km split', 'split 21k', '21k split', 'media maraton split', 'halbmarathon'],
+  split_21km: [
+    'split 21km', '21km split', 'split 21k', '21k split',
+    'media maraton split', 'halbmarathon',
+    // half-marathon naming variants
+    'split_half', 'split half', 'half split', 'hm split', 'hm_split',
+    'half marathon split', 'split half marathon', 'halfmarathon split', 'splithalf'
+  ],
   RM_25km: ['rm 25km', 'ritmo medio 25k', 'pace 25k', 'rm25k', 'z25pace'],
   split_25km: ['split 25km', '25km split', 'split 25k', '25k split', 'z25'],
   RM_30km: ['rm 30km', 'ritmo medio 30k', 'pace 30k', 'rm30k', 'z30pace'],
@@ -668,6 +684,64 @@ function normalizeRow(
     }
   }
 
+  // 6. Derive missing RM_* from available splits
+  // Sanitize all split values taking into account prior backfills/overrides
+  const s5 = parseDurationToSeconds(sanitizeHHMMSS(getRawValue('split_5km'))) ?? 0;
+  const s10 = parseDurationToSeconds(sanitizeHHMMSS(getRawValue('split_10km'))) ?? 0;
+  const s15 = parseDurationToSeconds(sanitizeHHMMSS(getRawValue('split_15km'))) ?? 0;
+  const s20 = parseDurationToSeconds(split20kmValue) ?? 0;
+  const s21 = parseDurationToSeconds(split21San) ?? 0;
+  const s25 = parseDurationToSeconds(sanitizeHHMMSS(getRawValue('split_25km'))) ?? 0;
+  const s30 = parseDurationToSeconds(sanitizeHHMMSS(getRawValue('split_30km'))) ?? 0;
+  const s35 = parseDurationToSeconds(sanitizeHHMMSS(getRawValue('split_35km'))) ?? 0;
+  const s40 = parseDurationToSeconds(sanitizeHHMMSS(getRawValue('split_40km'))) ?? 0;
+  const s42 = parseDurationToSeconds(split42kmValue) ?? 0;
+
+  // Start with sanitized RM values (some may be 00:00:00)
+  let rm5kmValue = sanitizeHHMMSS(getRawValue('RM_5km'));
+  let rm10kmValue = sanitizeHHMMSS(getRawValue('RM_10km'));
+  let rm15kmValue = sanitizeHHMMSS(getRawValue('RM_15km'));
+  // rm20kmValue already defined
+  let rm21kmValue = rm21San;
+  let rm25kmValue = sanitizeHHMMSS(getRawValue('RM_25km'));
+  let rm30kmValue = sanitizeHHMMSS(getRawValue('RM_30km'));
+  let rm35kmValue = sanitizeHHMMSS(getRawValue('RM_35km'));
+  let rm40kmValue = sanitizeHHMMSS(getRawValue('RM_40km'));
+  // rm42kmValue already defined
+
+  const sec = (v: string) => parseDurationToSeconds(v) ?? 0;
+
+  if (sec(rm5kmValue) <= 0 && s5 > 0) {
+    rm5kmValue = formatSecondsToHHMMSS(s5 / 5);
+  }
+  if (sec(rm10kmValue) <= 0 && s10 > 0 && s5 > 0 && s10 > s5) {
+    rm10kmValue = formatSecondsToHHMMSS((s10 - s5) / 5);
+  }
+  if (sec(rm15kmValue) <= 0 && s15 > 0 && s10 > 0 && s15 > s10) {
+    rm15kmValue = formatSecondsToHHMMSS((s15 - s10) / 5);
+  }
+  if (sec(rm20kmValue) <= 0 && s20 > 0 && s15 > 0 && s20 > s15) {
+    rm20kmValue = formatSecondsToHHMMSS((s20 - s15) / 5);
+  }
+  if (sec(rm21kmValue) <= 0 && s21 > 0 && s20 > 0 && s21 > s20) {
+    rm21kmValue = formatSecondsToHHMMSS((s21 - s20) / 1.0975);
+  }
+  if (sec(rm25kmValue) <= 0 && s25 > 0 && s21 > 0 && s25 > s21) {
+    rm25kmValue = formatSecondsToHHMMSS((s25 - s21) / 3.9025);
+  }
+  if (sec(rm30kmValue) <= 0 && s30 > 0 && s25 > 0 && s30 > s25) {
+    rm30kmValue = formatSecondsToHHMMSS((s30 - s25) / 5);
+  }
+  if (sec(rm35kmValue) <= 0 && s35 > 0 && s30 > 0 && s35 > s30) {
+    rm35kmValue = formatSecondsToHHMMSS((s35 - s30) / 5);
+  }
+  if (sec(rm40kmValue) <= 0 && s40 > 0 && s35 > 0 && s40 > s35) {
+    rm40kmValue = formatSecondsToHHMMSS((s40 - s35) / 5);
+  }
+  if (sec(rm42kmValue) <= 0 && s42 > 0 && s40 > 0 && s42 > s40) {
+    rm42kmValue = formatSecondsToHHMMSS((s42 - s40) / 2.195);
+  }
+
   let rangoValue = '-';
   const ritmoMedioSeconds = parseDurationToSeconds(ritmoMedioValue);
   if (ritmoMedioSeconds !== null) {
@@ -696,14 +770,16 @@ function normalizeRow(
       result.push(split20kmValue);
       return;
     }
-    if (column === 'RM_42km') {
-      result.push(rm42kmValue);
-      return;
-    }
-    if (column === 'RM_20km') {
-      result.push(rm20kmValue);
-      return;
-    }
+    if (column === 'RM_5km') { result.push(rm5kmValue); return; }
+    if (column === 'RM_10km') { result.push(rm10kmValue); return; }
+    if (column === 'RM_15km') { result.push(rm15kmValue); return; }
+    if (column === 'RM_20km') { result.push(rm20kmValue); return; }
+    if (column === 'RM_21km') { result.push(rm21kmValue); return; }
+    if (column === 'RM_25km') { result.push(rm25kmValue); return; }
+    if (column === 'RM_30km') { result.push(rm30kmValue); return; }
+    if (column === 'RM_35km') { result.push(rm35kmValue); return; }
+    if (column === 'RM_40km') { result.push(rm40kmValue); return; }
+    if (column === 'RM_42km') { result.push(rm42kmValue); return; }
     if (column === 'Rango') {
       result.push(rangoValue);
       return;

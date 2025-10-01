@@ -40,3 +40,29 @@
   width: 100%;
   overflow-x: hidden;
 }
+
+/* Guardia global contra desbordes horizontales en móvil */
+html, body { overflow-x: hidden; }
+
+@media (max-width: 900px) {
+  .blog-layout,
+  .blog-main,
+  .contenedor-principal {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Tablas largas: scroll horizontal en lugar de expandir el layout */
+  .table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Gráficos Recharts: asegurar que no fuercen overflow horizontal */
+  .recharts-wrapper {
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+}

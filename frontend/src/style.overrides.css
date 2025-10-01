@@ -38,7 +38,7 @@
 /* En móvil, limitar contenedor principal a 85% del ancho de pantalla */
 @media (max-width: 900px) {
   .contenedor-principal {
-    max-width: 85vw;
+    max-width: 90vw;
     margin-left: auto;
     margin-right: auto;
   }

@@ -27,7 +27,7 @@ Subir cambios a GitHub
 git status
 git init
 git add .
-git commit -m "Correccion de presentacion en movil4"
+git commit -m "Correccion de sinónomos"
 git push -u origin main
 
 Forzar un commit anterior

@@ -474,7 +474,7 @@ const columnSynonyms: Record<DesiredColumn, string[]> = {
   'Ritmo Medio': ['ritmo medio', 'ritmo_promedio', 'pace', 'average pace', 'pace promedio', 'ritmo promedio'],
   tiempo_chip: ['tiempo chip', 'chip time', 'net time', 'tiempo neto', 'netto', 'finish_net', 'finish net', 'net_finish', 'net finish', 'finishnet', 'netfinish'],
   RM_5km: ['rm 5km', 'ritmo medio 5k', 'pace 5k', 'rm5k', 'z5pace'],
-  split_5km: ['split 5km', '5km split', 'split 5k', '5k split', 'z5'],
+  split_5km: ['split 5km', '5km split', 'split 5k', '5k split', 'split_05k', 'z5'],
   RM_10km: ['rm 10km', 'ritmo medio 10k', 'pace 10k', 'rm10k', 'z10pace'],
   split_10km: ['split 10km', '10km split', 'split 10k', '10k split', 'z10'],
   RM_15km: ['rm 15km', 'ritmo medio 15k', 'pace 15k', 'rm15k', 'z15pace'],

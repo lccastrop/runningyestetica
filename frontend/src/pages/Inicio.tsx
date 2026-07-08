@@ -12,6 +12,13 @@ interface BlogPreview {
   excerpt: string;
 }
 
+function decodeHtmlEntities(text: string): string {
+  if (!text) return '';
+  const container = document.createElement('div');
+  container.innerHTML = text;
+  return (container.textContent || container.innerText || '').replace(/\s+/g, ' ').trim();
+}
+
 function excerpt(text: string, max: number): string {
   if (text.length <= max) return text;
   return text.slice(0, max).replace(/\s\S*$/, '') + '…';
@@ -44,7 +51,9 @@ async function fetchSubstackBlogs(): Promise<BlogPreview[]> {
 
     return items.slice(0, 3).map((item, idx) => {
       const titleEls = item.getElementsByTagName('title');
-      const title = titleEls.length ? (titleEls[0].textContent || '').trim() : 'Sin título';
+      const title = titleEls.length
+        ? decodeHtmlEntities((titleEls[0].textContent || '').trim())
+        : 'Sin título';
 
       const linkEls = item.getElementsByTagName('link');
       let link = linkEls.length ? (linkEls[0].textContent || '').trim() : '';
@@ -67,13 +76,14 @@ async function fetchSubstackBlogs(): Promise<BlogPreview[]> {
           : descEls.length
           ? (descEls[0].textContent || '').trim()
           : '';
+      const decodedExcerpt = decodeHtmlEntities(rawHtml.replace(/<[^>]+>/g, ' '));
 
       return {
         id: String(idx),
         title,
         link,
         pubDate,
-        excerpt: rawHtml ? excerpt(rawHtml.replace(/<[^>]+>/g, ' '), 180) : '',
+        excerpt: decodedExcerpt ? excerpt(decodedExcerpt, 180) : '',
       };
     });
   } catch {
@@ -85,7 +95,9 @@ async function fetchSubstackBlogs(): Promise<BlogPreview[]> {
 
       return items.slice(0, 3).map((item, idx) => {
         const titleEls = item.getElementsByTagName('title');
-        const title = titleEls.length ? (titleEls[0].textContent || '').trim() : 'Sin título';
+        const title = titleEls.length
+          ? decodeHtmlEntities((titleEls[0].textContent || '').trim())
+          : 'Sin título';
 
         const linkEls = item.getElementsByTagName('link');
         let link = linkEls.length ? (linkEls[0].textContent || '').trim() : '';
@@ -108,13 +120,14 @@ async function fetchSubstackBlogs(): Promise<BlogPreview[]> {
             : descEls.length
             ? (descEls[0].textContent || '').trim()
             : '';
+        const decodedExcerpt = decodeHtmlEntities(rawHtml.replace(/<[^>]+>/g, ' '));
 
         return {
           id: String(idx),
           title,
           link,
           pubDate,
-          excerpt: rawHtml ? excerpt(rawHtml.replace(/<[^>]+>/g, ' '), 180) : '',
+          excerpt: decodedExcerpt ? excerpt(decodedExcerpt, 180) : '',
         };
       });
     } catch {

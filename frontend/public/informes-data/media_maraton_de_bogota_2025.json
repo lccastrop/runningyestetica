@@ -1,0 +1,544 @@
+{
+  "id": "media_maraton_de_bogota_2025",
+  "nombre": "Media Maratón de Bogotá 2025",
+  "fecha": "2025-07-27T00:00:00Z",
+  "metadata": {
+    "fileName": "MMB_21K_2025_raw.csv",
+    "distanceKm": 21.0975,
+    "rowCount": 18634
+  },
+  "analysis": {
+    "percentileRows": [
+      {
+        "label": "Min",
+        "Masculino": "00:02:59",
+        "Femenino": "00:03:30"
+      },
+      {
+        "label": "1%",
+        "Masculino": "00:03:58",
+        "Femenino": "00:04:35"
+      },
+      {
+        "label": "5%",
+        "Masculino": "00:04:29",
+        "Femenino": "00:05:11"
+      },
+      {
+        "label": "10%",
+        "Masculino": "00:04:44",
+        "Femenino": "00:05:28"
+      },
+      {
+        "label": "30%",
+        "Masculino": "00:05:21",
+        "Femenino": "00:06:08"
+      },
+      {
+        "label": "50%",
+        "Masculino": "00:05:48",
+        "Femenino": "00:06:39"
+      },
+      {
+        "label": "80%",
+        "Masculino": "00:06:51",
+        "Femenino": "00:07:38"
+      },
+      {
+        "label": "Max",
+        "Masculino": "00:12:14",
+        "Femenino": "00:11:32"
+      }
+    ],
+    "paceDistributionRows": [
+      {
+        "label": "≤ 03:30",
+        "F": 1,
+        "M": 27,
+        "X": 0
+      },
+      {
+        "label": "03:31–03:45",
+        "F": 4,
+        "M": 36,
+        "X": 0
+      },
+      {
+        "label": "03:46–04:00",
+        "F": 8,
+        "M": 86,
+        "X": 0
+      },
+      {
+        "label": "04:01–04:15",
+        "F": 10,
+        "M": 182,
+        "X": 0
+      },
+      {
+        "label": "04:16–04:46",
+        "F": 70,
+        "M": 1107,
+        "X": 0
+      },
+      {
+        "label": "04:47–05:14",
+        "F": 234,
+        "M": 1900,
+        "X": 0
+      },
+      {
+        "label": "05:15–05:55",
+        "F": 920,
+        "M": 3736,
+        "X": 0
+      },
+      {
+        "label": "05:56–06:30",
+        "F": 1223,
+        "M": 2331,
+        "X": 0
+      },
+      {
+        "label": "06:31–07:37",
+        "F": 1964,
+        "M": 2462,
+        "X": 0
+      },
+      {
+        "label": "07:38–08:28",
+        "F": 680,
+        "M": 713,
+        "X": 0
+      },
+      {
+        "label": "≥ 08:29",
+        "F": 434,
+        "M": 432,
+        "X": 0
+      }
+    ],
+    "paceDistributionTotals": {
+      "label": "Total",
+      "F": 5548,
+      "M": 13012,
+      "X": 0
+    },
+    "summaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "count": 18634,
+        "avgPace": "00:06:14"
+      },
+      {
+        "label": "split 5K",
+        "count": 18566,
+        "avgPace": "00:06:06"
+      },
+      {
+        "label": "split 10K",
+        "count": 18553,
+        "avgPace": "00:06:05"
+      },
+      {
+        "label": "split 15K",
+        "count": 18547,
+        "avgPace": "00:06:09"
+      },
+      {
+        "label": "split 21K",
+        "count": 18545,
+        "avgPace": "00:06:31"
+      }
+    ],
+    "genderSummaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "countM": 13067,
+        "countF": 5567,
+        "avgPaceM": "00:06:00",
+        "avgPaceF": "00:06:46"
+      },
+      {
+        "label": "split 5K",
+        "countM": 13017,
+        "countF": 5549,
+        "avgPaceM": "00:05:54",
+        "avgPaceF": "00:06:36"
+      },
+      {
+        "label": "split 10K",
+        "countM": 13011,
+        "countF": 5542,
+        "avgPaceM": "00:05:52",
+        "avgPaceF": "00:06:38"
+      },
+      {
+        "label": "split 15K",
+        "countM": 13007,
+        "countF": 5540,
+        "avgPaceM": "00:05:55",
+        "avgPaceF": "00:06:43"
+      },
+      {
+        "label": "split 21K",
+        "countM": 13005,
+        "countF": 5540,
+        "avgPaceM": "00:06:17",
+        "avgPaceF": "00:07:05"
+      }
+    ],
+    "categoryStatsRows": [
+      {
+        "categoria": "Abierta",
+        "countM": 7581,
+        "countF": 3969,
+        "avgPaceM": "00:05:58",
+        "avgPaceF": "00:06:45"
+      },
+      {
+        "categoria": "Plus",
+        "countM": 2292,
+        "countF": 412,
+        "avgPaceM": "00:06:15",
+        "avgPaceF": "00:07:02"
+      },
+      {
+        "categoria": "Sin categoría",
+        "countM": 61,
+        "countF": 31,
+        "avgPaceM": "00:06:09",
+        "avgPaceF": "00:06:28"
+      },
+      {
+        "categoria": "Veteranos",
+        "countM": 3133,
+        "countF": 1155,
+        "avgPaceM": "00:05:55",
+        "avgPaceF": "00:06:45"
+      }
+    ],
+    "genderSummaryStatsByCategory": {
+      "Abierta": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 7581,
+          "countF": 3969,
+          "avgPaceM": "00:05:58",
+          "avgPaceF": "00:06:45"
+        },
+        {
+          "label": "split 5K",
+          "countM": 7581,
+          "countF": 3969,
+          "avgPaceM": "00:05:51",
+          "avgPaceF": "00:06:35"
+        },
+        {
+          "label": "split 10K",
+          "countM": 7579,
+          "countF": 3967,
+          "avgPaceM": "00:05:49",
+          "avgPaceF": "00:06:37"
+        },
+        {
+          "label": "split 15K",
+          "countM": 7578,
+          "countF": 3965,
+          "avgPaceM": "00:05:51",
+          "avgPaceF": "00:06:41"
+        },
+        {
+          "label": "split 21K",
+          "countM": 7576,
+          "countF": 3965,
+          "avgPaceM": "00:06:15",
+          "avgPaceF": "00:07:03"
+        }
+      ],
+      "Plus": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 2292,
+          "countF": 412,
+          "avgPaceM": "00:06:15",
+          "avgPaceF": "00:07:02"
+        },
+        {
+          "label": "split 5K",
+          "countM": 2292,
+          "countF": 412,
+          "avgPaceM": "00:06:05",
+          "avgPaceF": "00:06:44"
+        },
+        {
+          "label": "split 10K",
+          "countM": 2291,
+          "countF": 410,
+          "avgPaceM": "00:06:07",
+          "avgPaceF": "00:06:48"
+        },
+        {
+          "label": "split 15K",
+          "countM": 2291,
+          "countF": 410,
+          "avgPaceM": "00:06:11",
+          "avgPaceF": "00:07:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 2291,
+          "countF": 410,
+          "avgPaceM": "00:06:34",
+          "avgPaceF": "00:07:27"
+        }
+      ],
+      "Veteranos": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 3133,
+          "countF": 1155,
+          "avgPaceM": "00:05:55",
+          "avgPaceF": "00:06:45"
+        },
+        {
+          "label": "split 5K",
+          "countM": 3133,
+          "countF": 1155,
+          "avgPaceM": "00:05:51",
+          "avgPaceF": "00:06:34"
+        },
+        {
+          "label": "split 10K",
+          "countM": 3133,
+          "countF": 1153,
+          "avgPaceM": "00:05:47",
+          "avgPaceF": "00:06:37"
+        },
+        {
+          "label": "split 15K",
+          "countM": 3132,
+          "countF": 1153,
+          "avgPaceM": "00:05:51",
+          "avgPaceF": "00:06:42"
+        },
+        {
+          "label": "split 21K",
+          "countM": 3132,
+          "countF": 1153,
+          "avgPaceM": "00:06:09",
+          "avgPaceF": "00:07:01"
+        }
+      ]
+    },
+    "scatterDataByCategory": {
+      "Abierta": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 351
+          },
+          {
+            "x": 5,
+            "y": 351
+          },
+          {
+            "x": 10,
+            "y": 349
+          },
+          {
+            "x": 15,
+            "y": 351
+          },
+          {
+            "x": 21,
+            "y": 375
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 395
+          },
+          {
+            "x": 5,
+            "y": 395
+          },
+          {
+            "x": 10,
+            "y": 397
+          },
+          {
+            "x": 15,
+            "y": 401
+          },
+          {
+            "x": 21,
+            "y": 423
+          }
+        ]
+      },
+      "Plus": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 365
+          },
+          {
+            "x": 5,
+            "y": 365
+          },
+          {
+            "x": 10,
+            "y": 367
+          },
+          {
+            "x": 15,
+            "y": 371
+          },
+          {
+            "x": 21,
+            "y": 394
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 404
+          },
+          {
+            "x": 5,
+            "y": 404
+          },
+          {
+            "x": 10,
+            "y": 408
+          },
+          {
+            "x": 15,
+            "y": 420
+          },
+          {
+            "x": 21,
+            "y": 447
+          }
+        ]
+      },
+      "Veteranos": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 351
+          },
+          {
+            "x": 5,
+            "y": 351
+          },
+          {
+            "x": 10,
+            "y": 347
+          },
+          {
+            "x": 15,
+            "y": 351
+          },
+          {
+            "x": 21,
+            "y": 369
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 394
+          },
+          {
+            "x": 5,
+            "y": 394
+          },
+          {
+            "x": 10,
+            "y": 397
+          },
+          {
+            "x": 15,
+            "y": 402
+          },
+          {
+            "x": 21,
+            "y": 421
+          }
+        ]
+      }
+    },
+    "scatterData": [
+      {
+        "x": 0,
+        "y": 366
+      },
+      {
+        "x": 5,
+        "y": 366
+      },
+      {
+        "x": 10,
+        "y": 365
+      },
+      {
+        "x": 15,
+        "y": 369
+      },
+      {
+        "x": 21,
+        "y": 391
+      }
+    ],
+    "scatterDataGenero": {
+      "dataM": [
+        {
+          "x": 0,
+          "y": 354
+        },
+        {
+          "x": 5,
+          "y": 354
+        },
+        {
+          "x": 10,
+          "y": 352
+        },
+        {
+          "x": 15,
+          "y": 355
+        },
+        {
+          "x": 21,
+          "y": 377
+        }
+      ],
+      "dataF": [
+        {
+          "x": 0,
+          "y": 396
+        },
+        {
+          "x": 5,
+          "y": 396
+        },
+        {
+          "x": 10,
+          "y": 398
+        },
+        {
+          "x": 15,
+          "y": 403
+        },
+        {
+          "x": 21,
+          "y": 425
+        }
+      ]
+    }
+  },
+  "comments": {}
+}

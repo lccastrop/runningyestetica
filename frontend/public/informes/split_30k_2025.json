@@ -1,0 +1,1549 @@
+{
+  "id": "split_30k_2025",
+  "nombre": "Split 30K 2025",
+  "fecha": "2025-09-14T00:00:00Z",
+  "metadata": {
+    "fileName": "SPLIT30K_limpio.csv",
+    "distanceKm": 30.0,
+    "rowCount": 6047
+  },
+  "analysis": {
+    "percentileRows": [
+      {
+        "label": "Min",
+        "Masculino": "00:03:19",
+        "Femenino": "00:03:59"
+      },
+      {
+        "label": "1%",
+        "Masculino": "00:03:54",
+        "Femenino": "00:04:34"
+      },
+      {
+        "label": "5%",
+        "Masculino": "00:04:26",
+        "Femenino": "00:05:00"
+      },
+      {
+        "label": "10%",
+        "Masculino": "00:04:44",
+        "Femenino": "00:05:17"
+      },
+      {
+        "label": "30%",
+        "Masculino": "00:05:24",
+        "Femenino": "00:05:55"
+      },
+      {
+        "label": "50%",
+        "Masculino": "00:05:54",
+        "Femenino": "00:06:23"
+      },
+      {
+        "label": "80%",
+        "Masculino": "00:06:51",
+        "Femenino": "00:07:16"
+      },
+      {
+        "label": "Max",
+        "Masculino": "00:09:05",
+        "Femenino": "00:09:05"
+      }
+    ],
+    "paceDistributionRows": [
+      {
+        "label": "≤ 03:30",
+        "F": 0,
+        "M": 8,
+        "X": 0
+      },
+      {
+        "label": "03:31–03:45",
+        "F": 0,
+        "M": 15,
+        "X": 0
+      },
+      {
+        "label": "03:46–04:00",
+        "F": 1,
+        "M": 32,
+        "X": 0
+      },
+      {
+        "label": "04:01–04:15",
+        "F": 2,
+        "M": 58,
+        "X": 0
+      },
+      {
+        "label": "04:16–04:46",
+        "F": 63,
+        "M": 270,
+        "X": 0
+      },
+      {
+        "label": "04:47–05:14",
+        "F": 160,
+        "M": 492,
+        "X": 0
+      },
+      {
+        "label": "05:15–05:55",
+        "F": 522,
+        "M": 959,
+        "X": 0
+      },
+      {
+        "label": "05:56–06:30",
+        "F": 586,
+        "M": 751,
+        "X": 0
+      },
+      {
+        "label": "06:31–07:37",
+        "F": 809,
+        "M": 771,
+        "X": 0
+      },
+      {
+        "label": "07:38–08:28",
+        "F": 251,
+        "M": 203,
+        "X": 0
+      },
+      {
+        "label": "≥ 08:29",
+        "F": 54,
+        "M": 40,
+        "X": 0
+      }
+    ],
+    "paceDistributionTotals": {
+      "label": "Total",
+      "F": 2448,
+      "M": 3599,
+      "X": 0
+    },
+    "summaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "count": 6047,
+        "avgPace": "00:06:11"
+      },
+      {
+        "label": "Con todos los Split y TC",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 5K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 10K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 15K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 20K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 21K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 25K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 30K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 35K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 40K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      },
+      {
+        "label": "split 42K",
+        "count": 0,
+        "avgPace": "00:00:00"
+      }
+    ],
+    "genderSummaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "countM": 3599,
+        "countF": 2448,
+        "avgPaceM": "00:05:59",
+        "avgPaceF": "00:06:28"
+      },
+      {
+        "label": "Con todos los Split y TC",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 5K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 10K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 15K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 20K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 21K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 25K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 30K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 35K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 40K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "label": "split 42K",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      }
+    ],
+    "categoryStatsRows": [
+      {
+        "categoria": "ABSOLUTO",
+        "countM": 3,
+        "countF": 3,
+        "avgPaceM": "00:03:22",
+        "avgPaceF": "00:04:04"
+      },
+      {
+        "categoria": "AF 15 A 29 AÑOS",
+        "countM": 0,
+        "countF": 515,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:06:24"
+      },
+      {
+        "categoria": "AV 15 A 29 AÑOS",
+        "countM": 791,
+        "countF": 0,
+        "avgPaceM": "00:05:56",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "BF 30 A 39 AÑOS",
+        "countM": 0,
+        "countF": 1166,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:06:27"
+      },
+      {
+        "categoria": "BV 30 A 39 AÑOS",
+        "countM": 1513,
+        "countF": 0,
+        "avgPaceM": "00:05:55",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "CF 40 A 49 AÑOS",
+        "countM": 0,
+        "countF": 552,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:06:30"
+      },
+      {
+        "categoria": "CV 40 A 49 AÑOS",
+        "countM": 884,
+        "countF": 0,
+        "avgPaceM": "00:06:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "Categoria:",
+        "countM": 13,
+        "countF": 0,
+        "avgPaceM": "00:06:37",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "DF 50 A 59 AÑOS",
+        "countM": 0,
+        "countF": 185,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:06:37"
+      },
+      {
+        "categoria": "DV 50 A 59 AÑOS",
+        "countM": 317,
+        "countF": 0,
+        "avgPaceM": "00:06:15",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "EF 60 AÑOS Y MÁS",
+        "countM": 0,
+        "countF": 22,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:06:34"
+      },
+      {
+        "categoria": "EV 60 AÑOS Y MÁS",
+        "countM": 78,
+        "countF": 0,
+        "avgPaceM": "00:06:24",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "RELEVOS",
+        "countM": 0,
+        "countF": 5,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:06:36"
+      }
+    ],
+    "genderSummaryStatsByCategory": {
+      "ABSOLUTO": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 3,
+          "countF": 3,
+          "avgPaceM": "00:03:22",
+          "avgPaceF": "00:04:04"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "AF 15 A 29 AÑOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 515,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:06:24"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "AV 15 A 29 AÑOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 791,
+          "countF": 0,
+          "avgPaceM": "00:05:56",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "BF 30 A 39 AÑOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 1166,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:06:27"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "BV 30 A 39 AÑOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 1513,
+          "countF": 0,
+          "avgPaceM": "00:05:55",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "CF 40 A 49 AÑOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 552,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:06:30"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "CV 40 A 49 AÑOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 884,
+          "countF": 0,
+          "avgPaceM": "00:06:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "Categoria:": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 13,
+          "countF": 0,
+          "avgPaceM": "00:06:37",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "DF 50 A 59 AÑOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 185,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:06:37"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "DV 50 A 59 AÑOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 317,
+          "countF": 0,
+          "avgPaceM": "00:06:15",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "EF 60 AÑOS Y MÁS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 22,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:06:34"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "EV 60 AÑOS Y MÁS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 78,
+          "countF": 0,
+          "avgPaceM": "00:06:24",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "RELEVOS": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 5,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:06:36"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 5K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 10K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 20K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 21K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 25K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 30K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 35K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 40K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ]
+    },
+    "scatterDataByCategory": {
+      "ABSOLUTO": {
+        "dataM": [],
+        "dataF": []
+      },
+      "AF 15 A 29 AÑOS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "AV 15 A 29 AÑOS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "BF 30 A 39 AÑOS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "BV 30 A 39 AÑOS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "CF 40 A 49 AÑOS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "CV 40 A 49 AÑOS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Categoria:": {
+        "dataM": [],
+        "dataF": []
+      },
+      "DF 50 A 59 AÑOS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "DV 50 A 59 AÑOS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "EF 60 AÑOS Y MÁS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "EV 60 AÑOS Y MÁS": {
+        "dataM": [],
+        "dataF": []
+      },
+      "RELEVOS": {
+        "dataM": [],
+        "dataF": []
+      }
+    },
+    "scatterData": [],
+    "scatterDataGenero": {
+      "dataM": [],
+      "dataF": []
+    }
+  },
+  "comments": {}
+}

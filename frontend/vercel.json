@@ -5,6 +5,8 @@
     }
   },
   "rewrites": [
+    { "source": "/api/informes", "destination": "/informes/index.json" },
+    { "source": "/api/informes/:id", "destination": "/informes/:id.json" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]

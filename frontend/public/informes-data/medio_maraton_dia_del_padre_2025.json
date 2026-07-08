@@ -131,11 +131,6 @@
         "avgPace": "00:06:05"
       },
       {
-        "label": "Con todos los Split y TC",
-        "count": 0,
-        "avgPace": "00:00:00"
-      },
-      {
         "label": "split 5K",
         "count": 7116,
         "avgPace": "00:05:38"
@@ -159,31 +154,6 @@
         "label": "split 21K",
         "count": 6435,
         "avgPace": "00:08:27"
-      },
-      {
-        "label": "split 25K",
-        "count": 0,
-        "avgPace": "00:00:00"
-      },
-      {
-        "label": "split 30K",
-        "count": 0,
-        "avgPace": "00:00:00"
-      },
-      {
-        "label": "split 35K",
-        "count": 0,
-        "avgPace": "00:00:00"
-      },
-      {
-        "label": "split 40K",
-        "count": 0,
-        "avgPace": "00:00:00"
-      },
-      {
-        "label": "split 42K",
-        "count": 0,
-        "avgPace": "00:00:00"
       }
     ],
     "genderSummaryStatsRows": [
@@ -193,13 +163,6 @@
         "countF": 2169,
         "avgPaceM": "00:05:57",
         "avgPaceF": "00:06:24"
-      },
-      {
-        "label": "Con todos los Split y TC",
-        "countM": 0,
-        "countF": 0,
-        "avgPaceM": "00:00:00",
-        "avgPaceF": "00:00:00"
       },
       {
         "label": "split 5K",
@@ -235,41 +198,6 @@
         "countF": 1921,
         "avgPaceM": "00:08:18",
         "avgPaceF": "00:08:49"
-      },
-      {
-        "label": "split 25K",
-        "countM": 0,
-        "countF": 0,
-        "avgPaceM": "00:00:00",
-        "avgPaceF": "00:00:00"
-      },
-      {
-        "label": "split 30K",
-        "countM": 0,
-        "countF": 0,
-        "avgPaceM": "00:00:00",
-        "avgPaceF": "00:00:00"
-      },
-      {
-        "label": "split 35K",
-        "countM": 0,
-        "countF": 0,
-        "avgPaceM": "00:00:00",
-        "avgPaceF": "00:00:00"
-      },
-      {
-        "label": "split 40K",
-        "countM": 0,
-        "countF": 0,
-        "avgPaceM": "00:00:00",
-        "avgPaceF": "00:00:00"
-      },
-      {
-        "label": "split 42K",
-        "countM": 0,
-        "countF": 0,
-        "avgPaceM": "00:00:00",
-        "avgPaceF": "00:00:00"
       }
     ],
     "categoryStatsRows": [
@@ -382,13 +310,6 @@
           "avgPaceF": "00:03:39"
         },
         {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
           "label": "split 5K",
           "countM": 5,
           "countF": 5,
@@ -422,41 +343,6 @@
           "countF": 5,
           "avgPaceM": "00:04:25",
           "avgPaceF": "00:04:54"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "CBT": [
@@ -466,13 +352,6 @@
           "countF": 3,
           "avgPaceM": "00:04:28",
           "avgPaceF": "00:04:56"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -508,41 +387,6 @@
           "countF": 2,
           "avgPaceM": "00:06:22",
           "avgPaceF": "00:06:09"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "J1 15 a 19 años": [
@@ -552,13 +396,6 @@
           "countF": 48,
           "avgPaceM": "00:05:57",
           "avgPaceF": "00:06:26"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -594,41 +431,6 @@
           "countF": 43,
           "avgPaceM": "00:08:04",
           "avgPaceF": "00:08:34"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "J2 20 a 24 años": [
@@ -638,13 +440,6 @@
           "countF": 182,
           "avgPaceM": "00:05:53",
           "avgPaceF": "00:06:33"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -680,41 +475,6 @@
           "countF": 161,
           "avgPaceM": "00:07:59",
           "avgPaceF": "00:09:01"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "L1 25 a 29 años": [
@@ -724,13 +484,6 @@
           "countF": 272,
           "avgPaceM": "00:05:45",
           "avgPaceF": "00:06:23"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -766,41 +519,6 @@
           "countF": 243,
           "avgPaceM": "00:07:57",
           "avgPaceF": "00:08:45"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "L2 30 a 34 años": [
@@ -810,13 +528,6 @@
           "countF": 353,
           "avgPaceM": "00:05:34",
           "avgPaceF": "00:06:16"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -852,41 +563,6 @@
           "countF": 310,
           "avgPaceM": "00:07:44",
           "avgPaceF": "00:08:36"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "L3 35 a 39 años": [
@@ -896,13 +572,6 @@
           "countF": 358,
           "avgPaceM": "00:05:39",
           "avgPaceF": "00:06:10"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -938,41 +607,6 @@
           "countF": 321,
           "avgPaceM": "00:07:50",
           "avgPaceF": "00:08:27"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "M1 40 a 44 años": [
@@ -982,13 +616,6 @@
           "countF": 306,
           "avgPaceM": "00:05:51",
           "avgPaceF": "00:06:15"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -1024,41 +651,6 @@
           "countF": 270,
           "avgPaceM": "00:08:07",
           "avgPaceF": "00:08:32"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "M2 45 a 49 años": [
@@ -1068,13 +660,6 @@
           "countF": 240,
           "avgPaceM": "00:05:57",
           "avgPaceF": "00:06:33"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -1110,41 +695,6 @@
           "countF": 215,
           "avgPaceM": "00:08:20",
           "avgPaceF": "00:09:05"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "M3 50 a 54 años": [
@@ -1154,13 +704,6 @@
           "countF": 195,
           "avgPaceM": "00:06:08",
           "avgPaceF": "00:06:42"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -1196,41 +739,6 @@
           "countF": 171,
           "avgPaceM": "00:08:38",
           "avgPaceF": "00:09:23"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "Padres e hijas": [
@@ -1240,13 +748,6 @@
           "countF": 47,
           "avgPaceM": "00:06:27",
           "avgPaceF": "00:06:19"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -1282,41 +783,6 @@
           "countF": 43,
           "avgPaceM": "00:09:01",
           "avgPaceF": "00:08:38"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "Padres e hijos": [
@@ -1325,13 +791,6 @@
           "countM": 115,
           "countF": 0,
           "avgPaceM": "00:06:08",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
           "avgPaceF": "00:00:00"
         },
         {
@@ -1368,41 +827,6 @@
           "countF": 0,
           "avgPaceM": "00:08:38",
           "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "V1 55 a 59 años": [
@@ -1412,13 +836,6 @@
           "countF": 92,
           "avgPaceM": "00:06:21",
           "avgPaceF": "00:06:45"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -1454,41 +871,6 @@
           "countF": 81,
           "avgPaceM": "00:09:05",
           "avgPaceF": "00:09:35"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ],
       "V2 60 años y mayores": [
@@ -1498,13 +880,6 @@
           "countF": 68,
           "avgPaceM": "00:06:38",
           "avgPaceF": "00:07:10"
-        },
-        {
-          "label": "Con todos los Split y TC",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         },
         {
           "label": "split 5K",
@@ -1540,41 +915,6 @@
           "countF": 56,
           "avgPaceM": "00:09:32",
           "avgPaceF": "00:10:13"
-        },
-        {
-          "label": "split 25K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 30K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 35K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 40K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
-        },
-        {
-          "label": "split 42K",
-          "countM": 0,
-          "countF": 0,
-          "avgPaceM": "00:00:00",
-          "avgPaceF": "00:00:00"
         }
       ]
     },

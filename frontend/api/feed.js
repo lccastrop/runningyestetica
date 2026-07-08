@@ -1,26 +1,31 @@
 // api/feed.js — proxy del feed RSS de Substack (Vercel serverless function)
-// Requiere Node 20+ (fetch nativo, sigue redirects automáticamente)
+// Compatible con el runtime ESM del proyecto frontend.
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
-    const upstream = await fetch('https://pacesocial.substack.com/feed');
+    const upstream = await fetch('https://pacesocial.substack.com/feed', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0',
+        Accept: 'application/rss+xml, application/xml, text/xml, */*',
+      },
+    });
 
     if (!upstream.ok) {
-      return res
-        .status(502)
-        .json({ error: 'Feed no disponible: ' + upstream.status });
+      throw new Error('Feed no disponible: ' + upstream.status);
     }
 
     const xml = await upstream.text();
 
-    res
-      .setHeader('Content-Type', 'application/xml; charset=utf-8')
-      .setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400')
-      .status(200)
-      .send(xml);
+    if (!/^\s*(<\?xml|<rss|<feed)/i.test(xml)) {
+      throw new Error('Feed inválido');
+    }
 
+    res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
+    res.status(200);
+    res.send(xml);
   } catch (err) {
-    console.error('[api/feed]', err.message);
-    res.status(500).json({ error: err.message });
+    console.error('[api/feed]', err instanceof Error ? err.message : err);
+    res.status(500).json({ error: err instanceof Error ? err.message : 'Error inesperado' });
   }
-};
+}

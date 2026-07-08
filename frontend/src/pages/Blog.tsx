@@ -38,6 +38,13 @@ function fetchXml(): Promise<string> {
       if (!r.ok) throw new Error('proxy-' + r.status);
       return r.text();
     })
+    .then((text) => {
+      const trimmed = text.trim();
+      if (!trimmed.startsWith('<rss') && !trimmed.startsWith('<?xml')) {
+        throw new Error('proxy-invalid');
+      }
+      return text;
+    })
     .catch(() =>
       fetch(`${SUBSTACK_URL}/feed`).then((r) => {
         if (!r.ok) throw new Error('direct-' + r.status);

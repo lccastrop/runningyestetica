@@ -1,245 +1,180 @@
-﻿import { useEffect, useState } from 'react';
-import { api, getFilesBaseUrl } from '../api';
+import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 
-interface BlogPost {
-  id: number;
+const SUBSTACK_URL = 'https://pacesocial.substack.com';
+
+interface Post {
+  id: string;
   title: string;
-  content: string;
-  user_id: number;
-  nombres: string;
-  apellidos: string;
-  created_at: string;
+  link: string;
+  pubDate: string;
+  excerpt: string;
+  contentHtml: string;
 }
 
-interface User {
-  id: number;
-  email: string;
-  role: string;
-  nombres: string;
-  apellidos: string;
+function stripHtml(html: string): string {
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  return (div.textContent || div.innerText || '').replace(/\s+/g, ' ').trim();
+}
+
+function excerpt(text: string, max: number): string {
+  if (text.length <= max) return text;
+  return text.slice(0, max).replace(/\s\S*$/, '') + '…';
+}
+
+function formatDate(str: string): string {
+  if (!str) return '';
+  const d = new Date(str);
+  if (isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+// Intenta el proxy propio primero; si falla (sin función serverless en local, proxy caído, etc.)
+// hace fetch directo — los feeds RSS de Substack permiten CORS.
+function fetchXml(): Promise<string> {
+  return fetch('/api/feed')
+    .then((r) => {
+      if (!r.ok) throw new Error('proxy-' + r.status);
+      return r.text();
+    })
+    .catch(() =>
+      fetch(`${SUBSTACK_URL}/feed`).then((r) => {
+        if (!r.ok) throw new Error('direct-' + r.status);
+        return r.text();
+      })
+    );
+}
+
+function parseItems(xml: string): Post[] {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xml, 'application/xml');
+  if (doc.querySelector('parsererror')) {
+    throw new Error('XML inválido');
+  }
+
+  const items = Array.from(doc.getElementsByTagName('item'));
+  return items.map((item, idx) => {
+    const titleEls = item.getElementsByTagName('title');
+    const title = titleEls.length ? (titleEls[0].textContent || '').trim() : 'Sin título';
+
+    const linkEls = item.getElementsByTagName('link');
+    let link = linkEls.length ? (linkEls[0].textContent || '').trim() : '';
+    if (!link) {
+      const guidEls = item.getElementsByTagName('guid');
+      link = guidEls.length ? (guidEls[0].textContent || '').trim() : '#';
+    }
+
+    const dateEls = item.getElementsByTagName('pubDate');
+    const pubDate = dateEls.length ? (dateEls[0].textContent || '').trim() : '';
+
+    // <content:encoded> requiere getElementsByTagNameNS con la URI del namespace.
+    const contentEls = item.getElementsByTagNameNS(
+      'http://purl.org/rss/1.0/modules/content/',
+      'encoded'
+    );
+    const descEls = item.getElementsByTagName('description');
+    const rawHtml =
+      contentEls.length && contentEls[0].textContent?.trim()
+        ? contentEls[0].textContent!.trim()
+        : descEls.length
+        ? (descEls[0].textContent || '').trim()
+        : '';
+
+    return {
+      id: String(idx),
+      title,
+      link,
+      pubDate,
+      excerpt: rawHtml ? excerpt(stripHtml(rawHtml), 300) : '',
+      contentHtml: rawHtml,
+    };
+  });
 }
 
 function Blog() {
-  const [blogs, setBlogs] = useState<BlogPost[]>([]);
-  const [user, setUser] = useState<User | null>(null);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [editingId, setEditingId] = useState<number | null>(null);
-  const [editTitle, setEditTitle] = useState('');
-  const [editContent, setEditContent] = useState('');
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [searchParams] = useSearchParams();
 
-  const cargarBlogs = async () => {
-    const res = await api.get('/blogs');
-    setBlogs(res.data);
-  };
-
-  const verSesion = async () => {
-    try {
-      const res = await api.get('/session');
-      setUser(res.data.user);
-    } catch {
-      setUser(null);
-    }
-  };
-
   useEffect(() => {
-    cargarBlogs();
-    verSesion();
+    let cancelled = false;
+    fetchXml()
+      .then((xml) => {
+        if (cancelled) return;
+        setPosts(parseItems(xml));
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('[Blog] Error al cargar el feed:', err);
+        if (cancelled) return;
+        setError(true);
+        setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  const crearBlog = async () => {
-    try {
-      const res = await api.post('/blogs', { title, content });
-      setBlogs((prev) => [res.data, ...prev]);
-      setTitle('');
-      setContent('');
-      await cargarBlogs();
-    } catch (err) {
-      console.error('Error al crear blog:', err);
-    }
-  };
-
-  const iniciarEdicion = (blog: BlogPost) => {
-    setEditingId(blog.id);
-    setEditTitle(blog.title);
-    setEditContent(blog.content);
-  };
-
-  const guardarEdicion = async (id: number) => {
-    await api.put(`/blogs/${id}`, { title: editTitle, content: editContent });
-    setBlogs((prev) =>
-      prev.map((b) =>
-        b.id === id ? { ...b, title: editTitle, content: editContent } : b
-      )
-    );
-    setEditingId(null);
-  };
-
-  const eliminarBlog = async (id: number) => {
-    await api.delete(`/blogs/${id}`);
-    setBlogs((prev) => prev.filter((b) => b.id !== id));
-  };
-
-  // Upload image and inject markdown tag into content
-  const onUploadNewImage: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
-    const input = e.currentTarget;
-    const file = input.files?.[0];
-    if (!file) return;
-    const fd = new FormData();
-    fd.append('image', file);
-    try {
-      const res = await api.post('/upload-image', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
-      // Insert relative URL so it works with same origin + proxy and avoids mixed content
-      setContent((prev) => `${prev}\n\n![imagen](${res.data.url})\n\n`);
-    } catch (err) {
-      console.error('Error al subir imagen:', err);
-    } finally {
-      if (input) input.value = '';
-    }
-  };
-
-  const onUploadEditImage: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
-    const input = e.currentTarget;
-    const file = input.files?.[0];
-    if (!file) return;
-    const fd = new FormData();
-    fd.append('image', file);
-    try {
-      const res = await api.post('/upload-image', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
-      setEditContent((prev) => `${prev}\n\n![imagen](${res.data.url})\n\n`);
-    } catch (err) {
-      console.error('Error al subir imagen (edición):', err);
-    } finally {
-      if (input) input.value = '';
-    }
-  };
-
-  // Render content supporting inline markdown image tags anywhere in the text
-  const renderContent = (text: string) => {
-    const filesBase = getFilesBaseUrl();
-    const blocks = text.split(/\n{2,}/);
-    const imgRe = /!\[(.*?)\]\((.*?)\)/g;
-    return blocks.map((block, idx) => {
-      const nodes: React.ReactNode[] = [];
-      let lastIndex = 0;
-      let match: RegExpExecArray | null;
-      while ((match = imgRe.exec(block)) !== null) {
-        const [full, altRaw, src] = match;
-        const start = match.index;
-        if (start > lastIndex) {
-          nodes.push(block.slice(lastIndex, start));
-        }
-        const alt = altRaw || 'Imagen';
-        // If image src is relative to backend uploads, prefix with backend base URL in production
-        let finalSrc = src;
-        if (src?.startsWith('/uploads/') && filesBase) {
-          finalSrc = `${filesBase}${src}`;
-        }
-        nodes.push(<img key={`${idx}-img-${start}`} src={finalSrc} alt={alt} />);
-        lastIndex = start + full.length;
-      }
-      if (lastIndex < block.length) {
-        nodes.push(block.slice(lastIndex));
-      }
-      const onlyImages = nodes.length > 0 && nodes.every(n => typeof n !== 'string');
-      return onlyImages ? (
-        <div key={idx}>{nodes}</div>
-      ) : (
-        <p key={idx}>{nodes.length ? nodes : block}</p>
-      );
-    });
-  };
-
-  const selectedId = Number(searchParams.get('id')) || (blogs[0]?.id ?? 0);
-  const selected = blogs.find((b) => b.id === selectedId) || null;
+  const selectedId = searchParams.get('id') || posts[0]?.id || '0';
+  const selected = posts.find((p) => p.id === selectedId) || posts[0] || null;
 
   return (
     <div className="blog-layout">
       <section className="blog-main">
         <h2>Blog</h2>
-        {user && (user.role === 'plus' || user.role === 'admin') && (
+
+        {loading && <p className="muted mt-1">Cargando publicaciones…</p>}
+
+        {!loading && error && (
+          <p className="mt-1">
+            No se pudieron cargar las publicaciones en este momento. Puedes leerlas
+            directamente en{' '}
+            <a className="link" href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer">
+              pacesocial.substack.com
+            </a>
+            .
+          </p>
+        )}
+
+        {!loading && !error && !selected && (
+          <p className="muted mt-1">No hay publicaciones disponibles aún.</p>
+        )}
+
+        {!loading && !error && selected && (
           <div className="mt-1">
-            <input
-              type="text"
-              placeholder="Título"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <textarea
-              placeholder="Contenido"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              rows={6}
-              className="w-100 mt-05"
-            />
-            <div className="mt-05">
-              <label className="clickable">
-                Insertar imagen
-                <input type="file" accept="image/*" onChange={onUploadNewImage} className="hidden" />
-              </label>
-            </div>
-            <button onClick={crearBlog} className="mt-05">
-              Crear
-            </button>
+            <h3>{selected.title}</h3>
+            <small className="muted">{formatDate(selected.pubDate)}</small>
+            <div className="mt-05" dangerouslySetInnerHTML={{ __html: selected.contentHtml }} />
+            <p className="mt-1">
+              <a className="link" href={selected.link} target="_blank" rel="noopener noreferrer">
+                Leer en Substack →
+              </a>
+            </p>
           </div>
         )}
+
         <div className="mt-1">
-          {!selected ? (
-            <p>Cargando...</p>
-          ) : editingId === selected.id ? (
-            <div>
-              <input
-                type="text"
-                value={editTitle}
-                onChange={(e) => setEditTitle(e.target.value)}
-              />
-              <textarea
-                value={editContent}
-                onChange={(e) => setEditContent(e.target.value)}
-                rows={6}
-                className="w-100 mt-05"
-              />
-              <div className="mt-05">
-                <label className="clickable">
-                  Insertar imagen
-                  <input type="file" accept="image/*" onChange={onUploadEditImage} className="hidden" />
-                </label>
-              </div>
-              <button onClick={() => guardarEdicion(selected.id)} className="mt-05">Guardar</button>
-              <button onClick={() => setEditingId(null)} className="mt-05 ml-05">Cancelar</button>
-            </div>
-          ) : (
-            <div>
-              <div>
-                <h3>{selected.title}</h3>
-                <small>
-                  Autor: {selected.nombres} {selected.apellidos} - {new Date(selected.created_at).toLocaleDateString()}
-                </small>
-              </div>
-              <div className="mt-05">
-                {renderContent(selected.content)}
-              </div>
-              {user && (user.role === 'admin' || user.id === selected.user_id) && (
-                <button onClick={() => iniciarEdicion(selected)} className="mt-05">Editar</button>
-              )}
-              {user && user.role === 'admin' && (
-                <button onClick={() => eliminarBlog(selected.id)} className="mt-05 ml-05">Eliminar</button>
-              )}
-            </div>
-          )}
+          <p className="muted fs-095">
+            Recibe cada nueva publicación directamente en tu correo.{' '}
+            <a className="link" href={SUBSTACK_URL} target="_blank" rel="noopener noreferrer">
+              Suscribirse en Substack →
+            </a>
+          </p>
         </div>
       </section>
+
       <aside className="blog-aside">
-        <h3>Otros blogs</h3>
+        <h3>Otras publicaciones</h3>
         <ul className="blog-list">
-          {blogs.map((b) => (
-            <li key={b.id} className="blog-item">
-              <Link className="link" to={`?id=${b.id}`}>{b.title}</Link><br />
-              <small>
-                Autor: {b.nombres} {b.apellidos} - {new Date(b.created_at).toLocaleDateString()}
-              </small>
+          {posts.map((p) => (
+            <li key={p.id} className="blog-item">
+              <Link className="link" to={`?id=${p.id}`}>
+                {p.title}
+              </Link>
+              <br />
+              <small className="muted">{formatDate(p.pubDate)}</small>
             </li>
           ))}
         </ul>
@@ -249,5 +184,3 @@ function Blog() {
 }
 
 export default Blog;
-
-

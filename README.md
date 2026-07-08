@@ -6,17 +6,10 @@ Incluye carga de archivos CSV, análisis por género y ritmo, tablas comparativa
 ## 📦 Tecnologías
 
 - React + Vite (frontend)
-- Node.js + Express (backend)
-- MySQL
 - Recharts
-- csv-parser, multer
+- Despliegue: Vercel (solo frontend, sin backend)
 
 ## 🚀 Cómo usar
-
-### Backend
-npm install
-cd backend
-node index.js
 
 Frontend
 npm install

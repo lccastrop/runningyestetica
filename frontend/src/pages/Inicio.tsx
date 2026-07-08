@@ -25,14 +25,19 @@ function formatDate(str: string): string {
 }
 
 async function fetchSubstackBlogs(): Promise<BlogPreview[]> {
+  const getFeedUrl = () => {
+    if (typeof window === 'undefined') return '/api/feed';
+    return `${window.location.origin}/api/feed?ts=${Date.now()}`;
+  };
+
   const tryFeed = async (url: string) => {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: 'no-store' });
     if (!response.ok) throw new Error('feed-' + response.status);
     return response.text();
   };
 
   try {
-    const xml = await tryFeed('/api/feed');
+    const xml = await tryFeed(getFeedUrl());
     const parser = new DOMParser();
     const doc = parser.parseFromString(xml, 'application/xml');
     const items = Array.from(doc.getElementsByTagName('item'));

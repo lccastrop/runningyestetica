@@ -50,6 +50,102 @@
         "Femenino": "00:09:05"
       }
     ],
+    "top5ByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "EMMANUEL ANGEL REYES MONTES",
+          "bib": "2",
+          "categoria": "ABSOLUTO",
+          "tiempoOficial": "01:39:36",
+          "tiempoChip": "01:39:35",
+          "ritmoMedio": "00:03:19"
+        },
+        {
+          "pos": 2,
+          "nombre": "ABRAHAM DANIEL HERNANDEZ MANTELL",
+          "bib": "5",
+          "categoria": "ABSOLUTO",
+          "tiempoOficial": "01:41:17",
+          "tiempoChip": "01:41:16",
+          "ritmoMedio": "00:03:23"
+        },
+        {
+          "pos": 3,
+          "nombre": "OSWALDO VICTORIANO  VELAZQUEZ",
+          "bib": "11",
+          "categoria": "ABSOLUTO",
+          "tiempoOficial": "01:41:24",
+          "tiempoChip": "01:41:23",
+          "ritmoMedio": "00:03:23"
+        },
+        {
+          "pos": 4,
+          "nombre": "RODRIGO  VILLEGAS  GARCIA",
+          "bib": "10",
+          "categoria": "BV 30 A 39 AÑOS",
+          "tiempoOficial": "01:41:30",
+          "tiempoChip": "01:41:30",
+          "ritmoMedio": "00:03:23"
+        },
+        {
+          "pos": 5,
+          "nombre": "JORGE ISMAEL  OSORIO  HERRERA",
+          "bib": "4882",
+          "categoria": "AV 15 A 29 AÑOS",
+          "tiempoOficial": "01:43:29",
+          "tiempoChip": "01:43:28",
+          "ritmoMedio": "00:03:27"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "REINA ISELA RIVERA CARRILLO",
+          "bib": "4366",
+          "categoria": "ABSOLUTO",
+          "tiempoOficial": "01:59:23",
+          "tiempoChip": "01:59:22",
+          "ritmoMedio": "00:03:59"
+        },
+        {
+          "pos": 2,
+          "nombre": "SANDRA LOPEZ  REYES",
+          "bib": "4697",
+          "categoria": "ABSOLUTO",
+          "tiempoOficial": "02:01:03",
+          "tiempoChip": "02:01:02",
+          "ritmoMedio": "00:04:02"
+        },
+        {
+          "pos": 3,
+          "nombre": "ITZEL BAUTISTA FRIAS",
+          "bib": "2389",
+          "categoria": "ABSOLUTO",
+          "tiempoOficial": "02:05:27",
+          "tiempoChip": "02:05:26",
+          "ritmoMedio": "00:04:11"
+        },
+        {
+          "pos": 4,
+          "nombre": "PILAR  COVARRUBIAS RUIZ",
+          "bib": "4445",
+          "categoria": "BF 30 A 39 AÑOS",
+          "tiempoOficial": "02:08:44",
+          "tiempoChip": "02:08:43",
+          "ritmoMedio": "00:04:17"
+        },
+        {
+          "pos": 5,
+          "nombre": "ANDREA BERENICE  GENIS  CASTELAN",
+          "bib": "5075",
+          "categoria": "BF 30 A 39 AÑOS",
+          "tiempoOficial": "02:10:53",
+          "tiempoChip": "02:10:52",
+          "ritmoMedio": "00:04:22"
+        }
+      ]
+    },
     "paceDistributionRows": [
       {
         "label": "≤ 03:30",

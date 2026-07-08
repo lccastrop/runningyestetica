@@ -29,8 +29,19 @@ type InformeMetadata = {
 
 type ScatterPoint = { x: number; y: number };
 
+type Top5Row = {
+  pos: number;
+  nombre: string;
+  bib: string;
+  categoria: string;
+  tiempoOficial: string;
+  tiempoChip: string;
+  ritmoMedio: string;
+};
+
 type InformeAnalysis = {
   percentileRows: Array<{ label: string; Masculino: string; Femenino: string }>;
+  top5ByGender: { Masculino: Top5Row[]; Femenino: Top5Row[] };
   paceDistributionRows: Array<{ label: string; F: number; M: number; X: number }>;
   paceDistributionTotals: { label: string; F: number; M: number; X: number };
   summaryStatsRows: Array<{ label: string; count: number; avgPace: string }>;
@@ -68,6 +79,7 @@ const formatDistance = (distanceKm: number | null | undefined): string | null =>
 
 const createEmptyAnalysis = (): InformeAnalysis => ({
   percentileRows: [],
+  top5ByGender: { Masculino: [], Femenino: [] },
   paceDistributionRows: [],
   paceDistributionTotals: { label: 'Total', F: 0, M: 0, X: 0 },
   summaryStatsRows: [],
@@ -109,6 +121,12 @@ const normalizeAnalysis = (raw: any): InformeAnalysis => {
   const percentileRows = Array.isArray(raw.percentileRows)
     ? (raw.percentileRows as InformeAnalysis['percentileRows'])
     : empty.percentileRows;
+
+  const top5Raw = raw.top5ByGender ?? {};
+  const top5ByGender = {
+    Masculino: Array.isArray(top5Raw.Masculino) ? (top5Raw.Masculino as Top5Row[]) : [],
+    Femenino: Array.isArray(top5Raw.Femenino) ? (top5Raw.Femenino as Top5Row[]) : [],
+  };
 
   const paceDistributionRows = Array.isArray(raw.paceDistributionRows)
     ? (raw.paceDistributionRows as InformeAnalysis['paceDistributionRows'])
@@ -180,6 +198,7 @@ const normalizeAnalysis = (raw: any): InformeAnalysis => {
 
   return {
     percentileRows,
+    top5ByGender,
     paceDistributionRows,
     paceDistributionTotals,
     summaryStatsRows,
@@ -304,6 +323,7 @@ type InformeAnalysisViewProps = {
 const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
   const {
     percentileRows,
+    top5ByGender,
     paceDistributionRows,
     paceDistributionTotals,
     summaryStatsRows,
@@ -546,6 +566,49 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
                 </div>
               )}
             </div>
+          </>
+        ) : (
+          <p>{emptySectionMessage}</p>
+        )}
+      </div>
+      <div className="mt-1">
+        <h4>2.1.5 Top 5 por Genero</h4>
+        <Note sectionKey="sec_2_1_5" />
+        {top5ByGender.Masculino.length > 0 || top5ByGender.Femenino.length > 0 ? (
+          <>
+            {(['Masculino', 'Femenino'] as const).map((genero) =>
+              top5ByGender[genero].length > 0 ? (
+                <div key={genero} className="mt-05">
+                  <p className="fs-095"><strong>{genero}</strong></p>
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>BIB</th>
+                        <th>Categoria</th>
+                        <th>Tiempo Oficial</th>
+                        <th>Tiempo Chip</th>
+                        <th>Ritmo Medio</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {top5ByGender[genero].map((row) => (
+                        <tr key={`${genero}-${row.pos}`}>
+                          <th scope="row">{row.pos}</th>
+                          <td>{row.nombre}</td>
+                          <td>{row.bib}</td>
+                          <td>{row.categoria}</td>
+                          <td>{row.tiempoOficial}</td>
+                          <td>{row.tiempoChip}</td>
+                          <td>{row.ritmoMedio}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : null,
+            )}
           </>
         ) : (
           <p>{emptySectionMessage}</p>

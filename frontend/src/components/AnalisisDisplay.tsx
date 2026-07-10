@@ -1,8 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter } from 'recharts';
 
-// NOTE: The types for the analysis data are not strictly typed here.
-// They are based on the data structures created in CrearInforme.tsx.
-
 const formatSecondsToHHMMSS = (totalSeconds: number): string => {
     const safe = Number.isFinite(totalSeconds) ? Math.max(0, Math.round(totalSeconds)) : 0;
     const hours = Math.floor(safe / 3600).toString().padStart(2, '0');

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { ReactElement } from 'react';
 import {
   ResponsiveContainer,
@@ -13,7 +13,6 @@ import {
   Scatter,
 } from 'recharts';
 import { api } from '../api';
-import { AuthContext } from '../AuthContext';
 
 type Informe = {
   id: string;
@@ -785,7 +784,6 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
 };
 
 const InformesCarreras = () => {
-  const { user } = useContext(AuthContext);
   const [informes, setInformes] = useState<Informe[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -926,7 +924,7 @@ const InformesCarreras = () => {
       sectionKey={sectionKey}
       comments={comments}
       setComments={setComments}
-      canEdit={Boolean(user && user.role === 'admin')}
+      canEdit={false}
       onSave={saveComments}
     />
   );

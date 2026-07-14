@@ -230,6 +230,7 @@ button:hover {
 /* Por defecto, los hijos ocupan 100% */
 .contenedor-principal > * {
   flex: 1 1 100%;
+  min-width: 0; /* permite encoger tablas y graficas sin desbordar */
 }
 
 /* Columnas utilitarias dentro del contenedor principal */
@@ -406,6 +407,23 @@ button:hover {
 /* Tablas neutras */
 .table { width: 100%; border-collapse: collapse; text-align: center; }
 .table th, .table td { border: 1px solid #ccc; padding: 6px; }
+
+/* Tablas responsivas: en pantallas angostas la tabla conserva su ancho
+   natural y se desplaza horizontalmente dentro de su contenedor */
+@media (max-width: 768px) {
+  .table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table th,
+  .table td {
+    white-space: nowrap;
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+}
 .thead-group { background: #f5f5f5; }
 .row-total td { font-weight: bold; }
 .row-total td:first-child { background: #eee; }

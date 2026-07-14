@@ -1314,16 +1314,7 @@ const InformesCarreras = () => {
       });
   }, [showExample, mockInforme]);
 
-  // Selecciona un informe por defecto solo si no hay uno seleccionado aún
-  useEffect(() => {
-    if (!loading && !error && informes.length > 0 && !selectedId) {
-      const preferred =
-        informes.find((i) => i.id !== mockInforme.id) ?? informes[0];
-      if (preferred) {
-        setSelectedId(preferred.id);
-      }
-    }
-  }, [loading, error, informes, selectedId, mockInforme.id]);
+  // La página inicia mostrando la lista de carreras (sin informe seleccionado)
 
   const selectedInforme = useMemo(
     () => informes.find((i) => i.id === selectedId) ?? null,
@@ -1407,28 +1398,44 @@ const InformesCarreras = () => {
 
       {!loading && !error && (
         informes.length > 0 ? (
-          <div className="informes-page">
-            <div className="informe-chips" role="tablist" aria-label="Carreras">
+          selectedId === null ? (
+            <div className="carrera-cards">
               {informes.map((informe) => {
-                const isActive = informe.id === selectedId;
                 const isDemo = informe.id === mockInforme.id;
                 return (
                   <button
                     key={informe.id}
                     type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    className={`informe-chip${isActive ? ' is-active' : ''}`}
-                    onClick={() => setSelectedId(informe.id)}
+                    className="carrera-card"
+                    onClick={() => {
+                      setSelectedId(informe.id);
+                      window.scrollTo({ top: 0 });
+                    }}
                   >
-                    <span>{informe.nombre}{isDemo ? ' (ejemplo)' : ''}</span>
-                    <span className="chip-fecha">
-                      {new Date(informe.fecha).toLocaleDateString()}
+                    <span className="carrera-card__nombre">
+                      {informe.nombre}{isDemo ? ' (ejemplo)' : ''}
                     </span>
+                    <span className="carrera-card__fecha">
+                      {new Date(informe.fecha).toLocaleDateString('es', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })}
+                    </span>
+                    <span className="carrera-card__cta">Ver informe →</span>
                   </button>
                 );
               })}
             </div>
+          ) : (
+          <div className="informes-page">
+            <button
+              type="button"
+              className="btn-volver"
+              onClick={() => setSelectedId(null)}
+            >
+              ← Todas las carreras
+            </button>
 
             <section className="informe-detalle">
               {selectedInforme ? (
@@ -1466,6 +1473,7 @@ const InformesCarreras = () => {
               )}
             </section>
           </div>
+          )
         ) : (
           <p>No hay informes disponibles.</p>
         )

@@ -749,3 +749,74 @@ h2 { font-size: clamp(1.45rem, 4.5vw, 2.1rem); }
   .informe-detalle { box-shadow: none; }
   .contenedor-principal { padding: 10px; }
 }
+
+
+/* --- seleccion de carrera: cuadricula inicial --- */
+.carrera-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+  width: 100%;
+  margin-top: 0.8em;
+}
+
+.carrera-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 18px 16px 14px;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.carrera-card:hover {
+  border-color: var(--azul);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.08);
+}
+
+.carrera-card__nombre {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--tinta);
+  line-height: 1.25;
+}
+
+.carrera-card__fecha {
+  font-size: 0.82rem;
+  color: var(--gris-texto);
+}
+
+.carrera-card__cta {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--azul);
+}
+
+/* --- boton volver --- */
+.btn-volver {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 12px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--azul);
+  cursor: pointer;
+}
+
+.btn-volver:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .carrera-cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .carrera-card { padding: 14px 12px 12px; }
+  .carrera-card__nombre { font-size: 0.95rem; }
+}

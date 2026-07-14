@@ -1,0 +1,860 @@
+{
+  "id": "maraton_de_sidney_2025",
+  "nombre": "Maratón de Sídney 2025",
+  "fecha": "2025-08-31T00:00:00Z",
+  "metadata": {
+    "fileName": "sydney2025.csv",
+    "distanceKm": 42.195,
+    "rowCount": 33160
+  },
+  "analysis": {
+    "kpiRows": [
+      {
+        "label": "Inscritos totales",
+        "value": "33,160"
+      },
+      {
+        "label": "Corredores 42K (a pie)",
+        "value": "33,160"
+      },
+      {
+        "label": "Hombres (42K)",
+        "value": "21,494"
+      },
+      {
+        "label": "Mujeres (42K)",
+        "value": "11,572"
+      },
+      {
+        "label": "% Hombres",
+        "value": "64.82%"
+      },
+      {
+        "label": "% Mujeres",
+        "value": "34.90%"
+      },
+      {
+        "label": "Tiempo promedio (42K)",
+        "value": "04:24:04"
+      },
+      {
+        "label": "Tiempo mediana (42K)",
+        "value": "04:14:58"
+      },
+      {
+        "label": "Ritmo promedio (min/km)",
+        "value": "00:06:15"
+      },
+      {
+        "label": "Ganador absoluto (H)",
+        "value": "Hailemaryam Kiros KEBEDEW — 02:06:06"
+      },
+      {
+        "label": "Ganadora absoluto (M)",
+        "value": "Sifan HASSAN — 02:18:22"
+      }
+    ],
+    "genderBreakdownRows": [
+      {
+        "genero": "Masculino",
+        "corredores": 21494,
+        "pct": "64.82%",
+        "promedio": "04:13:30",
+        "mejor": "02:06:06",
+        "peor": "08:07:24"
+      },
+      {
+        "genero": "Femenino",
+        "corredores": 11572,
+        "pct": "34.90%",
+        "promedio": "04:43:34",
+        "mejor": "02:18:22",
+        "peor": "07:51:13"
+      }
+    ],
+    "categoryBreakdownRows": [
+      {
+        "categoria": "18-24",
+        "corredores": 1678,
+        "pct": "5.06%",
+        "promedio": "04:13:52",
+        "mejor": "02:06:16"
+      },
+      {
+        "categoria": "25-29",
+        "corredores": 4386,
+        "pct": "13.23%",
+        "promedio": "04:10:47",
+        "mejor": "02:06:06"
+      },
+      {
+        "categoria": "30-34",
+        "corredores": 4936,
+        "pct": "14.89%",
+        "promedio": "04:11:07",
+        "mejor": "02:07:38"
+      },
+      {
+        "categoria": "35-39",
+        "corredores": 4604,
+        "pct": "13.88%",
+        "promedio": "04:16:17",
+        "mejor": "02:07:17"
+      },
+      {
+        "categoria": "40-44",
+        "corredores": 4759,
+        "pct": "14.35%",
+        "promedio": "04:21:16",
+        "mejor": "02:08:06"
+      },
+      {
+        "categoria": "45-49",
+        "corredores": 4163,
+        "pct": "12.55%",
+        "promedio": "04:27:18",
+        "mejor": "02:29:16"
+      },
+      {
+        "categoria": "50-54",
+        "corredores": 3560,
+        "pct": "10.74%",
+        "promedio": "04:33:25",
+        "mejor": "02:39:23"
+      },
+      {
+        "categoria": "55-59",
+        "corredores": 2523,
+        "pct": "7.61%",
+        "promedio": "04:42:41",
+        "mejor": "02:44:26"
+      },
+      {
+        "categoria": "60-64",
+        "corredores": 1512,
+        "pct": "4.56%",
+        "promedio": "04:53:54",
+        "mejor": "02:35:49"
+      },
+      {
+        "categoria": "65-69",
+        "corredores": 724,
+        "pct": "2.18%",
+        "promedio": "05:04:56",
+        "mejor": "03:02:00"
+      },
+      {
+        "categoria": "70-74",
+        "corredores": 255,
+        "pct": "0.77%",
+        "promedio": "05:20:44",
+        "mejor": "02:41:46"
+      },
+      {
+        "categoria": "75-79",
+        "corredores": 55,
+        "pct": "0.17%",
+        "promedio": "05:50:32",
+        "mejor": "03:37:48"
+      },
+      {
+        "categoria": "80-84",
+        "corredores": 5,
+        "pct": "0.02%",
+        "promedio": "06:19:24",
+        "mejor": "04:18:59"
+      }
+    ],
+    "segmentPaceRows": [
+      {
+        "tramo": "0-Meta",
+        "ritmo": "00:06:15",
+        "distanciaKm": "42.195",
+        "acumulado": "04:24:04"
+      }
+    ],
+    "halvesRows": [],
+    "topByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "Hailemaryam Kiros KEBEDEW",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoChip": "02:06:06"
+        },
+        {
+          "pos": 2,
+          "nombre": "Addisu Gobena AGA",
+          "bib": "",
+          "categoria": "18-24",
+          "tiempoChip": "02:06:16"
+        },
+        {
+          "pos": 3,
+          "nombre": "Tebello RAMAKONGOANA",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoChip": "02:06:47"
+        },
+        {
+          "pos": 4,
+          "nombre": "Mustapha HOUDADI",
+          "bib": "",
+          "categoria": "35-39",
+          "tiempoChip": "02:07:17"
+        },
+        {
+          "pos": 5,
+          "nombre": "Edward CHESEREK",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoChip": "02:07:38"
+        },
+        {
+          "pos": 6,
+          "nombre": "Masato ARAO",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoChip": "02:07:42"
+        },
+        {
+          "pos": 7,
+          "nombre": "Laban KORIR",
+          "bib": "",
+          "categoria": "40-44",
+          "tiempoChip": "02:08:06"
+        },
+        {
+          "pos": 8,
+          "nombre": "Felix Kiptoo KIRWA",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoChip": "02:08:18"
+        },
+        {
+          "pos": 9,
+          "nombre": "Eliud KIPCHOGE",
+          "bib": "",
+          "categoria": "40-44",
+          "tiempoChip": "02:08:31"
+        },
+        {
+          "pos": 10,
+          "nombre": "Victor KIPCHIRCHIR",
+          "bib": "",
+          "categoria": "35-39",
+          "tiempoChip": "02:09:08"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "Sifan HASSAN",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoChip": "02:18:22"
+        },
+        {
+          "pos": 2,
+          "nombre": "Brigid Jepchirchir KOSGEI",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoChip": "02:18:56"
+        },
+        {
+          "pos": 3,
+          "nombre": "Workenesh Edesa GURMESA",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoChip": "02:22:15"
+        },
+        {
+          "pos": 4,
+          "nombre": "Kumeshi SICHALA",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoChip": "02:22:50"
+        },
+        {
+          "pos": 5,
+          "nombre": "Evaline CHIRCHIR",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoChip": "02:23:13"
+        },
+        {
+          "pos": 6,
+          "nombre": "Ai HOSODA",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoChip": "02:23:27"
+        },
+        {
+          "pos": 7,
+          "nombre": "Leanne POMPEANI",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoChip": "02:24:47"
+        },
+        {
+          "pos": 8,
+          "nombre": "Jessica STENSON",
+          "bib": "",
+          "categoria": "35-39",
+          "tiempoChip": "02:28:56"
+        },
+        {
+          "pos": 9,
+          "nombre": "Lisa WEIGHTMAN",
+          "bib": "",
+          "categoria": "45-49",
+          "tiempoChip": "02:29:34"
+        },
+        {
+          "pos": 10,
+          "nombre": "Abigail NORDBERG",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoChip": "02:35:43"
+        }
+      ]
+    },
+    "top100SegmentRows": [
+      {
+        "tramo": "0-Meta",
+        "varonil": "00:03:28",
+        "femenil": "00:04:06",
+        "distanciaKm": "42.195"
+      }
+    ],
+    "positionBands": {
+      "bandLabels": [
+        "1 - 5,000",
+        "5,001 - 10,000",
+        "10,001 - 15,000",
+        "15,001 - 20,000",
+        "20,001 - 25,000",
+        "25,001 - 30,000",
+        "30,001 - 33,160"
+      ],
+      "rows": [
+        {
+          "tramo": "0-Meta",
+          "values": [
+            "00:04:30",
+            "00:05:11",
+            "00:05:38",
+            "00:06:09",
+            "00:06:45",
+            "00:07:37",
+            "00:08:59"
+          ],
+          "distanciaKm": "42.195",
+          "absVaronil": "",
+          "absFemenil": ""
+        }
+      ]
+    },
+    "percentileRows": [
+      {
+        "label": "Min",
+        "Masculino": "00:02:59",
+        "Femenino": "00:03:17"
+      },
+      {
+        "label": "1%",
+        "Masculino": "00:03:53",
+        "Femenino": "00:04:26"
+      },
+      {
+        "label": "5%",
+        "Masculino": "00:04:14",
+        "Femenino": "00:04:54"
+      },
+      {
+        "label": "10%",
+        "Masculino": "00:04:32",
+        "Femenino": "00:05:11"
+      },
+      {
+        "label": "30%",
+        "Masculino": "00:05:13",
+        "Femenino": "00:05:53"
+      },
+      {
+        "label": "50%",
+        "Masculino": "00:05:45",
+        "Femenino": "00:06:33"
+      },
+      {
+        "label": "80%",
+        "Masculino": "00:07:02",
+        "Femenino": "00:07:51"
+      },
+      {
+        "label": "Max",
+        "Masculino": "00:11:33",
+        "Femenino": "00:11:10"
+      }
+    ],
+    "top5ByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "Hailemaryam Kiros KEBEDEW",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:06:06",
+          "ritmoMedio": "00:02:59"
+        },
+        {
+          "pos": 2,
+          "nombre": "Addisu Gobena AGA",
+          "bib": "",
+          "categoria": "18-24",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:06:16",
+          "ritmoMedio": "00:03:00"
+        },
+        {
+          "pos": 3,
+          "nombre": "Tebello RAMAKONGOANA",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:06:47",
+          "ritmoMedio": "00:03:00"
+        },
+        {
+          "pos": 4,
+          "nombre": "Mustapha HOUDADI",
+          "bib": "",
+          "categoria": "35-39",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:07:17",
+          "ritmoMedio": "00:03:01"
+        },
+        {
+          "pos": 5,
+          "nombre": "Edward CHESEREK",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:07:38",
+          "ritmoMedio": "00:03:01"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "Sifan HASSAN",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:18:22",
+          "ritmoMedio": "00:03:17"
+        },
+        {
+          "pos": 2,
+          "nombre": "Brigid Jepchirchir KOSGEI",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:18:56",
+          "ritmoMedio": "00:03:18"
+        },
+        {
+          "pos": 3,
+          "nombre": "Workenesh Edesa GURMESA",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:22:15",
+          "ritmoMedio": "00:03:22"
+        },
+        {
+          "pos": 4,
+          "nombre": "Kumeshi SICHALA",
+          "bib": "",
+          "categoria": "30-34",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:22:50",
+          "ritmoMedio": "00:03:23"
+        },
+        {
+          "pos": 5,
+          "nombre": "Evaline CHIRCHIR",
+          "bib": "",
+          "categoria": "25-29",
+          "tiempoOficial": "00:00:00",
+          "tiempoChip": "02:23:13",
+          "ritmoMedio": "00:03:24"
+        }
+      ]
+    },
+    "paceDistributionRows": [
+      {
+        "label": "≤ 03:30",
+        "F": 7,
+        "M": 44,
+        "X": 0
+      },
+      {
+        "label": "03:31–03:45",
+        "F": 6,
+        "M": 76,
+        "X": 0
+      },
+      {
+        "label": "03:46–04:00",
+        "F": 11,
+        "M": 272,
+        "X": 1
+      },
+      {
+        "label": "04:01–04:15",
+        "F": 41,
+        "M": 820,
+        "X": 1
+      },
+      {
+        "label": "04:16–04:46",
+        "F": 309,
+        "M": 2188,
+        "X": 4
+      },
+      {
+        "label": "04:47–05:14",
+        "F": 922,
+        "M": 3288,
+        "X": 8
+      },
+      {
+        "label": "05:15–05:55",
+        "F": 2349,
+        "M": 5093,
+        "X": 22
+      },
+      {
+        "label": "05:56–06:30",
+        "F": 2014,
+        "M": 3164,
+        "X": 11
+      },
+      {
+        "label": "06:31–07:37",
+        "F": 3123,
+        "M": 3890,
+        "X": 20
+      },
+      {
+        "label": "07:38–08:28",
+        "F": 1481,
+        "M": 1502,
+        "X": 17
+      },
+      {
+        "label": "≥ 08:29",
+        "F": 1309,
+        "M": 1157,
+        "X": 10
+      }
+    ],
+    "paceDistributionTotals": {
+      "label": "Total",
+      "F": 11572,
+      "M": 21494,
+      "X": 94
+    },
+    "summaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "count": 33160,
+        "avgPace": "00:06:15"
+      }
+    ],
+    "genderSummaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "countM": 21494,
+        "countF": 11572,
+        "avgPaceM": "00:06:00",
+        "avgPaceF": "00:06:43"
+      }
+    ],
+    "categoryStatsRows": [
+      {
+        "categoria": "18-24",
+        "countM": 997,
+        "countF": 678,
+        "avgPaceM": "00:05:45",
+        "avgPaceF": "00:06:25"
+      },
+      {
+        "categoria": "25-29",
+        "countM": 2645,
+        "countF": 1730,
+        "avgPaceM": "00:05:40",
+        "avgPaceF": "00:06:22"
+      },
+      {
+        "categoria": "30-34",
+        "countM": 3273,
+        "countF": 1642,
+        "avgPaceM": "00:05:43",
+        "avgPaceF": "00:06:24"
+      },
+      {
+        "categoria": "35-39",
+        "countM": 3153,
+        "countF": 1427,
+        "avgPaceM": "00:05:51",
+        "avgPaceF": "00:06:35"
+      },
+      {
+        "categoria": "40-44",
+        "countM": 3140,
+        "countF": 1607,
+        "avgPaceM": "00:05:54",
+        "avgPaceF": "00:06:45"
+      },
+      {
+        "categoria": "45-49",
+        "countM": 2598,
+        "countF": 1549,
+        "avgPaceM": "00:06:03",
+        "avgPaceF": "00:06:49"
+      },
+      {
+        "categoria": "50-54",
+        "countM": 2259,
+        "countF": 1298,
+        "avgPaceM": "00:06:11",
+        "avgPaceF": "00:07:00"
+      },
+      {
+        "categoria": "55-59",
+        "countM": 1629,
+        "countF": 891,
+        "avgPaceM": "00:06:27",
+        "avgPaceF": "00:07:10"
+      },
+      {
+        "categoria": "60-64",
+        "countM": 1019,
+        "countF": 492,
+        "avgPaceM": "00:06:45",
+        "avgPaceF": "00:07:24"
+      },
+      {
+        "categoria": "65-69",
+        "countM": 533,
+        "countF": 191,
+        "avgPaceM": "00:07:05",
+        "avgPaceF": "00:07:39"
+      },
+      {
+        "categoria": "70-74",
+        "countM": 202,
+        "countF": 53,
+        "avgPaceM": "00:07:28",
+        "avgPaceF": "00:08:08"
+      },
+      {
+        "categoria": "75-79",
+        "countM": 42,
+        "countF": 13,
+        "avgPaceM": "00:08:18",
+        "avgPaceF": "00:08:19"
+      },
+      {
+        "categoria": "80-84",
+        "countM": 4,
+        "countF": 1,
+        "avgPaceM": "00:08:58",
+        "avgPaceF": "00:09:04"
+      }
+    ],
+    "genderSummaryStatsByCategory": {
+      "18-24": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 997,
+          "countF": 678,
+          "avgPaceM": "00:05:45",
+          "avgPaceF": "00:06:25"
+        }
+      ],
+      "25-29": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 2645,
+          "countF": 1730,
+          "avgPaceM": "00:05:40",
+          "avgPaceF": "00:06:22"
+        }
+      ],
+      "30-34": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 3273,
+          "countF": 1642,
+          "avgPaceM": "00:05:43",
+          "avgPaceF": "00:06:24"
+        }
+      ],
+      "35-39": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 3153,
+          "countF": 1427,
+          "avgPaceM": "00:05:51",
+          "avgPaceF": "00:06:35"
+        }
+      ],
+      "40-44": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 3140,
+          "countF": 1607,
+          "avgPaceM": "00:05:54",
+          "avgPaceF": "00:06:45"
+        }
+      ],
+      "45-49": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 2598,
+          "countF": 1549,
+          "avgPaceM": "00:06:03",
+          "avgPaceF": "00:06:49"
+        }
+      ],
+      "50-54": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 2259,
+          "countF": 1298,
+          "avgPaceM": "00:06:11",
+          "avgPaceF": "00:07:00"
+        }
+      ],
+      "55-59": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 1629,
+          "countF": 891,
+          "avgPaceM": "00:06:27",
+          "avgPaceF": "00:07:10"
+        }
+      ],
+      "60-64": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 1019,
+          "countF": 492,
+          "avgPaceM": "00:06:45",
+          "avgPaceF": "00:07:24"
+        }
+      ],
+      "65-69": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 533,
+          "countF": 191,
+          "avgPaceM": "00:07:05",
+          "avgPaceF": "00:07:39"
+        }
+      ],
+      "70-74": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 202,
+          "countF": 53,
+          "avgPaceM": "00:07:28",
+          "avgPaceF": "00:08:08"
+        }
+      ],
+      "75-79": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 42,
+          "countF": 13,
+          "avgPaceM": "00:08:18",
+          "avgPaceF": "00:08:19"
+        }
+      ],
+      "80-84": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 4,
+          "countF": 1,
+          "avgPaceM": "00:08:58",
+          "avgPaceF": "00:09:04"
+        }
+      ]
+    },
+    "scatterDataByCategory": {
+      "18-24": {
+        "dataM": [],
+        "dataF": []
+      },
+      "25-29": {
+        "dataM": [],
+        "dataF": []
+      },
+      "30-34": {
+        "dataM": [],
+        "dataF": []
+      },
+      "35-39": {
+        "dataM": [],
+        "dataF": []
+      },
+      "40-44": {
+        "dataM": [],
+        "dataF": []
+      },
+      "45-49": {
+        "dataM": [],
+        "dataF": []
+      },
+      "50-54": {
+        "dataM": [],
+        "dataF": []
+      },
+      "55-59": {
+        "dataM": [],
+        "dataF": []
+      },
+      "60-64": {
+        "dataM": [],
+        "dataF": []
+      },
+      "65-69": {
+        "dataM": [],
+        "dataF": []
+      },
+      "70-74": {
+        "dataM": [],
+        "dataF": []
+      },
+      "75-79": {
+        "dataM": [],
+        "dataF": []
+      },
+      "80-84": {
+        "dataM": [],
+        "dataF": []
+      }
+    },
+    "scatterData": [],
+    "scatterDataGenero": {
+      "dataM": [],
+      "dataF": []
+    }
+  },
+  "comments": {}
+}

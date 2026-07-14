@@ -15,6 +15,11 @@
     "fecha": "2025-10-12T00:00:00Z"
   },
   {
+    "id": "maraton_de_berlin_2025",
+    "nombre": "Maratón de Berlín 2025",
+    "fecha": "2025-09-21T00:00:00Z"
+  },
+  {
     "id": "split_30k_2025",
     "nombre": "Split 30K 2025",
     "fecha": "2025-09-14T00:00:00Z"
@@ -22,6 +27,11 @@
   {
     "id": "maraton_cdmx_2025",
     "nombre": "Maratón CDMX 2025",
+    "fecha": "2025-08-31T00:00:00Z"
+  },
+  {
+    "id": "maraton_de_sidney_2025",
+    "nombre": "Maratón de Sídney 2025",
     "fecha": "2025-08-31T00:00:00Z"
   },
   {
@@ -38,6 +48,11 @@
     "id": "medio_maraton_dia_del_padre_2025",
     "nombre": "Medio Maratón Día del Padre 2025",
     "fecha": "2025-06-15T00:00:00Z"
+  },
+  {
+    "id": "maraton_de_londres_2025",
+    "nombre": "Maratón de Londres 2025",
+    "fecha": "2025-04-27T00:00:00Z"
   },
   {
     "id": "maraton_de_tokio_2025",

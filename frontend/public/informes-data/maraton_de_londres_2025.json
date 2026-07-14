@@ -1,0 +1,930 @@
+{
+  "id": "maraton_de_londres_2025",
+  "nombre": "Maratón de Londres 2025",
+  "fecha": "2025-04-27T00:00:00Z",
+  "metadata": {
+    "fileName": "London2025.csv",
+    "distanceKm": 42.195,
+    "rowCount": 59054
+  },
+  "analysis": {
+    "kpiRows": [
+      {
+        "label": "Inscritos totales",
+        "value": "59,054"
+      },
+      {
+        "label": "Corredores 42K (a pie)",
+        "value": "53,926"
+      },
+      {
+        "label": "Tiempo promedio (42K)",
+        "value": "04:40:32"
+      },
+      {
+        "label": "Tiempo mediana (42K)",
+        "value": "04:34:11"
+      },
+      {
+        "label": "Ritmo promedio (min/km)",
+        "value": "00:06:39"
+      }
+    ],
+    "genderBreakdownRows": [],
+    "categoryBreakdownRows": [
+      {
+        "categoria": "18-39",
+        "corredores": 27130,
+        "pct": "45.94%",
+        "promedio": "04:36:50",
+        "mejor": "02:02:27"
+      },
+      {
+        "categoria": "40-44",
+        "corredores": 7790,
+        "pct": "13.19%",
+        "promedio": "04:34:23",
+        "mejor": "02:05:25"
+      },
+      {
+        "categoria": "45-49",
+        "corredores": 6790,
+        "pct": "11.50%",
+        "promedio": "04:38:12",
+        "mejor": "02:22:06"
+      },
+      {
+        "categoria": "50-54",
+        "corredores": 5690,
+        "pct": "9.64%",
+        "promedio": "04:45:14",
+        "mejor": "02:27:27"
+      },
+      {
+        "categoria": "55-59",
+        "corredores": 3355,
+        "pct": "5.68%",
+        "promedio": "04:54:05",
+        "mejor": "02:39:24"
+      },
+      {
+        "categoria": "60-64",
+        "corredores": 1987,
+        "pct": "3.36%",
+        "promedio": "05:00:15",
+        "mejor": "02:48:19"
+      },
+      {
+        "categoria": "65-69",
+        "corredores": 757,
+        "pct": "1.28%",
+        "promedio": "05:16:57",
+        "mejor": "02:59:50"
+      },
+      {
+        "categoria": "70-74",
+        "corredores": 316,
+        "pct": "0.54%",
+        "promedio": "05:31:51",
+        "mejor": "03:11:07"
+      },
+      {
+        "categoria": "75-79",
+        "corredores": 81,
+        "pct": "0.14%",
+        "promedio": "05:51:44",
+        "mejor": "03:55:03"
+      },
+      {
+        "categoria": "80+",
+        "corredores": 28,
+        "pct": "0.05%",
+        "promedio": "06:38:19",
+        "mejor": "04:28:07"
+      },
+      {
+        "categoria": "Sin categoría",
+        "corredores": 2,
+        "pct": "0.00%",
+        "promedio": "03:03:23",
+        "mejor": "02:23:04"
+      }
+    ],
+    "segmentPaceRows": [
+      {
+        "tramo": "0-5K",
+        "ritmo": "00:05:49",
+        "distanciaKm": "5",
+        "acumulado": "00:29:07"
+      },
+      {
+        "tramo": "5K-10K",
+        "ritmo": "00:06:01",
+        "distanciaKm": "5",
+        "acumulado": "00:59:12"
+      },
+      {
+        "tramo": "10K-15K",
+        "ritmo": "00:06:13",
+        "distanciaKm": "5",
+        "acumulado": "01:30:15"
+      },
+      {
+        "tramo": "15K-20K",
+        "ritmo": "00:06:26",
+        "distanciaKm": "5",
+        "acumulado": "02:02:28"
+      },
+      {
+        "tramo": "20K-21K",
+        "ritmo": "00:06:27",
+        "distanciaKm": "1.0975",
+        "acumulado": "02:09:32"
+      },
+      {
+        "tramo": "21K-25K",
+        "ritmo": "00:06:48",
+        "distanciaKm": "3.9025",
+        "acumulado": "02:36:00"
+      },
+      {
+        "tramo": "25K-30K",
+        "ritmo": "00:07:02",
+        "distanciaKm": "5",
+        "acumulado": "03:11:04"
+      },
+      {
+        "tramo": "30K-35K",
+        "ritmo": "00:07:23",
+        "distanciaKm": "5",
+        "acumulado": "03:48:03"
+      },
+      {
+        "tramo": "35K-40K",
+        "ritmo": "00:07:19",
+        "distanciaKm": "5",
+        "acumulado": "04:24:28"
+      },
+      {
+        "tramo": "40K-Meta",
+        "ritmo": "00:07:04",
+        "distanciaKm": "2.195",
+        "acumulado": "04:40:32"
+      }
+    ],
+    "halvesRows": [
+      {
+        "label": "Corredores con split 21K válido",
+        "value": "53,813"
+      },
+      {
+        "label": "Ritmo promedio 1ra mitad (0-21K, min/km)",
+        "value": "00:06:08"
+      },
+      {
+        "label": "Ritmo promedio 2da mitad (21K-Meta, min/km)",
+        "value": "00:07:09"
+      },
+      {
+        "label": "Corredores con negative split (2da mitad más rápida)",
+        "value": "2,011"
+      },
+      {
+        "label": "% Negative split",
+        "value": "3.74%"
+      },
+      {
+        "label": "% Positive split (2da mitad más lenta)",
+        "value": "96.26%"
+      }
+    ],
+    "topByGender": {
+      "Masculino": [],
+      "Femenino": []
+    },
+    "top100SegmentRows": [
+      {
+        "tramo": "0-5K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "5K-10K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "10K-15K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "15K-20K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "20K-21K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "1.0975"
+      },
+      {
+        "tramo": "21K-25K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "3.9025"
+      },
+      {
+        "tramo": "25K-30K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "30K-35K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "35K-40K",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "40K-Meta",
+        "varonil": "",
+        "femenil": "",
+        "distanciaKm": "2.195"
+      }
+    ],
+    "positionBands": {
+      "bandLabels": [
+        "1 - 5,000",
+        "5,001 - 10,000",
+        "10,001 - 15,000",
+        "15,001 - 20,000",
+        "20,001 - 25,000",
+        "25,001 - 30,000",
+        "30,001 - 35,000",
+        "35,001 - 40,000",
+        "40,001 - 45,000",
+        "45,001 - 50,000",
+        "50,001 - 53,926"
+      ],
+      "rows": [
+        {
+          "tramo": "0-5K",
+          "values": [
+            "00:04:00",
+            "00:04:37",
+            "00:04:59",
+            "00:05:17",
+            "00:05:32",
+            "00:05:47",
+            "00:06:04",
+            "00:06:20",
+            "00:06:40",
+            "00:07:09",
+            "00:08:10"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "5K-10K",
+          "values": [
+            "00:04:02",
+            "00:04:40",
+            "00:05:03",
+            "00:05:22",
+            "00:05:38",
+            "00:05:55",
+            "00:06:13",
+            "00:06:32",
+            "00:06:56",
+            "00:07:36",
+            "00:08:51"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "10K-15K",
+          "values": [
+            "00:04:04",
+            "00:04:43",
+            "00:05:07",
+            "00:05:27",
+            "00:05:45",
+            "00:06:04",
+            "00:06:24",
+            "00:06:47",
+            "00:07:17",
+            "00:08:03",
+            "00:09:27"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "15K-20K",
+          "values": [
+            "00:04:05",
+            "00:04:45",
+            "00:05:09",
+            "00:05:30",
+            "00:05:50",
+            "00:06:11",
+            "00:06:37",
+            "00:07:04",
+            "00:07:41",
+            "00:08:35",
+            "00:10:05"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "20K-21K",
+          "values": [
+            "00:04:03",
+            "00:04:44",
+            "00:05:09",
+            "00:05:31",
+            "00:05:51",
+            "00:06:15",
+            "00:06:41",
+            "00:07:09",
+            "00:07:44",
+            "00:08:35",
+            "00:10:07"
+          ],
+          "distanciaKm": "1.0975",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "21K-25K",
+          "values": [
+            "00:04:07",
+            "00:04:49",
+            "00:05:16",
+            "00:05:40",
+            "00:06:05",
+            "00:06:33",
+            "00:07:04",
+            "00:07:38",
+            "00:08:18",
+            "00:09:15",
+            "00:10:56"
+          ],
+          "distanciaKm": "3.9025",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "25K-30K",
+          "values": [
+            "00:04:12",
+            "00:04:58",
+            "00:05:28",
+            "00:05:54",
+            "00:06:23",
+            "00:06:54",
+            "00:07:25",
+            "00:07:57",
+            "00:08:37",
+            "00:09:27",
+            "00:10:59"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "30K-35K",
+          "values": [
+            "00:04:20",
+            "00:05:10",
+            "00:05:44",
+            "00:06:16",
+            "00:06:52",
+            "00:07:24",
+            "00:07:54",
+            "00:08:25",
+            "00:09:02",
+            "00:09:46",
+            "00:11:13"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "35K-40K",
+          "values": [
+            "00:04:27",
+            "00:05:17",
+            "00:05:53",
+            "00:06:21",
+            "00:06:56",
+            "00:07:22",
+            "00:07:46",
+            "00:08:13",
+            "00:08:45",
+            "00:09:25",
+            "00:10:59"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "40K-Meta",
+          "values": [
+            "00:04:27",
+            "00:05:15",
+            "00:05:46",
+            "00:06:10",
+            "00:06:43",
+            "00:07:04",
+            "00:07:22",
+            "00:07:50",
+            "00:08:20",
+            "00:09:01",
+            "00:10:36"
+          ],
+          "distanciaKm": "2.195",
+          "absVaronil": "",
+          "absFemenil": ""
+        }
+      ]
+    },
+    "percentileRows": [
+      {
+        "label": "Min",
+        "Masculino": "-",
+        "Femenino": "-"
+      },
+      {
+        "label": "1%",
+        "Masculino": "-",
+        "Femenino": "-"
+      },
+      {
+        "label": "5%",
+        "Masculino": "-",
+        "Femenino": "-"
+      },
+      {
+        "label": "10%",
+        "Masculino": "-",
+        "Femenino": "-"
+      },
+      {
+        "label": "30%",
+        "Masculino": "-",
+        "Femenino": "-"
+      },
+      {
+        "label": "50%",
+        "Masculino": "-",
+        "Femenino": "-"
+      },
+      {
+        "label": "80%",
+        "Masculino": "-",
+        "Femenino": "-"
+      },
+      {
+        "label": "Max",
+        "Masculino": "-",
+        "Femenino": "-"
+      }
+    ],
+    "top5ByGender": {
+      "Masculino": [],
+      "Femenino": []
+    },
+    "paceDistributionRows": [
+      {
+        "label": "≤ 03:30",
+        "F": 0,
+        "M": 0,
+        "X": 151
+      },
+      {
+        "label": "03:31–03:45",
+        "F": 0,
+        "M": 0,
+        "X": 425
+      },
+      {
+        "label": "03:46–04:00",
+        "F": 0,
+        "M": 0,
+        "X": 813
+      },
+      {
+        "label": "04:01–04:15",
+        "F": 0,
+        "M": 0,
+        "X": 1379
+      },
+      {
+        "label": "04:16–04:46",
+        "F": 0,
+        "M": 0,
+        "X": 3602
+      },
+      {
+        "label": "04:47–05:14",
+        "F": 0,
+        "M": 0,
+        "X": 4799
+      },
+      {
+        "label": "05:15–05:55",
+        "F": 0,
+        "M": 0,
+        "X": 8574
+      },
+      {
+        "label": "05:56–06:30",
+        "F": 0,
+        "M": 0,
+        "X": 7349
+      },
+      {
+        "label": "06:31–07:37",
+        "F": 0,
+        "M": 0,
+        "X": 12868
+      },
+      {
+        "label": "07:38–08:28",
+        "F": 0,
+        "M": 0,
+        "X": 6649
+      },
+      {
+        "label": "≥ 08:29",
+        "F": 0,
+        "M": 0,
+        "X": 7317
+      }
+    ],
+    "paceDistributionTotals": {
+      "label": "Total",
+      "F": 0,
+      "M": 0,
+      "X": 53926
+    },
+    "summaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "count": 53926,
+        "avgPace": "00:06:39"
+      },
+      {
+        "label": "Con todos los Split y TC",
+        "count": 52793,
+        "avgPace": "00:06:38"
+      },
+      {
+        "label": "split 5K",
+        "count": 54459,
+        "avgPace": "00:05:50"
+      },
+      {
+        "label": "split 10K",
+        "count": 54366,
+        "avgPace": "00:06:01"
+      },
+      {
+        "label": "split 15K",
+        "count": 54035,
+        "avgPace": "00:06:13"
+      },
+      {
+        "label": "split 20K",
+        "count": 53949,
+        "avgPace": "00:06:26"
+      },
+      {
+        "label": "split 21K",
+        "count": 53819,
+        "avgPace": "00:06:28"
+      },
+      {
+        "label": "split 25K",
+        "count": 53580,
+        "avgPace": "00:06:48"
+      },
+      {
+        "label": "split 30K",
+        "count": 53192,
+        "avgPace": "00:07:02"
+      },
+      {
+        "label": "split 35K",
+        "count": 53011,
+        "avgPace": "00:07:23"
+      },
+      {
+        "label": "split 40K",
+        "count": 52843,
+        "avgPace": "00:07:19"
+      },
+      {
+        "label": "split 42K",
+        "count": 52793,
+        "avgPace": "00:07:04"
+      }
+    ],
+    "genderSummaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      }
+    ],
+    "categoryStatsRows": [
+      {
+        "categoria": "18-39",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "40-44",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "45-49",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "50-54",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "55-59",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "60-64",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "65-69",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "70-74",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "75-79",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "80+",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      },
+      {
+        "categoria": "Sin categoría",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      }
+    ],
+    "genderSummaryStatsByCategory": {
+      "18-39": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "40-44": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "45-49": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "50-54": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "55-59": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "60-64": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "65-69": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "70-74": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "75-79": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ],
+      "80+": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ]
+    },
+    "scatterDataByCategory": {
+      "18-39": {
+        "dataM": [],
+        "dataF": []
+      },
+      "40-44": {
+        "dataM": [],
+        "dataF": []
+      },
+      "45-49": {
+        "dataM": [],
+        "dataF": []
+      },
+      "50-54": {
+        "dataM": [],
+        "dataF": []
+      },
+      "55-59": {
+        "dataM": [],
+        "dataF": []
+      },
+      "60-64": {
+        "dataM": [],
+        "dataF": []
+      },
+      "65-69": {
+        "dataM": [],
+        "dataF": []
+      },
+      "70-74": {
+        "dataM": [],
+        "dataF": []
+      },
+      "75-79": {
+        "dataM": [],
+        "dataF": []
+      },
+      "80+": {
+        "dataM": [],
+        "dataF": []
+      }
+    },
+    "scatterData": [
+      {
+        "x": 0,
+        "y": 350
+      },
+      {
+        "x": 5,
+        "y": 350
+      },
+      {
+        "x": 10,
+        "y": 361
+      },
+      {
+        "x": 15,
+        "y": 373
+      },
+      {
+        "x": 20,
+        "y": 386
+      },
+      {
+        "x": 21,
+        "y": 388
+      },
+      {
+        "x": 25,
+        "y": 408
+      },
+      {
+        "x": 30,
+        "y": 422
+      },
+      {
+        "x": 35,
+        "y": 443
+      },
+      {
+        "x": 40,
+        "y": 439
+      },
+      {
+        "x": 42.195,
+        "y": 424
+      }
+    ],
+    "scatterDataGenero": {
+      "dataM": [],
+      "dataF": []
+    }
+  },
+  "comments": {}
+}

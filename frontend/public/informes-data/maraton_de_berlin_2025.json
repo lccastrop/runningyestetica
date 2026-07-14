@@ -1,0 +1,3613 @@
+{
+  "id": "maraton_de_berlin_2025",
+  "nombre": "Maratón de Berlín 2025",
+  "fecha": "2025-09-21T00:00:00Z",
+  "metadata": {
+    "fileName": "berlin2025.csv",
+    "distanceKm": 42.195,
+    "rowCount": 48072
+  },
+  "analysis": {
+    "kpiRows": [
+      {
+        "label": "Inscritos totales",
+        "value": "48,072"
+      },
+      {
+        "label": "Corredores 42K (a pie)",
+        "value": "48,072"
+      },
+      {
+        "label": "Hombres (42K)",
+        "value": "30,891"
+      },
+      {
+        "label": "Mujeres (42K)",
+        "value": "17,124"
+      },
+      {
+        "label": "% Hombres",
+        "value": "64.26%"
+      },
+      {
+        "label": "% Mujeres",
+        "value": "35.62%"
+      },
+      {
+        "label": "Tiempo promedio (42K)",
+        "value": "04:24:31"
+      },
+      {
+        "label": "Tiempo mediana (42K)",
+        "value": "04:20:22"
+      },
+      {
+        "label": "Ritmo promedio (min/km)",
+        "value": "00:06:16"
+      },
+      {
+        "label": "Ganador absoluto (H)",
+        "value": "Sawe, Sabastian (KEN) — 02:02:16"
+      },
+      {
+        "label": "Ganadora absoluto (M)",
+        "value": "Wanjiru, Rosemary (KEN) — 02:21:05"
+      }
+    ],
+    "genderBreakdownRows": [
+      {
+        "genero": "Masculino",
+        "corredores": 30891,
+        "pct": "64.26%",
+        "promedio": "04:15:26",
+        "mejor": "02:02:16",
+        "peor": "08:05:02"
+      },
+      {
+        "genero": "Femenino",
+        "corredores": 17124,
+        "pct": "35.62%",
+        "promedio": "04:40:55",
+        "mejor": "02:21:05",
+        "peor": "07:49:15"
+      }
+    ],
+    "categoryBreakdownRows": [
+      {
+        "categoria": "30",
+        "corredores": 7471,
+        "pct": "15.54%",
+        "promedio": "04:13:28",
+        "mejor": "02:02:16"
+      },
+      {
+        "categoria": "35",
+        "corredores": 7794,
+        "pct": "16.21%",
+        "promedio": "04:16:44",
+        "mejor": "02:07:11"
+      },
+      {
+        "categoria": "40",
+        "corredores": 7400,
+        "pct": "15.39%",
+        "promedio": "04:20:43",
+        "mejor": "02:20:12"
+      },
+      {
+        "categoria": "45",
+        "corredores": 6386,
+        "pct": "13.28%",
+        "promedio": "04:23:26",
+        "mejor": "02:29:19"
+      },
+      {
+        "categoria": "50",
+        "corredores": 4858,
+        "pct": "10.11%",
+        "promedio": "04:32:09",
+        "mejor": "02:31:09"
+      },
+      {
+        "categoria": "55",
+        "corredores": 3454,
+        "pct": "7.19%",
+        "promedio": "04:44:23",
+        "mejor": "02:29:45"
+      },
+      {
+        "categoria": "60",
+        "corredores": 2119,
+        "pct": "4.41%",
+        "promedio": "04:51:27",
+        "mejor": "02:45:14"
+      },
+      {
+        "categoria": "65",
+        "corredores": 766,
+        "pct": "1.59%",
+        "promedio": "05:06:32",
+        "mejor": "02:53:42"
+      },
+      {
+        "categoria": "70",
+        "corredores": 258,
+        "pct": "0.54%",
+        "promedio": "05:26:35",
+        "mejor": "03:11:42"
+      },
+      {
+        "categoria": "75",
+        "corredores": 71,
+        "pct": "0.15%",
+        "promedio": "05:39:53",
+        "mejor": "03:58:08"
+      },
+      {
+        "categoria": "80",
+        "corredores": 16,
+        "pct": "0.03%",
+        "promedio": "06:01:12",
+        "mejor": "04:31:44"
+      },
+      {
+        "categoria": "H",
+        "corredores": 7265,
+        "pct": "15.11%",
+        "promedio": "04:18:48",
+        "mejor": "02:06:15"
+      },
+      {
+        "categoria": "JU20",
+        "corredores": 166,
+        "pct": "0.35%",
+        "promedio": "04:36:52",
+        "mejor": "02:54:21"
+      },
+      {
+        "categoria": "–",
+        "corredores": 48,
+        "pct": "0.10%",
+        "promedio": "04:26:28",
+        "mejor": "03:05:33"
+      }
+    ],
+    "segmentPaceRows": [
+      {
+        "tramo": "0-5K",
+        "ritmo": "00:05:36",
+        "distanciaKm": "5",
+        "acumulado": "00:28:02"
+      },
+      {
+        "tramo": "5K-10K",
+        "ritmo": "00:05:47",
+        "distanciaKm": "5",
+        "acumulado": "00:56:56"
+      },
+      {
+        "tramo": "10K-15K",
+        "ritmo": "00:05:51",
+        "distanciaKm": "5",
+        "acumulado": "01:26:08"
+      },
+      {
+        "tramo": "15K-20K",
+        "ritmo": "00:06:11",
+        "distanciaKm": "5",
+        "acumulado": "01:57:04"
+      },
+      {
+        "tramo": "20K-21K",
+        "ritmo": "00:05:59",
+        "distanciaKm": "1.0975",
+        "acumulado": "02:03:34"
+      },
+      {
+        "tramo": "21K-25K",
+        "ritmo": "00:06:26",
+        "distanciaKm": "3.9025",
+        "acumulado": "02:27:59"
+      },
+      {
+        "tramo": "25K-30K",
+        "ritmo": "00:06:35",
+        "distanciaKm": "5",
+        "acumulado": "03:01:49"
+      },
+      {
+        "tramo": "30K-35K",
+        "ritmo": "00:06:43",
+        "distanciaKm": "5",
+        "acumulado": "03:35:26"
+      },
+      {
+        "tramo": "35K-40K",
+        "ritmo": "00:06:56",
+        "distanciaKm": "5",
+        "acumulado": "04:10:10"
+      },
+      {
+        "tramo": "40K-Meta",
+        "ritmo": "00:06:34",
+        "distanciaKm": "2.195",
+        "acumulado": "04:24:31"
+      }
+    ],
+    "halvesRows": [
+      {
+        "label": "Corredores con split 21K válido",
+        "value": "47,533"
+      },
+      {
+        "label": "Ritmo promedio 1ra mitad (0-21K, min/km)",
+        "value": "00:05:51"
+      },
+      {
+        "label": "Ritmo promedio 2da mitad (21K-Meta, min/km)",
+        "value": "00:06:41"
+      },
+      {
+        "label": "Corredores con negative split (2da mitad más rápida)",
+        "value": "2,623"
+      },
+      {
+        "label": "% Negative split",
+        "value": "5.52%"
+      },
+      {
+        "label": "% Positive split (2da mitad más lenta)",
+        "value": "94.48%"
+      }
+    ],
+    "topByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "Sawe, Sabastian (KEN)",
+          "bib": "3",
+          "categoria": "30",
+          "tiempoChip": "02:02:16"
+        },
+        {
+          "pos": 2,
+          "nombre": "Akasaki, Akira (JPN)",
+          "bib": "25",
+          "categoria": "H",
+          "tiempoChip": "02:06:15"
+        },
+        {
+          "pos": 3,
+          "nombre": "Debele, Chimdessa (ETH)",
+          "bib": "10",
+          "categoria": "H",
+          "tiempoChip": "02:06:57"
+        },
+        {
+          "pos": 4,
+          "nombre": "Adola, Guye (ETH)",
+          "bib": "6",
+          "categoria": "35",
+          "tiempoChip": "02:07:11"
+        },
+        {
+          "pos": 5,
+          "nombre": "Urano, Yuhei (JPN)",
+          "bib": "18",
+          "categoria": "H",
+          "tiempoChip": "02:07:35"
+        },
+        {
+          "pos": 6,
+          "nombre": "Chahdi, Hassan (FRA)",
+          "bib": "24",
+          "categoria": "35",
+          "tiempoChip": "02:07:43"
+        },
+        {
+          "pos": 7,
+          "nombre": "Kimura, Shin (JPN)",
+          "bib": "27",
+          "categoria": "30",
+          "tiempoChip": "02:08:37"
+        },
+        {
+          "pos": 8,
+          "nombre": "Pfeiffer, Hendrik (GER)",
+          "bib": "20",
+          "categoria": "30",
+          "tiempoChip": "02:09:14"
+        },
+        {
+          "pos": 9,
+          "nombre": "Panga, Joseph Tiophil (TAN)",
+          "bib": "57",
+          "categoria": "30",
+          "tiempoChip": "02:09:35"
+        },
+        {
+          "pos": 10,
+          "nombre": "Ouhda, Ahmed (ITA)",
+          "bib": "45",
+          "categoria": "H",
+          "tiempoChip": "02:10:39"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "Wanjiru, Rosemary (KEN)",
+          "bib": "F2",
+          "categoria": "30",
+          "tiempoChip": "02:21:05"
+        },
+        {
+          "pos": 2,
+          "nombre": "Dida, Dera (ETH)",
+          "bib": "F4",
+          "categoria": "H",
+          "tiempoChip": "02:21:08"
+        },
+        {
+          "pos": 3,
+          "nombre": "Gebru, Azmera (ETH)",
+          "bib": "F10",
+          "categoria": "30",
+          "tiempoChip": "02:21:29"
+        },
+        {
+          "pos": 4,
+          "nombre": "Cheptoo, Viola (KEN)",
+          "bib": "F12",
+          "categoria": "35",
+          "tiempoChip": "02:21:40"
+        },
+        {
+          "pos": 5,
+          "nombre": "Worku, Fantu (ETH)",
+          "bib": "F42",
+          "categoria": "H",
+          "tiempoChip": "02:21:57"
+        },
+        {
+          "pos": 6,
+          "nombre": "Königstein, Fabienne (GER)",
+          "bib": "F17",
+          "categoria": "30",
+          "tiempoChip": "02:22:17"
+        },
+        {
+          "pos": 7,
+          "nombre": "Azimeraw, Degitu (ETH)",
+          "bib": "F3",
+          "categoria": "H",
+          "tiempoChip": "02:23:02"
+        },
+        {
+          "pos": 8,
+          "nombre": "Mayer, Domenika (GER)",
+          "bib": "F14",
+          "categoria": "35",
+          "tiempoChip": "02:23:16"
+        },
+        {
+          "pos": 9,
+          "nombre": "Maeda, Honami (JPN)",
+          "bib": "F7",
+          "categoria": "H",
+          "tiempoChip": "02:24:36"
+        },
+        {
+          "pos": 10,
+          "nombre": "Fikir, Mestawut (ETH)",
+          "bib": "F5",
+          "categoria": "H",
+          "tiempoChip": "02:24:52"
+        }
+      ]
+    },
+    "top100SegmentRows": [
+      {
+        "tramo": "0-5K",
+        "varonil": "00:03:14",
+        "femenil": "00:03:49",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "5K-10K",
+        "varonil": "00:03:15",
+        "femenil": "00:03:50",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "10K-15K",
+        "varonil": "00:03:16",
+        "femenil": "00:03:51",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "15K-20K",
+        "varonil": "00:03:17",
+        "femenil": "00:03:52",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "20K-21K",
+        "varonil": "00:03:17",
+        "femenil": "00:03:53",
+        "distanciaKm": "1.0975"
+      },
+      {
+        "tramo": "21K-25K",
+        "varonil": "00:03:21",
+        "femenil": "00:03:56",
+        "distanciaKm": "3.9025"
+      },
+      {
+        "tramo": "25K-30K",
+        "varonil": "00:03:22",
+        "femenil": "00:03:58",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "30K-35K",
+        "varonil": "00:03:24",
+        "femenil": "00:04:02",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "35K-40K",
+        "varonil": "00:03:31",
+        "femenil": "00:04:06",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "40K-Meta",
+        "varonil": "00:03:32",
+        "femenil": "00:03:59",
+        "distanciaKm": "2.195"
+      }
+    ],
+    "positionBands": {
+      "bandLabels": [
+        "1 - 5,000",
+        "5,001 - 10,000",
+        "10,001 - 15,000",
+        "15,001 - 20,000",
+        "20,001 - 25,000",
+        "25,001 - 30,000",
+        "30,001 - 35,000",
+        "35,001 - 40,000",
+        "40,001 - 45,000",
+        "45,001 - 48,072"
+      ],
+      "rows": [
+        {
+          "tramo": "0-5K",
+          "values": [
+            "00:04:03",
+            "00:04:38",
+            "00:04:59",
+            "00:05:18",
+            "00:05:31",
+            "00:05:46",
+            "00:06:02",
+            "00:06:21",
+            "00:06:44",
+            "00:07:23"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "5K-10K",
+          "values": [
+            "00:04:04",
+            "00:04:40",
+            "00:05:02",
+            "00:05:21",
+            "00:05:36",
+            "00:05:53",
+            "00:06:13",
+            "00:06:37",
+            "00:07:10",
+            "00:08:05"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "10K-15K",
+          "values": [
+            "00:04:06",
+            "00:04:42",
+            "00:05:03",
+            "00:05:23",
+            "00:05:38",
+            "00:05:56",
+            "00:06:16",
+            "00:06:43",
+            "00:07:18",
+            "00:08:21"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "15K-20K",
+          "values": [
+            "00:04:09",
+            "00:04:49",
+            "00:05:12",
+            "00:05:34",
+            "00:05:52",
+            "00:06:15",
+            "00:06:42",
+            "00:07:15",
+            "00:08:01",
+            "00:09:09"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "20K-21K",
+          "values": [
+            "00:04:07",
+            "00:04:45",
+            "00:05:07",
+            "00:05:27",
+            "00:05:44",
+            "00:06:04",
+            "00:06:27",
+            "00:06:54",
+            "00:07:35",
+            "00:08:44"
+          ],
+          "distanciaKm": "1.0975",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "21K-25K",
+          "values": [
+            "00:04:15",
+            "00:04:58",
+            "00:05:24",
+            "00:05:47",
+            "00:06:10",
+            "00:06:37",
+            "00:07:06",
+            "00:07:39",
+            "00:08:25",
+            "00:09:28"
+          ],
+          "distanciaKm": "3.9025",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "25K-30K",
+          "values": [
+            "00:04:20",
+            "00:05:05",
+            "00:05:33",
+            "00:05:56",
+            "00:06:21",
+            "00:06:48",
+            "00:07:17",
+            "00:07:50",
+            "00:08:34",
+            "00:09:34"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "30K-35K",
+          "values": [
+            "00:04:25",
+            "00:05:12",
+            "00:05:42",
+            "00:06:03",
+            "00:06:30",
+            "00:06:56",
+            "00:07:22",
+            "00:07:53",
+            "00:08:37",
+            "00:09:33"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "35K-40K",
+          "values": [
+            "00:04:36",
+            "00:05:25",
+            "00:05:55",
+            "00:06:15",
+            "00:06:47",
+            "00:07:10",
+            "00:07:35",
+            "00:08:06",
+            "00:08:53",
+            "00:09:47"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "40K-Meta",
+          "values": [
+            "00:04:31",
+            "00:05:18",
+            "00:05:45",
+            "00:06:01",
+            "00:06:29",
+            "00:06:45",
+            "00:07:05",
+            "00:07:29",
+            "00:08:09",
+            "00:09:04"
+          ],
+          "distanciaKm": "2.195",
+          "absVaronil": "",
+          "absFemenil": ""
+        }
+      ]
+    },
+    "percentileRows": [
+      {
+        "label": "Min",
+        "Masculino": "00:02:54",
+        "Femenino": "00:03:21"
+      },
+      {
+        "label": "1%",
+        "Masculino": "00:03:44",
+        "Femenino": "00:04:18"
+      },
+      {
+        "label": "5%",
+        "Masculino": "00:04:09",
+        "Femenino": "00:04:49"
+      },
+      {
+        "label": "10%",
+        "Masculino": "00:04:28",
+        "Femenino": "00:05:09"
+      },
+      {
+        "label": "30%",
+        "Masculino": "00:05:18",
+        "Femenino": "00:05:56"
+      },
+      {
+        "label": "50%",
+        "Masculino": "00:05:55",
+        "Femenino": "00:06:34"
+      },
+      {
+        "label": "80%",
+        "Masculino": "00:07:07",
+        "Femenino": "00:07:44"
+      },
+      {
+        "label": "Max",
+        "Masculino": "00:11:30",
+        "Femenino": "00:11:07"
+      }
+    ],
+    "top5ByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "Sawe, Sabastian (KEN)",
+          "bib": "3",
+          "categoria": "30",
+          "tiempoOficial": "02:02:16",
+          "tiempoChip": "02:02:16",
+          "ritmoMedio": "00:02:54"
+        },
+        {
+          "pos": 2,
+          "nombre": "Akasaki, Akira (JPN)",
+          "bib": "25",
+          "categoria": "20 a 29",
+          "tiempoOficial": "02:06:15",
+          "tiempoChip": "02:06:15",
+          "ritmoMedio": "00:03:00"
+        },
+        {
+          "pos": 3,
+          "nombre": "Debele, Chimdessa (ETH)",
+          "bib": "10",
+          "categoria": "20 a 29",
+          "tiempoOficial": "02:06:57",
+          "tiempoChip": "02:06:57",
+          "ritmoMedio": "00:03:01"
+        },
+        {
+          "pos": 4,
+          "nombre": "Adola, Guye (ETH)",
+          "bib": "6",
+          "categoria": "35",
+          "tiempoOficial": "02:07:11",
+          "tiempoChip": "02:07:11",
+          "ritmoMedio": "00:03:01"
+        },
+        {
+          "pos": 5,
+          "nombre": "Urano, Yuhei (JPN)",
+          "bib": "18",
+          "categoria": "20 a 29",
+          "tiempoOficial": "02:07:35",
+          "tiempoChip": "02:07:35",
+          "ritmoMedio": "00:03:01"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "Wanjiru, Rosemary (KEN)",
+          "bib": "F2",
+          "categoria": "30",
+          "tiempoOficial": "02:21:05",
+          "tiempoChip": "02:21:05",
+          "ritmoMedio": "00:03:21"
+        },
+        {
+          "pos": 2,
+          "nombre": "Dida, Dera (ETH)",
+          "bib": "F4",
+          "categoria": "20 a 29",
+          "tiempoOficial": "02:21:08",
+          "tiempoChip": "02:21:08",
+          "ritmoMedio": "00:03:21"
+        },
+        {
+          "pos": 3,
+          "nombre": "Gebru, Azmera (ETH)",
+          "bib": "F10",
+          "categoria": "30",
+          "tiempoOficial": "02:21:29",
+          "tiempoChip": "02:21:29",
+          "ritmoMedio": "00:03:21"
+        },
+        {
+          "pos": 4,
+          "nombre": "Cheptoo, Viola (KEN)",
+          "bib": "F12",
+          "categoria": "35",
+          "tiempoOficial": "02:21:40",
+          "tiempoChip": "02:21:40",
+          "ritmoMedio": "00:03:21"
+        },
+        {
+          "pos": 5,
+          "nombre": "Worku, Fantu (ETH)",
+          "bib": "F42",
+          "categoria": "20 a 29",
+          "tiempoOficial": "02:21:57",
+          "tiempoChip": "02:21:57",
+          "ritmoMedio": "00:03:22"
+        }
+      ]
+    },
+    "paceDistributionRows": [
+      {
+        "label": "≤ 03:30",
+        "F": 13,
+        "M": 96,
+        "X": 0
+      },
+      {
+        "label": "03:31–03:45",
+        "F": 9,
+        "M": 254,
+        "X": 0
+      },
+      {
+        "label": "03:46–04:00",
+        "F": 20,
+        "M": 668,
+        "X": 0
+      },
+      {
+        "label": "04:01–04:15",
+        "F": 111,
+        "M": 1171,
+        "X": 1
+      },
+      {
+        "label": "04:16–04:46",
+        "F": 619,
+        "M": 2763,
+        "X": 4
+      },
+      {
+        "label": "04:47–05:14",
+        "F": 1245,
+        "M": 3886,
+        "X": 6
+      },
+      {
+        "label": "05:15–05:55",
+        "F": 3086,
+        "M": 6622,
+        "X": 18
+      },
+      {
+        "label": "05:56–06:30",
+        "F": 3113,
+        "M": 5014,
+        "X": 11
+      },
+      {
+        "label": "06:31–07:37",
+        "F": 5132,
+        "M": 6524,
+        "X": 10
+      },
+      {
+        "label": "07:38–08:28",
+        "F": 2371,
+        "M": 2577,
+        "X": 6
+      },
+      {
+        "label": "≥ 08:29",
+        "F": 1405,
+        "M": 1316,
+        "X": 1
+      }
+    ],
+    "paceDistributionTotals": {
+      "label": "Total",
+      "F": 17124,
+      "M": 30891,
+      "X": 57
+    },
+    "summaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "count": 48072,
+        "avgPace": "00:06:16"
+      },
+      {
+        "label": "Con todos los Split y TC",
+        "count": 43053,
+        "avgPace": "00:06:14"
+      },
+      {
+        "label": "split 5K",
+        "count": 47933,
+        "avgPace": "00:05:36"
+      },
+      {
+        "label": "split 10K",
+        "count": 47868,
+        "avgPace": "00:05:47"
+      },
+      {
+        "label": "split 15K",
+        "count": 47524,
+        "avgPace": "00:05:51"
+      },
+      {
+        "label": "split 20K",
+        "count": 47380,
+        "avgPace": "00:06:11"
+      },
+      {
+        "label": "split 21K",
+        "count": 46770,
+        "avgPace": "00:05:59"
+      },
+      {
+        "label": "split 25K",
+        "count": 43786,
+        "avgPace": "00:06:26"
+      },
+      {
+        "label": "split 30K",
+        "count": 43401,
+        "avgPace": "00:06:35"
+      },
+      {
+        "label": "split 35K",
+        "count": 43185,
+        "avgPace": "00:06:41"
+      },
+      {
+        "label": "split 40K",
+        "count": 43053,
+        "avgPace": "00:06:54"
+      },
+      {
+        "label": "split 42K",
+        "count": 43053,
+        "avgPace": "00:06:32"
+      }
+    ],
+    "genderSummaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "countM": 30891,
+        "countF": 17124,
+        "avgPaceM": "00:06:03",
+        "avgPaceF": "00:06:39"
+      },
+      {
+        "label": "Con todos los Split y TC",
+        "countM": 28174,
+        "countF": 14827,
+        "avgPaceM": "00:06:01",
+        "avgPaceF": "00:06:39"
+      },
+      {
+        "label": "split 5K",
+        "countM": 30834,
+        "countF": 17042,
+        "avgPaceM": "00:05:23",
+        "avgPaceF": "00:06:01"
+      },
+      {
+        "label": "split 10K",
+        "countM": 30795,
+        "countF": 17016,
+        "avgPaceM": "00:05:31",
+        "avgPaceF": "00:06:16"
+      },
+      {
+        "label": "split 15K",
+        "countM": 30647,
+        "countF": 16821,
+        "avgPaceM": "00:05:34",
+        "avgPaceF": "00:06:20"
+      },
+      {
+        "label": "split 20K",
+        "countM": 30558,
+        "countF": 16766,
+        "avgPaceM": "00:05:53",
+        "avgPaceF": "00:06:43"
+      },
+      {
+        "label": "split 21K",
+        "countM": 30249,
+        "countF": 16465,
+        "avgPaceM": "00:05:44",
+        "avgPaceF": "00:06:26"
+      },
+      {
+        "label": "split 25K",
+        "countM": 28650,
+        "countF": 15083,
+        "avgPaceM": "00:06:10",
+        "avgPaceF": "00:06:56"
+      },
+      {
+        "label": "split 30K",
+        "countM": 28406,
+        "countF": 14942,
+        "avgPaceM": "00:06:23",
+        "avgPaceF": "00:06:58"
+      },
+      {
+        "label": "split 35K",
+        "countM": 28266,
+        "countF": 14866,
+        "avgPaceM": "00:06:32",
+        "avgPaceF": "00:06:58"
+      },
+      {
+        "label": "split 40K",
+        "countM": 28174,
+        "countF": 14827,
+        "avgPaceM": "00:06:47",
+        "avgPaceF": "00:07:08"
+      },
+      {
+        "label": "split 42K",
+        "countM": 28174,
+        "countF": 14827,
+        "avgPaceM": "00:06:26",
+        "avgPaceF": "00:06:43"
+      }
+    ],
+    "categoryStatsRows": [
+      {
+        "categoria": "18 a 19 años",
+        "countM": 121,
+        "countF": 45,
+        "avgPaceM": "00:06:25",
+        "avgPaceF": "00:06:56"
+      },
+      {
+        "categoria": "20 a 29",
+        "countM": 4124,
+        "countF": 3141,
+        "avgPaceM": "00:05:54",
+        "avgPaceF": "00:06:27"
+      },
+      {
+        "categoria": "30",
+        "countM": 4636,
+        "countF": 2823,
+        "avgPaceM": "00:05:46",
+        "avgPaceF": "00:06:24"
+      },
+      {
+        "categoria": "35",
+        "countM": 5096,
+        "countF": 2698,
+        "avgPaceM": "00:05:50",
+        "avgPaceF": "00:06:34"
+      },
+      {
+        "categoria": "40",
+        "countM": 4775,
+        "countF": 2625,
+        "avgPaceM": "00:05:54",
+        "avgPaceF": "00:06:41"
+      },
+      {
+        "categoria": "45",
+        "countM": 4088,
+        "countF": 2298,
+        "avgPaceM": "00:05:59",
+        "avgPaceF": "00:06:43"
+      },
+      {
+        "categoria": "50",
+        "countM": 3258,
+        "countF": 1600,
+        "avgPaceM": "00:06:14",
+        "avgPaceF": "00:06:53"
+      },
+      {
+        "categoria": "55",
+        "countM": 2399,
+        "countF": 1055,
+        "avgPaceM": "00:06:34",
+        "avgPaceF": "00:07:08"
+      },
+      {
+        "categoria": "60",
+        "countM": 1531,
+        "countF": 588,
+        "avgPaceM": "00:06:47",
+        "avgPaceF": "00:07:14"
+      },
+      {
+        "categoria": "65",
+        "countM": 588,
+        "countF": 178,
+        "avgPaceM": "00:07:10",
+        "avgPaceF": "00:07:36"
+      },
+      {
+        "categoria": "70",
+        "countM": 204,
+        "countF": 54,
+        "avgPaceM": "00:07:43",
+        "avgPaceF": "00:07:49"
+      },
+      {
+        "categoria": "75",
+        "countM": 59,
+        "countF": 12,
+        "avgPaceM": "00:07:59",
+        "avgPaceF": "00:08:24"
+      },
+      {
+        "categoria": "80",
+        "countM": 11,
+        "countF": 5,
+        "avgPaceM": "00:08:30",
+        "avgPaceF": "00:08:42"
+      },
+      {
+        "categoria": "Sin categoría",
+        "countM": 1,
+        "countF": 2,
+        "avgPaceM": "00:07:21",
+        "avgPaceF": "00:08:02"
+      }
+    ],
+    "genderSummaryStatsByCategory": {
+      "18 a 19 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 121,
+          "countF": 45,
+          "avgPaceM": "00:06:25",
+          "avgPaceF": "00:06:56"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 104,
+          "countF": 39,
+          "avgPaceM": "00:06:21",
+          "avgPaceF": "00:06:56"
+        },
+        {
+          "label": "split 5K",
+          "countM": 120,
+          "countF": 45,
+          "avgPaceM": "00:05:40",
+          "avgPaceF": "00:06:17"
+        },
+        {
+          "label": "split 10K",
+          "countM": 120,
+          "countF": 44,
+          "avgPaceM": "00:05:47",
+          "avgPaceF": "00:06:26"
+        },
+        {
+          "label": "split 15K",
+          "countM": 119,
+          "countF": 44,
+          "avgPaceM": "00:05:51",
+          "avgPaceF": "00:06:35"
+        },
+        {
+          "label": "split 20K",
+          "countM": 119,
+          "countF": 44,
+          "avgPaceM": "00:06:17",
+          "avgPaceF": "00:07:05"
+        },
+        {
+          "label": "split 21K",
+          "countM": 117,
+          "countF": 43,
+          "avgPaceM": "00:06:02",
+          "avgPaceF": "00:06:36"
+        },
+        {
+          "label": "split 25K",
+          "countM": 110,
+          "countF": 42,
+          "avgPaceM": "00:06:36",
+          "avgPaceF": "00:07:15"
+        },
+        {
+          "label": "split 30K",
+          "countM": 106,
+          "countF": 40,
+          "avgPaceM": "00:06:57",
+          "avgPaceF": "00:07:27"
+        },
+        {
+          "label": "split 35K",
+          "countM": 104,
+          "countF": 40,
+          "avgPaceM": "00:06:55",
+          "avgPaceF": "00:07:28"
+        },
+        {
+          "label": "split 40K",
+          "countM": 104,
+          "countF": 39,
+          "avgPaceM": "00:07:14",
+          "avgPaceF": "00:07:33"
+        },
+        {
+          "label": "split 42K",
+          "countM": 104,
+          "countF": 39,
+          "avgPaceM": "00:06:33",
+          "avgPaceF": "00:06:58"
+        }
+      ],
+      "20 a 29": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 4124,
+          "countF": 3141,
+          "avgPaceM": "00:05:54",
+          "avgPaceF": "00:06:27"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 3764,
+          "countF": 2654,
+          "avgPaceM": "00:05:52",
+          "avgPaceF": "00:06:26"
+        },
+        {
+          "label": "split 5K",
+          "countM": 4118,
+          "countF": 3124,
+          "avgPaceM": "00:05:17",
+          "avgPaceF": "00:05:53"
+        },
+        {
+          "label": "split 10K",
+          "countM": 4107,
+          "countF": 3113,
+          "avgPaceM": "00:05:22",
+          "avgPaceF": "00:06:04"
+        },
+        {
+          "label": "split 15K",
+          "countM": 4086,
+          "countF": 3070,
+          "avgPaceM": "00:05:25",
+          "avgPaceF": "00:06:09"
+        },
+        {
+          "label": "split 20K",
+          "countM": 4072,
+          "countF": 3062,
+          "avgPaceM": "00:05:41",
+          "avgPaceF": "00:06:28"
+        },
+        {
+          "label": "split 21K",
+          "countM": 4028,
+          "countF": 3006,
+          "avgPaceM": "00:05:33",
+          "avgPaceF": "00:06:13"
+        },
+        {
+          "label": "split 25K",
+          "countM": 3834,
+          "countF": 2719,
+          "avgPaceM": "00:05:58",
+          "avgPaceF": "00:06:40"
+        },
+        {
+          "label": "split 30K",
+          "countM": 3806,
+          "countF": 2686,
+          "avgPaceM": "00:06:12",
+          "avgPaceF": "00:06:44"
+        },
+        {
+          "label": "split 35K",
+          "countM": 3784,
+          "countF": 2663,
+          "avgPaceM": "00:06:22",
+          "avgPaceF": "00:06:45"
+        },
+        {
+          "label": "split 40K",
+          "countM": 3764,
+          "countF": 2654,
+          "avgPaceM": "00:06:39",
+          "avgPaceF": "00:06:55"
+        },
+        {
+          "label": "split 42K",
+          "countM": 3764,
+          "countF": 2654,
+          "avgPaceM": "00:06:16",
+          "avgPaceF": "00:06:27"
+        }
+      ],
+      "30": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 4636,
+          "countF": 2823,
+          "avgPaceM": "00:05:46",
+          "avgPaceF": "00:06:24"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 4231,
+          "countF": 2385,
+          "avgPaceM": "00:05:44",
+          "avgPaceF": "00:06:23"
+        },
+        {
+          "label": "split 5K",
+          "countM": 4628,
+          "countF": 2808,
+          "avgPaceM": "00:05:11",
+          "avgPaceF": "00:05:51"
+        },
+        {
+          "label": "split 10K",
+          "countM": 4619,
+          "countF": 2803,
+          "avgPaceM": "00:05:16",
+          "avgPaceF": "00:06:02"
+        },
+        {
+          "label": "split 15K",
+          "countM": 4599,
+          "countF": 2762,
+          "avgPaceM": "00:05:19",
+          "avgPaceF": "00:06:06"
+        },
+        {
+          "label": "split 20K",
+          "countM": 4587,
+          "countF": 2751,
+          "avgPaceM": "00:05:34",
+          "avgPaceF": "00:06:26"
+        },
+        {
+          "label": "split 21K",
+          "countM": 4530,
+          "countF": 2680,
+          "avgPaceM": "00:05:27",
+          "avgPaceF": "00:06:11"
+        },
+        {
+          "label": "split 25K",
+          "countM": 4316,
+          "countF": 2426,
+          "avgPaceM": "00:05:50",
+          "avgPaceF": "00:06:38"
+        },
+        {
+          "label": "split 30K",
+          "countM": 4276,
+          "countF": 2404,
+          "avgPaceM": "00:06:03",
+          "avgPaceF": "00:06:40"
+        },
+        {
+          "label": "split 35K",
+          "countM": 4244,
+          "countF": 2390,
+          "avgPaceM": "00:06:13",
+          "avgPaceF": "00:06:41"
+        },
+        {
+          "label": "split 40K",
+          "countM": 4231,
+          "countF": 2385,
+          "avgPaceM": "00:06:29",
+          "avgPaceF": "00:06:50"
+        },
+        {
+          "label": "split 42K",
+          "countM": 4231,
+          "countF": 2385,
+          "avgPaceM": "00:06:07",
+          "avgPaceF": "00:06:24"
+        }
+      ],
+      "35": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 5096,
+          "countF": 2698,
+          "avgPaceM": "00:05:50",
+          "avgPaceF": "00:06:34"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 4649,
+          "countF": 2325,
+          "avgPaceM": "00:05:47",
+          "avgPaceF": "00:06:33"
+        },
+        {
+          "label": "split 5K",
+          "countM": 5088,
+          "countF": 2686,
+          "avgPaceM": "00:05:13",
+          "avgPaceF": "00:05:58"
+        },
+        {
+          "label": "split 10K",
+          "countM": 5085,
+          "countF": 2682,
+          "avgPaceM": "00:05:19",
+          "avgPaceF": "00:06:11"
+        },
+        {
+          "label": "split 15K",
+          "countM": 5055,
+          "countF": 2662,
+          "avgPaceM": "00:05:22",
+          "avgPaceF": "00:06:16"
+        },
+        {
+          "label": "split 20K",
+          "countM": 5038,
+          "countF": 2655,
+          "avgPaceM": "00:05:38",
+          "avgPaceF": "00:06:37"
+        },
+        {
+          "label": "split 21K",
+          "countM": 4994,
+          "countF": 2592,
+          "avgPaceM": "00:05:30",
+          "avgPaceF": "00:06:23"
+        },
+        {
+          "label": "split 25K",
+          "countM": 4740,
+          "countF": 2371,
+          "avgPaceM": "00:05:54",
+          "avgPaceF": "00:06:49"
+        },
+        {
+          "label": "split 30K",
+          "countM": 4689,
+          "countF": 2343,
+          "avgPaceM": "00:06:07",
+          "avgPaceF": "00:06:51"
+        },
+        {
+          "label": "split 35K",
+          "countM": 4662,
+          "countF": 2333,
+          "avgPaceM": "00:06:16",
+          "avgPaceF": "00:06:51"
+        },
+        {
+          "label": "split 40K",
+          "countM": 4649,
+          "countF": 2325,
+          "avgPaceM": "00:06:33",
+          "avgPaceF": "00:07:01"
+        },
+        {
+          "label": "split 42K",
+          "countM": 4649,
+          "countF": 2325,
+          "avgPaceM": "00:06:12",
+          "avgPaceF": "00:06:36"
+        }
+      ],
+      "40": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 4775,
+          "countF": 2625,
+          "avgPaceM": "00:05:54",
+          "avgPaceF": "00:06:41"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 4389,
+          "countF": 2272,
+          "avgPaceM": "00:05:52",
+          "avgPaceF": "00:06:40"
+        },
+        {
+          "label": "split 5K",
+          "countM": 4765,
+          "countF": 2604,
+          "avgPaceM": "00:05:17",
+          "avgPaceF": "00:06:02"
+        },
+        {
+          "label": "split 10K",
+          "countM": 4764,
+          "countF": 2600,
+          "avgPaceM": "00:05:23",
+          "avgPaceF": "00:06:17"
+        },
+        {
+          "label": "split 15K",
+          "countM": 4741,
+          "countF": 2566,
+          "avgPaceM": "00:05:26",
+          "avgPaceF": "00:06:22"
+        },
+        {
+          "label": "split 20K",
+          "countM": 4726,
+          "countF": 2555,
+          "avgPaceM": "00:05:44",
+          "avgPaceF": "00:06:45"
+        },
+        {
+          "label": "split 21K",
+          "countM": 4688,
+          "countF": 2516,
+          "avgPaceM": "00:05:35",
+          "avgPaceF": "00:06:27"
+        },
+        {
+          "label": "split 25K",
+          "countM": 4451,
+          "countF": 2312,
+          "avgPaceM": "00:06:00",
+          "avgPaceF": "00:06:57"
+        },
+        {
+          "label": "split 30K",
+          "countM": 4414,
+          "countF": 2291,
+          "avgPaceM": "00:06:12",
+          "avgPaceF": "00:06:59"
+        },
+        {
+          "label": "split 35K",
+          "countM": 4398,
+          "countF": 2277,
+          "avgPaceM": "00:06:22",
+          "avgPaceF": "00:06:59"
+        },
+        {
+          "label": "split 40K",
+          "countM": 4389,
+          "countF": 2272,
+          "avgPaceM": "00:06:38",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "split 42K",
+          "countM": 4389,
+          "countF": 2272,
+          "avgPaceM": "00:06:17",
+          "avgPaceF": "00:06:44"
+        }
+      ],
+      "45": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 4088,
+          "countF": 2298,
+          "avgPaceM": "00:05:59",
+          "avgPaceF": "00:06:43"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 3708,
+          "countF": 2026,
+          "avgPaceM": "00:05:57",
+          "avgPaceF": "00:06:41"
+        },
+        {
+          "label": "split 5K",
+          "countM": 4077,
+          "countF": 2289,
+          "avgPaceM": "00:05:19",
+          "avgPaceF": "00:06:02"
+        },
+        {
+          "label": "split 10K",
+          "countM": 4072,
+          "countF": 2289,
+          "avgPaceM": "00:05:27",
+          "avgPaceF": "00:06:19"
+        },
+        {
+          "label": "split 15K",
+          "countM": 4057,
+          "countF": 2264,
+          "avgPaceM": "00:05:31",
+          "avgPaceF": "00:06:23"
+        },
+        {
+          "label": "split 20K",
+          "countM": 4049,
+          "countF": 2252,
+          "avgPaceM": "00:05:49",
+          "avgPaceF": "00:06:47"
+        },
+        {
+          "label": "split 21K",
+          "countM": 3997,
+          "countF": 2220,
+          "avgPaceM": "00:05:40",
+          "avgPaceF": "00:06:30"
+        },
+        {
+          "label": "split 25K",
+          "countM": 3772,
+          "countF": 2049,
+          "avgPaceM": "00:06:06",
+          "avgPaceF": "00:06:59"
+        },
+        {
+          "label": "split 30K",
+          "countM": 3743,
+          "countF": 2036,
+          "avgPaceM": "00:06:18",
+          "avgPaceF": "00:07:01"
+        },
+        {
+          "label": "split 35K",
+          "countM": 3727,
+          "countF": 2029,
+          "avgPaceM": "00:06:25",
+          "avgPaceF": "00:07:01"
+        },
+        {
+          "label": "split 40K",
+          "countM": 3708,
+          "countF": 2026,
+          "avgPaceM": "00:06:40",
+          "avgPaceF": "00:07:09"
+        },
+        {
+          "label": "split 42K",
+          "countM": 3708,
+          "countF": 2026,
+          "avgPaceM": "00:06:23",
+          "avgPaceF": "00:06:46"
+        }
+      ],
+      "50": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 3258,
+          "countF": 1600,
+          "avgPaceM": "00:06:14",
+          "avgPaceF": "00:06:53"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 2971,
+          "countF": 1433,
+          "avgPaceM": "00:06:12",
+          "avgPaceF": "00:06:53"
+        },
+        {
+          "label": "split 5K",
+          "countM": 3252,
+          "countF": 1595,
+          "avgPaceM": "00:05:30",
+          "avgPaceF": "00:06:10"
+        },
+        {
+          "label": "split 10K",
+          "countM": 3251,
+          "countF": 1595,
+          "avgPaceM": "00:05:40",
+          "avgPaceF": "00:06:28"
+        },
+        {
+          "label": "split 15K",
+          "countM": 3233,
+          "countF": 1578,
+          "avgPaceM": "00:05:44",
+          "avgPaceF": "00:06:33"
+        },
+        {
+          "label": "split 20K",
+          "countM": 3222,
+          "countF": 1576,
+          "avgPaceM": "00:06:04",
+          "avgPaceF": "00:06:59"
+        },
+        {
+          "label": "split 21K",
+          "countM": 3196,
+          "countF": 1562,
+          "avgPaceM": "00:05:55",
+          "avgPaceF": "00:06:39"
+        },
+        {
+          "label": "split 25K",
+          "countM": 3014,
+          "countF": 1451,
+          "avgPaceM": "00:06:23",
+          "avgPaceF": "00:07:13"
+        },
+        {
+          "label": "split 30K",
+          "countM": 2985,
+          "countF": 1440,
+          "avgPaceM": "00:06:36",
+          "avgPaceF": "00:07:14"
+        },
+        {
+          "label": "split 35K",
+          "countM": 2976,
+          "countF": 1438,
+          "avgPaceM": "00:06:44",
+          "avgPaceF": "00:07:13"
+        },
+        {
+          "label": "split 40K",
+          "countM": 2971,
+          "countF": 1433,
+          "avgPaceM": "00:06:59",
+          "avgPaceF": "00:07:23"
+        },
+        {
+          "label": "split 42K",
+          "countM": 2971,
+          "countF": 1433,
+          "avgPaceM": "00:06:38",
+          "avgPaceF": "00:07:00"
+        }
+      ],
+      "55": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 2399,
+          "countF": 1055,
+          "avgPaceM": "00:06:34",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 2192,
+          "countF": 939,
+          "avgPaceM": "00:06:32",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "split 5K",
+          "countM": 2397,
+          "countF": 1054,
+          "avgPaceM": "00:05:42",
+          "avgPaceF": "00:06:19"
+        },
+        {
+          "label": "split 10K",
+          "countM": 2394,
+          "countF": 1054,
+          "avgPaceM": "00:05:56",
+          "avgPaceF": "00:06:40"
+        },
+        {
+          "label": "split 15K",
+          "countM": 2385,
+          "countF": 1046,
+          "avgPaceM": "00:06:01",
+          "avgPaceF": "00:06:47"
+        },
+        {
+          "label": "split 20K",
+          "countM": 2380,
+          "countF": 1043,
+          "avgPaceM": "00:06:27",
+          "avgPaceF": "00:07:15"
+        },
+        {
+          "label": "split 21K",
+          "countM": 2353,
+          "countF": 1031,
+          "avgPaceM": "00:06:14",
+          "avgPaceF": "00:06:55"
+        },
+        {
+          "label": "split 25K",
+          "countM": 2227,
+          "countF": 952,
+          "avgPaceM": "00:06:46",
+          "avgPaceF": "00:07:29"
+        },
+        {
+          "label": "split 30K",
+          "countM": 2213,
+          "countF": 945,
+          "avgPaceM": "00:06:59",
+          "avgPaceF": "00:07:30"
+        },
+        {
+          "label": "split 35K",
+          "countM": 2203,
+          "countF": 942,
+          "avgPaceM": "00:07:06",
+          "avgPaceF": "00:07:30"
+        },
+        {
+          "label": "split 40K",
+          "countM": 2192,
+          "countF": 939,
+          "avgPaceM": "00:07:21",
+          "avgPaceF": "00:07:40"
+        },
+        {
+          "label": "split 42K",
+          "countM": 2192,
+          "countF": 939,
+          "avgPaceM": "00:06:59",
+          "avgPaceF": "00:07:18"
+        }
+      ],
+      "60": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 1531,
+          "countF": 588,
+          "avgPaceM": "00:06:47",
+          "avgPaceF": "00:07:14"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 1383,
+          "countF": 530,
+          "avgPaceM": "00:06:47",
+          "avgPaceF": "00:07:12"
+        },
+        {
+          "label": "split 5K",
+          "countM": 1528,
+          "countF": 588,
+          "avgPaceM": "00:05:53",
+          "avgPaceF": "00:06:22"
+        },
+        {
+          "label": "split 10K",
+          "countM": 1525,
+          "countF": 587,
+          "avgPaceM": "00:06:09",
+          "avgPaceF": "00:06:44"
+        },
+        {
+          "label": "split 15K",
+          "countM": 1520,
+          "countF": 584,
+          "avgPaceM": "00:06:15",
+          "avgPaceF": "00:06:49"
+        },
+        {
+          "label": "split 20K",
+          "countM": 1515,
+          "countF": 584,
+          "avgPaceM": "00:06:41",
+          "avgPaceF": "00:07:20"
+        },
+        {
+          "label": "split 21K",
+          "countM": 1500,
+          "countF": 577,
+          "avgPaceM": "00:06:27",
+          "avgPaceF": "00:06:59"
+        },
+        {
+          "label": "split 25K",
+          "countM": 1397,
+          "countF": 536,
+          "avgPaceM": "00:07:03",
+          "avgPaceF": "00:07:33"
+        },
+        {
+          "label": "split 30K",
+          "countM": 1389,
+          "countF": 532,
+          "avgPaceM": "00:07:14",
+          "avgPaceF": "00:07:34"
+        },
+        {
+          "label": "split 35K",
+          "countM": 1385,
+          "countF": 530,
+          "avgPaceM": "00:07:21",
+          "avgPaceF": "00:07:35"
+        },
+        {
+          "label": "split 40K",
+          "countM": 1383,
+          "countF": 530,
+          "avgPaceM": "00:07:36",
+          "avgPaceF": "00:07:46"
+        },
+        {
+          "label": "split 42K",
+          "countM": 1383,
+          "countF": 530,
+          "avgPaceM": "00:07:16",
+          "avgPaceF": "00:07:25"
+        }
+      ],
+      "65": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 588,
+          "countF": 178,
+          "avgPaceM": "00:07:10",
+          "avgPaceF": "00:07:36"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 532,
+          "countF": 156,
+          "avgPaceM": "00:07:09",
+          "avgPaceF": "00:07:35"
+        },
+        {
+          "label": "split 5K",
+          "countM": 587,
+          "countF": 176,
+          "avgPaceM": "00:06:12",
+          "avgPaceF": "00:06:35"
+        },
+        {
+          "label": "split 10K",
+          "countM": 586,
+          "countF": 176,
+          "avgPaceM": "00:06:31",
+          "avgPaceF": "00:07:03"
+        },
+        {
+          "label": "split 15K",
+          "countM": 584,
+          "countF": 172,
+          "avgPaceM": "00:06:36",
+          "avgPaceF": "00:07:11"
+        },
+        {
+          "label": "split 20K",
+          "countM": 583,
+          "countF": 172,
+          "avgPaceM": "00:07:05",
+          "avgPaceF": "00:07:43"
+        },
+        {
+          "label": "split 21K",
+          "countM": 580,
+          "countF": 168,
+          "avgPaceM": "00:06:51",
+          "avgPaceF": "00:07:19"
+        },
+        {
+          "label": "split 25K",
+          "countM": 537,
+          "countF": 157,
+          "avgPaceM": "00:07:27",
+          "avgPaceF": "00:08:01"
+        },
+        {
+          "label": "split 30K",
+          "countM": 534,
+          "countF": 157,
+          "avgPaceM": "00:07:39",
+          "avgPaceF": "00:08:01"
+        },
+        {
+          "label": "split 35K",
+          "countM": 532,
+          "countF": 156,
+          "avgPaceM": "00:07:45",
+          "avgPaceF": "00:08:06"
+        },
+        {
+          "label": "split 40K",
+          "countM": 532,
+          "countF": 156,
+          "avgPaceM": "00:07:56",
+          "avgPaceF": "00:08:11"
+        },
+        {
+          "label": "split 42K",
+          "countM": 532,
+          "countF": 156,
+          "avgPaceM": "00:07:39",
+          "avgPaceF": "00:07:50"
+        }
+      ],
+      "70": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 204,
+          "countF": 54,
+          "avgPaceM": "00:07:43",
+          "avgPaceF": "00:07:49"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 188,
+          "countF": 51,
+          "avgPaceM": "00:07:44",
+          "avgPaceF": "00:07:47"
+        },
+        {
+          "label": "split 5K",
+          "countM": 203,
+          "countF": 54,
+          "avgPaceM": "00:06:36",
+          "avgPaceF": "00:06:45"
+        },
+        {
+          "label": "split 10K",
+          "countM": 202,
+          "countF": 54,
+          "avgPaceM": "00:07:03",
+          "avgPaceF": "00:07:13"
+        },
+        {
+          "label": "split 15K",
+          "countM": 200,
+          "countF": 54,
+          "avgPaceM": "00:07:09",
+          "avgPaceF": "00:07:22"
+        },
+        {
+          "label": "split 20K",
+          "countM": 199,
+          "countF": 53,
+          "avgPaceM": "00:07:43",
+          "avgPaceF": "00:07:52"
+        },
+        {
+          "label": "split 21K",
+          "countM": 198,
+          "countF": 52,
+          "avgPaceM": "00:07:28",
+          "avgPaceF": "00:07:30"
+        },
+        {
+          "label": "split 25K",
+          "countM": 189,
+          "countF": 51,
+          "avgPaceM": "00:08:05",
+          "avgPaceF": "00:08:12"
+        },
+        {
+          "label": "split 30K",
+          "countM": 188,
+          "countF": 51,
+          "avgPaceM": "00:08:13",
+          "avgPaceF": "00:08:16"
+        },
+        {
+          "label": "split 35K",
+          "countM": 188,
+          "countF": 51,
+          "avgPaceM": "00:08:24",
+          "avgPaceF": "00:08:16"
+        },
+        {
+          "label": "split 40K",
+          "countM": 188,
+          "countF": 51,
+          "avgPaceM": "00:08:35",
+          "avgPaceF": "00:08:26"
+        },
+        {
+          "label": "split 42K",
+          "countM": 188,
+          "countF": 51,
+          "avgPaceM": "00:08:18",
+          "avgPaceF": "00:07:58"
+        }
+      ],
+      "75": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 59,
+          "countF": 12,
+          "avgPaceM": "00:07:59",
+          "avgPaceF": "00:08:24"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 53,
+          "countF": 12,
+          "avgPaceM": "00:08:01",
+          "avgPaceF": "00:08:24"
+        },
+        {
+          "label": "split 5K",
+          "countM": 59,
+          "countF": 12,
+          "avgPaceM": "00:07:04",
+          "avgPaceF": "00:07:13"
+        },
+        {
+          "label": "split 10K",
+          "countM": 58,
+          "countF": 12,
+          "avgPaceM": "00:07:31",
+          "avgPaceF": "00:07:40"
+        },
+        {
+          "label": "split 15K",
+          "countM": 57,
+          "countF": 12,
+          "avgPaceM": "00:07:34",
+          "avgPaceF": "00:07:55"
+        },
+        {
+          "label": "split 20K",
+          "countM": 57,
+          "countF": 12,
+          "avgPaceM": "00:08:06",
+          "avgPaceF": "00:08:46"
+        },
+        {
+          "label": "split 21K",
+          "countM": 57,
+          "countF": 12,
+          "avgPaceM": "00:07:45",
+          "avgPaceF": "00:08:15"
+        },
+        {
+          "label": "split 25K",
+          "countM": 53,
+          "countF": 12,
+          "avgPaceM": "00:08:22",
+          "avgPaceF": "00:08:52"
+        },
+        {
+          "label": "split 30K",
+          "countM": 53,
+          "countF": 12,
+          "avgPaceM": "00:08:26",
+          "avgPaceF": "00:08:56"
+        },
+        {
+          "label": "split 35K",
+          "countM": 53,
+          "countF": 12,
+          "avgPaceM": "00:08:30",
+          "avgPaceF": "00:08:50"
+        },
+        {
+          "label": "split 40K",
+          "countM": 53,
+          "countF": 12,
+          "avgPaceM": "00:08:44",
+          "avgPaceF": "00:09:00"
+        },
+        {
+          "label": "split 42K",
+          "countM": 53,
+          "countF": 12,
+          "avgPaceM": "00:08:27",
+          "avgPaceF": "00:08:48"
+        }
+      ],
+      "80": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 11,
+          "countF": 5,
+          "avgPaceM": "00:08:30",
+          "avgPaceF": "00:08:42"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 9,
+          "countF": 5,
+          "avgPaceM": "00:08:26",
+          "avgPaceF": "00:08:42"
+        },
+        {
+          "label": "split 5K",
+          "countM": 11,
+          "countF": 5,
+          "avgPaceM": "00:07:16",
+          "avgPaceF": "00:07:25"
+        },
+        {
+          "label": "split 10K",
+          "countM": 11,
+          "countF": 5,
+          "avgPaceM": "00:07:38",
+          "avgPaceF": "00:08:06"
+        },
+        {
+          "label": "split 15K",
+          "countM": 10,
+          "countF": 5,
+          "avgPaceM": "00:07:49",
+          "avgPaceF": "00:08:13"
+        },
+        {
+          "label": "split 20K",
+          "countM": 10,
+          "countF": 5,
+          "avgPaceM": "00:08:21",
+          "avgPaceF": "00:08:44"
+        },
+        {
+          "label": "split 21K",
+          "countM": 10,
+          "countF": 5,
+          "avgPaceM": "00:08:17",
+          "avgPaceF": "00:08:55"
+        },
+        {
+          "label": "split 25K",
+          "countM": 9,
+          "countF": 5,
+          "avgPaceM": "00:08:58",
+          "avgPaceF": "00:09:34"
+        },
+        {
+          "label": "split 30K",
+          "countM": 9,
+          "countF": 5,
+          "avgPaceM": "00:08:49",
+          "avgPaceF": "00:09:16"
+        },
+        {
+          "label": "split 35K",
+          "countM": 9,
+          "countF": 5,
+          "avgPaceM": "00:08:53",
+          "avgPaceF": "00:08:54"
+        },
+        {
+          "label": "split 40K",
+          "countM": 9,
+          "countF": 5,
+          "avgPaceM": "00:09:11",
+          "avgPaceF": "00:09:21"
+        },
+        {
+          "label": "split 42K",
+          "countM": 9,
+          "countF": 5,
+          "avgPaceM": "00:09:00",
+          "avgPaceF": "00:09:07"
+        }
+      ]
+    },
+    "scatterDataByCategory": {
+      "18 a 19 años": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 340
+          },
+          {
+            "x": 5,
+            "y": 340
+          },
+          {
+            "x": 10,
+            "y": 347
+          },
+          {
+            "x": 15,
+            "y": 351
+          },
+          {
+            "x": 20,
+            "y": 377
+          },
+          {
+            "x": 21,
+            "y": 362
+          },
+          {
+            "x": 25,
+            "y": 396
+          },
+          {
+            "x": 30,
+            "y": 417
+          },
+          {
+            "x": 35,
+            "y": 415
+          },
+          {
+            "x": 40,
+            "y": 434
+          },
+          {
+            "x": 42.195,
+            "y": 393
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 377
+          },
+          {
+            "x": 5,
+            "y": 377
+          },
+          {
+            "x": 10,
+            "y": 386
+          },
+          {
+            "x": 15,
+            "y": 395
+          },
+          {
+            "x": 20,
+            "y": 425
+          },
+          {
+            "x": 21,
+            "y": 396
+          },
+          {
+            "x": 25,
+            "y": 435
+          },
+          {
+            "x": 30,
+            "y": 447
+          },
+          {
+            "x": 35,
+            "y": 448
+          },
+          {
+            "x": 40,
+            "y": 453
+          },
+          {
+            "x": 42.195,
+            "y": 418
+          }
+        ]
+      },
+      "20 a 29": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 317
+          },
+          {
+            "x": 5,
+            "y": 317
+          },
+          {
+            "x": 10,
+            "y": 322
+          },
+          {
+            "x": 15,
+            "y": 325
+          },
+          {
+            "x": 20,
+            "y": 341
+          },
+          {
+            "x": 21,
+            "y": 333
+          },
+          {
+            "x": 25,
+            "y": 358
+          },
+          {
+            "x": 30,
+            "y": 372
+          },
+          {
+            "x": 35,
+            "y": 382
+          },
+          {
+            "x": 40,
+            "y": 399
+          },
+          {
+            "x": 42.195,
+            "y": 376
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 353
+          },
+          {
+            "x": 5,
+            "y": 353
+          },
+          {
+            "x": 10,
+            "y": 364
+          },
+          {
+            "x": 15,
+            "y": 369
+          },
+          {
+            "x": 20,
+            "y": 388
+          },
+          {
+            "x": 21,
+            "y": 373
+          },
+          {
+            "x": 25,
+            "y": 400
+          },
+          {
+            "x": 30,
+            "y": 404
+          },
+          {
+            "x": 35,
+            "y": 405
+          },
+          {
+            "x": 40,
+            "y": 415
+          },
+          {
+            "x": 42.195,
+            "y": 387
+          }
+        ]
+      },
+      "30": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 311
+          },
+          {
+            "x": 5,
+            "y": 311
+          },
+          {
+            "x": 10,
+            "y": 316
+          },
+          {
+            "x": 15,
+            "y": 319
+          },
+          {
+            "x": 20,
+            "y": 334
+          },
+          {
+            "x": 21,
+            "y": 327
+          },
+          {
+            "x": 25,
+            "y": 350
+          },
+          {
+            "x": 30,
+            "y": 363
+          },
+          {
+            "x": 35,
+            "y": 373
+          },
+          {
+            "x": 40,
+            "y": 389
+          },
+          {
+            "x": 42.195,
+            "y": 367
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 351
+          },
+          {
+            "x": 5,
+            "y": 351
+          },
+          {
+            "x": 10,
+            "y": 362
+          },
+          {
+            "x": 15,
+            "y": 366
+          },
+          {
+            "x": 20,
+            "y": 386
+          },
+          {
+            "x": 21,
+            "y": 371
+          },
+          {
+            "x": 25,
+            "y": 398
+          },
+          {
+            "x": 30,
+            "y": 400
+          },
+          {
+            "x": 35,
+            "y": 401
+          },
+          {
+            "x": 40,
+            "y": 410
+          },
+          {
+            "x": 42.195,
+            "y": 384
+          }
+        ]
+      },
+      "35": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 313
+          },
+          {
+            "x": 5,
+            "y": 313
+          },
+          {
+            "x": 10,
+            "y": 319
+          },
+          {
+            "x": 15,
+            "y": 322
+          },
+          {
+            "x": 20,
+            "y": 338
+          },
+          {
+            "x": 21,
+            "y": 330
+          },
+          {
+            "x": 25,
+            "y": 354
+          },
+          {
+            "x": 30,
+            "y": 367
+          },
+          {
+            "x": 35,
+            "y": 376
+          },
+          {
+            "x": 40,
+            "y": 393
+          },
+          {
+            "x": 42.195,
+            "y": 372
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 358
+          },
+          {
+            "x": 5,
+            "y": 358
+          },
+          {
+            "x": 10,
+            "y": 371
+          },
+          {
+            "x": 15,
+            "y": 376
+          },
+          {
+            "x": 20,
+            "y": 397
+          },
+          {
+            "x": 21,
+            "y": 383
+          },
+          {
+            "x": 25,
+            "y": 409
+          },
+          {
+            "x": 30,
+            "y": 411
+          },
+          {
+            "x": 35,
+            "y": 411
+          },
+          {
+            "x": 40,
+            "y": 421
+          },
+          {
+            "x": 42.195,
+            "y": 396
+          }
+        ]
+      },
+      "40": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 317
+          },
+          {
+            "x": 5,
+            "y": 317
+          },
+          {
+            "x": 10,
+            "y": 323
+          },
+          {
+            "x": 15,
+            "y": 326
+          },
+          {
+            "x": 20,
+            "y": 344
+          },
+          {
+            "x": 21,
+            "y": 335
+          },
+          {
+            "x": 25,
+            "y": 360
+          },
+          {
+            "x": 30,
+            "y": 372
+          },
+          {
+            "x": 35,
+            "y": 382
+          },
+          {
+            "x": 40,
+            "y": 398
+          },
+          {
+            "x": 42.195,
+            "y": 377
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 362
+          },
+          {
+            "x": 5,
+            "y": 362
+          },
+          {
+            "x": 10,
+            "y": 377
+          },
+          {
+            "x": 15,
+            "y": 382
+          },
+          {
+            "x": 20,
+            "y": 405
+          },
+          {
+            "x": 21,
+            "y": 387
+          },
+          {
+            "x": 25,
+            "y": 417
+          },
+          {
+            "x": 30,
+            "y": 419
+          },
+          {
+            "x": 35,
+            "y": 419
+          },
+          {
+            "x": 40,
+            "y": 428
+          },
+          {
+            "x": 42.195,
+            "y": 404
+          }
+        ]
+      },
+      "45": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 319
+          },
+          {
+            "x": 5,
+            "y": 319
+          },
+          {
+            "x": 10,
+            "y": 327
+          },
+          {
+            "x": 15,
+            "y": 331
+          },
+          {
+            "x": 20,
+            "y": 349
+          },
+          {
+            "x": 21,
+            "y": 340
+          },
+          {
+            "x": 25,
+            "y": 366
+          },
+          {
+            "x": 30,
+            "y": 378
+          },
+          {
+            "x": 35,
+            "y": 385
+          },
+          {
+            "x": 40,
+            "y": 400
+          },
+          {
+            "x": 42.195,
+            "y": 383
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 362
+          },
+          {
+            "x": 5,
+            "y": 362
+          },
+          {
+            "x": 10,
+            "y": 379
+          },
+          {
+            "x": 15,
+            "y": 383
+          },
+          {
+            "x": 20,
+            "y": 407
+          },
+          {
+            "x": 21,
+            "y": 390
+          },
+          {
+            "x": 25,
+            "y": 419
+          },
+          {
+            "x": 30,
+            "y": 421
+          },
+          {
+            "x": 35,
+            "y": 421
+          },
+          {
+            "x": 40,
+            "y": 429
+          },
+          {
+            "x": 42.195,
+            "y": 406
+          }
+        ]
+      },
+      "50": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 330
+          },
+          {
+            "x": 5,
+            "y": 330
+          },
+          {
+            "x": 10,
+            "y": 340
+          },
+          {
+            "x": 15,
+            "y": 344
+          },
+          {
+            "x": 20,
+            "y": 364
+          },
+          {
+            "x": 21,
+            "y": 355
+          },
+          {
+            "x": 25,
+            "y": 383
+          },
+          {
+            "x": 30,
+            "y": 396
+          },
+          {
+            "x": 35,
+            "y": 404
+          },
+          {
+            "x": 40,
+            "y": 419
+          },
+          {
+            "x": 42.195,
+            "y": 398
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 370
+          },
+          {
+            "x": 5,
+            "y": 370
+          },
+          {
+            "x": 10,
+            "y": 388
+          },
+          {
+            "x": 15,
+            "y": 393
+          },
+          {
+            "x": 20,
+            "y": 419
+          },
+          {
+            "x": 21,
+            "y": 399
+          },
+          {
+            "x": 25,
+            "y": 433
+          },
+          {
+            "x": 30,
+            "y": 434
+          },
+          {
+            "x": 35,
+            "y": 433
+          },
+          {
+            "x": 40,
+            "y": 443
+          },
+          {
+            "x": 42.195,
+            "y": 420
+          }
+        ]
+      },
+      "55": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 342
+          },
+          {
+            "x": 5,
+            "y": 342
+          },
+          {
+            "x": 10,
+            "y": 356
+          },
+          {
+            "x": 15,
+            "y": 361
+          },
+          {
+            "x": 20,
+            "y": 387
+          },
+          {
+            "x": 21,
+            "y": 374
+          },
+          {
+            "x": 25,
+            "y": 406
+          },
+          {
+            "x": 30,
+            "y": 419
+          },
+          {
+            "x": 35,
+            "y": 426
+          },
+          {
+            "x": 40,
+            "y": 441
+          },
+          {
+            "x": 42.195,
+            "y": 419
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 379
+          },
+          {
+            "x": 5,
+            "y": 379
+          },
+          {
+            "x": 10,
+            "y": 400
+          },
+          {
+            "x": 15,
+            "y": 407
+          },
+          {
+            "x": 20,
+            "y": 435
+          },
+          {
+            "x": 21,
+            "y": 415
+          },
+          {
+            "x": 25,
+            "y": 449
+          },
+          {
+            "x": 30,
+            "y": 450
+          },
+          {
+            "x": 35,
+            "y": 450
+          },
+          {
+            "x": 40,
+            "y": 460
+          },
+          {
+            "x": 42.195,
+            "y": 438
+          }
+        ]
+      },
+      "60": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 353
+          },
+          {
+            "x": 5,
+            "y": 353
+          },
+          {
+            "x": 10,
+            "y": 369
+          },
+          {
+            "x": 15,
+            "y": 375
+          },
+          {
+            "x": 20,
+            "y": 401
+          },
+          {
+            "x": 21,
+            "y": 387
+          },
+          {
+            "x": 25,
+            "y": 423
+          },
+          {
+            "x": 30,
+            "y": 434
+          },
+          {
+            "x": 35,
+            "y": 441
+          },
+          {
+            "x": 40,
+            "y": 456
+          },
+          {
+            "x": 42.195,
+            "y": 436
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 382
+          },
+          {
+            "x": 5,
+            "y": 382
+          },
+          {
+            "x": 10,
+            "y": 404
+          },
+          {
+            "x": 15,
+            "y": 409
+          },
+          {
+            "x": 20,
+            "y": 440
+          },
+          {
+            "x": 21,
+            "y": 419
+          },
+          {
+            "x": 25,
+            "y": 453
+          },
+          {
+            "x": 30,
+            "y": 454
+          },
+          {
+            "x": 35,
+            "y": 455
+          },
+          {
+            "x": 40,
+            "y": 466
+          },
+          {
+            "x": 42.195,
+            "y": 445
+          }
+        ]
+      },
+      "65": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 372
+          },
+          {
+            "x": 5,
+            "y": 372
+          },
+          {
+            "x": 10,
+            "y": 391
+          },
+          {
+            "x": 15,
+            "y": 396
+          },
+          {
+            "x": 20,
+            "y": 425
+          },
+          {
+            "x": 21,
+            "y": 411
+          },
+          {
+            "x": 25,
+            "y": 447
+          },
+          {
+            "x": 30,
+            "y": 459
+          },
+          {
+            "x": 35,
+            "y": 465
+          },
+          {
+            "x": 40,
+            "y": 476
+          },
+          {
+            "x": 42.195,
+            "y": 459
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 395
+          },
+          {
+            "x": 5,
+            "y": 395
+          },
+          {
+            "x": 10,
+            "y": 423
+          },
+          {
+            "x": 15,
+            "y": 431
+          },
+          {
+            "x": 20,
+            "y": 463
+          },
+          {
+            "x": 21,
+            "y": 439
+          },
+          {
+            "x": 25,
+            "y": 481
+          },
+          {
+            "x": 30,
+            "y": 481
+          },
+          {
+            "x": 35,
+            "y": 486
+          },
+          {
+            "x": 40,
+            "y": 491
+          },
+          {
+            "x": 42.195,
+            "y": 470
+          }
+        ]
+      },
+      "70": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 396
+          },
+          {
+            "x": 5,
+            "y": 396
+          },
+          {
+            "x": 10,
+            "y": 423
+          },
+          {
+            "x": 15,
+            "y": 429
+          },
+          {
+            "x": 20,
+            "y": 463
+          },
+          {
+            "x": 21,
+            "y": 448
+          },
+          {
+            "x": 25,
+            "y": 485
+          },
+          {
+            "x": 30,
+            "y": 493
+          },
+          {
+            "x": 35,
+            "y": 504
+          },
+          {
+            "x": 40,
+            "y": 515
+          },
+          {
+            "x": 42.195,
+            "y": 498
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 405
+          },
+          {
+            "x": 5,
+            "y": 405
+          },
+          {
+            "x": 10,
+            "y": 433
+          },
+          {
+            "x": 15,
+            "y": 442
+          },
+          {
+            "x": 20,
+            "y": 472
+          },
+          {
+            "x": 21,
+            "y": 450
+          },
+          {
+            "x": 25,
+            "y": 492
+          },
+          {
+            "x": 30,
+            "y": 496
+          },
+          {
+            "x": 35,
+            "y": 496
+          },
+          {
+            "x": 40,
+            "y": 506
+          },
+          {
+            "x": 42.195,
+            "y": 478
+          }
+        ]
+      },
+      "75": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 424
+          },
+          {
+            "x": 5,
+            "y": 424
+          },
+          {
+            "x": 10,
+            "y": 451
+          },
+          {
+            "x": 15,
+            "y": 454
+          },
+          {
+            "x": 20,
+            "y": 486
+          },
+          {
+            "x": 21,
+            "y": 465
+          },
+          {
+            "x": 25,
+            "y": 502
+          },
+          {
+            "x": 30,
+            "y": 506
+          },
+          {
+            "x": 35,
+            "y": 510
+          },
+          {
+            "x": 40,
+            "y": 524
+          },
+          {
+            "x": 42.195,
+            "y": 507
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 433
+          },
+          {
+            "x": 5,
+            "y": 433
+          },
+          {
+            "x": 10,
+            "y": 460
+          },
+          {
+            "x": 15,
+            "y": 475
+          },
+          {
+            "x": 20,
+            "y": 526
+          },
+          {
+            "x": 21,
+            "y": 495
+          },
+          {
+            "x": 25,
+            "y": 532
+          },
+          {
+            "x": 30,
+            "y": 536
+          },
+          {
+            "x": 35,
+            "y": 530
+          },
+          {
+            "x": 40,
+            "y": 540
+          },
+          {
+            "x": 42.195,
+            "y": 528
+          }
+        ]
+      },
+      "80": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 436
+          },
+          {
+            "x": 5,
+            "y": 436
+          },
+          {
+            "x": 10,
+            "y": 458
+          },
+          {
+            "x": 15,
+            "y": 469
+          },
+          {
+            "x": 20,
+            "y": 501
+          },
+          {
+            "x": 21,
+            "y": 497
+          },
+          {
+            "x": 25,
+            "y": 538
+          },
+          {
+            "x": 30,
+            "y": 529
+          },
+          {
+            "x": 35,
+            "y": 533
+          },
+          {
+            "x": 40,
+            "y": 551
+          },
+          {
+            "x": 42.195,
+            "y": 540
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 445
+          },
+          {
+            "x": 5,
+            "y": 445
+          },
+          {
+            "x": 10,
+            "y": 486
+          },
+          {
+            "x": 15,
+            "y": 493
+          },
+          {
+            "x": 20,
+            "y": 524
+          },
+          {
+            "x": 21,
+            "y": 535
+          },
+          {
+            "x": 25,
+            "y": 574
+          },
+          {
+            "x": 30,
+            "y": 556
+          },
+          {
+            "x": 35,
+            "y": 534
+          },
+          {
+            "x": 40,
+            "y": 561
+          },
+          {
+            "x": 42.195,
+            "y": 547
+          }
+        ]
+      }
+    },
+    "scatterData": [
+      {
+        "x": 0,
+        "y": 336
+      },
+      {
+        "x": 5,
+        "y": 336
+      },
+      {
+        "x": 10,
+        "y": 347
+      },
+      {
+        "x": 15,
+        "y": 351
+      },
+      {
+        "x": 20,
+        "y": 371
+      },
+      {
+        "x": 21,
+        "y": 359
+      },
+      {
+        "x": 25,
+        "y": 386
+      },
+      {
+        "x": 30,
+        "y": 395
+      },
+      {
+        "x": 35,
+        "y": 401
+      },
+      {
+        "x": 40,
+        "y": 414
+      },
+      {
+        "x": 42.195,
+        "y": 392
+      }
+    ],
+    "scatterDataGenero": {
+      "dataM": [
+        {
+          "x": 0,
+          "y": 323
+        },
+        {
+          "x": 5,
+          "y": 323
+        },
+        {
+          "x": 10,
+          "y": 331
+        },
+        {
+          "x": 15,
+          "y": 334
+        },
+        {
+          "x": 20,
+          "y": 353
+        },
+        {
+          "x": 21,
+          "y": 344
+        },
+        {
+          "x": 25,
+          "y": 370
+        },
+        {
+          "x": 30,
+          "y": 383
+        },
+        {
+          "x": 35,
+          "y": 392
+        },
+        {
+          "x": 40,
+          "y": 407
+        },
+        {
+          "x": 42.195,
+          "y": 386
+        }
+      ],
+      "dataF": [
+        {
+          "x": 0,
+          "y": 361
+        },
+        {
+          "x": 5,
+          "y": 361
+        },
+        {
+          "x": 10,
+          "y": 376
+        },
+        {
+          "x": 15,
+          "y": 380
+        },
+        {
+          "x": 20,
+          "y": 403
+        },
+        {
+          "x": 21,
+          "y": 386
+        },
+        {
+          "x": 25,
+          "y": 416
+        },
+        {
+          "x": 30,
+          "y": 418
+        },
+        {
+          "x": 35,
+          "y": 418
+        },
+        {
+          "x": 40,
+          "y": 428
+        },
+        {
+          "x": 42.195,
+          "y": 403
+        }
+      ]
+    }
+  },
+  "comments": {}
+}

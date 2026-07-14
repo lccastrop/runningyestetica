@@ -573,3 +573,179 @@ select option {
     width: 100%;
   }
 }
+
+
+/* ===================== Rediseno informes (mobile-first) ===================== */
+:root {
+  --azul: #007bff;
+  --tinta: #111111;
+  --gris-texto: #667085;
+  --borde: #e5e7eb;
+  --radio: 14px;
+}
+
+/* tipografia fluida */
+h2 { font-size: clamp(1.45rem, 4.5vw, 2.1rem); }
+
+/* --- selector de carreras: chips deslizables --- */
+.informes-page { width: 100%; }
+
+.informe-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.informe-chip {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  border: 1px solid var(--borde);
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--tinta);
+  cursor: pointer;
+  line-height: 1.15;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+}
+
+.informe-chip .chip-fecha {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--gris-texto);
+}
+
+.informe-chip:hover { border-color: var(--azul); }
+
+.informe-chip.is-active {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: #ffffff;
+}
+
+.informe-chip.is-active .chip-fecha { color: #b8c0cc; }
+
+/* --- tarjeta del informe --- */
+.informe-detalle {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: var(--radio);
+  padding: clamp(14px, 3.5vw, 32px);
+  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.07);
+  min-width: 0;
+}
+
+.informe-detalle > div > h3.text-center {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  margin: 0.2em 0 0.1em;
+}
+
+/* titulos de seccion con acento lateral */
+.informe-detalle h3:not(.text-center) {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  border-left: 4px solid var(--azul);
+  padding-left: 10px;
+  text-align: left;
+  margin: 1.6em 0 0.4em;
+}
+
+.informe-detalle h4 {
+  font-size: clamp(0.98rem, 2.6vw, 1.12rem);
+  text-align: left;
+  margin: 1.5em 0 0.4em;
+}
+
+/* --- tarjetas KPI --- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 0.6em;
+}
+
+.kpi-card {
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 14px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.kpi-valor {
+  font-size: clamp(1.25rem, 5vw, 1.7rem);
+  font-weight: 700;
+  color: var(--tinta);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.kpi-label {
+  font-size: 0.78rem;
+  color: var(--gris-texto);
+  line-height: 1.25;
+}
+
+.kpi-card--wide { grid-column: 1 / -1; }
+.kpi-card--wide .kpi-valor { font-size: clamp(1.05rem, 4vw, 1.3rem); }
+.kpi-card--accent .kpi-valor { color: var(--azul); }
+
+/* --- tablas rediseniadas (aplican a todo el sitio) --- */
+.table {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  margin-top: 0.5em;
+}
+
+.table th, .table td {
+  border: none;
+  border-bottom: 1px solid var(--borde);
+  padding: 8px 10px;
+}
+
+.table thead th {
+  background: #f7f8fa;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gris-texto);
+  border-bottom: 2px solid var(--tinta);
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td { border-bottom: none; }
+
+.table tbody tr:nth-child(even) { background: #fafbfd; }
+
+.table tbody th[scope="row"] {
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* podio destacado en el top 10 */
+.tabla-top tbody tr:nth-child(-n+3) { font-weight: 700; }
+.tabla-top tbody tr:nth-child(-n+3) th[scope="row"] { color: var(--azul); }
+.tabla-top tbody tr:nth-child(1) { background: #eef5ff; }
+
+/* --- movil --- */
+@media (max-width: 768px) {
+  .table { border-radius: 10px; }
+  .kpi-grid { grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 8px; }
+  .informe-detalle { box-shadow: none; }
+  .contenedor-principal { padding: 10px; }
+}

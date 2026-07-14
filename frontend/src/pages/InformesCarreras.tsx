@@ -514,16 +514,23 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
         <h4>1.1 KPIs Generales</h4>
         <Note sectionKey="sec_1_1" />
         {kpiRows.length > 0 ? (
-          <table className="table">
-            <tbody>
-              {kpiRows.map((row) => (
-                <tr key={row.label}>
-                  <th scope="row">{row.label}</th>
-                  <td>{row.value}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="kpi-grid">
+            {kpiRows.map((row) => {
+              const esGanador = row.label.startsWith('Ganador') || row.label.startsWith('Ganadora');
+              const esAcento = row.label.startsWith('%') || row.label.startsWith('Ritmo');
+              const clases = [
+                'kpi-card',
+                esGanador ? 'kpi-card--wide' : '',
+                esAcento ? 'kpi-card--accent' : '',
+              ].filter(Boolean).join(' ');
+              return (
+                <div key={row.label} className={clases}>
+                  <span className="kpi-valor">{row.value}</span>
+                  <span className="kpi-label">{row.label}</span>
+                </div>
+              );
+            })}
+          </div>
         ) : (
           <p>{emptySectionMessage}</p>
         )}
@@ -831,7 +838,7 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
               topByGender[genero].length > 0 ? (
                 <div key={genero} className="mt-05">
                   <p className="fs-095"><strong>{genero}</strong></p>
-                  <table className="table">
+                  <table className="table tabla-top">
                     <thead>
                       <tr>
                         <th>Pos</th>
@@ -1062,16 +1069,17 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
           <h4>2.3.2 Primera vs Segunda Mitad</h4>
           <Note sectionKey="sec_2_3_2" />
           {halvesRows.length > 0 ? (
-            <table className="table">
-              <tbody>
-                {halvesRows.map((row) => (
-                  <tr key={row.label}>
-                    <th scope="row">{row.label}</th>
-                    <td>{row.value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="kpi-grid">
+              {halvesRows.map((row) => (
+                <div
+                  key={row.label}
+                  className={`kpi-card${row.label.startsWith('%') ? ' kpi-card--accent' : ''}`}
+                >
+                  <span className="kpi-valor">{row.value}</span>
+                  <span className="kpi-label">{row.label}</span>
+                </div>
+              ))}
+            </div>
           ) : (
             <p>{emptySectionMessage}</p>
           )}
@@ -1399,35 +1407,30 @@ const InformesCarreras = () => {
 
       {!loading && !error && (
         informes.length > 0 ? (
-          <div className="blog-layout">
-            <aside className="blog-aside">
-              <h3 className="text-center">Carreras</h3>
-              <ul className="blog-list">
-                {informes.map((informe) => {
-                  const isActive = informe.id === selectedId;
-                  const isDemo = informe.id === mockInforme.id;
-                  return (
-                    <li
-                      key={informe.id}
-                      className="blog-item clickable"
-                      onClick={() => setSelectedId(informe.id)}
-                      aria-selected={isActive}
-                    >
-                      <div>
-                        <div>
-                          <strong>{informe.nombre}{isDemo ? ' (ejemplo)' : ''}</strong>
-                        </div>
-                        <div className="muted fs-095">
-                          {new Date(informe.fecha).toLocaleDateString()}
-                        </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
-            </aside>
+          <div className="informes-page">
+            <div className="informe-chips" role="tablist" aria-label="Carreras">
+              {informes.map((informe) => {
+                const isActive = informe.id === selectedId;
+                const isDemo = informe.id === mockInforme.id;
+                return (
+                  <button
+                    key={informe.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`informe-chip${isActive ? ' is-active' : ''}`}
+                    onClick={() => setSelectedId(informe.id)}
+                  >
+                    <span>{informe.nombre}{isDemo ? ' (ejemplo)' : ''}</span>
+                    <span className="chip-fecha">
+                      {new Date(informe.fecha).toLocaleDateString()}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
 
-            <section className="blog-main">
+            <section className="informe-detalle">
               {selectedInforme ? (
                 <div>
                   <h3 className="text-center">{selectedInforme.nombre}</h3>

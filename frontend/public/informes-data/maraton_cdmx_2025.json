@@ -1,0 +1,2846 @@
+{
+  "id": "maraton_cdmx_2025",
+  "nombre": "Maratón CDMX 2025",
+  "fecha": "2025-08-31T00:00:00Z",
+  "metadata": {
+    "fileName": "maraton_cdmx2025.csv",
+    "distanceKm": 42.195,
+    "rowCount": 29422
+  },
+  "analysis": {
+    "kpiRows": [
+      {
+        "label": "Inscritos totales",
+        "value": "29,422"
+      },
+      {
+        "label": "Corredores 42K (a pie)",
+        "value": "23,389"
+      },
+      {
+        "label": "Corredores Silla de Ruedas",
+        "value": "35"
+      },
+      {
+        "label": "Hombres (42K)",
+        "value": "16,079"
+      },
+      {
+        "label": "Mujeres (42K)",
+        "value": "7,310"
+      },
+      {
+        "label": "% Hombres",
+        "value": "68.75%"
+      },
+      {
+        "label": "% Mujeres",
+        "value": "31.25%"
+      },
+      {
+        "label": "Tiempo promedio (42K)",
+        "value": "04:51:37"
+      },
+      {
+        "label": "Tiempo mediana (42K)",
+        "value": "04:47:34"
+      },
+      {
+        "label": "Ritmo promedio (min/km)",
+        "value": "00:06:55"
+      },
+      {
+        "label": "Ganador absoluto (H)",
+        "value": "TADU ABATE DEME. — 02:11:15"
+      },
+      {
+        "label": "Ganadora absoluto (M)",
+        "value": "BEKELECH GUDETA BORECHA — 02:28:35"
+      },
+      {
+        "label": "Ganador Silla de Ruedas (H)",
+        "value": "JOSE ALAN FRIAS MORENO — 01:38:49"
+      },
+      {
+        "label": "Ganadora Silla de Ruedas (M)",
+        "value": "BRENDA OSNAYA ALVAREZ — 01:59:50"
+      }
+    ],
+    "genderBreakdownRows": [
+      {
+        "genero": "Masculino",
+        "corredores": 16079,
+        "pct": "68.75%",
+        "promedio": "04:45:34",
+        "mejor": "02:11:15",
+        "peor": "08:17:26"
+      },
+      {
+        "genero": "Femenino",
+        "corredores": 7310,
+        "pct": "31.25%",
+        "promedio": "05:04:56",
+        "mejor": "02:28:35",
+        "peor": "08:09:17"
+      }
+    ],
+    "categoryBreakdownRows": [
+      {
+        "categoria": "Absolutos Femenil",
+        "corredores": 8,
+        "pct": "0.03%",
+        "promedio": "02:35:40",
+        "mejor": "02:28:35"
+      },
+      {
+        "categoria": "Absolutos Varonil",
+        "corredores": 7,
+        "pct": "0.02%",
+        "promedio": "02:14:09",
+        "mejor": "02:11:15"
+      },
+      {
+        "categoria": "Invidentes Total Femenil",
+        "corredores": 7,
+        "pct": "0.02%",
+        "promedio": "06:12:10",
+        "mejor": "03:53:02"
+      },
+      {
+        "categoria": "Invidentes Total Varonil",
+        "corredores": 19,
+        "pct": "0.06%",
+        "promedio": "04:42:35",
+        "mejor": "02:52:14"
+      },
+      {
+        "categoria": "Libre Femenil 18 a 34 años",
+        "corredores": 3037,
+        "pct": "10.32%",
+        "promedio": "05:01:54",
+        "mejor": "02:58:11"
+      },
+      {
+        "categoria": "Libre Varonil 18 a 34 años",
+        "corredores": 6512,
+        "pct": "22.13%",
+        "promedio": "04:43:10",
+        "mejor": "02:20:39"
+      },
+      {
+        "categoria": "Master Femenil 35 a 39 años",
+        "corredores": 1301,
+        "pct": "4.42%",
+        "promedio": "05:00:55",
+        "mejor": "02:44:56"
+      },
+      {
+        "categoria": "Master Varonil 35 a 39 años",
+        "corredores": 2633,
+        "pct": "8.95%",
+        "promedio": "04:39:40",
+        "mejor": "02:29:01"
+      },
+      {
+        "categoria": "Silla de Ruedas Femenil",
+        "corredores": 8,
+        "pct": "0.03%",
+        "promedio": "04:01:50",
+        "mejor": "01:59:50"
+      },
+      {
+        "categoria": "Silla de Ruedas Varonil",
+        "corredores": 27,
+        "pct": "0.09%",
+        "promedio": "03:53:08",
+        "mejor": "01:38:49"
+      },
+      {
+        "categoria": "Veteranos Femenil 40 a 44 años",
+        "corredores": 1199,
+        "pct": "4.08%",
+        "promedio": "05:00:16",
+        "mejor": "02:53:24"
+      },
+      {
+        "categoria": "Veteranos II Femenil 45 a 49 años",
+        "corredores": 817,
+        "pct": "2.78%",
+        "promedio": "05:10:28",
+        "mejor": "02:52:14"
+      },
+      {
+        "categoria": "Veteranos II Varonil 45 a 49 años",
+        "corredores": 1699,
+        "pct": "5.77%",
+        "promedio": "04:46:11",
+        "mejor": "02:29:20"
+      },
+      {
+        "categoria": "Veteranos III Femenil 50 a 54 años",
+        "corredores": 536,
+        "pct": "1.82%",
+        "promedio": "05:16:09",
+        "mejor": "03:21:55"
+      },
+      {
+        "categoria": "Veteranos III Varonil 50 a 54 años",
+        "corredores": 1285,
+        "pct": "4.37%",
+        "promedio": "04:52:10",
+        "mejor": "02:38:29"
+      },
+      {
+        "categoria": "Veteranos IV Femenil 55 a 59 años",
+        "corredores": 257,
+        "pct": "0.87%",
+        "promedio": "05:25:25",
+        "mejor": "03:18:23"
+      },
+      {
+        "categoria": "Veteranos IV Varonil 55 a 59 años",
+        "corredores": 798,
+        "pct": "2.71%",
+        "promedio": "04:56:07",
+        "mejor": "02:46:33"
+      },
+      {
+        "categoria": "Veteranos V Femenil 60 a 64 años",
+        "corredores": 89,
+        "pct": "0.30%",
+        "promedio": "05:31:23",
+        "mejor": "03:40:01"
+      },
+      {
+        "categoria": "Veteranos V Varonil 60 a 64 años",
+        "corredores": 498,
+        "pct": "1.69%",
+        "promedio": "04:59:13",
+        "mejor": "02:55:04"
+      },
+      {
+        "categoria": "Veteranos VI Femenil 65 años y mas",
+        "corredores": 59,
+        "pct": "0.20%",
+        "promedio": "05:48:36",
+        "mejor": "03:39:15"
+      },
+      {
+        "categoria": "Veteranos VI Varonil 65 años y mas",
+        "corredores": 343,
+        "pct": "1.17%",
+        "promedio": "05:17:38",
+        "mejor": "03:11:29"
+      },
+      {
+        "categoria": "Veteranos Varonil 40 a 44 años",
+        "corredores": 2285,
+        "pct": "7.77%",
+        "promedio": "04:44:04",
+        "mejor": "02:24:09"
+      }
+    ],
+    "segmentPaceRows": [
+      {
+        "tramo": "0-5K",
+        "ritmo": "00:06:02",
+        "distanciaKm": "5",
+        "acumulado": "00:30:11"
+      },
+      {
+        "tramo": "5K-10K",
+        "ritmo": "00:06:05",
+        "distanciaKm": "5",
+        "acumulado": "01:00:37"
+      },
+      {
+        "tramo": "10K-15K",
+        "ritmo": "00:06:17",
+        "distanciaKm": "5",
+        "acumulado": "01:32:01"
+      },
+      {
+        "tramo": "15K-21K",
+        "ritmo": "00:06:46",
+        "distanciaKm": "6.0975",
+        "acumulado": "02:13:09"
+      },
+      {
+        "tramo": "21K-25K",
+        "ritmo": "00:06:50",
+        "distanciaKm": "3.9025",
+        "acumulado": "02:39:42"
+      },
+      {
+        "tramo": "25K-30K",
+        "ritmo": "00:07:57",
+        "distanciaKm": "5",
+        "acumulado": "03:16:46"
+      },
+      {
+        "tramo": "30K-35K",
+        "ritmo": "00:07:08",
+        "distanciaKm": "5",
+        "acumulado": "03:45:04"
+      },
+      {
+        "tramo": "35K-40K",
+        "ritmo": "00:06:56",
+        "distanciaKm": "5",
+        "acumulado": "04:09:45"
+      },
+      {
+        "tramo": "40K-Meta",
+        "ritmo": "00:06:37",
+        "distanciaKm": "2.195",
+        "acumulado": "04:51:37"
+      }
+    ],
+    "halvesRows": [
+      {
+        "label": "Corredores con split 21K válido",
+        "value": "22,846"
+      },
+      {
+        "label": "Ritmo promedio 1ra mitad (0-21K, min/km)",
+        "value": "00:06:19"
+      },
+      {
+        "label": "Ritmo promedio 2da mitad (21K-Meta, min/km)",
+        "value": "00:07:31"
+      },
+      {
+        "label": "Corredores con negative split (2da mitad más rápida)",
+        "value": "1,326"
+      },
+      {
+        "label": "% Negative split",
+        "value": "5.80%"
+      },
+      {
+        "label": "% Positive split (2da mitad más lenta)",
+        "value": "94.20%"
+      }
+    ],
+    "topByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "TADU ABATE DEME.",
+          "bib": "4",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "02:11:15"
+        },
+        {
+          "pos": 2,
+          "nombre": "BENARD KIPKORIR",
+          "bib": "9",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "02:11:26"
+        },
+        {
+          "pos": 3,
+          "nombre": "EDWIN KIPROP KIPTOO",
+          "bib": "1",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "02:13:06"
+        },
+        {
+          "pos": 4,
+          "nombre": "ADANE KEBEDE GEBRE .",
+          "bib": "19",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "02:13:54"
+        },
+        {
+          "pos": 5,
+          "nombre": "FRANK YOBER LUJAN SANCHEZ.",
+          "bib": "12",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "02:14:58"
+        },
+        {
+          "pos": 6,
+          "nombre": "SHIFERA TAMRU AREDO.",
+          "bib": "5",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "02:16:52"
+        },
+        {
+          "pos": 7,
+          "nombre": "HECTOR GARIBAY FLORES.",
+          "bib": "2",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "02:17:35"
+        },
+        {
+          "pos": 8,
+          "nombre": "MOSES KIBET",
+          "bib": "3",
+          "categoria": "Libre Varonil 18 a 34 años",
+          "tiempoChip": "02:20:39"
+        },
+        {
+          "pos": 9,
+          "nombre": "HILLRY BIWOTT CHEMWENO.",
+          "bib": "8",
+          "categoria": "Libre Varonil 18 a 34 años",
+          "tiempoChip": "02:23:24"
+        },
+        {
+          "pos": 10,
+          "nombre": "OSCAR FERNANDO CRISISTOMO OLIVARES.",
+          "bib": "17",
+          "categoria": "Veteranos Varonil 40 a 44 años",
+          "tiempoChip": "02:24:09"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "BEKELECH GUDETA BORECHA",
+          "bib": "102",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "02:28:35"
+        },
+        {
+          "pos": 2,
+          "nombre": "LIZAIDA THALIA VALDIVIA MAGARIñO",
+          "bib": "112",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "02:32:27"
+        },
+        {
+          "pos": 3,
+          "nombre": "RUTH DANIES ALBERT JEBET",
+          "bib": "103",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "02:32:47"
+        },
+        {
+          "pos": 4,
+          "nombre": "VISILINE JEPKESHO",
+          "bib": "105",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "02:34:53"
+        },
+        {
+          "pos": 5,
+          "nombre": "MERCY JEROP KWAMBAI",
+          "bib": "106",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "02:35:22"
+        },
+        {
+          "pos": 6,
+          "nombre": "CYNTHIA CHEPCHIRCHIR",
+          "bib": "104",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "02:36:59"
+        },
+        {
+          "pos": 7,
+          "nombre": "SIFAN MELAKU DEMISE",
+          "bib": "108",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "02:40:44"
+        },
+        {
+          "pos": 8,
+          "nombre": "BRENDA EUNICE FLORES MUñOZ",
+          "bib": "115",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "02:43:35"
+        },
+        {
+          "pos": 9,
+          "nombre": "KATHYA MIRELL GARCIA BARRIOS",
+          "bib": "110",
+          "categoria": "Master Femenil 35 a 39 años",
+          "tiempoChip": "02:44:56"
+        },
+        {
+          "pos": 10,
+          "nombre": "IVON DOMINGUEZ ACOSTA",
+          "bib": "111",
+          "categoria": "Master Femenil 35 a 39 años",
+          "tiempoChip": "02:50:34"
+        }
+      ]
+    },
+    "top100SegmentRows": [
+      {
+        "tramo": "0-5K",
+        "varonil": "00:03:42",
+        "femenil": "00:04:30",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "5K-10K",
+        "varonil": "00:03:40",
+        "femenil": "00:04:25",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "10K-15K",
+        "varonil": "00:03:42",
+        "femenil": "00:04:28",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "15K-21K",
+        "varonil": "00:03:50",
+        "femenil": "00:04:34",
+        "distanciaKm": "6.0975"
+      },
+      {
+        "tramo": "21K-25K",
+        "varonil": "00:03:46",
+        "femenil": "00:04:29",
+        "distanciaKm": "3.9025"
+      },
+      {
+        "tramo": "25K-30K",
+        "varonil": "00:04:35",
+        "femenil": "00:05:32",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "30K-35K",
+        "varonil": "00:03:56",
+        "femenil": "00:04:38",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "35K-40K",
+        "varonil": "00:04:06",
+        "femenil": "00:04:53",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "40K-Meta",
+        "varonil": "00:04:05",
+        "femenil": "00:04:33",
+        "distanciaKm": "2.195"
+      }
+    ],
+    "positionBands": {
+      "bandLabels": [
+        "1 - 5,000",
+        "5,001 - 10,000",
+        "10,001 - 15,000",
+        "15,001 - 20,000",
+        "20,001 - 23,389"
+      ],
+      "rows": [
+        {
+          "tramo": "0-5K",
+          "values": [
+            "00:05:01",
+            "00:05:43",
+            "00:06:06",
+            "00:06:32",
+            "00:07:11"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:00",
+          "absFemenil": "00:03:30"
+        },
+        {
+          "tramo": "5K-10K",
+          "values": [
+            "00:04:56",
+            "00:05:39",
+            "00:06:07",
+            "00:06:38",
+            "00:07:32"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:04",
+          "absFemenil": "00:03:29"
+        },
+        {
+          "tramo": "10K-15K",
+          "values": [
+            "00:05:00",
+            "00:05:47",
+            "00:06:17",
+            "00:06:53",
+            "00:08:02"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:04",
+          "absFemenil": "00:03:34"
+        },
+        {
+          "tramo": "15K-21K",
+          "values": [
+            "00:05:10",
+            "00:06:02",
+            "00:06:42",
+            "00:07:33",
+            "00:09:09"
+          ],
+          "distanciaKm": "6.0975",
+          "absVaronil": "00:03:12",
+          "absFemenil": "00:03:44"
+        },
+        {
+          "tramo": "21K-25K",
+          "values": [
+            "00:05:05",
+            "00:06:01",
+            "00:06:46",
+            "00:07:43",
+            "00:09:26"
+          ],
+          "distanciaKm": "3.9025",
+          "absVaronil": "00:03:10",
+          "absFemenil": "00:03:41"
+        },
+        {
+          "tramo": "25K-30K",
+          "values": [
+            "00:06:42",
+            "00:07:09",
+            "00:08:12",
+            "00:08:47",
+            "00:10:11"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:13",
+          "absFemenil": "00:03:59"
+        },
+        {
+          "tramo": "30K-35K",
+          "values": [
+            "00:05:29",
+            "00:06:43",
+            "00:07:46",
+            "00:08:54",
+            "00:09:56"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:16",
+          "absFemenil": "00:03:47"
+        },
+        {
+          "tramo": "35K-40K",
+          "values": [
+            "00:05:51",
+            "00:07:10",
+            "00:08:07",
+            "00:08:56",
+            "00:07:56"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:20",
+          "absFemenil": "00:03:54"
+        },
+        {
+          "tramo": "40K-Meta",
+          "values": [
+            "00:05:42",
+            "00:06:48",
+            "00:07:30",
+            "00:08:44",
+            "00:59:21"
+          ],
+          "distanciaKm": "2.195",
+          "absVaronil": "00:03:25",
+          "absFemenil": "00:03:56"
+        }
+      ]
+    },
+    "percentileRows": [
+      {
+        "label": "Min",
+        "Masculino": "00:03:07",
+        "Femenino": "00:03:31"
+      },
+      {
+        "label": "1%",
+        "Masculino": "00:04:13",
+        "Femenino": "00:04:46"
+      },
+      {
+        "label": "5%",
+        "Masculino": "00:04:48",
+        "Femenino": "00:05:22"
+      },
+      {
+        "label": "10%",
+        "Masculino": "00:05:09",
+        "Femenino": "00:05:42"
+      },
+      {
+        "label": "30%",
+        "Masculino": "00:05:59",
+        "Femenino": "00:06:30"
+      },
+      {
+        "label": "50%",
+        "Masculino": "00:06:39",
+        "Femenino": "00:07:07"
+      },
+      {
+        "label": "80%",
+        "Masculino": "00:07:54",
+        "Femenino": "00:08:16"
+      },
+      {
+        "label": "Max",
+        "Masculino": "00:11:47",
+        "Femenino": "00:11:36"
+      }
+    ],
+    "top5ByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "TADU ABATE DEME.",
+          "bib": "4",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:11:15",
+          "tiempoChip": "02:11:15",
+          "ritmoMedio": "00:03:07"
+        },
+        {
+          "pos": 2,
+          "nombre": "BENARD KIPKORIR",
+          "bib": "9",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:11:26",
+          "tiempoChip": "02:11:26",
+          "ritmoMedio": "00:03:07"
+        },
+        {
+          "pos": 3,
+          "nombre": "EDWIN KIPROP KIPTOO",
+          "bib": "1",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:13:06",
+          "tiempoChip": "02:13:06",
+          "ritmoMedio": "00:03:09"
+        },
+        {
+          "pos": 4,
+          "nombre": "ADANE KEBEDE GEBRE .",
+          "bib": "19",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:13:54",
+          "tiempoChip": "02:13:54",
+          "ritmoMedio": "00:03:10"
+        },
+        {
+          "pos": 5,
+          "nombre": "FRANK YOBER LUJAN SANCHEZ.",
+          "bib": "12",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:14:58",
+          "tiempoChip": "02:14:58",
+          "ritmoMedio": "00:03:12"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "BEKELECH GUDETA BORECHA",
+          "bib": "102",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:28:35",
+          "tiempoChip": "02:28:35",
+          "ritmoMedio": "00:03:31"
+        },
+        {
+          "pos": 2,
+          "nombre": "LIZAIDA THALIA VALDIVIA MAGARIñO",
+          "bib": "112",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:32:27",
+          "tiempoChip": "02:32:27",
+          "ritmoMedio": "00:03:37"
+        },
+        {
+          "pos": 3,
+          "nombre": "RUTH DANIES ALBERT JEBET",
+          "bib": "103",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:32:47",
+          "tiempoChip": "02:32:47",
+          "ritmoMedio": "00:03:37"
+        },
+        {
+          "pos": 4,
+          "nombre": "VISILINE JEPKESHO",
+          "bib": "105",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:34:53",
+          "tiempoChip": "02:34:53",
+          "ritmoMedio": "00:03:40"
+        },
+        {
+          "pos": 5,
+          "nombre": "MERCY JEROP KWAMBAI",
+          "bib": "106",
+          "categoria": "Absolutos",
+          "tiempoOficial": "02:35:22",
+          "tiempoChip": "02:35:22",
+          "ritmoMedio": "00:03:41"
+        }
+      ]
+    },
+    "paceDistributionRows": [
+      {
+        "label": "≤ 03:30",
+        "F": 0,
+        "M": 12,
+        "X": 0
+      },
+      {
+        "label": "03:31–03:45",
+        "F": 6,
+        "M": 18,
+        "X": 0
+      },
+      {
+        "label": "03:46–04:00",
+        "F": 3,
+        "M": 38,
+        "X": 0
+      },
+      {
+        "label": "04:01–04:15",
+        "F": 5,
+        "M": 125,
+        "X": 0
+      },
+      {
+        "label": "04:16–04:46",
+        "F": 60,
+        "M": 558,
+        "X": 0
+      },
+      {
+        "label": "04:47–05:14",
+        "F": 192,
+        "M": 1088,
+        "X": 0
+      },
+      {
+        "label": "05:15–05:55",
+        "F": 781,
+        "M": 2749,
+        "X": 0
+      },
+      {
+        "label": "05:56–06:30",
+        "F": 1177,
+        "M": 2787,
+        "X": 0
+      },
+      {
+        "label": "06:31–07:37",
+        "F": 2525,
+        "M": 4652,
+        "X": 0
+      },
+      {
+        "label": "07:38–08:28",
+        "F": 1376,
+        "M": 2235,
+        "X": 0
+      },
+      {
+        "label": "≥ 08:29",
+        "F": 1178,
+        "M": 1798,
+        "X": 0
+      }
+    ],
+    "paceDistributionTotals": {
+      "label": "Total",
+      "F": 7303,
+      "M": 16060,
+      "X": 0
+    },
+    "summaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "count": 23363,
+        "avgPace": "00:06:55"
+      },
+      {
+        "label": "Con todos los Split y TC",
+        "count": 12363,
+        "avgPace": "00:06:01"
+      },
+      {
+        "label": "split 5K",
+        "count": 23740,
+        "avgPace": "00:06:03"
+      },
+      {
+        "label": "split 10K",
+        "count": 23673,
+        "avgPace": "00:06:05"
+      },
+      {
+        "label": "split 15K",
+        "count": 23568,
+        "avgPace": "00:06:18"
+      },
+      {
+        "label": "split 20K",
+        "count": 23208,
+        "avgPace": "00:06:47"
+      },
+      {
+        "label": "split 21K",
+        "count": 23208,
+        "avgPace": "00:06:47"
+      },
+      {
+        "label": "split 25K",
+        "count": 22954,
+        "avgPace": "00:06:47"
+      },
+      {
+        "label": "split 30K",
+        "count": 21539,
+        "avgPace": "00:07:21"
+      },
+      {
+        "label": "split 35K",
+        "count": 17898,
+        "avgPace": "00:07:07"
+      },
+      {
+        "label": "split 40K",
+        "count": 12482,
+        "avgPace": "00:06:54"
+      },
+      {
+        "label": "split 42K",
+        "count": 12363,
+        "avgPace": "00:06:34"
+      }
+    ],
+    "genderSummaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "countM": 16060,
+        "countF": 7303,
+        "avgPaceM": "00:06:46",
+        "avgPaceF": "00:07:14"
+      },
+      {
+        "label": "Con todos los Split y TC",
+        "countM": 9128,
+        "countF": 3235,
+        "avgPaceM": "00:05:56",
+        "avgPaceF": "00:06:15"
+      },
+      {
+        "label": "split 5K",
+        "countM": 16329,
+        "countF": 7411,
+        "avgPaceM": "00:05:54",
+        "avgPaceF": "00:06:21"
+      },
+      {
+        "label": "split 10K",
+        "countM": 16285,
+        "countF": 7388,
+        "avgPaceM": "00:05:56",
+        "avgPaceF": "00:06:27"
+      },
+      {
+        "label": "split 15K",
+        "countM": 16214,
+        "countF": 7354,
+        "avgPaceM": "00:06:07",
+        "avgPaceF": "00:06:42"
+      },
+      {
+        "label": "split 20K",
+        "countM": 15975,
+        "countF": 7233,
+        "avgPaceM": "00:06:34",
+        "avgPaceF": "00:07:14"
+      },
+      {
+        "label": "split 21K",
+        "countM": 15975,
+        "countF": 7233,
+        "avgPaceM": "00:06:34",
+        "avgPaceF": "00:07:14"
+      },
+      {
+        "label": "split 25K",
+        "countM": 15814,
+        "countF": 7140,
+        "avgPaceM": "00:06:36",
+        "avgPaceF": "00:07:13"
+      },
+      {
+        "label": "split 30K",
+        "countM": 14955,
+        "countF": 6584,
+        "avgPaceM": "00:07:12",
+        "avgPaceF": "00:07:40"
+      },
+      {
+        "label": "split 35K",
+        "countM": 12727,
+        "countF": 5171,
+        "avgPaceM": "00:07:03",
+        "avgPaceF": "00:07:18"
+      },
+      {
+        "label": "split 40K",
+        "countM": 9223,
+        "countF": 3259,
+        "avgPaceM": "00:06:53",
+        "avgPaceF": "00:06:57"
+      },
+      {
+        "label": "split 42K",
+        "countM": 9128,
+        "countF": 3235,
+        "avgPaceM": "00:06:34",
+        "avgPaceF": "00:06:35"
+      }
+    ],
+    "categoryStatsRows": [
+      {
+        "categoria": "Absolutos",
+        "countM": 8,
+        "countF": 8,
+        "avgPaceM": "00:02:47",
+        "avgPaceF": "00:03:41"
+      },
+      {
+        "categoria": "Libre 18 a 34 años",
+        "countM": 8299,
+        "countF": 4024,
+        "avgPaceM": "00:05:16",
+        "avgPaceF": "00:05:24"
+      },
+      {
+        "categoria": "Master 35 a 39 años",
+        "countM": 3305,
+        "countF": 1637,
+        "avgPaceM": "00:05:17",
+        "avgPaceF": "00:05:40"
+      },
+      {
+        "categoria": "Veteranos 40 a 44 años",
+        "countM": 2863,
+        "countF": 1447,
+        "avgPaceM": "00:05:22",
+        "avgPaceF": "00:05:54"
+      },
+      {
+        "categoria": "Veteranos II 45 a 49 años",
+        "countM": 2091,
+        "countF": 955,
+        "avgPaceM": "00:05:31",
+        "avgPaceF": "00:06:18"
+      },
+      {
+        "categoria": "Veteranos III 50 a 54 años",
+        "countM": 1591,
+        "countF": 638,
+        "avgPaceM": "00:05:36",
+        "avgPaceF": "00:06:18"
+      },
+      {
+        "categoria": "Veteranos IV 55 a 59 años",
+        "countM": 970,
+        "countF": 297,
+        "avgPaceM": "00:05:46",
+        "avgPaceF": "00:06:40"
+      },
+      {
+        "categoria": "Veteranos V 60 a 64 años",
+        "countM": 591,
+        "countF": 115,
+        "avgPaceM": "00:05:59",
+        "avgPaceF": "00:06:05"
+      },
+      {
+        "categoria": "Veteranos VI 65 años y mas",
+        "countM": 412,
+        "countF": 81,
+        "avgPaceM": "00:06:16",
+        "avgPaceF": "00:06:01"
+      }
+    ],
+    "genderSummaryStatsByCategory": {
+      "Absolutos": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:11",
+          "avgPaceF": "00:03:41"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 7,
+          "countF": 7,
+          "avgPaceM": "00:03:11",
+          "avgPaceF": "00:03:42"
+        },
+        {
+          "label": "split 5K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:02:59",
+          "avgPaceF": "00:03:29"
+        },
+        {
+          "label": "split 10K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:04",
+          "avgPaceF": "00:03:29"
+        },
+        {
+          "label": "split 15K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:03",
+          "avgPaceF": "00:03:33"
+        },
+        {
+          "label": "split 20K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:11",
+          "avgPaceF": "00:03:44"
+        },
+        {
+          "label": "split 21K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:11",
+          "avgPaceF": "00:03:44"
+        },
+        {
+          "label": "split 25K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:10",
+          "avgPaceF": "00:03:42"
+        },
+        {
+          "label": "split 30K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:13",
+          "avgPaceF": "00:03:59"
+        },
+        {
+          "label": "split 35K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:16",
+          "avgPaceF": "00:03:47"
+        },
+        {
+          "label": "split 40K",
+          "countM": 7,
+          "countF": 8,
+          "avgPaceM": "00:03:20",
+          "avgPaceF": "00:03:54"
+        },
+        {
+          "label": "split 42K",
+          "countM": 7,
+          "countF": 7,
+          "avgPaceM": "00:03:25",
+          "avgPaceF": "00:03:56"
+        }
+      ],
+      "Libre 18 a 34 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 6512,
+          "countF": 3037,
+          "avgPaceM": "00:06:43",
+          "avgPaceF": "00:07:09"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 3743,
+          "countF": 1333,
+          "avgPaceM": "00:05:53",
+          "avgPaceF": "00:06:11"
+        },
+        {
+          "label": "split 5K",
+          "countM": 6673,
+          "countF": 3126,
+          "avgPaceM": "00:05:51",
+          "avgPaceF": "00:06:18"
+        },
+        {
+          "label": "split 10K",
+          "countM": 6657,
+          "countF": 3117,
+          "avgPaceM": "00:05:52",
+          "avgPaceF": "00:06:25"
+        },
+        {
+          "label": "split 15K",
+          "countM": 6631,
+          "countF": 3108,
+          "avgPaceM": "00:06:03",
+          "avgPaceF": "00:06:38"
+        },
+        {
+          "label": "split 20K",
+          "countM": 6548,
+          "countF": 3056,
+          "avgPaceM": "00:06:29",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "split 21K",
+          "countM": 6548,
+          "countF": 3056,
+          "avgPaceM": "00:06:29",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "split 25K",
+          "countM": 6490,
+          "countF": 3007,
+          "avgPaceM": "00:06:31",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "split 30K",
+          "countM": 6135,
+          "countF": 2761,
+          "avgPaceM": "00:07:05",
+          "avgPaceF": "00:07:31"
+        },
+        {
+          "label": "split 35K",
+          "countM": 5216,
+          "countF": 2161,
+          "avgPaceM": "00:06:57",
+          "avgPaceF": "00:07:12"
+        },
+        {
+          "label": "split 40K",
+          "countM": 3776,
+          "countF": 1342,
+          "avgPaceM": "00:06:50",
+          "avgPaceF": "00:06:52"
+        },
+        {
+          "label": "split 42K",
+          "countM": 3743,
+          "countF": 1333,
+          "avgPaceM": "00:06:28",
+          "avgPaceF": "00:06:30"
+        }
+      ],
+      "Master 35 a 39 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 2633,
+          "countF": 1301,
+          "avgPaceM": "00:06:38",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 1578,
+          "countF": 607,
+          "avgPaceM": "00:05:51",
+          "avgPaceF": "00:06:14"
+        },
+        {
+          "label": "split 5K",
+          "countM": 2686,
+          "countF": 1325,
+          "avgPaceM": "00:05:49",
+          "avgPaceF": "00:06:18"
+        },
+        {
+          "label": "split 10K",
+          "countM": 2680,
+          "countF": 1320,
+          "avgPaceM": "00:05:49",
+          "avgPaceF": "00:06:22"
+        },
+        {
+          "label": "split 15K",
+          "countM": 2666,
+          "countF": 1310,
+          "avgPaceM": "00:05:59",
+          "avgPaceF": "00:06:37"
+        },
+        {
+          "label": "split 20K",
+          "countM": 2637,
+          "countF": 1293,
+          "avgPaceM": "00:06:25",
+          "avgPaceF": "00:07:07"
+        },
+        {
+          "label": "split 21K",
+          "countM": 2637,
+          "countF": 1293,
+          "avgPaceM": "00:06:25",
+          "avgPaceF": "00:07:07"
+        },
+        {
+          "label": "split 25K",
+          "countM": 2616,
+          "countF": 1287,
+          "avgPaceM": "00:06:26",
+          "avgPaceF": "00:07:07"
+        },
+        {
+          "label": "split 30K",
+          "countM": 2508,
+          "countF": 1195,
+          "avgPaceM": "00:07:00",
+          "avgPaceF": "00:07:45"
+        },
+        {
+          "label": "split 35K",
+          "countM": 2135,
+          "countF": 947,
+          "avgPaceM": "00:06:54",
+          "avgPaceF": "00:07:11"
+        },
+        {
+          "label": "split 40K",
+          "countM": 1602,
+          "countF": 616,
+          "avgPaceM": "00:06:45",
+          "avgPaceF": "00:06:55"
+        },
+        {
+          "label": "split 42K",
+          "countM": 1578,
+          "countF": 607,
+          "avgPaceM": "00:06:29",
+          "avgPaceF": "00:06:31"
+        }
+      ],
+      "Veteranos 40 a 44 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 2285,
+          "countF": 1199,
+          "avgPaceM": "00:06:44",
+          "avgPaceF": "00:07:07"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 1348,
+          "countF": 590,
+          "avgPaceM": "00:05:57",
+          "avgPaceF": "00:06:18"
+        },
+        {
+          "label": "split 5K",
+          "countM": 2329,
+          "countF": 1202,
+          "avgPaceM": "00:05:53",
+          "avgPaceF": "00:06:18"
+        },
+        {
+          "label": "split 10K",
+          "countM": 2323,
+          "countF": 1197,
+          "avgPaceM": "00:05:54",
+          "avgPaceF": "00:06:23"
+        },
+        {
+          "label": "split 15K",
+          "countM": 2315,
+          "countF": 1194,
+          "avgPaceM": "00:06:05",
+          "avgPaceF": "00:06:38"
+        },
+        {
+          "label": "split 20K",
+          "countM": 2290,
+          "countF": 1177,
+          "avgPaceM": "00:06:33",
+          "avgPaceF": "00:07:09"
+        },
+        {
+          "label": "split 21K",
+          "countM": 2290,
+          "countF": 1177,
+          "avgPaceM": "00:06:33",
+          "avgPaceF": "00:07:09"
+        },
+        {
+          "label": "split 25K",
+          "countM": 2275,
+          "countF": 1163,
+          "avgPaceM": "00:06:35",
+          "avgPaceF": "00:07:07"
+        },
+        {
+          "label": "split 30K",
+          "countM": 2137,
+          "countF": 1086,
+          "avgPaceM": "00:07:05",
+          "avgPaceF": "00:07:34"
+        },
+        {
+          "label": "split 35K",
+          "countM": 1858,
+          "countF": 907,
+          "avgPaceM": "00:07:02",
+          "avgPaceF": "00:07:17"
+        },
+        {
+          "label": "split 40K",
+          "countM": 1361,
+          "countF": 594,
+          "avgPaceM": "00:06:51",
+          "avgPaceF": "00:06:58"
+        },
+        {
+          "label": "split 42K",
+          "countM": 1348,
+          "countF": 590,
+          "avgPaceM": "00:06:37",
+          "avgPaceF": "00:06:36"
+        }
+      ],
+      "Veteranos II 45 a 49 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 1699,
+          "countF": 817,
+          "avgPaceM": "00:06:47",
+          "avgPaceF": "00:07:21"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 990,
+          "countF": 354,
+          "avgPaceM": "00:06:00",
+          "avgPaceF": "00:06:23"
+        },
+        {
+          "label": "split 5K",
+          "countM": 1711,
+          "countF": 813,
+          "avgPaceM": "00:05:55",
+          "avgPaceF": "00:06:23"
+        },
+        {
+          "label": "split 10K",
+          "countM": 1705,
+          "countF": 811,
+          "avgPaceM": "00:05:57",
+          "avgPaceF": "00:06:29"
+        },
+        {
+          "label": "split 15K",
+          "countM": 1698,
+          "countF": 810,
+          "avgPaceM": "00:06:09",
+          "avgPaceF": "00:06:46"
+        },
+        {
+          "label": "split 20K",
+          "countM": 1675,
+          "countF": 796,
+          "avgPaceM": "00:06:38",
+          "avgPaceF": "00:07:21"
+        },
+        {
+          "label": "split 21K",
+          "countM": 1675,
+          "countF": 796,
+          "avgPaceM": "00:06:38",
+          "avgPaceF": "00:07:21"
+        },
+        {
+          "label": "split 25K",
+          "countM": 1649,
+          "countF": 786,
+          "avgPaceM": "00:06:38",
+          "avgPaceF": "00:07:20"
+        },
+        {
+          "label": "split 30K",
+          "countM": 1571,
+          "countF": 735,
+          "avgPaceM": "00:07:18",
+          "avgPaceF": "00:07:55"
+        },
+        {
+          "label": "split 35K",
+          "countM": 1344,
+          "countF": 574,
+          "avgPaceM": "00:07:05",
+          "avgPaceF": "00:07:32"
+        },
+        {
+          "label": "split 40K",
+          "countM": 998,
+          "countF": 355,
+          "avgPaceM": "00:06:54",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "split 42K",
+          "countM": 990,
+          "countF": 354,
+          "avgPaceM": "00:06:37",
+          "avgPaceF": "00:06:44"
+        }
+      ],
+      "Veteranos III 50 a 54 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 1285,
+          "countF": 536,
+          "avgPaceM": "00:06:55",
+          "avgPaceF": "00:07:30"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 693,
+          "countF": 206,
+          "avgPaceM": "00:06:05",
+          "avgPaceF": "00:06:21"
+        },
+        {
+          "label": "split 5K",
+          "countM": 1308,
+          "countF": 535,
+          "avgPaceM": "00:06:03",
+          "avgPaceF": "00:06:32"
+        },
+        {
+          "label": "split 10K",
+          "countM": 1305,
+          "countF": 534,
+          "avgPaceM": "00:06:05",
+          "avgPaceF": "00:06:42"
+        },
+        {
+          "label": "split 15K",
+          "countM": 1301,
+          "countF": 528,
+          "avgPaceM": "00:06:16",
+          "avgPaceF": "00:06:55"
+        },
+        {
+          "label": "split 20K",
+          "countM": 1277,
+          "countF": 518,
+          "avgPaceM": "00:06:46",
+          "avgPaceF": "00:07:33"
+        },
+        {
+          "label": "split 21K",
+          "countM": 1277,
+          "countF": 518,
+          "avgPaceM": "00:06:46",
+          "avgPaceF": "00:07:33"
+        },
+        {
+          "label": "split 25K",
+          "countM": 1256,
+          "countF": 510,
+          "avgPaceM": "00:06:46",
+          "avgPaceF": "00:07:30"
+        },
+        {
+          "label": "split 30K",
+          "countM": 1188,
+          "countF": 474,
+          "avgPaceM": "00:07:28",
+          "avgPaceF": "00:07:57"
+        },
+        {
+          "label": "split 35K",
+          "countM": 1008,
+          "countF": 349,
+          "avgPaceM": "00:07:16",
+          "avgPaceF": "00:07:37"
+        },
+        {
+          "label": "split 40K",
+          "countM": 700,
+          "countF": 206,
+          "avgPaceM": "00:07:03",
+          "avgPaceF": "00:07:05"
+        },
+        {
+          "label": "split 42K",
+          "countM": 693,
+          "countF": 206,
+          "avgPaceM": "00:06:44",
+          "avgPaceF": "00:06:43"
+        }
+      ],
+      "Veteranos IV 55 a 59 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 798,
+          "countF": 257,
+          "avgPaceM": "00:07:01",
+          "avgPaceF": "00:07:43"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 416,
+          "countF": 95,
+          "avgPaceM": "00:06:10",
+          "avgPaceF": "00:06:30"
+        },
+        {
+          "label": "split 5K",
+          "countM": 805,
+          "countF": 255,
+          "avgPaceM": "00:06:05",
+          "avgPaceF": "00:06:36"
+        },
+        {
+          "label": "split 10K",
+          "countM": 801,
+          "countF": 255,
+          "avgPaceM": "00:06:07",
+          "avgPaceF": "00:06:52"
+        },
+        {
+          "label": "split 15K",
+          "countM": 795,
+          "countF": 251,
+          "avgPaceM": "00:06:20",
+          "avgPaceF": "00:07:06"
+        },
+        {
+          "label": "split 20K",
+          "countM": 772,
+          "countF": 243,
+          "avgPaceM": "00:06:53",
+          "avgPaceF": "00:07:50"
+        },
+        {
+          "label": "split 21K",
+          "countM": 772,
+          "countF": 243,
+          "avgPaceM": "00:06:53",
+          "avgPaceF": "00:07:50"
+        },
+        {
+          "label": "split 25K",
+          "countM": 763,
+          "countF": 242,
+          "avgPaceM": "00:06:54",
+          "avgPaceF": "00:07:48"
+        },
+        {
+          "label": "split 30K",
+          "countM": 710,
+          "countF": 211,
+          "avgPaceM": "00:07:46",
+          "avgPaceF": "00:08:06"
+        },
+        {
+          "label": "split 35K",
+          "countM": 602,
+          "countF": 147,
+          "avgPaceM": "00:07:26",
+          "avgPaceF": "00:07:34"
+        },
+        {
+          "label": "split 40K",
+          "countM": 421,
+          "countF": 95,
+          "avgPaceM": "00:07:14",
+          "avgPaceF": "00:07:17"
+        },
+        {
+          "label": "split 42K",
+          "countM": 416,
+          "countF": 95,
+          "avgPaceM": "00:06:55",
+          "avgPaceF": "00:06:57"
+        }
+      ],
+      "Veteranos V 60 a 64 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 498,
+          "countF": 89,
+          "avgPaceM": "00:07:06",
+          "avgPaceF": "00:07:51"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 238,
+          "countF": 29,
+          "avgPaceM": "00:06:15",
+          "avgPaceF": "00:06:32"
+        },
+        {
+          "label": "split 5K",
+          "countM": 488,
+          "countF": 87,
+          "avgPaceM": "00:06:07",
+          "avgPaceF": "00:06:44"
+        },
+        {
+          "label": "split 10K",
+          "countM": 487,
+          "countF": 87,
+          "avgPaceM": "00:06:10",
+          "avgPaceF": "00:07:00"
+        },
+        {
+          "label": "split 15K",
+          "countM": 485,
+          "countF": 86,
+          "avgPaceM": "00:06:26",
+          "avgPaceF": "00:07:17"
+        },
+        {
+          "label": "split 20K",
+          "countM": 473,
+          "countF": 83,
+          "avgPaceM": "00:07:02",
+          "avgPaceF": "00:07:56"
+        },
+        {
+          "label": "split 21K",
+          "countM": 473,
+          "countF": 83,
+          "avgPaceM": "00:07:02",
+          "avgPaceF": "00:07:56"
+        },
+        {
+          "label": "split 25K",
+          "countM": 466,
+          "countF": 81,
+          "avgPaceM": "00:07:01",
+          "avgPaceF": "00:07:53"
+        },
+        {
+          "label": "split 30K",
+          "countM": 435,
+          "countF": 70,
+          "avgPaceM": "00:07:54",
+          "avgPaceF": "00:08:14"
+        },
+        {
+          "label": "split 35K",
+          "countM": 362,
+          "countF": 48,
+          "avgPaceM": "00:07:34",
+          "avgPaceF": "00:07:51"
+        },
+        {
+          "label": "split 40K",
+          "countM": 242,
+          "countF": 29,
+          "avgPaceM": "00:07:19",
+          "avgPaceF": "00:07:38"
+        },
+        {
+          "label": "split 42K",
+          "countM": 238,
+          "countF": 29,
+          "avgPaceM": "00:07:01",
+          "avgPaceF": "00:07:10"
+        }
+      ],
+      "Veteranos VI 65 años y mas": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 343,
+          "countF": 59,
+          "avgPaceM": "00:07:32",
+          "avgPaceF": "00:08:16"
+        },
+        {
+          "label": "Con todos los Split y TC",
+          "countM": 115,
+          "countF": 14,
+          "avgPaceM": "00:06:21",
+          "avgPaceF": "00:06:30"
+        },
+        {
+          "label": "split 5K",
+          "countM": 322,
+          "countF": 60,
+          "avgPaceM": "00:06:38",
+          "avgPaceF": "00:07:08"
+        },
+        {
+          "label": "split 10K",
+          "countM": 320,
+          "countF": 59,
+          "avgPaceM": "00:06:42",
+          "avgPaceF": "00:07:05"
+        },
+        {
+          "label": "split 15K",
+          "countM": 316,
+          "countF": 59,
+          "avgPaceM": "00:06:58",
+          "avgPaceF": "00:07:31"
+        },
+        {
+          "label": "split 20K",
+          "countM": 296,
+          "countF": 59,
+          "avgPaceM": "00:07:34",
+          "avgPaceF": "00:08:27"
+        },
+        {
+          "label": "split 21K",
+          "countM": 296,
+          "countF": 59,
+          "avgPaceM": "00:07:34",
+          "avgPaceF": "00:08:27"
+        },
+        {
+          "label": "split 25K",
+          "countM": 292,
+          "countF": 56,
+          "avgPaceM": "00:07:31",
+          "avgPaceF": "00:08:24"
+        },
+        {
+          "label": "split 30K",
+          "countM": 264,
+          "countF": 44,
+          "avgPaceM": "00:08:21",
+          "avgPaceF": "00:08:30"
+        },
+        {
+          "label": "split 35K",
+          "countM": 195,
+          "countF": 30,
+          "avgPaceM": "00:07:48",
+          "avgPaceF": "00:08:04"
+        },
+        {
+          "label": "split 40K",
+          "countM": 116,
+          "countF": 14,
+          "avgPaceM": "00:07:31",
+          "avgPaceF": "00:07:36"
+        },
+        {
+          "label": "split 42K",
+          "countM": 115,
+          "countF": 14,
+          "avgPaceM": "00:07:10",
+          "avgPaceF": "00:07:03"
+        }
+      ]
+    },
+    "scatterDataByCategory": {
+      "Absolutos": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 179
+          },
+          {
+            "x": 5,
+            "y": 179
+          },
+          {
+            "x": 10,
+            "y": 184
+          },
+          {
+            "x": 15,
+            "y": 183
+          },
+          {
+            "x": 20,
+            "y": 191
+          },
+          {
+            "x": 21,
+            "y": 191
+          },
+          {
+            "x": 25,
+            "y": 190
+          },
+          {
+            "x": 30,
+            "y": 193
+          },
+          {
+            "x": 35,
+            "y": 196
+          },
+          {
+            "x": 40,
+            "y": 200
+          },
+          {
+            "x": 42.195,
+            "y": 205
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 209
+          },
+          {
+            "x": 5,
+            "y": 209
+          },
+          {
+            "x": 10,
+            "y": 209
+          },
+          {
+            "x": 15,
+            "y": 213
+          },
+          {
+            "x": 20,
+            "y": 224
+          },
+          {
+            "x": 21,
+            "y": 224
+          },
+          {
+            "x": 25,
+            "y": 222
+          },
+          {
+            "x": 30,
+            "y": 239
+          },
+          {
+            "x": 35,
+            "y": 227
+          },
+          {
+            "x": 40,
+            "y": 234
+          },
+          {
+            "x": 42.195,
+            "y": 236
+          }
+        ]
+      },
+      "Libre 18 a 34 años": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 351
+          },
+          {
+            "x": 5,
+            "y": 351
+          },
+          {
+            "x": 10,
+            "y": 352
+          },
+          {
+            "x": 15,
+            "y": 363
+          },
+          {
+            "x": 20,
+            "y": 389
+          },
+          {
+            "x": 21,
+            "y": 389
+          },
+          {
+            "x": 25,
+            "y": 391
+          },
+          {
+            "x": 30,
+            "y": 425
+          },
+          {
+            "x": 35,
+            "y": 417
+          },
+          {
+            "x": 40,
+            "y": 410
+          },
+          {
+            "x": 42.195,
+            "y": 388
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 378
+          },
+          {
+            "x": 5,
+            "y": 378
+          },
+          {
+            "x": 10,
+            "y": 385
+          },
+          {
+            "x": 15,
+            "y": 398
+          },
+          {
+            "x": 20,
+            "y": 428
+          },
+          {
+            "x": 21,
+            "y": 428
+          },
+          {
+            "x": 25,
+            "y": 428
+          },
+          {
+            "x": 30,
+            "y": 451
+          },
+          {
+            "x": 35,
+            "y": 432
+          },
+          {
+            "x": 40,
+            "y": 412
+          },
+          {
+            "x": 42.195,
+            "y": 390
+          }
+        ]
+      },
+      "Master 35 a 39 años": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 349
+          },
+          {
+            "x": 5,
+            "y": 349
+          },
+          {
+            "x": 10,
+            "y": 349
+          },
+          {
+            "x": 15,
+            "y": 359
+          },
+          {
+            "x": 20,
+            "y": 385
+          },
+          {
+            "x": 21,
+            "y": 385
+          },
+          {
+            "x": 25,
+            "y": 386
+          },
+          {
+            "x": 30,
+            "y": 420
+          },
+          {
+            "x": 35,
+            "y": 414
+          },
+          {
+            "x": 40,
+            "y": 405
+          },
+          {
+            "x": 42.195,
+            "y": 389
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 378
+          },
+          {
+            "x": 5,
+            "y": 378
+          },
+          {
+            "x": 10,
+            "y": 382
+          },
+          {
+            "x": 15,
+            "y": 397
+          },
+          {
+            "x": 20,
+            "y": 427
+          },
+          {
+            "x": 21,
+            "y": 427
+          },
+          {
+            "x": 25,
+            "y": 427
+          },
+          {
+            "x": 30,
+            "y": 465
+          },
+          {
+            "x": 35,
+            "y": 431
+          },
+          {
+            "x": 40,
+            "y": 415
+          },
+          {
+            "x": 42.195,
+            "y": 391
+          }
+        ]
+      },
+      "Veteranos 40 a 44 años": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 353
+          },
+          {
+            "x": 5,
+            "y": 353
+          },
+          {
+            "x": 10,
+            "y": 354
+          },
+          {
+            "x": 15,
+            "y": 365
+          },
+          {
+            "x": 20,
+            "y": 393
+          },
+          {
+            "x": 21,
+            "y": 393
+          },
+          {
+            "x": 25,
+            "y": 395
+          },
+          {
+            "x": 30,
+            "y": 425
+          },
+          {
+            "x": 35,
+            "y": 422
+          },
+          {
+            "x": 40,
+            "y": 411
+          },
+          {
+            "x": 42.195,
+            "y": 397
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 378
+          },
+          {
+            "x": 5,
+            "y": 378
+          },
+          {
+            "x": 10,
+            "y": 383
+          },
+          {
+            "x": 15,
+            "y": 398
+          },
+          {
+            "x": 20,
+            "y": 429
+          },
+          {
+            "x": 21,
+            "y": 429
+          },
+          {
+            "x": 25,
+            "y": 427
+          },
+          {
+            "x": 30,
+            "y": 454
+          },
+          {
+            "x": 35,
+            "y": 437
+          },
+          {
+            "x": 40,
+            "y": 418
+          },
+          {
+            "x": 42.195,
+            "y": 396
+          }
+        ]
+      },
+      "Veteranos II 45 a 49 años": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 355
+          },
+          {
+            "x": 5,
+            "y": 355
+          },
+          {
+            "x": 10,
+            "y": 357
+          },
+          {
+            "x": 15,
+            "y": 369
+          },
+          {
+            "x": 20,
+            "y": 398
+          },
+          {
+            "x": 21,
+            "y": 398
+          },
+          {
+            "x": 25,
+            "y": 398
+          },
+          {
+            "x": 30,
+            "y": 438
+          },
+          {
+            "x": 35,
+            "y": 425
+          },
+          {
+            "x": 40,
+            "y": 414
+          },
+          {
+            "x": 42.195,
+            "y": 397
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 383
+          },
+          {
+            "x": 5,
+            "y": 383
+          },
+          {
+            "x": 10,
+            "y": 389
+          },
+          {
+            "x": 15,
+            "y": 406
+          },
+          {
+            "x": 20,
+            "y": 441
+          },
+          {
+            "x": 21,
+            "y": 441
+          },
+          {
+            "x": 25,
+            "y": 440
+          },
+          {
+            "x": 30,
+            "y": 475
+          },
+          {
+            "x": 35,
+            "y": 452
+          },
+          {
+            "x": 40,
+            "y": 428
+          },
+          {
+            "x": 42.195,
+            "y": 404
+          }
+        ]
+      },
+      "Veteranos III 50 a 54 años": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 363
+          },
+          {
+            "x": 5,
+            "y": 363
+          },
+          {
+            "x": 10,
+            "y": 365
+          },
+          {
+            "x": 15,
+            "y": 376
+          },
+          {
+            "x": 20,
+            "y": 406
+          },
+          {
+            "x": 21,
+            "y": 406
+          },
+          {
+            "x": 25,
+            "y": 406
+          },
+          {
+            "x": 30,
+            "y": 448
+          },
+          {
+            "x": 35,
+            "y": 436
+          },
+          {
+            "x": 40,
+            "y": 423
+          },
+          {
+            "x": 42.195,
+            "y": 404
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 392
+          },
+          {
+            "x": 5,
+            "y": 392
+          },
+          {
+            "x": 10,
+            "y": 402
+          },
+          {
+            "x": 15,
+            "y": 415
+          },
+          {
+            "x": 20,
+            "y": 453
+          },
+          {
+            "x": 21,
+            "y": 453
+          },
+          {
+            "x": 25,
+            "y": 450
+          },
+          {
+            "x": 30,
+            "y": 477
+          },
+          {
+            "x": 35,
+            "y": 457
+          },
+          {
+            "x": 40,
+            "y": 425
+          },
+          {
+            "x": 42.195,
+            "y": 403
+          }
+        ]
+      },
+      "Veteranos IV 55 a 59 años": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 365
+          },
+          {
+            "x": 5,
+            "y": 365
+          },
+          {
+            "x": 10,
+            "y": 367
+          },
+          {
+            "x": 15,
+            "y": 380
+          },
+          {
+            "x": 20,
+            "y": 413
+          },
+          {
+            "x": 21,
+            "y": 413
+          },
+          {
+            "x": 25,
+            "y": 414
+          },
+          {
+            "x": 30,
+            "y": 466
+          },
+          {
+            "x": 35,
+            "y": 446
+          },
+          {
+            "x": 40,
+            "y": 434
+          },
+          {
+            "x": 42.195,
+            "y": 415
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 396
+          },
+          {
+            "x": 5,
+            "y": 396
+          },
+          {
+            "x": 10,
+            "y": 412
+          },
+          {
+            "x": 15,
+            "y": 426
+          },
+          {
+            "x": 20,
+            "y": 470
+          },
+          {
+            "x": 21,
+            "y": 470
+          },
+          {
+            "x": 25,
+            "y": 468
+          },
+          {
+            "x": 30,
+            "y": 486
+          },
+          {
+            "x": 35,
+            "y": 454
+          },
+          {
+            "x": 40,
+            "y": 437
+          },
+          {
+            "x": 42.195,
+            "y": 417
+          }
+        ]
+      },
+      "Veteranos V 60 a 64 años": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 367
+          },
+          {
+            "x": 5,
+            "y": 367
+          },
+          {
+            "x": 10,
+            "y": 370
+          },
+          {
+            "x": 15,
+            "y": 386
+          },
+          {
+            "x": 20,
+            "y": 422
+          },
+          {
+            "x": 21,
+            "y": 422
+          },
+          {
+            "x": 25,
+            "y": 421
+          },
+          {
+            "x": 30,
+            "y": 474
+          },
+          {
+            "x": 35,
+            "y": 454
+          },
+          {
+            "x": 40,
+            "y": 439
+          },
+          {
+            "x": 42.195,
+            "y": 421
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 404
+          },
+          {
+            "x": 5,
+            "y": 404
+          },
+          {
+            "x": 10,
+            "y": 420
+          },
+          {
+            "x": 15,
+            "y": 437
+          },
+          {
+            "x": 20,
+            "y": 476
+          },
+          {
+            "x": 21,
+            "y": 476
+          },
+          {
+            "x": 25,
+            "y": 473
+          },
+          {
+            "x": 30,
+            "y": 494
+          },
+          {
+            "x": 35,
+            "y": 471
+          },
+          {
+            "x": 40,
+            "y": 458
+          },
+          {
+            "x": 42.195,
+            "y": 430
+          }
+        ]
+      },
+      "Veteranos VI 65 años y mas": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 398
+          },
+          {
+            "x": 5,
+            "y": 398
+          },
+          {
+            "x": 10,
+            "y": 402
+          },
+          {
+            "x": 15,
+            "y": 418
+          },
+          {
+            "x": 20,
+            "y": 454
+          },
+          {
+            "x": 21,
+            "y": 454
+          },
+          {
+            "x": 25,
+            "y": 451
+          },
+          {
+            "x": 30,
+            "y": 501
+          },
+          {
+            "x": 35,
+            "y": 468
+          },
+          {
+            "x": 40,
+            "y": 451
+          },
+          {
+            "x": 42.195,
+            "y": 430
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 428
+          },
+          {
+            "x": 5,
+            "y": 428
+          },
+          {
+            "x": 10,
+            "y": 425
+          },
+          {
+            "x": 15,
+            "y": 451
+          },
+          {
+            "x": 20,
+            "y": 507
+          },
+          {
+            "x": 21,
+            "y": 507
+          },
+          {
+            "x": 25,
+            "y": 504
+          },
+          {
+            "x": 30,
+            "y": 510
+          },
+          {
+            "x": 35,
+            "y": 484
+          },
+          {
+            "x": 40,
+            "y": 456
+          },
+          {
+            "x": 42.195,
+            "y": 423
+          }
+        ]
+      }
+    },
+    "scatterData": [
+      {
+        "x": 0,
+        "y": 363
+      },
+      {
+        "x": 5,
+        "y": 363
+      },
+      {
+        "x": 10,
+        "y": 365
+      },
+      {
+        "x": 15,
+        "y": 378
+      },
+      {
+        "x": 20,
+        "y": 407
+      },
+      {
+        "x": 21,
+        "y": 407
+      },
+      {
+        "x": 25,
+        "y": 407
+      },
+      {
+        "x": 30,
+        "y": 441
+      },
+      {
+        "x": 35,
+        "y": 427
+      },
+      {
+        "x": 40,
+        "y": 414
+      },
+      {
+        "x": 42.195,
+        "y": 394
+      }
+    ],
+    "scatterDataGenero": {
+      "dataM": [
+        {
+          "x": 0,
+          "y": 354
+        },
+        {
+          "x": 5,
+          "y": 354
+        },
+        {
+          "x": 10,
+          "y": 356
+        },
+        {
+          "x": 15,
+          "y": 367
+        },
+        {
+          "x": 20,
+          "y": 394
+        },
+        {
+          "x": 21,
+          "y": 394
+        },
+        {
+          "x": 25,
+          "y": 396
+        },
+        {
+          "x": 30,
+          "y": 432
+        },
+        {
+          "x": 35,
+          "y": 423
+        },
+        {
+          "x": 40,
+          "y": 413
+        },
+        {
+          "x": 42.195,
+          "y": 394
+        }
+      ],
+      "dataF": [
+        {
+          "x": 0,
+          "y": 381
+        },
+        {
+          "x": 5,
+          "y": 381
+        },
+        {
+          "x": 10,
+          "y": 387
+        },
+        {
+          "x": 15,
+          "y": 402
+        },
+        {
+          "x": 20,
+          "y": 434
+        },
+        {
+          "x": 21,
+          "y": 434
+        },
+        {
+          "x": 25,
+          "y": 433
+        },
+        {
+          "x": 30,
+          "y": 460
+        },
+        {
+          "x": 35,
+          "y": 438
+        },
+        {
+          "x": 40,
+          "y": 417
+        },
+        {
+          "x": 42.195,
+          "y": 395
+        }
+      ]
+    }
+  },
+  "comments": {}
+}

@@ -8,6 +8,572 @@
     "rowCount": 8467
   },
   "analysis": {
+    "kpiRows": [
+      {
+        "label": "Inscritos totales",
+        "value": "8,467"
+      },
+      {
+        "label": "Corredores 21K (a pie)",
+        "value": "7,210"
+      },
+      {
+        "label": "Hombres (21K)",
+        "value": "5,041"
+      },
+      {
+        "label": "Mujeres (21K)",
+        "value": "2,169"
+      },
+      {
+        "label": "% Hombres",
+        "value": "69.92%"
+      },
+      {
+        "label": "% Mujeres",
+        "value": "30.08%"
+      },
+      {
+        "label": "Tiempo promedio (21K)",
+        "value": "02:08:19"
+      },
+      {
+        "label": "Tiempo mediana (21K)",
+        "value": "02:05:36"
+      },
+      {
+        "label": "Ritmo promedio (min/km)",
+        "value": "00:06:05"
+      },
+      {
+        "label": "Ganador absoluto (H)",
+        "value": "Diego Adolfo García Bárcenas — 01:04:39"
+      },
+      {
+        "label": "Ganadora absoluto (M)",
+        "value": "SANDRA RAMIREZ — 01:15:40"
+      }
+    ],
+    "genderBreakdownRows": [
+      {
+        "genero": "Masculino",
+        "corredores": 5041,
+        "pct": "69.92%",
+        "promedio": "02:05:25",
+        "mejor": "01:04:39",
+        "peor": "03:54:42"
+      },
+      {
+        "genero": "Femenino",
+        "corredores": 2169,
+        "pct": "30.08%",
+        "promedio": "02:15:04",
+        "mejor": "01:15:40",
+        "peor": "03:47:16"
+      }
+    ],
+    "categoryBreakdownRows": [
+      {
+        "categoria": "Absolutos Femenil",
+        "corredores": 5,
+        "pct": "0.06%",
+        "promedio": "01:17:01",
+        "mejor": "01:16:46"
+      },
+      {
+        "categoria": "Absolutos Varonil",
+        "corredores": 5,
+        "pct": "0.06%",
+        "promedio": "01:05:36",
+        "mejor": "01:04:39"
+      },
+      {
+        "categoria": "CBT FEMENIL",
+        "corredores": 3,
+        "pct": "0.04%",
+        "promedio": "01:43:58",
+        "mejor": "01:26:41"
+      },
+      {
+        "categoria": "CBT VARONIL",
+        "corredores": 5,
+        "pct": "0.06%",
+        "promedio": "01:34:19",
+        "mejor": "01:27:29"
+      },
+      {
+        "categoria": "J1 15 a 19 años Femenil",
+        "corredores": 48,
+        "pct": "0.57%",
+        "promedio": "02:15:48",
+        "mejor": "01:43:12"
+      },
+      {
+        "categoria": "J1 15 a 19 años Varonil",
+        "corredores": 110,
+        "pct": "1.30%",
+        "promedio": "02:05:32",
+        "mejor": "01:24:26"
+      },
+      {
+        "categoria": "J2 20 a 24 años Femenil",
+        "corredores": 182,
+        "pct": "2.15%",
+        "promedio": "02:18:16",
+        "mejor": "01:19:04"
+      },
+      {
+        "categoria": "J2 20 a 24 años Varonil",
+        "corredores": 237,
+        "pct": "2.80%",
+        "promedio": "02:03:58",
+        "mejor": "01:08:53"
+      },
+      {
+        "categoria": "L1 25 a 29 años Femenil",
+        "corredores": 272,
+        "pct": "3.21%",
+        "promedio": "02:14:40",
+        "mejor": "01:18:35"
+      },
+      {
+        "categoria": "L1 25 a 29 años Varonil",
+        "corredores": 443,
+        "pct": "5.23%",
+        "promedio": "02:01:08",
+        "mejor": "01:07:18"
+      },
+      {
+        "categoria": "L2 30 a 34 años Femenil",
+        "corredores": 353,
+        "pct": "4.17%",
+        "promedio": "02:12:13",
+        "mejor": "01:15:40"
+      },
+      {
+        "categoria": "L2 30 a 34 años Varonil",
+        "corredores": 618,
+        "pct": "7.30%",
+        "promedio": "01:57:29",
+        "mejor": "01:06:58"
+      },
+      {
+        "categoria": "L3 35 a 39 años Femenil",
+        "corredores": 358,
+        "pct": "4.23%",
+        "promedio": "02:10:03",
+        "mejor": "01:18:57"
+      },
+      {
+        "categoria": "L3 35 a 39 años Varonil",
+        "corredores": 740,
+        "pct": "8.74%",
+        "promedio": "01:59:06",
+        "mejor": "01:10:45"
+      },
+      {
+        "categoria": "M1 40 a 44 años Femenil",
+        "corredores": 306,
+        "pct": "3.61%",
+        "promedio": "02:11:58",
+        "mejor": "01:27:25"
+      },
+      {
+        "categoria": "M1 40 a 44 años Varonil",
+        "corredores": 675,
+        "pct": "7.97%",
+        "promedio": "02:03:19",
+        "mejor": "01:10:14"
+      },
+      {
+        "categoria": "M2 45 a 49 años Femenil",
+        "corredores": 240,
+        "pct": "2.83%",
+        "promedio": "02:18:09",
+        "mejor": "01:33:04"
+      },
+      {
+        "categoria": "M2 45 a 49 años Varonil",
+        "corredores": 632,
+        "pct": "7.46%",
+        "promedio": "02:05:42",
+        "mejor": "01:19:06"
+      },
+      {
+        "categoria": "M3 50 a 54 años Femenil",
+        "corredores": 195,
+        "pct": "2.30%",
+        "promedio": "02:21:11",
+        "mejor": "01:35:14"
+      },
+      {
+        "categoria": "M3 50 a 54 años Varonil",
+        "corredores": 533,
+        "pct": "6.30%",
+        "promedio": "02:09:30",
+        "mejor": "01:18:32"
+      },
+      {
+        "categoria": "Padres e hijas",
+        "corredores": 93,
+        "pct": "1.10%",
+        "promedio": "02:14:37",
+        "mejor": "01:29:23"
+      },
+      {
+        "categoria": "Padres e hijos",
+        "corredores": 115,
+        "pct": "1.36%",
+        "promedio": "02:09:21",
+        "mejor": "01:16:06"
+      },
+      {
+        "categoria": "V1 55 a 59 años Femenil",
+        "corredores": 92,
+        "pct": "1.09%",
+        "promedio": "02:22:33",
+        "mejor": "01:34:31"
+      },
+      {
+        "categoria": "V1 55 a 59 años Varonil",
+        "corredores": 403,
+        "pct": "4.76%",
+        "promedio": "02:13:51",
+        "mejor": "01:18:08"
+      },
+      {
+        "categoria": "V2 60 años y mayores Femenil",
+        "corredores": 68,
+        "pct": "0.80%",
+        "promedio": "02:31:02",
+        "mejor": "01:36:46"
+      },
+      {
+        "categoria": "V2 60 años y mayores Varonil",
+        "corredores": 479,
+        "pct": "5.66%",
+        "promedio": "02:20:01",
+        "mejor": "01:20:43"
+      }
+    ],
+    "segmentPaceRows": [
+      {
+        "tramo": "0-5K",
+        "ritmo": "00:05:38",
+        "distanciaKm": "5",
+        "acumulado": "00:28:09"
+      },
+      {
+        "tramo": "5K-10K",
+        "ritmo": "00:05:51",
+        "distanciaKm": "5",
+        "acumulado": "00:57:24"
+      },
+      {
+        "tramo": "10K-15K",
+        "ritmo": "00:06:09",
+        "distanciaKm": "5",
+        "acumulado": "01:28:09"
+      },
+      {
+        "tramo": "15K-20K",
+        "ritmo": "00:06:05",
+        "distanciaKm": "5",
+        "acumulado": "01:58:32"
+      },
+      {
+        "tramo": "20K-Meta",
+        "ritmo": "00:08:55",
+        "distanciaKm": "1.0975",
+        "acumulado": "02:08:19"
+      }
+    ],
+    "halvesRows": [
+      {
+        "label": "Corredores con split 10K válido",
+        "value": "6,832"
+      },
+      {
+        "label": "Ritmo promedio 1ra mitad (0-10K, min/km)",
+        "value": "00:05:44"
+      },
+      {
+        "label": "Ritmo promedio 2da mitad (10K-Meta, min/km)",
+        "value": "00:06:20"
+      },
+      {
+        "label": "Corredores con negative split (2da mitad más rápida)",
+        "value": "645"
+      },
+      {
+        "label": "% Negative split",
+        "value": "9.44%"
+      },
+      {
+        "label": "% Positive split (2da mitad más lenta)",
+        "value": "90.56%"
+      }
+    ],
+    "topByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "Diego Adolfo García Bárcenas",
+          "bib": "7576",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:04:39"
+        },
+        {
+          "pos": 2,
+          "nombre": "Carlos Alberto Alvarez Salmeron",
+          "bib": "6330",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:05:00"
+        },
+        {
+          "pos": 3,
+          "nombre": "Jorge Cruz",
+          "bib": "6899",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:05:37"
+        },
+        {
+          "pos": 4,
+          "nombre": "Gabriel Arroyo",
+          "bib": "8446",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:06:04"
+        },
+        {
+          "pos": 5,
+          "nombre": "OMAR FABRICIO CASTILLO GONZALEZ",
+          "bib": "9",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:06:42"
+        },
+        {
+          "pos": 6,
+          "nombre": "patricio castillo",
+          "bib": "8345",
+          "categoria": "L2 30 a 34 años Varonil",
+          "tiempoChip": "01:06:58"
+        },
+        {
+          "pos": 7,
+          "nombre": "ASUNCION ZACARIAS APARICIO",
+          "bib": "4",
+          "categoria": "L1 25 a 29 años Varonil",
+          "tiempoChip": "01:07:18"
+        },
+        {
+          "pos": 8,
+          "nombre": "Hesiquio Flores Romero",
+          "bib": "4093",
+          "categoria": "L2 30 a 34 años Varonil",
+          "tiempoChip": "01:08:21"
+        },
+        {
+          "pos": 9,
+          "nombre": "KOSEGEI ELIUD KIPKORIR",
+          "bib": "8499",
+          "categoria": "L1 25 a 29 años Varonil",
+          "tiempoChip": "01:08:32"
+        },
+        {
+          "pos": 10,
+          "nombre": "Roberto Del Valle castillo",
+          "bib": "6828",
+          "categoria": "J2 20 a 24 años Varonil",
+          "tiempoChip": "01:08:53"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "SANDRA RAMIREZ",
+          "bib": "4442",
+          "categoria": "L2 30 a 34 años Femenil",
+          "tiempoChip": "01:15:40"
+        },
+        {
+          "pos": 2,
+          "nombre": "Shewarge alene Amare",
+          "bib": "7531",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:16:46"
+        },
+        {
+          "pos": 3,
+          "nombre": "MAYRA SANCHEZ VIDAL",
+          "bib": "5",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:16:49"
+        },
+        {
+          "pos": 4,
+          "nombre": "KATHYA MIRELL GARCIA BARRIOS",
+          "bib": "7",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:16:53"
+        },
+        {
+          "pos": 5,
+          "nombre": "Dafne Pooleth Juárez Pavón",
+          "bib": "5402",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:17:10"
+        },
+        {
+          "pos": 6,
+          "nombre": "Daniela Torres Huerta",
+          "bib": "5958",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:17:27"
+        },
+        {
+          "pos": 7,
+          "nombre": "Marla Elena Valtierra Mejía",
+          "bib": "6818",
+          "categoria": "L2 30 a 34 años Femenil",
+          "tiempoChip": "01:18:02"
+        },
+        {
+          "pos": 8,
+          "nombre": "Natalia Priego Alatriste",
+          "bib": "8322",
+          "categoria": "L1 25 a 29 años Femenil",
+          "tiempoChip": "01:18:35"
+        },
+        {
+          "pos": 9,
+          "nombre": "Elisa Hernández Sánchez",
+          "bib": "6772",
+          "categoria": "L2 30 a 34 años Femenil",
+          "tiempoChip": "01:18:55"
+        },
+        {
+          "pos": 10,
+          "nombre": "GESABWA RISPER BIYAKI",
+          "bib": "6",
+          "categoria": "L3 35 a 39 años Femenil",
+          "tiempoChip": "01:18:57"
+        }
+      ]
+    },
+    "top100SegmentRows": [
+      {
+        "tramo": "0-5K",
+        "varonil": "00:03:25",
+        "femenil": "00:04:06",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "5K-10K",
+        "varonil": "00:03:37",
+        "femenil": "00:04:20",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "10K-15K",
+        "varonil": "00:03:41",
+        "femenil": "00:04:24",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "15K-20K",
+        "varonil": "00:03:35",
+        "femenil": "00:04:17",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "20K-Meta",
+        "varonil": "00:05:09",
+        "femenil": "00:06:04",
+        "distanciaKm": "1.0975"
+      }
+    ],
+    "positionBands": {
+      "bandLabels": [
+        "1 - 1,202",
+        "1,203 - 2,404",
+        "2,405 - 3,606",
+        "3,607 - 4,808",
+        "4,809 - 6,010",
+        "6,011 - 7,210"
+      ],
+      "rows": [
+        {
+          "tramo": "0-5K",
+          "values": [
+            "00:04:14",
+            "00:04:57",
+            "00:05:22",
+            "00:05:44",
+            "00:06:13",
+            "00:07:20"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:02:57",
+          "absFemenil": "00:03:27"
+        },
+        {
+          "tramo": "5K-10K",
+          "values": [
+            "00:04:28",
+            "00:05:09",
+            "00:05:36",
+            "00:06:00",
+            "00:06:31",
+            "00:07:34"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:04",
+          "absFemenil": "00:03:45"
+        },
+        {
+          "tramo": "10K-15K",
+          "values": [
+            "00:04:30",
+            "00:05:15",
+            "00:05:43",
+            "00:06:15",
+            "00:06:52",
+            "00:08:02"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:06",
+          "absFemenil": "00:03:38"
+        },
+        {
+          "tramo": "15K-20K",
+          "values": [
+            "00:04:24",
+            "00:05:09",
+            "00:05:42",
+            "00:06:16",
+            "00:06:59",
+            "00:08:12"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "00:03:02",
+          "absFemenil": "00:03:29"
+        },
+        {
+          "tramo": "20K-Meta",
+          "values": [
+            "00:06:12",
+            "00:07:16",
+            "00:08:00",
+            "00:08:44",
+            "00:09:52",
+            "00:12:22"
+          ],
+          "distanciaKm": "1.0975",
+          "absVaronil": "00:04:25",
+          "absFemenil": "00:04:54"
+        }
+      ]
+    },
     "percentileRows": [
       {
         "label": "Min",

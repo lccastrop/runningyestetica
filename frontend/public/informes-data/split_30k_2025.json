@@ -8,6 +8,359 @@
     "rowCount": 6047
   },
   "analysis": {
+    "kpiRows": [
+      {
+        "label": "Inscritos totales",
+        "value": "6,047"
+      },
+      {
+        "label": "Corredores 30K (a pie)",
+        "value": "6,047"
+      },
+      {
+        "label": "Hombres (30K)",
+        "value": "3,599"
+      },
+      {
+        "label": "Mujeres (30K)",
+        "value": "2,448"
+      },
+      {
+        "label": "% Hombres",
+        "value": "59.52%"
+      },
+      {
+        "label": "% Mujeres",
+        "value": "40.48%"
+      },
+      {
+        "label": "Tiempo promedio (30K)",
+        "value": "03:05:15"
+      },
+      {
+        "label": "Tiempo mediana (30K)",
+        "value": "03:02:55"
+      },
+      {
+        "label": "Ritmo promedio (min/km)",
+        "value": "00:06:11"
+      },
+      {
+        "label": "Ganador absoluto (H)",
+        "value": "EMMANUEL ANGEL REYES MONTES — 01:39:35"
+      },
+      {
+        "label": "Ganadora absoluto (M)",
+        "value": "REINA ISELA RIVERA CARRILLO — 01:59:22"
+      }
+    ],
+    "genderBreakdownRows": [
+      {
+        "genero": "Masculino",
+        "corredores": 3599,
+        "pct": "59.52%",
+        "promedio": "02:59:23",
+        "mejor": "01:39:35",
+        "peor": "04:32:22"
+      },
+      {
+        "genero": "Femenino",
+        "corredores": 2448,
+        "pct": "40.48%",
+        "promedio": "03:13:52",
+        "mejor": "01:59:22",
+        "peor": "04:32:34"
+      }
+    ],
+    "categoryBreakdownRows": [
+      {
+        "categoria": "ABSOLUTO FEMENIL",
+        "corredores": 3,
+        "pct": "0.05%",
+        "promedio": "02:01:57",
+        "mejor": "01:59:22"
+      },
+      {
+        "categoria": "ABSOLUTO VARONIL",
+        "corredores": 3,
+        "pct": "0.05%",
+        "promedio": "01:40:45",
+        "mejor": "01:39:35"
+      },
+      {
+        "categoria": "Categoria:",
+        "corredores": 13,
+        "pct": "0.21%",
+        "promedio": "03:18:35",
+        "mejor": "02:15:53"
+      },
+      {
+        "categoria": "RELEVOS",
+        "corredores": 5,
+        "pct": "0.08%",
+        "promedio": "03:18:09",
+        "mejor": "02:33:30"
+      },
+      {
+        "categoria": "[ AF ] - 15 A 29 AÑOS FEMENIL",
+        "corredores": 515,
+        "pct": "8.52%",
+        "promedio": "03:11:53",
+        "mejor": "02:10:18"
+      },
+      {
+        "categoria": "[ AV ] - 15 A 29 AÑOS VARONIL",
+        "corredores": 791,
+        "pct": "13.08%",
+        "promedio": "02:57:49",
+        "mejor": "01:43:28"
+      },
+      {
+        "categoria": "[ BF ] - 30 A 39 AÑOS FEMENIL",
+        "corredores": 1166,
+        "pct": "19.28%",
+        "promedio": "03:13:39",
+        "mejor": "02:08:43"
+      },
+      {
+        "categoria": "[ BV ] - 30 A 39 AÑOS VARONIL",
+        "corredores": 1513,
+        "pct": "25.02%",
+        "promedio": "02:57:26",
+        "mejor": "01:41:30"
+      },
+      {
+        "categoria": "[ CF ] - 40 A 49 AÑOS FEMENIL",
+        "corredores": 552,
+        "pct": "9.13%",
+        "promedio": "03:14:58",
+        "mejor": "02:12:46"
+      },
+      {
+        "categoria": "[ CV ] - 40 A 49 AÑOS VARONIL",
+        "corredores": 884,
+        "pct": "14.62%",
+        "promedio": "03:00:07",
+        "mejor": "01:45:49"
+      },
+      {
+        "categoria": "[ DF ] - 50 A 59 AÑOS FEMENIL",
+        "corredores": 185,
+        "pct": "3.06%",
+        "promedio": "03:18:17",
+        "mejor": "02:23:31"
+      },
+      {
+        "categoria": "[ DV ] - 50 A 59 AÑOS VARONIL",
+        "corredores": 317,
+        "pct": "5.24%",
+        "promedio": "03:07:34",
+        "mejor": "02:00:25"
+      },
+      {
+        "categoria": "[ EF ] - 60 AÑOS Y MÁS FEMENIL",
+        "corredores": 22,
+        "pct": "0.36%",
+        "promedio": "03:16:43",
+        "mejor": "02:36:05"
+      },
+      {
+        "categoria": "[ EV ] - 60 AÑOS Y MÁS VARONIL",
+        "corredores": 78,
+        "pct": "1.29%",
+        "promedio": "03:11:49",
+        "mejor": "02:09:56"
+      }
+    ],
+    "segmentPaceRows": [
+      {
+        "tramo": "0-Meta",
+        "ritmo": "00:06:11",
+        "distanciaKm": "30",
+        "acumulado": "03:05:15"
+      }
+    ],
+    "halvesRows": [],
+    "topByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "EMMANUEL ANGEL REYES MONTES",
+          "bib": "2",
+          "categoria": "ABSOLUTO VARONIL",
+          "tiempoChip": "01:39:35"
+        },
+        {
+          "pos": 2,
+          "nombre": "ABRAHAM DANIEL HERNANDEZ MANTELL",
+          "bib": "5",
+          "categoria": "ABSOLUTO VARONIL",
+          "tiempoChip": "01:41:16"
+        },
+        {
+          "pos": 3,
+          "nombre": "OSWALDO VICTORIANO  VELAZQUEZ",
+          "bib": "11",
+          "categoria": "ABSOLUTO VARONIL",
+          "tiempoChip": "01:41:23"
+        },
+        {
+          "pos": 4,
+          "nombre": "RODRIGO  VILLEGAS  GARCIA",
+          "bib": "10",
+          "categoria": "[ BV ] - 30 A 39 AÑOS VARONIL",
+          "tiempoChip": "01:41:30"
+        },
+        {
+          "pos": 5,
+          "nombre": "JORGE ISMAEL  OSORIO  HERRERA",
+          "bib": "4882",
+          "categoria": "[ AV ] - 15 A 29 AÑOS VARONIL",
+          "tiempoChip": "01:43:28"
+        },
+        {
+          "pos": 6,
+          "nombre": "ALEJANDRO DIAZ GONZALEZ",
+          "bib": "4879",
+          "categoria": "[ AV ] - 15 A 29 AÑOS VARONIL",
+          "tiempoChip": "01:43:42"
+        },
+        {
+          "pos": 7,
+          "nombre": "URIEL  ARIZMENDI  HERNANDEZ",
+          "bib": "9",
+          "categoria": "[ AV ] - 15 A 29 AÑOS VARONIL",
+          "tiempoChip": "01:43:49"
+        },
+        {
+          "pos": 8,
+          "nombre": "ARTURO ALVAREZ CONTRERAS",
+          "bib": "4472",
+          "categoria": "[ AV ] - 15 A 29 AÑOS VARONIL",
+          "tiempoChip": "01:44:21"
+        },
+        {
+          "pos": 9,
+          "nombre": "ROBERTO SAAVEDRA  DE LEON",
+          "bib": "4737",
+          "categoria": "[ CV ] - 40 A 49 AÑOS VARONIL",
+          "tiempoChip": "01:45:49"
+        },
+        {
+          "pos": 10,
+          "nombre": "CHRISTIAN  CASTRO  RAMIREZ",
+          "bib": "6",
+          "categoria": "[ BV ] - 30 A 39 AÑOS VARONIL",
+          "tiempoChip": "01:46:36"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "REINA ISELA RIVERA CARRILLO",
+          "bib": "4366",
+          "categoria": "ABSOLUTO FEMENIL",
+          "tiempoChip": "01:59:22"
+        },
+        {
+          "pos": 2,
+          "nombre": "SANDRA LOPEZ  REYES",
+          "bib": "4697",
+          "categoria": "ABSOLUTO FEMENIL",
+          "tiempoChip": "02:01:02"
+        },
+        {
+          "pos": 3,
+          "nombre": "ITZEL BAUTISTA FRIAS",
+          "bib": "2389",
+          "categoria": "ABSOLUTO FEMENIL",
+          "tiempoChip": "02:05:26"
+        },
+        {
+          "pos": 4,
+          "nombre": "PILAR  COVARRUBIAS RUIZ",
+          "bib": "4445",
+          "categoria": "[ BF ] - 30 A 39 AÑOS FEMENIL",
+          "tiempoChip": "02:08:43"
+        },
+        {
+          "pos": 5,
+          "nombre": "LORENA NAJERA FLORES",
+          "bib": "7322",
+          "categoria": "[ AF ] - 15 A 29 AÑOS FEMENIL",
+          "tiempoChip": "02:10:18"
+        },
+        {
+          "pos": 6,
+          "nombre": "ANDREA BERENICE  GENIS  CASTELAN",
+          "bib": "5075",
+          "categoria": "[ BF ] - 30 A 39 AÑOS FEMENIL",
+          "tiempoChip": "02:10:52"
+        },
+        {
+          "pos": 7,
+          "nombre": "YARELI SOTO CARRASCO",
+          "bib": "4469",
+          "categoria": "[ BF ] - 30 A 39 AÑOS FEMENIL",
+          "tiempoChip": "02:12:22"
+        },
+        {
+          "pos": 8,
+          "nombre": "TANIA LIZBETH  ESTRADA  ARRIAGA",
+          "bib": "6976",
+          "categoria": "[ CF ] - 40 A 49 AÑOS FEMENIL",
+          "tiempoChip": "02:12:46"
+        },
+        {
+          "pos": 9,
+          "nombre": "ADRIANA CAROLINA LOPEZ HARO",
+          "bib": "4256",
+          "categoria": "[ BF ] - 30 A 39 AÑOS FEMENIL",
+          "tiempoChip": "02:13:18"
+        },
+        {
+          "pos": 10,
+          "nombre": "ROCIO TORRES ROQUE",
+          "bib": "4945",
+          "categoria": "[ BF ] - 30 A 39 AÑOS FEMENIL",
+          "tiempoChip": "02:13:33"
+        }
+      ]
+    },
+    "top100SegmentRows": [
+      {
+        "tramo": "0-Meta",
+        "varonil": "00:03:56",
+        "femenil": "00:04:40",
+        "distanciaKm": "30"
+      }
+    ],
+    "positionBands": {
+      "bandLabels": [
+        "1 - 1,008",
+        "1,009 - 2,016",
+        "2,017 - 3,024",
+        "3,025 - 4,032",
+        "4,033 - 5,040",
+        "5,041 - 6,047"
+      ],
+      "rows": [
+        {
+          "tramo": "0-Meta",
+          "values": [
+            "00:04:44",
+            "00:05:27",
+            "00:05:54",
+            "00:06:20",
+            "00:06:52",
+            "00:07:47"
+          ],
+          "distanciaKm": "30",
+          "absVaronil": "00:03:21",
+          "absFemenil": "00:04:04"
+        }
+      ]
+    },
     "percentileRows": [
       {
         "label": "Min",

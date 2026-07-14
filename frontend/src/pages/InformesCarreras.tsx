@@ -38,7 +38,66 @@ type Top5Row = {
   ritmoMedio: string;
 };
 
+type KpiRow = { label: string; value: string };
+
+type TopNRow = {
+  pos: number;
+  nombre: string;
+  bib: string;
+  categoria: string;
+  tiempoChip: string;
+};
+
+type GenderBreakdownRow = {
+  genero: string;
+  corredores: number;
+  pct: string;
+  promedio: string;
+  mejor: string;
+  peor: string;
+};
+
+type CategoryBreakdownRow = {
+  categoria: string;
+  corredores: number;
+  pct: string;
+  promedio: string;
+  mejor: string;
+};
+
+type SegmentPaceRow = {
+  tramo: string;
+  ritmo: string;
+  distanciaKm: string;
+  acumulado: string;
+};
+
+type Top100SegmentRow = {
+  tramo: string;
+  varonil: string;
+  femenil: string;
+  distanciaKm: string;
+};
+
+type PositionBandRow = {
+  tramo: string;
+  values: string[];
+  distanciaKm: string;
+  absVaronil: string;
+  absFemenil: string;
+};
+
+type PositionBands = { bandLabels: string[]; rows: PositionBandRow[] };
+
 type InformeAnalysis = {
+  kpiRows: KpiRow[];
+  genderBreakdownRows: GenderBreakdownRow[];
+  categoryBreakdownRows: CategoryBreakdownRow[];
+  segmentPaceRows: SegmentPaceRow[];
+  halvesRows: KpiRow[];
+  topByGender: { Masculino: TopNRow[]; Femenino: TopNRow[] };
+  top100SegmentRows: Top100SegmentRow[];
+  positionBands: PositionBands;
   percentileRows: Array<{ label: string; Masculino: string; Femenino: string }>;
   top5ByGender: { Masculino: Top5Row[]; Femenino: Top5Row[] };
   paceDistributionRows: Array<{ label: string; F: number; M: number; X: number }>;
@@ -77,6 +136,14 @@ const formatDistance = (distanceKm: number | null | undefined): string | null =>
 };
 
 const createEmptyAnalysis = (): InformeAnalysis => ({
+  kpiRows: [],
+  genderBreakdownRows: [],
+  categoryBreakdownRows: [],
+  segmentPaceRows: [],
+  halvesRows: [],
+  topByGender: { Masculino: [], Femenino: [] },
+  top100SegmentRows: [],
+  positionBands: { bandLabels: [], rows: [] },
   percentileRows: [],
   top5ByGender: { Masculino: [], Femenino: [] },
   paceDistributionRows: [],
@@ -126,6 +193,49 @@ const normalizeAnalysis = (raw: any): InformeAnalysis => {
     Masculino: Array.isArray(top5Raw.Masculino) ? (top5Raw.Masculino as Top5Row[]) : [],
     Femenino: Array.isArray(top5Raw.Femenino) ? (top5Raw.Femenino as Top5Row[]) : [],
   };
+
+  const kpiRows = Array.isArray(raw.kpiRows) ? (raw.kpiRows as KpiRow[]) : [];
+  const genderBreakdownRows = Array.isArray(raw.genderBreakdownRows)
+    ? (raw.genderBreakdownRows as GenderBreakdownRow[])
+    : [];
+  const categoryBreakdownRows = Array.isArray(raw.categoryBreakdownRows)
+    ? (raw.categoryBreakdownRows as CategoryBreakdownRow[])
+    : [];
+  const segmentPaceRows = Array.isArray(raw.segmentPaceRows)
+    ? (raw.segmentPaceRows as SegmentPaceRow[])
+    : [];
+  const halvesRows = Array.isArray(raw.halvesRows) ? (raw.halvesRows as KpiRow[]) : [];
+  const topRaw = raw.topByGender ?? {};
+  const topFromTop5 = (rows: Top5Row[]): TopNRow[] =>
+    rows.map((r) => ({
+      pos: r.pos,
+      nombre: r.nombre,
+      bib: r.bib,
+      categoria: r.categoria,
+      tiempoChip: r.tiempoChip,
+    }));
+  const topByGender = {
+    Masculino: Array.isArray(topRaw.Masculino)
+      ? (topRaw.Masculino as TopNRow[])
+      : topFromTop5(top5ByGender.Masculino),
+    Femenino: Array.isArray(topRaw.Femenino)
+      ? (topRaw.Femenino as TopNRow[])
+      : topFromTop5(top5ByGender.Femenino),
+  };
+  const top100SegmentRows = Array.isArray(raw.top100SegmentRows)
+    ? (raw.top100SegmentRows as Top100SegmentRow[])
+    : [];
+  const positionBands: PositionBands =
+    raw.positionBands && typeof raw.positionBands === 'object'
+      ? {
+          bandLabels: Array.isArray(raw.positionBands.bandLabels)
+            ? (raw.positionBands.bandLabels as string[])
+            : [],
+          rows: Array.isArray(raw.positionBands.rows)
+            ? (raw.positionBands.rows as PositionBandRow[])
+            : [],
+        }
+      : { bandLabels: [], rows: [] };
 
   const paceDistributionRows = Array.isArray(raw.paceDistributionRows)
     ? (raw.paceDistributionRows as InformeAnalysis['paceDistributionRows'])
@@ -196,6 +306,14 @@ const normalizeAnalysis = (raw: any): InformeAnalysis => {
   };
 
   return {
+    kpiRows,
+    genderBreakdownRows,
+    categoryBreakdownRows,
+    segmentPaceRows,
+    halvesRows,
+    topByGender,
+    top100SegmentRows,
+    positionBands,
     percentileRows,
     top5ByGender,
     paceDistributionRows,
@@ -321,8 +439,15 @@ type InformeAnalysisViewProps = {
 
 const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
   const {
+    kpiRows,
+    genderBreakdownRows,
+    categoryBreakdownRows,
+    segmentPaceRows,
+    halvesRows,
+    topByGender,
+    top100SegmentRows,
+    positionBands,
     percentileRows,
-    top5ByGender,
     paceDistributionRows,
     paceDistributionTotals,
     summaryStatsRows,
@@ -338,6 +463,88 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
 
   return (
     <div>
+      <h3 className="mt-1">1. Resumen General de la Carrera</h3>
+      <Note sectionKey="sec_1" />
+      <div className="mt-1">
+        <h4>1.1 KPIs Generales</h4>
+        <Note sectionKey="sec_1_1" />
+        {kpiRows.length > 0 ? (
+          <table className="table">
+            <tbody>
+              {kpiRows.map((row) => (
+                <tr key={row.label}>
+                  <th scope="row">{row.label}</th>
+                  <td>{row.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>{emptySectionMessage}</p>
+        )}
+      </div>
+      <div className="mt-1">
+        <h4>1.2 Desglose por Género</h4>
+        <Note sectionKey="sec_1_2" />
+        {genderBreakdownRows.length > 0 ? (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Género</th>
+                <th>Corredores</th>
+                <th>% del total</th>
+                <th>Tiempo promedio</th>
+                <th>Mejor tiempo</th>
+                <th>Peor tiempo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {genderBreakdownRows.map((row) => (
+                <tr key={row.genero}>
+                  <th scope="row">{row.genero}</th>
+                  <td>{row.corredores}</td>
+                  <td>{row.pct}</td>
+                  <td>{row.promedio}</td>
+                  <td>{row.mejor}</td>
+                  <td>{row.peor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>{emptySectionMessage}</p>
+        )}
+      </div>
+      <div className="mt-1">
+        <h4>1.3 Desglose por Categoría</h4>
+        <Note sectionKey="sec_1_3" />
+        {categoryBreakdownRows.length > 0 ? (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Categoría</th>
+                <th>Corredores</th>
+                <th>% del total</th>
+                <th>Tiempo promedio</th>
+                <th>Mejor tiempo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categoryBreakdownRows.map((row) => (
+                <tr key={row.categoria}>
+                  <th scope="row">{row.categoria}</th>
+                  <td>{row.corredores}</td>
+                  <td>{row.pct}</td>
+                  <td>{row.promedio}</td>
+                  <td>{row.mejor}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>{emptySectionMessage}</p>
+        )}
+      </div>
       <h3 className="mt-1">2.1 Analisis General</h3>
       <Note sectionKey="sec_2_1" />
       <div className="mt-1">
@@ -571,36 +778,32 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
         )}
       </div>
       <div className="mt-1">
-        <h4>2.1.5 Top 5 por Genero</h4>
+        <h4>2.1.5 Top 10 por Genero</h4>
         <Note sectionKey="sec_2_1_5" />
-        {top5ByGender.Masculino.length > 0 || top5ByGender.Femenino.length > 0 ? (
+        {topByGender.Masculino.length > 0 || topByGender.Femenino.length > 0 ? (
           <>
             {(['Masculino', 'Femenino'] as const).map((genero) =>
-              top5ByGender[genero].length > 0 ? (
+              topByGender[genero].length > 0 ? (
                 <div key={genero} className="mt-05">
                   <p className="fs-095"><strong>{genero}</strong></p>
                   <table className="table">
                     <thead>
                       <tr>
-                        <th>#</th>
+                        <th>Pos</th>
                         <th>Nombre</th>
                         <th>BIB</th>
-                        <th>Categoria</th>
-                        <th>Tiempo Oficial</th>
-                        <th>Tiempo Chip</th>
-                        <th>Ritmo Medio</th>
+                        <th>Categoría</th>
+                        <th>Tiempo chip</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {top5ByGender[genero].map((row) => (
+                      {topByGender[genero].map((row) => (
                         <tr key={`${genero}-${row.pos}`}>
                           <th scope="row">{row.pos}</th>
                           <td>{row.nombre}</td>
                           <td>{row.bib}</td>
                           <td>{row.categoria}</td>
-                          <td>{row.tiempoOficial}</td>
                           <td>{row.tiempoChip}</td>
-                          <td>{row.ritmoMedio}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -778,6 +981,130 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
         ) : (
           <p>No se encontraron datos de categorias para analizar.</p>
         )}
+      </div>
+      <div className="mt-1">
+        <h3>2.3 Analisis por Tramos</h3>
+        <Note sectionKey="sec_2_3" />
+        <div className="mt-1">
+          <h4>2.3.1 Ritmo Promedio por Tramo</h4>
+          <Note sectionKey="sec_2_3_1" />
+          {segmentPaceRows.length > 0 ? (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Tramo</th>
+                  <th>Ritmo (min/km)</th>
+                  <th>Distancia tramo (km)</th>
+                  <th>Tiempo acumulado promedio</th>
+                </tr>
+              </thead>
+              <tbody>
+                {segmentPaceRows.map((row) => (
+                  <tr key={row.tramo}>
+                    <th scope="row">{row.tramo}</th>
+                    <td>{row.ritmo}</td>
+                    <td>{row.distanciaKm}</td>
+                    <td>{row.acumulado}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>{emptySectionMessage}</p>
+          )}
+        </div>
+        <div className="mt-1">
+          <h4>2.3.2 Primera vs Segunda Mitad</h4>
+          <Note sectionKey="sec_2_3_2" />
+          {halvesRows.length > 0 ? (
+            <table className="table">
+              <tbody>
+                {halvesRows.map((row) => (
+                  <tr key={row.label}>
+                    <th scope="row">{row.label}</th>
+                    <td>{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>{emptySectionMessage}</p>
+          )}
+        </div>
+        <div className="mt-1">
+          <h4>2.3.3 Ritmo por Tramo: Top 100 por Genero</h4>
+          <Note sectionKey="sec_2_3_3" />
+          {top100SegmentRows.length > 0 ? (
+            <>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Tramo</th>
+                    <th>Top 100 Varonil (min/km)</th>
+                    <th>Top 100 Femenil (min/km)</th>
+                    <th>Distancia tramo (km)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {top100SegmentRows.map((row) => (
+                    <tr key={row.tramo}>
+                      <th scope="row">{row.tramo}</th>
+                      <td>{row.varonil}</td>
+                      <td>{row.femenil}</td>
+                      <td>{row.distanciaKm}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="muted fs-095">
+                Promedios sobre los 100 mejores tiempos chip de cada rama; splits
+                faltantes excluidos.
+              </p>
+            </>
+          ) : (
+            <p>{emptySectionMessage}</p>
+          )}
+        </div>
+        <div className="mt-1">
+          <h4>2.3.4 Ritmo por Tramo según Posición General</h4>
+          <Note sectionKey="sec_2_3_4" />
+          {positionBands.rows.length > 0 ? (
+            <>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Tramo</th>
+                    {positionBands.bandLabels.map((label) => (
+                      <th key={label}>{label}</th>
+                    ))}
+                    <th>Distancia (km)</th>
+                    <th>Absolutos Varonil</th>
+                    <th>Absolutos Femenil</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {positionBands.rows.map((row) => (
+                    <tr key={row.tramo}>
+                      <th scope="row">{row.tramo}</th>
+                      {row.values.map((value, idx) => (
+                        <td key={`${row.tramo}-${positionBands.bandLabels[idx]}`}>{value}</td>
+                      ))}
+                      <td>{row.distanciaKm}</td>
+                      <td>{row.absVaronil}</td>
+                      <td>{row.absFemenil}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="muted fs-095">
+                Bandas por posición general (ordenado por tiempo chip); excluye
+                silla de ruedas y débiles visuales.
+              </p>
+            </>
+          ) : (
+            <p>{emptySectionMessage}</p>
+          )}
+        </div>
       </div>
     </div>
   );

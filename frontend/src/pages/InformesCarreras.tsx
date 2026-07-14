@@ -11,7 +11,12 @@ import {
   Legend,
   ScatterChart,
   Scatter,
+  ComposedChart,
+  Area,
+  Line,
 } from 'recharts';
+
+const BAND_COLORS = ['#0d47a1', '#1976d2', '#42a5f5', '#90caf9', '#78909c', '#b0bec5'];
 import { api } from '../api';
 
 type Informe = {
@@ -89,6 +94,8 @@ type PositionBandRow = {
 
 type PositionBands = { bandLabels: string[]; rows: PositionBandRow[] };
 
+type ElevationPoint = { km: number; alt: number };
+
 type InformeAnalysis = {
   kpiRows: KpiRow[];
   genderBreakdownRows: GenderBreakdownRow[];
@@ -98,6 +105,7 @@ type InformeAnalysis = {
   topByGender: { Masculino: TopNRow[]; Femenino: TopNRow[] };
   top100SegmentRows: Top100SegmentRow[];
   positionBands: PositionBands;
+  elevationProfile: ElevationPoint[];
   percentileRows: Array<{ label: string; Masculino: string; Femenino: string }>;
   top5ByGender: { Masculino: Top5Row[]; Femenino: Top5Row[] };
   paceDistributionRows: Array<{ label: string; F: number; M: number; X: number }>;
@@ -144,6 +152,7 @@ const createEmptyAnalysis = (): InformeAnalysis => ({
   topByGender: { Masculino: [], Femenino: [] },
   top100SegmentRows: [],
   positionBands: { bandLabels: [], rows: [] },
+  elevationProfile: [],
   percentileRows: [],
   top5ByGender: { Masculino: [], Femenino: [] },
   paceDistributionRows: [],
@@ -236,6 +245,11 @@ const normalizeAnalysis = (raw: any): InformeAnalysis => {
             : [],
         }
       : { bandLabels: [], rows: [] };
+  const elevationProfile = Array.isArray(raw.elevationProfile)
+    ? (raw.elevationProfile as ElevationPoint[]).filter(
+        (p) => typeof p?.km === 'number' && typeof p?.alt === 'number',
+      )
+    : [];
 
   const paceDistributionRows = Array.isArray(raw.paceDistributionRows)
     ? (raw.paceDistributionRows as InformeAnalysis['paceDistributionRows'])
@@ -314,6 +328,7 @@ const normalizeAnalysis = (raw: any): InformeAnalysis => {
     topByGender,
     top100SegmentRows,
     positionBands,
+    elevationProfile,
     percentileRows,
     top5ByGender,
     paceDistributionRows,
@@ -447,6 +462,7 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
     topByGender,
     top100SegmentRows,
     positionBands,
+    elevationProfile,
     percentileRows,
     paceDistributionRows,
     paceDistributionTotals,
@@ -460,6 +476,35 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
   } = analysis;
 
   const hasGenderByCategory = Object.keys(genderSummaryStatsByCategory).length > 0;
+
+  const bandElevationData = useMemo(() => {
+    if (positionBands.rows.length === 0 || elevationProfile.length === 0) {
+      return [];
+    }
+    const parsePace = (v: string): number | null => {
+      if (!v) return null;
+      const parts = v.split(':').map(Number);
+      if (parts.length !== 3 || parts.some(Number.isNaN)) return null;
+      return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    };
+    let acc = 0;
+    const bounds = positionBands.rows.map((row) => {
+      const d = Number.parseFloat(row.distanciaKm);
+      const start = acc;
+      acc += Number.isFinite(d) ? d : 0;
+      return { start, end: acc, row };
+    });
+    return elevationProfile.map((p) => {
+      const seg = bounds.find((b) => p.km <= b.end + 1e-6) ?? bounds[bounds.length - 1];
+      const rec: Record<string, number | null> = { km: p.km, alt: p.alt };
+      positionBands.bandLabels.forEach((label, idx) => {
+        rec[label] = parsePace(seg.row.values[idx] ?? '');
+      });
+      rec['Absolutos Varonil'] = parsePace(seg.row.absVaronil);
+      rec['Absolutos Femenil'] = parsePace(seg.row.absFemenil);
+      return rec;
+    });
+  }, [positionBands, elevationProfile]);
 
   return (
     <div>
@@ -1105,6 +1150,96 @@ const InformeAnalysisView = ({ analysis, Note }: InformeAnalysisViewProps) => {
             <p>{emptySectionMessage}</p>
           )}
         </div>
+        {bandElevationData.length > 0 && (
+          <div className="mt-1">
+            <h4>2.3.5 Ritmo por Banda de Posición y Absolutos vs Altimetría</h4>
+            <Note sectionKey="sec_2_3_5" />
+            <ResponsiveContainer width="100%" height={420}>
+              <ComposedChart
+                data={bandElevationData}
+                margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis
+                  type="number"
+                  dataKey="km"
+                  name="kilometro"
+                  unit="km"
+                  domain={[0, 'dataMax']}
+                />
+                <YAxis
+                  yAxisId="pace"
+                  type="number"
+                  reversed
+                  tickFormatter={(tick) => formatSecondsToHHMMSS(tick)}
+                  domain={['dataMin - 30', 'dataMax + 30']}
+                />
+                <YAxis
+                  yAxisId="alt"
+                  orientation="right"
+                  type="number"
+                  unit=" m"
+                  domain={['dataMin - 10', 'dataMax + 10']}
+                />
+                <Tooltip
+                  formatter={(value: number, name: string) =>
+                    name === 'Altitud (m)' ? `${value} m` : formatSecondsToHHMMSS(value)
+                  }
+                  labelFormatter={(label) => `km ${label}`}
+                />
+                <Legend />
+                <Area
+                  yAxisId="alt"
+                  dataKey="alt"
+                  name="Altitud (m)"
+                  fill="#e6e6e6"
+                  stroke="#bfbfbf"
+                  isAnimationActive={false}
+                />
+                {positionBands.bandLabels.map((label, idx) => (
+                  <Line
+                    key={label}
+                    yAxisId="pace"
+                    dataKey={label}
+                    name={label}
+                    stroke={BAND_COLORS[idx % BAND_COLORS.length]}
+                    type="stepAfter"
+                    dot={false}
+                    strokeWidth={2}
+                    isAnimationActive={false}
+                    connectNulls
+                  />
+                ))}
+                <Line
+                  yAxisId="pace"
+                  dataKey="Absolutos Varonil"
+                  stroke="#111111"
+                  type="stepAfter"
+                  dot={false}
+                  strokeWidth={2}
+                  strokeDasharray="6 3"
+                  isAnimationActive={false}
+                  connectNulls
+                />
+                <Line
+                  yAxisId="pace"
+                  dataKey="Absolutos Femenil"
+                  stroke="magenta"
+                  type="stepAfter"
+                  dot={false}
+                  strokeWidth={2}
+                  strokeDasharray="6 3"
+                  isAnimationActive={false}
+                  connectNulls
+                />
+              </ComposedChart>
+            </ResponsiveContainer>
+            <p className="muted fs-095">
+              Ritmo por tramo (escala izquierda, invertida: más arriba = más rápido)
+              sobre el perfil de la ruta (escala derecha, msnm).
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

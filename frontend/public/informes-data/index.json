@@ -23,5 +23,10 @@
     "id": "medio_maraton_dia_del_padre_2025",
     "nombre": "Medio Maratón Día del Padre 2025",
     "fecha": "2025-06-15T00:00:00Z"
+  },
+  {
+    "id": "maraton_de_tokio_2025",
+    "nombre": "Maratón de Tokio 2025",
+    "fecha": "2025-03-02T00:00:00Z"
   }
 ]

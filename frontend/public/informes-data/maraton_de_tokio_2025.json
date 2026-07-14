@@ -1,0 +1,1174 @@
+{
+  "id": "maraton_de_tokio_2025",
+  "nombre": "Maratón de Tokio 2025",
+  "fecha": "2025-03-02T00:00:00Z",
+  "metadata": {
+    "fileName": "tokyo2025.csv",
+    "distanceKm": 42.195,
+    "rowCount": 36202
+  },
+  "analysis": {
+    "kpiRows": [
+      {
+        "label": "Inscritos totales",
+        "value": "36,202"
+      },
+      {
+        "label": "Corredores 42K (a pie)",
+        "value": "36,173"
+      },
+      {
+        "label": "Corredores Silla de Ruedas",
+        "value": "29"
+      },
+      {
+        "label": "Hombres (42K)",
+        "value": "26,708"
+      },
+      {
+        "label": "Mujeres (42K)",
+        "value": "9,427"
+      },
+      {
+        "label": "% Hombres",
+        "value": "73.83%"
+      },
+      {
+        "label": "% Mujeres",
+        "value": "26.06%"
+      },
+      {
+        "label": "Tiempo promedio (42K)",
+        "value": "04:28:03"
+      },
+      {
+        "label": "Tiempo mediana (42K)",
+        "value": "04:23:29"
+      },
+      {
+        "label": "Ritmo promedio (min/km)",
+        "value": "00:06:21"
+      },
+      {
+        "label": "Ganador absoluto (H)",
+        "value": "TADESE TAKELE — 02:03:22"
+      },
+      {
+        "label": "Ganadora absoluto (M)",
+        "value": "SUTUME ASEFA KEBEDE — 02:16:29"
+      },
+      {
+        "label": "Ganador Silla de Ruedas (H)",
+        "value": "TOMOKI SUZUKI — 01:19:12"
+      },
+      {
+        "label": "Ganadora Silla de Ruedas (M)",
+        "value": "CATHERINE DEBRUNNER — 01:35:55"
+      }
+    ],
+    "genderBreakdownRows": [
+      {
+        "genero": "Masculino",
+        "corredores": 26708,
+        "pct": "73.83%",
+        "promedio": "04:22:42",
+        "mejor": "02:03:22",
+        "peor": "06:57:24"
+      },
+      {
+        "genero": "Femenino",
+        "corredores": 9427,
+        "pct": "26.06%",
+        "promedio": "04:43:13",
+        "mejor": "02:16:29",
+        "peor": "06:57:25"
+      }
+    ],
+    "categoryBreakdownRows": [
+      {
+        "categoria": "Marathon Men",
+        "corredores": 26708,
+        "pct": "73.77%",
+        "promedio": "04:22:42",
+        "mejor": "02:03:22"
+      },
+      {
+        "categoria": "Marathon Wheelchair Men",
+        "corredores": 20,
+        "pct": "0.06%",
+        "promedio": "01:38:41",
+        "mejor": "01:19:12"
+      },
+      {
+        "categoria": "Marathon Wheelchair Women",
+        "corredores": 9,
+        "pct": "0.02%",
+        "promedio": "01:43:50",
+        "mejor": "01:35:55"
+      },
+      {
+        "categoria": "Marathon Women",
+        "corredores": 9427,
+        "pct": "26.04%",
+        "promedio": "04:43:13",
+        "mejor": "02:16:29"
+      },
+      {
+        "categoria": "Marathon(Non-binary)",
+        "corredores": 38,
+        "pct": "0.10%",
+        "promedio": "04:32:26",
+        "mejor": "02:43:29"
+      }
+    ],
+    "segmentPaceRows": [
+      {
+        "tramo": "0-5K",
+        "ritmo": "00:05:43",
+        "distanciaKm": "5",
+        "acumulado": "00:28:34"
+      },
+      {
+        "tramo": "5K-10K",
+        "ritmo": "00:05:43",
+        "distanciaKm": "5",
+        "acumulado": "00:57:09"
+      },
+      {
+        "tramo": "10K-15K",
+        "ritmo": "00:05:50",
+        "distanciaKm": "5",
+        "acumulado": "01:26:21"
+      },
+      {
+        "tramo": "15K-20K",
+        "ritmo": "00:06:04",
+        "distanciaKm": "5",
+        "acumulado": "01:56:43"
+      },
+      {
+        "tramo": "20K-25K",
+        "ritmo": "00:06:16",
+        "distanciaKm": "5",
+        "acumulado": "02:28:05"
+      },
+      {
+        "tramo": "25K-30K",
+        "ritmo": "00:06:40",
+        "distanciaKm": "5",
+        "acumulado": "03:01:26"
+      },
+      {
+        "tramo": "30K-35K",
+        "ritmo": "00:06:58",
+        "distanciaKm": "5",
+        "acumulado": "03:36:15"
+      },
+      {
+        "tramo": "35K-40K",
+        "ritmo": "00:07:19",
+        "distanciaKm": "5",
+        "acumulado": "04:12:49"
+      },
+      {
+        "tramo": "40K-Meta",
+        "ritmo": "00:06:57",
+        "distanciaKm": "2.195",
+        "acumulado": "04:28:03"
+      }
+    ],
+    "halvesRows": [
+      {
+        "label": "Corredores con split 20K válido",
+        "value": "36,164"
+      },
+      {
+        "label": "Ritmo promedio 1ra mitad (0-20K, min/km)",
+        "value": "00:05:50"
+      },
+      {
+        "label": "Ritmo promedio 2da mitad (20K-Meta, min/km)",
+        "value": "00:06:49"
+      },
+      {
+        "label": "Corredores con negative split (2da mitad más rápida)",
+        "value": "2,307"
+      },
+      {
+        "label": "% Negative split",
+        "value": "6.38%"
+      },
+      {
+        "label": "% Positive split (2da mitad más lenta)",
+        "value": "93.62%"
+      }
+    ],
+    "topByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "TADESE TAKELE",
+          "bib": "5",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:03:22"
+        },
+        {
+          "pos": 2,
+          "nombre": "DERESA GELETA",
+          "bib": "3",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:03:49"
+        },
+        {
+          "pos": 3,
+          "nombre": "VINCENT KIPKEMOI NGETICH",
+          "bib": "4",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:03:59"
+        },
+        {
+          "pos": 4,
+          "nombre": "TITUS KIPRUTO",
+          "bib": "12",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:05:32"
+        },
+        {
+          "pos": 5,
+          "nombre": "GEOFFREY TOROITICH",
+          "bib": "16",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:05:43"
+        },
+        {
+          "pos": 6,
+          "nombre": "MULUGETA ASEFA UMA",
+          "bib": "13",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:05:44"
+        },
+        {
+          "pos": 7,
+          "nombre": "BENSON KIPRUTO",
+          "bib": "1",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:05:44"
+        },
+        {
+          "pos": 8,
+          "nombre": "SULDAN HASSAN",
+          "bib": "15",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:05:55"
+        },
+        {
+          "pos": 9,
+          "nombre": "JOSHUA CHEPTEGEI",
+          "bib": "2",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:05:56"
+        },
+        {
+          "pos": 10,
+          "nombre": "TSUBASA ICHIYAMA",
+          "bib": "110",
+          "categoria": "Marathon Men",
+          "tiempoChip": "02:05:58"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "SUTUME ASEFA KEBEDE",
+          "bib": "51",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:16:29"
+        },
+        {
+          "pos": 2,
+          "nombre": "WINFRIDAH MORAA MOSETI",
+          "bib": "58",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:16:54"
+        },
+        {
+          "pos": 3,
+          "nombre": "HAWI FEYSA",
+          "bib": "55",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:16:58"
+        },
+        {
+          "pos": 4,
+          "nombre": "MAGDALYNE MASAI",
+          "bib": "60",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:19:26"
+        },
+        {
+          "pos": 5,
+          "nombre": "ROSEMARY WANJIRU",
+          "bib": "54",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:19:55"
+        },
+        {
+          "pos": 6,
+          "nombre": "DESI JISA MOKONIN",
+          "bib": "61",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:20:05"
+        },
+        {
+          "pos": 7,
+          "nombre": "GOTYTOM GEBRESLASE",
+          "bib": "57",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:20:23"
+        },
+        {
+          "pos": 8,
+          "nombre": "DEGITU AZIMERAW",
+          "bib": "56",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:20:25"
+        },
+        {
+          "pos": 9,
+          "nombre": "DESHUN ZHANG",
+          "bib": "301",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:20:51"
+        },
+        {
+          "pos": 10,
+          "nombre": "JESSICA STENSON",
+          "bib": "62",
+          "categoria": "Marathon Women",
+          "tiempoChip": "02:22:53"
+        }
+      ]
+    },
+    "top100SegmentRows": [
+      {
+        "tramo": "0-5K",
+        "varonil": "00:03:04",
+        "femenil": "00:03:48",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "5K-10K",
+        "varonil": "00:03:05",
+        "femenil": "00:03:48",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "10K-15K",
+        "varonil": "00:03:06",
+        "femenil": "00:03:50",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "15K-20K",
+        "varonil": "00:03:08",
+        "femenil": "00:03:52",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "20K-25K",
+        "varonil": "00:03:09",
+        "femenil": "00:03:53",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "25K-30K",
+        "varonil": "00:03:12",
+        "femenil": "00:03:57",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "30K-35K",
+        "varonil": "00:03:16",
+        "femenil": "00:04:00",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "35K-40K",
+        "varonil": "00:03:21",
+        "femenil": "00:04:04",
+        "distanciaKm": "5"
+      },
+      {
+        "tramo": "40K-Meta",
+        "varonil": "00:03:19",
+        "femenil": "00:04:00",
+        "distanciaKm": "2.195"
+      }
+    ],
+    "positionBands": {
+      "bandLabels": [
+        "1 - 5,000",
+        "5,001 - 10,000",
+        "10,001 - 15,000",
+        "15,001 - 20,000",
+        "20,001 - 25,000",
+        "25,001 - 30,000",
+        "30,001 - 36,173"
+      ],
+      "rows": [
+        {
+          "tramo": "0-5K",
+          "values": [
+            "00:04:14",
+            "00:04:56",
+            "00:05:22",
+            "00:05:42",
+            "00:06:04",
+            "00:06:28",
+            "00:06:56"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "5K-10K",
+          "values": [
+            "00:04:10",
+            "00:04:51",
+            "00:05:17",
+            "00:05:38",
+            "00:06:03",
+            "00:06:31",
+            "00:07:11"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "10K-15K",
+          "values": [
+            "00:04:11",
+            "00:04:52",
+            "00:05:19",
+            "00:05:42",
+            "00:06:09",
+            "00:06:41",
+            "00:07:33"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "15K-20K",
+          "values": [
+            "00:04:14",
+            "00:04:56",
+            "00:05:25",
+            "00:05:50",
+            "00:06:21",
+            "00:07:02",
+            "00:08:12"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "20K-25K",
+          "values": [
+            "00:04:15",
+            "00:04:59",
+            "00:05:29",
+            "00:05:57",
+            "00:06:34",
+            "00:07:22",
+            "00:08:44"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "25K-30K",
+          "values": [
+            "00:04:21",
+            "00:05:09",
+            "00:05:43",
+            "00:06:20",
+            "00:07:07",
+            "00:08:01",
+            "00:09:23"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "30K-35K",
+          "values": [
+            "00:04:29",
+            "00:05:21",
+            "00:05:58",
+            "00:06:44",
+            "00:07:33",
+            "00:08:25",
+            "00:09:37"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "35K-40K",
+          "values": [
+            "00:04:40",
+            "00:05:39",
+            "00:06:17",
+            "00:07:13",
+            "00:07:56",
+            "00:08:49",
+            "00:09:59"
+          ],
+          "distanciaKm": "5",
+          "absVaronil": "",
+          "absFemenil": ""
+        },
+        {
+          "tramo": "40K-Meta",
+          "values": [
+            "00:04:39",
+            "00:05:35",
+            "00:06:07",
+            "00:06:49",
+            "00:07:21",
+            "00:08:02",
+            "00:09:29"
+          ],
+          "distanciaKm": "2.195",
+          "absVaronil": "",
+          "absFemenil": ""
+        }
+      ]
+    },
+    "percentileRows": [
+      {
+        "label": "Min",
+        "Masculino": "00:02:55",
+        "Femenino": "00:03:14"
+      },
+      {
+        "label": "1%",
+        "Masculino": "00:03:40",
+        "Femenino": "00:04:10"
+      },
+      {
+        "label": "5%",
+        "Masculino": "00:04:11",
+        "Femenino": "00:04:46"
+      },
+      {
+        "label": "10%",
+        "Masculino": "00:04:29",
+        "Femenino": "00:05:06"
+      },
+      {
+        "label": "30%",
+        "Masculino": "00:05:21",
+        "Femenino": "00:05:55"
+      },
+      {
+        "label": "50%",
+        "Masculino": "00:06:05",
+        "Femenino": "00:06:38"
+      },
+      {
+        "label": "80%",
+        "Masculino": "00:07:34",
+        "Femenino": "00:07:57"
+      },
+      {
+        "label": "Max",
+        "Masculino": "00:09:54",
+        "Femenino": "00:09:54"
+      }
+    ],
+    "top5ByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "TADESE TAKELE",
+          "bib": "5",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:03:23",
+          "tiempoChip": "02:03:22",
+          "ritmoMedio": "00:02:55"
+        },
+        {
+          "pos": 2,
+          "nombre": "DERESA GELETA",
+          "bib": "3",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:03:51",
+          "tiempoChip": "02:03:49",
+          "ritmoMedio": "00:02:56"
+        },
+        {
+          "pos": 3,
+          "nombre": "VINCENT KIPKEMOI NGETICH",
+          "bib": "4",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:04:00",
+          "tiempoChip": "02:03:59",
+          "ritmoMedio": "00:02:56"
+        },
+        {
+          "pos": 4,
+          "nombre": "TITUS KIPRUTO",
+          "bib": "12",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:05:34",
+          "tiempoChip": "02:05:32",
+          "ritmoMedio": "00:02:59"
+        },
+        {
+          "pos": 5,
+          "nombre": "GEOFFREY TOROITICH",
+          "bib": "16",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:05:46",
+          "tiempoChip": "02:05:43",
+          "ritmoMedio": "00:02:59"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "SUTUME ASEFA KEBEDE",
+          "bib": "51",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:16:31",
+          "tiempoChip": "02:16:29",
+          "ritmoMedio": "00:03:14"
+        },
+        {
+          "pos": 2,
+          "nombre": "WINFRIDAH MORAA MOSETI",
+          "bib": "58",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:16:56",
+          "tiempoChip": "02:16:54",
+          "ritmoMedio": "00:03:15"
+        },
+        {
+          "pos": 3,
+          "nombre": "HAWI FEYSA",
+          "bib": "55",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:17:00",
+          "tiempoChip": "02:16:58",
+          "ritmoMedio": "00:03:15"
+        },
+        {
+          "pos": 4,
+          "nombre": "MAGDALYNE MASAI",
+          "bib": "60",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:19:28",
+          "tiempoChip": "02:19:26",
+          "ritmoMedio": "00:03:18"
+        },
+        {
+          "pos": 5,
+          "nombre": "ROSEMARY WANJIRU",
+          "bib": "54",
+          "categoria": "Marathon",
+          "tiempoOficial": "02:19:57",
+          "tiempoChip": "02:19:55",
+          "ritmoMedio": "00:03:19"
+        }
+      ]
+    },
+    "paceDistributionRows": [
+      {
+        "label": "≤ 03:30",
+        "F": 13,
+        "M": 164,
+        "X": 0
+      },
+      {
+        "label": "03:31–03:45",
+        "F": 4,
+        "M": 202,
+        "X": 0
+      },
+      {
+        "label": "03:46–04:00",
+        "F": 39,
+        "M": 427,
+        "X": 1
+      },
+      {
+        "label": "04:01–04:15",
+        "F": 82,
+        "M": 945,
+        "X": 3
+      },
+      {
+        "label": "04:16–04:46",
+        "F": 343,
+        "M": 2479,
+        "X": 4
+      },
+      {
+        "label": "04:47–05:14",
+        "F": 715,
+        "M": 3094,
+        "X": 1
+      },
+      {
+        "label": "05:15–05:55",
+        "F": 1655,
+        "M": 5064,
+        "X": 8
+      },
+      {
+        "label": "05:56–06:30",
+        "F": 1513,
+        "M": 3682,
+        "X": 3
+      },
+      {
+        "label": "06:31–07:37",
+        "F": 2536,
+        "M": 5537,
+        "X": 7
+      },
+      {
+        "label": "07:38–08:28",
+        "F": 1532,
+        "M": 3099,
+        "X": 5
+      },
+      {
+        "label": "≥ 08:29",
+        "F": 984,
+        "M": 1983,
+        "X": 6
+      }
+    ],
+    "paceDistributionTotals": {
+      "label": "Total",
+      "F": 9416,
+      "M": 26676,
+      "X": 38
+    },
+    "summaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "count": 36173,
+        "avgPace": "00:06:21"
+      },
+      {
+        "label": "split 5K",
+        "count": 36163,
+        "avgPace": "00:05:43"
+      },
+      {
+        "label": "split 10K",
+        "count": 36160,
+        "avgPace": "00:05:43"
+      },
+      {
+        "label": "split 15K",
+        "count": 36156,
+        "avgPace": "00:05:50"
+      },
+      {
+        "label": "split 20K",
+        "count": 36152,
+        "avgPace": "00:06:04"
+      },
+      {
+        "label": "split 30K",
+        "count": 36138,
+        "avgPace": "00:06:40"
+      },
+      {
+        "label": "split 35K",
+        "count": 36137,
+        "avgPace": "00:06:58"
+      },
+      {
+        "label": "split 40K",
+        "count": 36130,
+        "avgPace": "00:07:19"
+      },
+      {
+        "label": "split 42K",
+        "count": 36130,
+        "avgPace": "00:06:57"
+      }
+    ],
+    "genderSummaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "countM": 26708,
+        "countF": 9427,
+        "avgPaceM": "00:06:14",
+        "avgPaceF": "00:06:43"
+      },
+      {
+        "label": "split 5K",
+        "countM": 26701,
+        "countF": 9424,
+        "avgPaceM": "00:05:35",
+        "avgPaceF": "00:06:04"
+      },
+      {
+        "label": "split 10K",
+        "countM": 26698,
+        "countF": 9424,
+        "avgPaceM": "00:05:34",
+        "avgPaceF": "00:06:08"
+      },
+      {
+        "label": "split 15K",
+        "countM": 26694,
+        "countF": 9424,
+        "avgPaceM": "00:05:41",
+        "avgPaceF": "00:06:17"
+      },
+      {
+        "label": "split 20K",
+        "countM": 26690,
+        "countF": 9424,
+        "avgPaceM": "00:05:54",
+        "avgPaceF": "00:06:33"
+      },
+      {
+        "label": "split 30K",
+        "countM": 26679,
+        "countF": 9421,
+        "avgPaceM": "00:06:32",
+        "avgPaceF": "00:07:04"
+      },
+      {
+        "label": "split 35K",
+        "countM": 26678,
+        "countF": 9421,
+        "avgPaceM": "00:06:52",
+        "avgPaceF": "00:07:14"
+      },
+      {
+        "label": "split 40K",
+        "countM": 26676,
+        "countF": 9416,
+        "avgPaceM": "00:07:15",
+        "avgPaceF": "00:07:29"
+      },
+      {
+        "label": "split 42K",
+        "countM": 26676,
+        "countF": 9416,
+        "avgPaceM": "00:06:54",
+        "avgPaceF": "00:07:05"
+      }
+    ],
+    "categoryStatsRows": [
+      {
+        "categoria": "Marathon",
+        "countM": 26708,
+        "countF": 9427,
+        "avgPaceM": "00:06:14",
+        "avgPaceF": "00:06:43"
+      },
+      {
+        "categoria": "Marathon(Non-binary)",
+        "countM": 0,
+        "countF": 0,
+        "avgPaceM": "00:00:00",
+        "avgPaceF": "00:00:00"
+      }
+    ],
+    "genderSummaryStatsByCategory": {
+      "Marathon": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 26708,
+          "countF": 9427,
+          "avgPaceM": "00:06:14",
+          "avgPaceF": "00:06:43"
+        },
+        {
+          "label": "split 5K",
+          "countM": 26701,
+          "countF": 9424,
+          "avgPaceM": "00:05:35",
+          "avgPaceF": "00:06:04"
+        },
+        {
+          "label": "split 10K",
+          "countM": 26698,
+          "countF": 9424,
+          "avgPaceM": "00:05:34",
+          "avgPaceF": "00:06:08"
+        },
+        {
+          "label": "split 15K",
+          "countM": 26694,
+          "countF": 9424,
+          "avgPaceM": "00:05:41",
+          "avgPaceF": "00:06:17"
+        },
+        {
+          "label": "split 20K",
+          "countM": 26690,
+          "countF": 9424,
+          "avgPaceM": "00:05:54",
+          "avgPaceF": "00:06:33"
+        },
+        {
+          "label": "split 30K",
+          "countM": 26679,
+          "countF": 9421,
+          "avgPaceM": "00:06:32",
+          "avgPaceF": "00:07:04"
+        },
+        {
+          "label": "split 35K",
+          "countM": 26678,
+          "countF": 9421,
+          "avgPaceM": "00:06:52",
+          "avgPaceF": "00:07:14"
+        },
+        {
+          "label": "split 40K",
+          "countM": 26676,
+          "countF": 9416,
+          "avgPaceM": "00:07:15",
+          "avgPaceF": "00:07:29"
+        },
+        {
+          "label": "split 42K",
+          "countM": 26676,
+          "countF": 9416,
+          "avgPaceM": "00:06:54",
+          "avgPaceF": "00:07:05"
+        }
+      ],
+      "Marathon(Non-binary)": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 0,
+          "countF": 0,
+          "avgPaceM": "00:00:00",
+          "avgPaceF": "00:00:00"
+        }
+      ]
+    },
+    "scatterDataByCategory": {
+      "Marathon": {
+        "dataM": [
+          {
+            "x": 0,
+            "y": 335
+          },
+          {
+            "x": 5,
+            "y": 335
+          },
+          {
+            "x": 10,
+            "y": 334
+          },
+          {
+            "x": 15,
+            "y": 341
+          },
+          {
+            "x": 20,
+            "y": 354
+          },
+          {
+            "x": 30,
+            "y": 392
+          },
+          {
+            "x": 35,
+            "y": 412
+          },
+          {
+            "x": 40,
+            "y": 435
+          },
+          {
+            "x": 42.195,
+            "y": 414
+          }
+        ],
+        "dataF": [
+          {
+            "x": 0,
+            "y": 364
+          },
+          {
+            "x": 5,
+            "y": 364
+          },
+          {
+            "x": 10,
+            "y": 368
+          },
+          {
+            "x": 15,
+            "y": 377
+          },
+          {
+            "x": 20,
+            "y": 393
+          },
+          {
+            "x": 30,
+            "y": 424
+          },
+          {
+            "x": 35,
+            "y": 434
+          },
+          {
+            "x": 40,
+            "y": 449
+          },
+          {
+            "x": 42.195,
+            "y": 425
+          }
+        ]
+      },
+      "Marathon(Non-binary)": {
+        "dataM": [],
+        "dataF": []
+      }
+    },
+    "scatterData": [
+      {
+        "x": 0,
+        "y": 343
+      },
+      {
+        "x": 5,
+        "y": 343
+      },
+      {
+        "x": 10,
+        "y": 343
+      },
+      {
+        "x": 15,
+        "y": 350
+      },
+      {
+        "x": 20,
+        "y": 364
+      },
+      {
+        "x": 30,
+        "y": 400
+      },
+      {
+        "x": 35,
+        "y": 418
+      },
+      {
+        "x": 40,
+        "y": 439
+      },
+      {
+        "x": 42.195,
+        "y": 417
+      }
+    ],
+    "scatterDataGenero": {
+      "dataM": [
+        {
+          "x": 0,
+          "y": 335
+        },
+        {
+          "x": 5,
+          "y": 335
+        },
+        {
+          "x": 10,
+          "y": 334
+        },
+        {
+          "x": 15,
+          "y": 341
+        },
+        {
+          "x": 20,
+          "y": 354
+        },
+        {
+          "x": 30,
+          "y": 392
+        },
+        {
+          "x": 35,
+          "y": 412
+        },
+        {
+          "x": 40,
+          "y": 435
+        },
+        {
+          "x": 42.195,
+          "y": 414
+        }
+      ],
+      "dataF": [
+        {
+          "x": 0,
+          "y": 364
+        },
+        {
+          "x": 5,
+          "y": 364
+        },
+        {
+          "x": 10,
+          "y": 368
+        },
+        {
+          "x": 15,
+          "y": 377
+        },
+        {
+          "x": 20,
+          "y": 393
+        },
+        {
+          "x": 30,
+          "y": 424
+        },
+        {
+          "x": 35,
+          "y": 434
+        },
+        {
+          "x": 40,
+          "y": 449
+        },
+        {
+          "x": 42.195,
+          "y": 425
+        }
+      ]
+    }
+  },
+  "comments": {}
+}

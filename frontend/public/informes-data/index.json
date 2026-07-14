@@ -5,6 +5,11 @@
     "fecha": "2026-07-12T00:00:00Z"
   },
   {
+    "id": "maraton_de_nueva_york_2025",
+    "nombre": "Maratón de Nueva York 2025",
+    "fecha": "2025-11-02T00:00:00Z"
+  },
+  {
     "id": "maraton_de_chicago_2025",
     "nombre": "Maratón de Chicago 2025",
     "fecha": "2025-10-12T00:00:00Z"

@@ -55,6 +55,11 @@
     "fecha": "2025-04-27T00:00:00Z"
   },
   {
+    "id": "maraton_de_boston_2025",
+    "nombre": "Maratón de Boston 2025",
+    "fecha": "2025-04-21T00:00:00Z"
+  },
+  {
     "id": "maraton_de_tokio_2025",
     "nombre": "Maratón de Tokio 2025",
     "fecha": "2025-03-02T00:00:00Z"

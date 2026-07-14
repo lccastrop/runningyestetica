@@ -1,0 +1,811 @@
+{
+  "id": "medio_maraton_cdmx_2025",
+  "nombre": "Medio Maratón CDMX 2025",
+  "fecha": "2025-07-27T00:00:00Z",
+  "metadata": {
+    "fileName": "mmcdmx2025.csv",
+    "distanceKm": 21.0975,
+    "rowCount": 27076
+  },
+  "analysis": {
+    "kpiRows": [
+      {
+        "label": "Inscritos totales",
+        "value": "27,076"
+      },
+      {
+        "label": "Corredores 21K (a pie)",
+        "value": "27,076"
+      },
+      {
+        "label": "Hombres (21K)",
+        "value": "14,631"
+      },
+      {
+        "label": "Mujeres (21K)",
+        "value": "12,445"
+      },
+      {
+        "label": "% Hombres",
+        "value": "54.04%"
+      },
+      {
+        "label": "% Mujeres",
+        "value": "45.96%"
+      },
+      {
+        "label": "Tiempo promedio (21K)",
+        "value": "02:15:29"
+      },
+      {
+        "label": "Tiempo mediana (21K)",
+        "value": "02:12:48"
+      },
+      {
+        "label": "Ritmo promedio (min/km)",
+        "value": "00:06:25"
+      },
+      {
+        "label": "Ganador absoluto (H)",
+        "value": "MARTIN MAGENGO KIPROTICH. — 01:03:21"
+      },
+      {
+        "label": "Ganadora absoluto (M)",
+        "value": "MARION JEPKONGA KIBOR. — 01:12:48"
+      }
+    ],
+    "genderBreakdownRows": [
+      {
+        "genero": "Masculino",
+        "corredores": 14631,
+        "pct": "54.04%",
+        "promedio": "02:09:16",
+        "mejor": "01:03:21",
+        "peor": "04:26:21"
+      },
+      {
+        "genero": "Femenino",
+        "corredores": 12445,
+        "pct": "45.96%",
+        "promedio": "02:22:48",
+        "mejor": "01:12:48",
+        "peor": "04:29:53"
+      }
+    ],
+    "categoryBreakdownRows": [
+      {
+        "categoria": "Absolutos Femenil",
+        "corredores": 5,
+        "pct": "0.02%",
+        "promedio": "01:18:11",
+        "mejor": "01:12:48"
+      },
+      {
+        "categoria": "Absolutos Varonil",
+        "corredores": 5,
+        "pct": "0.02%",
+        "promedio": "01:05:42",
+        "mejor": "01:03:21"
+      },
+      {
+        "categoria": "Libre Femenil 18 a 34 años",
+        "corredores": 6671,
+        "pct": "24.64%",
+        "promedio": "02:21:08",
+        "mejor": "01:20:10"
+      },
+      {
+        "categoria": "Libre Varonil 18 a 34 años",
+        "corredores": 7025,
+        "pct": "25.95%",
+        "promedio": "02:07:31",
+        "mejor": "01:09:34"
+      },
+      {
+        "categoria": "Máster Femenil 35 a 39 años",
+        "corredores": 2233,
+        "pct": "8.25%",
+        "promedio": "02:21:38",
+        "mejor": "01:19:20"
+      },
+      {
+        "categoria": "Máster Varonil 35 a 39 años",
+        "corredores": 2706,
+        "pct": "9.99%",
+        "promedio": "02:07:49",
+        "mejor": "01:09:16"
+      },
+      {
+        "categoria": "Veteranos Femenil 40 a 44 años",
+        "corredores": 1486,
+        "pct": "5.49%",
+        "promedio": "02:24:00",
+        "mejor": "01:20:37"
+      },
+      {
+        "categoria": "Veteranos II Femenil 45 a 49 años",
+        "corredores": 1004,
+        "pct": "3.71%",
+        "promedio": "02:26:15",
+        "mejor": "01:22:37"
+      },
+      {
+        "categoria": "Veteranos II Varonil 45 a 49 años",
+        "corredores": 1249,
+        "pct": "4.61%",
+        "promedio": "02:12:02",
+        "mejor": "01:17:15"
+      },
+      {
+        "categoria": "Veteranos III Femenil 50 a 54 años",
+        "corredores": 614,
+        "pct": "2.27%",
+        "promedio": "02:29:02",
+        "mejor": "01:30:02"
+      },
+      {
+        "categoria": "Veteranos III Varonil 50 a 54 años",
+        "corredores": 850,
+        "pct": "3.14%",
+        "promedio": "02:13:31",
+        "mejor": "01:13:12"
+      },
+      {
+        "categoria": "Veteranos IV Femenil 55 a 59 años",
+        "corredores": 277,
+        "pct": "1.02%",
+        "promedio": "02:33:45",
+        "mejor": "01:36:56"
+      },
+      {
+        "categoria": "Veteranos IV Varonil 55 a 59 años",
+        "corredores": 480,
+        "pct": "1.77%",
+        "promedio": "02:17:23",
+        "mejor": "01:05:50"
+      },
+      {
+        "categoria": "Veteranos V Femenil 60 a 64 años",
+        "corredores": 103,
+        "pct": "0.38%",
+        "promedio": "02:35:10",
+        "mejor": "01:30:18"
+      },
+      {
+        "categoria": "Veteranos V Varonil 60 a 64 años",
+        "corredores": 271,
+        "pct": "1.00%",
+        "promedio": "02:17:52",
+        "mejor": "01:23:27"
+      },
+      {
+        "categoria": "Veteranos VI Femenil  65 años y mas",
+        "corredores": 52,
+        "pct": "0.19%",
+        "promedio": "02:36:40",
+        "mejor": "01:48:16"
+      },
+      {
+        "categoria": "Veteranos VI Varonil 65 años y mas",
+        "corredores": 179,
+        "pct": "0.66%",
+        "promedio": "02:24:52",
+        "mejor": "01:28:26"
+      },
+      {
+        "categoria": "Veteranos Varonil 40 a 44 años",
+        "corredores": 1866,
+        "pct": "6.89%",
+        "promedio": "02:09:30",
+        "mejor": "01:08:27"
+      }
+    ],
+    "segmentPaceRows": [
+      {
+        "tramo": "0-Meta",
+        "ritmo": "00:06:25",
+        "distanciaKm": "21.0975",
+        "acumulado": "02:15:29"
+      }
+    ],
+    "halvesRows": [],
+    "topByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "MARTIN MAGENGO KIPROTICH.",
+          "bib": "3",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:03:21"
+        },
+        {
+          "pos": 2,
+          "nombre": "EDWIN KIPROP KIPTOO.",
+          "bib": "2",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:03:28"
+        },
+        {
+          "pos": 3,
+          "nombre": "LEONARD KIPKOECH LANGAT.",
+          "bib": "4",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:05:49"
+        },
+        {
+          "pos": 4,
+          "nombre": "HECTOR HERNANDEZ ROBLES.",
+          "bib": "15029",
+          "categoria": "Veteranos IV Varonil 55 a 59 años",
+          "tiempoChip": "01:05:50"
+        },
+        {
+          "pos": 5,
+          "nombre": "JORGE LUIS CRUZ PEREZ.",
+          "bib": "10",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:07:50"
+        },
+        {
+          "pos": 6,
+          "nombre": "FRANCISCO JAVIER GONZALEZ LLAMAS .",
+          "bib": "7",
+          "categoria": "Absolutos Varonil",
+          "tiempoChip": "01:08:04"
+        },
+        {
+          "pos": 7,
+          "nombre": "JUAN LUIS BARRIOS NIEVES.",
+          "bib": "5",
+          "categoria": "Veteranos Varonil 40 a 44 años",
+          "tiempoChip": "01:08:27"
+        },
+        {
+          "pos": 8,
+          "nombre": "JUAN CARLOS MENDOZA GARCIA.",
+          "bib": "43",
+          "categoria": "Máster Varonil 35 a 39 años",
+          "tiempoChip": "01:09:16"
+        },
+        {
+          "pos": 9,
+          "nombre": "ROBERTO DEL VALLE CASTILLO.",
+          "bib": "19",
+          "categoria": "Libre Varonil 18 a 34 años",
+          "tiempoChip": "01:09:34"
+        },
+        {
+          "pos": 10,
+          "nombre": "ANTONIO VARA ORTEGA.",
+          "bib": "22",
+          "categoria": "Libre Varonil 18 a 34 años",
+          "tiempoChip": "01:09:53"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "MARION JEPKONGA KIBOR.",
+          "bib": "52",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:12:48"
+        },
+        {
+          "pos": 2,
+          "nombre": "DAIZY JEMUTAI RUTTO.",
+          "bib": "53",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:15:37"
+        },
+        {
+          "pos": 3,
+          "nombre": "KATHIA MIRELL GARCIA BARRIOS.",
+          "bib": "56",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:19:19"
+        },
+        {
+          "pos": 4,
+          "nombre": "ROCIO RAMIREZ RUIZ",
+          "bib": "6025",
+          "categoria": "Máster Femenil 35 a 39 años",
+          "tiempoChip": "01:19:20"
+        },
+        {
+          "pos": 5,
+          "nombre": "ANGELA PEREZ MENDOZA",
+          "bib": "27188",
+          "categoria": "Libre Femenil 18 a 34 años",
+          "tiempoChip": "01:20:10"
+        },
+        {
+          "pos": 6,
+          "nombre": "PAULINA JIMENEZ  LOPEZ",
+          "bib": "25920",
+          "categoria": "Veteranos Femenil 40 a 44 años",
+          "tiempoChip": "01:20:37"
+        },
+        {
+          "pos": 7,
+          "nombre": "ALEJANDRA VELã¡ZQUEZ CHAO",
+          "bib": "3534",
+          "categoria": "Libre Femenil 18 a 34 años",
+          "tiempoChip": "01:20:45"
+        },
+        {
+          "pos": 8,
+          "nombre": "ERIKA NATALIA PRIEGO ALATRISTE",
+          "bib": "5678",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:21:17"
+        },
+        {
+          "pos": 9,
+          "nombre": "IVON DOMINGUEZ ACOSTA.",
+          "bib": "59",
+          "categoria": "Absolutos Femenil",
+          "tiempoChip": "01:21:52"
+        },
+        {
+          "pos": 10,
+          "nombre": "SOFIA SETSUKO HIRATA VILLAVICENCIO",
+          "bib": "3139",
+          "categoria": "Veteranos II Femenil 45 a 49 años",
+          "tiempoChip": "01:22:37"
+        }
+      ]
+    },
+    "top100SegmentRows": [
+      {
+        "tramo": "0-Meta",
+        "varonil": "00:03:39",
+        "femenil": "00:04:13",
+        "distanciaKm": "21.0975"
+      }
+    ],
+    "positionBands": {
+      "bandLabels": [
+        "1 - 5,000",
+        "5,001 - 10,000",
+        "10,001 - 15,000",
+        "15,001 - 20,000",
+        "20,001 - 27,076"
+      ],
+      "rows": [
+        {
+          "tramo": "0-Meta",
+          "values": [
+            "00:04:51",
+            "00:05:39",
+            "00:06:11",
+            "00:06:46",
+            "00:08:01"
+          ],
+          "distanciaKm": "21.0975",
+          "absVaronil": "00:03:07",
+          "absFemenil": "00:03:42"
+        }
+      ]
+    },
+    "percentileRows": [
+      {
+        "label": "Min",
+        "Masculino": "00:03:00",
+        "Femenino": "00:03:27"
+      },
+      {
+        "label": "1%",
+        "Masculino": "00:03:58",
+        "Femenino": "00:04:30"
+      },
+      {
+        "label": "5%",
+        "Masculino": "00:04:27",
+        "Femenino": "00:05:06"
+      },
+      {
+        "label": "10%",
+        "Masculino": "00:04:45",
+        "Femenino": "00:05:26"
+      },
+      {
+        "label": "30%",
+        "Masculino": "00:05:27",
+        "Femenino": "00:06:06"
+      },
+      {
+        "label": "50%",
+        "Masculino": "00:05:58",
+        "Femenino": "00:06:39"
+      },
+      {
+        "label": "80%",
+        "Masculino": "00:07:01",
+        "Femenino": "00:07:41"
+      },
+      {
+        "label": "Max",
+        "Masculino": "00:12:37",
+        "Femenino": "00:12:48"
+      }
+    ],
+    "top5ByGender": {
+      "Masculino": [
+        {
+          "pos": 1,
+          "nombre": "MARTIN MAGENGO KIPROTICH.",
+          "bib": "3",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:03:21",
+          "tiempoChip": "01:03:21",
+          "ritmoMedio": "00:03:00"
+        },
+        {
+          "pos": 2,
+          "nombre": "EDWIN KIPROP KIPTOO.",
+          "bib": "2",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:03:28",
+          "tiempoChip": "01:03:28",
+          "ritmoMedio": "00:03:00"
+        },
+        {
+          "pos": 3,
+          "nombre": "LEONARD KIPKOECH LANGAT.",
+          "bib": "4",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:05:49",
+          "tiempoChip": "01:05:49",
+          "ritmoMedio": "00:03:07"
+        },
+        {
+          "pos": 4,
+          "nombre": "JORGE LUIS CRUZ PEREZ.",
+          "bib": "10",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:07:50",
+          "tiempoChip": "01:07:50",
+          "ritmoMedio": "00:03:13"
+        },
+        {
+          "pos": 5,
+          "nombre": "FRANCISCO JAVIER GONZALEZ LLAMAS .",
+          "bib": "7",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:08:04",
+          "tiempoChip": "01:08:04",
+          "ritmoMedio": "00:03:14"
+        }
+      ],
+      "Femenino": [
+        {
+          "pos": 1,
+          "nombre": "MARION JEPKONGA KIBOR.",
+          "bib": "52",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:12:48",
+          "tiempoChip": "01:12:48",
+          "ritmoMedio": "00:03:27"
+        },
+        {
+          "pos": 2,
+          "nombre": "DAIZY JEMUTAI RUTTO.",
+          "bib": "53",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:15:37",
+          "tiempoChip": "01:15:37",
+          "ritmoMedio": "00:03:35"
+        },
+        {
+          "pos": 3,
+          "nombre": "KATHIA MIRELL GARCIA BARRIOS.",
+          "bib": "56",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:19:19",
+          "tiempoChip": "01:19:19",
+          "ritmoMedio": "00:03:46"
+        },
+        {
+          "pos": 4,
+          "nombre": "ERIKA NATALIA PRIEGO ALATRISTE",
+          "bib": "5678",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:21:17",
+          "tiempoChip": "01:21:17",
+          "ritmoMedio": "00:03:51"
+        },
+        {
+          "pos": 5,
+          "nombre": "IVON DOMINGUEZ ACOSTA.",
+          "bib": "59",
+          "categoria": "Absolutos",
+          "tiempoOficial": "01:21:52",
+          "tiempoChip": "01:21:52",
+          "ritmoMedio": "00:03:53"
+        }
+      ]
+    },
+    "paceDistributionRows": [
+      {
+        "label": "≤ 03:30",
+        "F": 1,
+        "M": 24,
+        "X": 0
+      },
+      {
+        "label": "03:31–03:45",
+        "F": 1,
+        "M": 35,
+        "X": 0
+      },
+      {
+        "label": "03:46–04:00",
+        "F": 10,
+        "M": 119,
+        "X": 0
+      },
+      {
+        "label": "04:01–04:15",
+        "F": 29,
+        "M": 276,
+        "X": 0
+      },
+      {
+        "label": "04:16–04:46",
+        "F": 233,
+        "M": 1076,
+        "X": 0
+      },
+      {
+        "label": "04:47–05:14",
+        "F": 588,
+        "M": 1839,
+        "X": 0
+      },
+      {
+        "label": "05:15–05:55",
+        "F": 2138,
+        "M": 3709,
+        "X": 0
+      },
+      {
+        "label": "05:56–06:30",
+        "F": 2579,
+        "M": 2783,
+        "X": 0
+      },
+      {
+        "label": "06:31–07:37",
+        "F": 4240,
+        "M": 3191,
+        "X": 0
+      },
+      {
+        "label": "07:38–08:28",
+        "F": 1628,
+        "M": 968,
+        "X": 0
+      },
+      {
+        "label": "≥ 08:29",
+        "F": 998,
+        "M": 611,
+        "X": 0
+      }
+    ],
+    "paceDistributionTotals": {
+      "label": "Total",
+      "F": 12445,
+      "M": 14631,
+      "X": 0
+    },
+    "summaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "count": 27076,
+        "avgPace": "00:06:25"
+      }
+    ],
+    "genderSummaryStatsRows": [
+      {
+        "label": "Con Tiempo Chip dif 0",
+        "countM": 14631,
+        "countF": 12445,
+        "avgPaceM": "00:06:08",
+        "avgPaceF": "00:06:46"
+      }
+    ],
+    "categoryStatsRows": [
+      {
+        "categoria": "Absolutos",
+        "countM": 5,
+        "countF": 5,
+        "avgPaceM": "00:03:07",
+        "avgPaceF": "00:03:42"
+      },
+      {
+        "categoria": "Libre 18 a 34 años",
+        "countM": 7025,
+        "countF": 6671,
+        "avgPaceM": "00:06:03",
+        "avgPaceF": "00:06:41"
+      },
+      {
+        "categoria": "Máster 35 a 39 años",
+        "countM": 2706,
+        "countF": 2233,
+        "avgPaceM": "00:06:04",
+        "avgPaceF": "00:06:43"
+      },
+      {
+        "categoria": "Veteranos 40 a 44 años",
+        "countM": 1866,
+        "countF": 1486,
+        "avgPaceM": "00:06:08",
+        "avgPaceF": "00:06:50"
+      },
+      {
+        "categoria": "Veteranos II 45 a 49 años",
+        "countM": 1249,
+        "countF": 1004,
+        "avgPaceM": "00:06:16",
+        "avgPaceF": "00:06:56"
+      },
+      {
+        "categoria": "Veteranos III 50 a 54 años",
+        "countM": 850,
+        "countF": 614,
+        "avgPaceM": "00:06:20",
+        "avgPaceF": "00:07:04"
+      },
+      {
+        "categoria": "Veteranos IV 55 a 59 años",
+        "countM": 480,
+        "countF": 277,
+        "avgPaceM": "00:06:31",
+        "avgPaceF": "00:07:17"
+      },
+      {
+        "categoria": "Veteranos V 60 a 64 años",
+        "countM": 271,
+        "countF": 103,
+        "avgPaceM": "00:06:32",
+        "avgPaceF": "00:07:21"
+      },
+      {
+        "categoria": "Veteranos VI 65 años y mas",
+        "countM": 179,
+        "countF": 52,
+        "avgPaceM": "00:06:52",
+        "avgPaceF": "00:07:26"
+      }
+    ],
+    "genderSummaryStatsByCategory": {
+      "Absolutos": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 5,
+          "countF": 5,
+          "avgPaceM": "00:03:07",
+          "avgPaceF": "00:03:42"
+        }
+      ],
+      "Libre 18 a 34 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 7025,
+          "countF": 6671,
+          "avgPaceM": "00:06:03",
+          "avgPaceF": "00:06:41"
+        }
+      ],
+      "Máster 35 a 39 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 2706,
+          "countF": 2233,
+          "avgPaceM": "00:06:04",
+          "avgPaceF": "00:06:43"
+        }
+      ],
+      "Veteranos 40 a 44 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 1866,
+          "countF": 1486,
+          "avgPaceM": "00:06:08",
+          "avgPaceF": "00:06:50"
+        }
+      ],
+      "Veteranos II 45 a 49 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 1249,
+          "countF": 1004,
+          "avgPaceM": "00:06:16",
+          "avgPaceF": "00:06:56"
+        }
+      ],
+      "Veteranos III 50 a 54 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 850,
+          "countF": 614,
+          "avgPaceM": "00:06:20",
+          "avgPaceF": "00:07:04"
+        }
+      ],
+      "Veteranos IV 55 a 59 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 480,
+          "countF": 277,
+          "avgPaceM": "00:06:31",
+          "avgPaceF": "00:07:17"
+        }
+      ],
+      "Veteranos V 60 a 64 años": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 271,
+          "countF": 103,
+          "avgPaceM": "00:06:32",
+          "avgPaceF": "00:07:21"
+        }
+      ],
+      "Veteranos VI 65 años y mas": [
+        {
+          "label": "Con Tiempo Chip dif 0",
+          "countM": 179,
+          "countF": 52,
+          "avgPaceM": "00:06:52",
+          "avgPaceF": "00:07:26"
+        }
+      ]
+    },
+    "scatterDataByCategory": {
+      "Absolutos": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Libre 18 a 34 años": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Máster 35 a 39 años": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Veteranos 40 a 44 años": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Veteranos II 45 a 49 años": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Veteranos III 50 a 54 años": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Veteranos IV 55 a 59 años": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Veteranos V 60 a 64 años": {
+        "dataM": [],
+        "dataF": []
+      },
+      "Veteranos VI 65 años y mas": {
+        "dataM": [],
+        "dataF": []
+      }
+    },
+    "scatterData": [],
+    "scatterDataGenero": {
+      "dataM": [],
+      "dataF": []
+    }
+  },
+  "comments": {}
+}
